@@ -1,0 +1,173 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "elm-library",
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 3
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "cds"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  }],
+  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-library",
+  "name": "ELMLibrary",
+  "title": "ELM Library",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-11-27T13:31:32-07:00",
+  "publisher": "Clinical Decision Support WG",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/dss/index.cfm"
+        }
+      ]
+    }
+  ],
+  "description": "The ELM Library supports distributing a Clinical Quality Language (CQL) library compiled to Expression Logical Model (ELM) in either JSON or XML format",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "objimpl",
+      "uri": "http://hl7.org/fhir/object-implementation",
+      "name": "Object Implementation Information"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Library",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Library",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Library",
+        "path": "Library",
+        "mustSupport": false
+      },
+      {
+        "id": "Library.extension:cqlOptions",
+        "path": "Library.extension",
+        "sliceName": "cqlOptions",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/cqf-cqlOptions"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content",
+        "path": "Library.content",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "contentType"
+            }
+          ],
+          "rules": "open"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmXmlContent",
+        "path": "Library.content",
+        "sliceName": "elmXmlContent",
+        "requirements": "An ELM Library must specify its content in an executable form.",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmXmlContent.contentType",
+        "path": "Library.content.contentType",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "application/elm+xml",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmXmlContent.data",
+        "path": "Library.content.data",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmXmlContent.url",
+        "path": "Library.content.url",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmJsonContent",
+        "path": "Library.content",
+        "sliceName": "elmJsonContent",
+        "requirements": "An ELM Library must specify its content in an executable form.",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmJsonContent.contentType",
+        "path": "Library.content.contentType",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "application/elm+json",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmJsonContent.data",
+        "path": "Library.content.data",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmJsonContent.url",
+        "path": "Library.content.url",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CapabilityStatement xmlns="http://hl7.org/fhir">
+  <id value="cql-evaluation-service"/>
+  <url value="http://hl7.org/fhir/uv/cql/CapabilityStatement/cql-evaluation-service"/>
+  <name value="CQLEvaluationService"/>
+  <title value="CQL Evaluation Service"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2015-07-05"/>
+  <publisher value="HL7, Inc"/>
+  <contact>
+    <name value="FHIR Project"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="Capability statement for a service supporting CQL evaluation use cases"/>
+  <kind value="requirements"/>
+  <fhirVersion value="4.0.1"/>
+  <format value="json"/>
+  <format value="xml"/>
+  <implementationGuide value="http://hl7.org/fhir/uv/cql/ImplementationGuide/hl7.fhir.uv.cql"/>
+  <rest>
+    <mode value="server"/>
+    <documentation value="RESTful CQL Evaluation Service"/>
+    <security>
+      <cors value="true"/>
+      <service>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/restful-security-service"/>
+          <code value="Certificates"/>
+        </coding>
+      </service>
+    </security>
+    <resource>
+      <type value="Library"/>
+      <profile value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library"/>
+      <supportedProfile value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfo"/>
+      <supportedProfile value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-module"/>
+      <supportedProfile value="http://hl7.org/fhir/uv/cql/StructureDefinition/elm-library"/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read allows clients to get the logical definitions of the available libraries"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search allows clients to find libraries on the server"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Library-date"/>
+        <type value="date"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="name"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Library-name"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="title"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Library-title"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="identifier"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Library-identifier"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="description"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Library-description"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Library-status"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="url"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Library-url"/>
+        <type value="uri"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="version"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Library-version"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="composed-of"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Library-composed-of"/>
+        <type value="reference"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="depends-on"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Library-composed-of"/>
+        <type value="reference"/>
+      </searchParam>
+    </resource>
+    <operation>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHALL"/>
+      </extension>
+      <name value="cql"/>
+      <definition value="http://hl7.org/fhir/uv/cql/OperationDefinition/cql"/>
+    </operation>
+    <operation>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHALL"/>
+      </extension>
+      <name value="evaluate"/>
+      <definition value="http://hl7.org/fhir/uv/cql/OperationDefinition/cql-evaluate"/>
+    </operation>
+  </rest>
+</CapabilityStatement>

@@ -1,0 +1,177 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "cql-modelinfo",
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 3
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "cds"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  }],
+  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfo",
+  "name": "CQLModelInfo",
+  "title": "CQL Model Info",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-11-27T13:31:32-07:00",
+  "publisher": "Clinical Decision Support WG",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/dss/index.cfm"
+        }
+      ]
+    }
+  ],
+  "description": "The CQL Model Information profile supports the FHIR representation and distribution of CQL ModelInfo such as the FHIR Model Info Library",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "objimpl",
+      "uri": "http://hl7.org/fhir/object-implementation",
+      "name": "Object Implementation Information"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Library",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Library",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Library",
+        "path": "Library",
+        "mustSupport": false
+      },
+      {
+        "id": "Library.type",
+        "path": "Library.type",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/library-type",
+              "code": "model-definition"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content",
+        "path": "Library.content",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "contentType"
+            }
+          ],
+          "rules": "open"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:xml",
+        "path": "Library.content",
+        "sliceName": "xml",
+        "requirements": "A ModelInfo library must provide serialized ModelInfo content or a url to the content",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:xml.contentType",
+        "path": "Library.content.contentType",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "application/xml",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:xml.data",
+        "path": "Library.content.data",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:xml.url",
+        "path": "Library.content.url",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:json",
+        "path": "Library.content",
+        "sliceName": "json",
+        "requirements": "A ModelInfo library must provide serialized ModelInfo content or a url to the content",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:json.contentType",
+        "path": "Library.content.contentType",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "application/json",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:json.data",
+        "path": "Library.content.data",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:json.url",
+        "path": "Library.content.url",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      }
+    ]
+  }
+}

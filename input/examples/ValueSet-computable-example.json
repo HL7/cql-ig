@@ -1,0 +1,21 @@
+{
+  "resourceType": "ValueSet",
+  "id": "computable-example",
+  "url": "http://hl7.org/fhir/uv/cql/ValueSet/computable-example",
+  "name": "DangersignsCodesGrouper",
+  "title": "Danger signs Codes Grouper",
+  "status": "draft",
+  "experimental": false,
+  "date": "2023-07-11T09:29:40-06:00",
+  "description": "Group Valueset with codes representing possible values for the Danger signs Codes Grouper element",
+  "immutable": true,
+  "compose": {
+    "include": [ {
+      "valueSet": [ "http://hl7.org/fhir/uv/cql/ValueSet/anc-b5-de49" ]
+    }, {
+      "valueSet": [ "http://hl7.org/fhir/uv/cql/ValueSet/anc-b5-de50" ]
+    }, {
+      "valueSet": [ "http://hl7.org/fhir/uv/cql/ValueSet/anc-b5-de51" ]
+    } ]
+  }
+}

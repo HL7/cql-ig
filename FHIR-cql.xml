@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/uv/cql/2024Jan" ciUrl="http://build.fhir.org/ig/HL7/cql-ig" defaultVersion="1.0.0-ballot" defaultWorkgroup="cds" gitUrl="https://github.com/HL7/cql" url="http://hl7.org/fhir/uv/cql">
+<version code="current" url="http://build.fhir.org/ig/HL7/cql-ig"/>
+<version code="1.0.0-ballot" url="http://hl7.org/fhir/uv/cql/2024Jan"/>
+<version code="1.0" deprecated="true" url="http://www.hl7.org/documentcenter/public/standards/dstu/HL7_CQLANG_R1_DSTU_2015MAY.zip"/>
+<version code="1.1" deprecated="true" url="http://www.hl7.org/documentcenter/public/standards/dstu/HL7_CQL_SPEC_R1_DSTUR1dot1_2016JUL.zip"/>
+<version code="1.2" deprecated="true" url="http://cql.hl7.org/STU2/index.html"/>
+<version code="1.3" deprecated="true" url="http://cql.hl7.org/STU3/index.html"/>
+<artifactPageExtension value="-definitions"/>
+<artifactPageExtension value="-examples"/>
+<artifactPageExtension value="-mappings"/>
+<artifact id="Library/ANCCohort" key="Library-ANCCohort" name="ANC Cohort"/>
+<artifact id="Group/definition-example" key="Group-definition-example" name="ANCInclusionCriteria"/>
+<artifact id="CodeSystem/shareable-example" key="CodeSystem-shareable-example" name="ANCM Activity Codes"/>
+<artifact id="CodeSystem/publishable-example" key="CodeSystem-publishable-example" name="ANCM Concept Codes"/>
+<artifact id="StructureDefinition/cqf-cqlAccessLevel" key="StructureDefinition-cqf-cqlAccessLevel" name="CQL Access Level"/>
+<artifact id="OperationDefinition/cql-cql" key="OperationDefinition-cql-cql" name="CQL CQL"/>
+<artifact id="StructureDefinition/cql-capabilitystatement" key="StructureDefinition-cql-capabilitystatement" name="CQL Capability Statement"/>
+<artifact id="StructureDefinition/cql-evaluationresult" key="StructureDefinition-cql-evaluationresult" name="CQL Evaluation Result"/>
+<artifact id="CapabilityStatement/cql-evaluation-service" key="CapabilityStatement-cql-evaluation-service" name="CQL Evaluation Service"/>
+<artifact id="StructureDefinition/cql-implementationguide" key="StructureDefinition-cql-implementationguide" name="CQL ImplementationGuide"/>
+<artifact id="StructureDefinition/cql-library" key="StructureDefinition-cql-library" name="CQL Library"/>
+<artifact id="OperationDefinition/cql-library-evaluate" key="OperationDefinition-cql-library-evaluate" name="CQL Library Evaluate"/>
+<artifact id="StructureDefinition/cql-modelinfo" key="StructureDefinition-cql-modelinfo" name="CQL Model Info"/>
+<artifact id="StructureDefinition/cql-module" key="StructureDefinition-cql-module" name="CQL Module"/>
+<artifact id="StructureDefinition/cql-structuredefinition" key="StructureDefinition-cql-structuredefinition" name="CQL StructureDefinition"/>
+<artifact id="StructureDefinition/cqf-cqlType" key="StructureDefinition-cqf-cqlType" name="CQL Type"/>
+<artifact id="ValueSet/anc-b5-de51" key="ValueSet-anc-b5-de51" name="Danger Signs - Central cyanosis Codes"/>
+<artifact id="ValueSet/anc-b5-de49" key="ValueSet-anc-b5-de49" name="Danger Signs - No danger signs Codes"/>
+<artifact id="StructureDefinition/cql-dangersigns-profile-example" key="StructureDefinition-cql-dangersigns-profile-example" name="Danger signs"/>
+<artifact id="ValueSet/anc-b5-de50" key="ValueSet-anc-b5-de50" name="Danger signs Codes"/>
+<artifact id="ValueSet/computable-example" key="ValueSet-computable-example" name="Danger signs Codes Grouper"/>
+<artifact id="ValueSet/expanded-example" key="ValueSet-expanded-example" name="Danger signs Codes Grouper"/>
+<artifact id="ValueSet/publishable-example" key="ValueSet-publishable-example" name="Danger signs Codes Grouper"/>
+<artifact id="StructureDefinition/cqf-defaultValue" key="StructureDefinition-cqf-defaultValue" name="Default Value"/>
+<artifact id="StructureDefinition/elm-library" key="StructureDefinition-elm-library" name="ELM Library"/>
+<artifact id="Library/module-example" key="Library-module-example" name="Example Logic Library - Module Definition"/>
+<artifact id="Library/FHIRCommon" key="Library-FHIRCommon" name="FHIR Common"/>
+<artifact id="Library/cql-example" key="Library-cql-example" name="FHIR Common"/>
+<artifact id="Library/elm-example" key="Library-elm-example" name="FHIR Common"/>
+<artifact id="StructureDefinition/cqf-fhirQueryPattern" key="StructureDefinition-cqf-fhirQueryPattern" name="FHIR Query Pattern"/>
+<artifact id="StructureDefinition/cqf-isSelective" key="StructureDefinition-cqf-isSelective" name="Is Selective"/>
+<artifact id="CapabilityStatement/cql-evaluation-service-example" key="CapabilityStatement-cql-evaluation-service-example" name="Library Evaluation Service Capability Statement Example"/>
+<artifact id="StructureDefinition/cqf-messages" key="StructureDefinition-cqf-messages" name="Messages"/>
+<artifact id="StructureDefinition/cqf-modelInfo-isIncluded" key="StructureDefinition-cqf-modelInfo-isIncluded" name="ModelInfo Is Included"/>
+<artifact id="StructureDefinition/cqf-modelInfo-isRetrievable" key="StructureDefinition-cqf-modelInfo-isRetrievable" name="ModelInfo Is Retrievable"/>
+<artifact id="StructureDefinition/cqf-modelInfo-label" key="StructureDefinition-cqf-modelInfo-label" name="ModelInfo Label"/>
+<artifact id="StructureDefinition/cqf-modelInfo-primaryCodePath" key="StructureDefinition-cqf-modelInfo-primaryCodePath" name="ModelInfo Primary Code Path"/>
+<artifact id="StructureDefinition/cqf-modelInfoSettings" key="StructureDefinition-cqf-modelInfoSettings" name="ModelInfo Settings"/>
+<artifact id="ImplementationGuide/publishable-example" key="ImplementationGuide-publishable-example" name="Publishable ImplementationGuide Example"/>
+<artifact id="StructureDefinition/cql-specifichealthconcerns-profile-example" key="StructureDefinition-cql-specifichealthconcerns-profile-example" name="Specific health concern(s)"/>
+<artifact id="ValueSet/shareable-example" key="ValueSet-shareable-example" name="Specific health concern(s) Codes"/>
+<artifact id="Library/modelinfo-example" key="Library-modelinfo-example" name="USCore Model Definition"/>
+<artifact id="StructureDefinition/cqf-valueFilter" key="StructureDefinition-cqf-valueFilter" name="Value Filter"/>
+<artifact id="ValueSet/value-filter-comparator" key="ValueSet-value-filter-comparator" name="Value Filter Comparator"/>
+<artifact id="Parameters/qicore-modelinfosettings" key="Parameters-qicore-modelinfosettings" name="qicore-modelinfosettings"/>
+<page key="NA" name="(NA)"/>
+<page key="many" name="(many)"/>
+<page key="acknowledgements" name="Acknowledgements"/>
+<page deprecated="true" key="appendixa" name="Appendix A - Syntax"/>
+<page deprecated="true" key="appendixb" name="Appendix B - Reference"/>
+<page deprecated="true" key="appendixc" name="Appendix C - Implementations"/>
+<page deprecated="true" key="appendixd" name="Appendix D - References"/>
+<page deprecated="true" key="appendixe" name="Appendix E - Acronyms"/>
+<page deprecated="true" key="appendixf" name="Appendix F - Glossary"/>
+<page deprecated="true" key="appendixg" name="Appendix G - Conventions"/>
+<page deprecated="true" key="appendixh" name="Appendix H - Interval Examples"/>
+<page deprecated="true" key="appendixi" name="Appendix I - FHIRPath Translation"/>
+<page deprecated="true" key="appendixj" name="Appendix J - List of Tables"/>
+<page deprecated="true" key="appendixk" name="Appendix K - List of Figures"/>
+<page key="artifacts" name="Artifacts Summary"/>
+<page deprecated="true" key="authorsguide" name="Authors Guide"/>
+<page key="capabilities" name="Capabilities"/>
+<page deprecated="true" key="developersguide" name="Developers Guide"/>
+<page deprecated="true" key="documentation" name="Documentation"/>
+<page key="downloads" name="Downloads"/>
+<page deprecated="true" key="elm" name="ELM"/>
+<page deprecated="true" key="examples" name="Examples"/>
+<page key="extensions" name="Extensions"/>
+<page deprecated="true" key="grammar" name="Grammar"/>
+<page deprecated="true" key="history" name="History"/>
+<page key="index" name="Home"/>
+<page deprecated="true" key="introduction" name="Introduction"/>
+<page deprecated="true" key="languagesemantics" name="Language Semantics"/>
+<page deprecated="true" key="logicalspecification" name="Logical Specification"/>
+<page key="operations" name="Operations"/>
+<page deprecated="true" key="physicalrepresentation" name="Physical Representation"/>
+<page key="profiles" name="Profiles"/>
+<page key="toc" name="Table of Contents"/>
+<page key="terminology" name="Terminology"/>
+<page deprecated="true" key="tests" name="Tests"/>
+<page deprecated="true" key="translationsemantics" name="Translation Semantics"/>
+<page key="using-cql" name="Using CQL"/>
+<page key="changes" name="Version History"/>
+</specification>

@@ -1,0 +1,17 @@
+{
+    "resourceType": "Group",
+    "id": "definition-example",
+    "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "http://hl7.org/fhir/uv/cql/Library/ANCCohort"
+    }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+        "valueExpression": {
+            "language": "text/cql-identifier",
+            "expression": "Is Antenatal Care Applicable"
+        }
+    }],
+    "name": "ANCInclusionCriteria",
+    "type": "person",
+    "actual": false
+}

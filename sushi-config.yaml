@@ -1,0 +1,92 @@
+# This IG YML file is inspired by the ImplementationGuide resource
+# and also draws from package.json, package-list.json, and ig.ini.
+# That said, it is structured for ease-of-use, so it is not strictly
+# conformant to any of those existing configuration formats.
+
+# SUSHI will use id as both id and packageId in the IG unless a
+# specific packageId is also provided in this file.
+id: hl7.fhir.uv.cql
+canonical: http://hl7.org/fhir/uv/cql
+name: CQL
+title: Using CQL with FHIR
+description: >-
+  This implementation guide defines profiles, operations and guidance for the
+  use of CQL with FHIR, both as a mechanism for querying, as well as inline
+  and integrated usage as part of knowledge artifacts.
+status: draft
+license: CC0-1.0
+date: 2023-10-23
+version: 1.0.0-ballot
+
+# Although fhirVersions is 0..* in the ImplementationGuide resource
+# it can be a single item OR and array here (but so far SUSHI only
+# supports 4.0.1 anyway).
+fhirVersion: 4.0.1
+
+# The following two lines correspond to items that used to be in
+# ig.ini but were moved to IG.definition.parameter. For
+# consistency within this file, the names are represented using
+# camelcase, but if authors use the formal parameter names, SUSHI
+# will recognize them as well. In either case, they'll be copied
+# to the IG JSON using the formal names.
+copyrightYear: 2023+
+releaseLabel: Ballot
+
+# The publisher can be a single item or a list, each with a name and
+# optional url and/or email. The first publisher's name will be used
+# as IG.publisher.  The contact details and/or additional publishers
+# will be translated into IG.contact values.
+publisher:
+  name: HL7 International / Clinical Decision Support
+
+extension:
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
+    valueCode: cds
+
+# Those who need more control or want to add additional details to the contact values can use
+# contact directly and follow the format outlined in the ImplementationGuide resource and
+# ContactDetail.
+contact:
+  - telecom:
+    - system: url
+      value: http://www.hl7.org/Special/committees/dss
+
+# The jurisdiction can be a single item or a list. The FHIR Shorthand
+# code syntax can be used here.
+jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
+
+# The dependencies property corresponds to IG.dependsOn. The key is the
+# package id and the value is the version (or dev/current). For advanced
+# use cases, the value can be an object with keys for `uri` and `version`.
+# For R5 ImplementationGuides, the object can also have a key for `reason`.
+dependencies:
+  hl7.fhir.uv.extensions.r4: 1.0.0
+
+parameters:
+  excludettl: true
+  path-history: http://hl7.org/fhir/uv/cql/history.html
+  special-url-base: http://hl7.org/fhir
+
+pages:
+  index.md:
+    title: Home
+  using-cql.md:
+    title: Using CQL
+  profiles.md:
+    title: Profiles
+  extensions.md:
+    title: Extensions
+  operations.md:
+    title: Operations
+  capabilities.md:
+    title: Capabilities
+  terminology.md:
+    title: Terminology
+  artifacts.xml:
+    title: Artifacts Summary
+  downloads.md:
+    title: Downloads
+  changes.md:
+    title: Version History
+  acknowledgements.md:
+    title: Acknowledgements

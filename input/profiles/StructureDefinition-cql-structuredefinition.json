@@ -1,0 +1,106 @@
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "cql-structuredefinition",
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 3
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "cds"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  }],
+  "url" : "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-structuredefinition",
+  "name" : "CQLStructureDefinition",
+  "title" : "CQL StructureDefinition",
+  "status" : "draft",
+  "experimental" : false,
+  "date" : "2020-12-28T16:55:11+11:00",
+  "publisher" : "HL7",
+  "description" : "Supports configuration of model info information for a StructureDefinition",
+  "fhirVersion" : "4.0.1",
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "workflow",
+    "uri" : "http://hl7.org/fhir/workflow",
+    "name" : "Workflow Pattern"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  },
+  {
+    "identity" : "objimpl",
+    "uri" : "http://hl7.org/fhir/object-implementation",
+    "name" : "Object Implementation Information"
+  }],
+  "kind" : "resource",
+  "abstract" : false,
+  "type" : "StructureDefinition",
+  "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/StructureDefinition",
+  "derivation" : "constraint",
+  "differential" : {
+    "element" : [{
+      "id" : "StructureDefinition",
+      "path" : "StructureDefinition",
+      "min" : 1,
+      "max" : "1"
+    },
+    {
+      "id" : "StructureDefinition.extension:modelInfo-isIncluded",
+      "path" : "StructureDefinition.extension",
+      "sliceName" : "modelInfo-isIncluded",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/cqf-modelInfo-isIncluded"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "StructureDefinition.extension:modelInfo-isRetrievable",
+      "path" : "StructureDefinition.extension",
+      "sliceName" : "modelInfo-isRetrievable",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/cqf-modelInfo-isRetrievable"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "StructureDefinition.extension:modelInfo-label",
+      "path" : "StructureDefinition.extension",
+      "sliceName" : "modelInfo-label",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/cqf-modelInfo-label"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "StructureDefinition.extension:modelInfo-primaryCodePath",
+      "path" : "StructureDefinition.extension",
+      "sliceName" : "primaryCodePath",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/cqf-modelInfo-primaryCodePath"]
+      }],
+      "mustSupport" : true
+    }]
+  }
+}

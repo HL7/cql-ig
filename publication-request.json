@@ -1,0 +1,15 @@
+{
+    "package-id" : "hl7.fhir.uv.cql",
+    "version" : "1.0.0-ballot",
+    "path" : "http://hl7.org/fhir/uv/cql/2024Jan",
+    "mode": "working",
+    "status" : "ballot",
+    "sequence" : "STU1",
+    "desc" : "STU1 Ballot (v1.0.0)",
+    "descmd" : "This is the initial ballot of the Using CQL with FHIR IG STU1",
+    "first" : true,
+    "title" : "Using CQL with FHIR Implementation Guide",
+    "ci-build": "http://build.fhir.org/ig/HL7/cql-ig",
+    "category": "infrastructure",
+    "introduction": "The Using CQL with FHIR implementation guide defines profiles, operations and guidance for the use of CQL with FHIR, both as a mechanism for querying, as well as inline and integrated usage as part of knowledge artifacts."
+  }
