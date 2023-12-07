@@ -2,16 +2,24 @@
 
 {:toc}
 
-<!-- Ballot content markers
+<!--
 Where possible, new and updated content will be highlighted with green text and background.
 {:.new-content}
+-->
 
 <div markdown="1" class="bg-info">
+
+This is the first ballot of this implementation guide in this form, but the content has been balloted and published in multiple prior implementation guides, including:
+
+* [Clinical Guidelines](http://hl7.org/fhir/uv/cpg/libraries.html)
+* [Quality Measures](https://hl7.org/fhir/us/cqfmeasures/using-cql.html)
+* [Canonical Resource Management Infrastructure](http://hl7.org/fhir/uv/crmi/2023Sep/using-cql.html)
+
+The following changes were made as a result of ballot comments received in the September 2023 ballot of the Canonical Resource Management Infrastructure IG. One of those comments was the suggestion to break this CQL-specific content out into its own implementation guide; this IG is the result of that change.
 
 {{ site.data.package-list.list[0].desc }}
 
 </div>
--->
 
 {: #using-cql-with-fhir-implementation-guide}
 
@@ -67,8 +75,6 @@ For resource instances claiming to conform to CRMI IG profiles, Must Support on 
 {: #references}
 
 Health level seven. Clinical Quality Framework - HL7 Clinical Decision Support Work Group Confluence Page. [Online]. Available from: [https://confluence.hl7.org/display/CQIWC/Clinical Quality Framework](https://confluence.hl7.org/display/CQIWC/Clinical%20Quality%20Framework) [Accessed 11 October 2019].
-
-Health level seven. Publishing terminology to the FHIR Ecosystem - FHIR Product Family Confluence Page. [Online]. Available from: [https://confluence.hl7.org/display/FHIR/Publishing+terminology+to+the+FHIR+Ecosystem](https://confluence.hl7.org/display/FHIR/Publishing+terminology+to+the+FHIR+Ecosystem) [Accessed 17 May 2022]
 
 ### Dependencies
 
