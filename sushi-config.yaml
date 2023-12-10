@@ -63,6 +63,13 @@ dependencies:
   hl7.fhir.uv.extensions.r4: 1.0.0
 
 parameters:
+  apply-contact: true
+  apply-publisher: true
+  apply-version: true
+  apply-jurisdiction: true
+  apply-license: true
+  apply-copyright: true
+  apply-wg: true
   excludettl: true
   path-history: http://hl7.org/fhir/uv/cql/history.html
   special-url-base: http://hl7.org/fhir
@@ -90,3 +97,40 @@ pages:
     title: Version History
   acknowledgements.md:
     title: Acknowledgements
+
+# The resources property corresponds to IG.definition.resource.
+# SUSHI can auto-generate all of the resource entries based on
+# the FSH definitions and/or information in any user-provided
+# JSON or XML resource files. If the generated entries are not
+# sufficient or complete, however, the author can add entries
+# here. If the reference matches a generated entry, it will
+# replace the generated entry. If it doesn't match any generated
+# entries, it will be added to the generated entries. The format
+# follows IG.definition.resource with the following differences:
+#   * use IG.definition.resource.reference.reference as the YAML key.
+#   * if the key is an id or name, SUSHI will replace it with the
+#     correct URL when generating the IG JSON.
+#   * specify "omit" to omit a FSH-generated resource from the
+#     resource list.
+#   * if the exampleCanonical is an id or name, SUSHI will replace
+#     it with the correct canonical when generating the IG JSON.
+#   * groupingId can be used, but top-level groups syntax may be a
+#     better option (see below).
+# The following are simple examples to demonstrate what this might
+# look like:
+#
+# resources:
+  # ImplementationGuide/hl7.fhir.uv.cpg.chf: omit #omit this because this template does not generate HTML for IG, so the link from TOC fails
+#   Patient/my-example-patient:
+#     name: My Example Patient
+#     description: An example Patient
+#     exampleBoolean: true
+#   Patient/bad-example: omit
+
+resources:
+  Parameters/qicore-modelinfosettings:
+    name: Example ModelInfo Settings Parameters
+    description: Example Parameters resource demonstrating the use of ModelInfo configuration parameters. This resource would typically be a contained resource in an implementation guide or artifact collection.
+  Parameters/cql-evaluationresult-example:
+    name: Example Evaluation Result Parameters
+    description: Example Parameters resource demonstrating the use of data-absent-reason extension to indicate a null evaluation result.

@@ -10,10 +10,6 @@ list:
   - version: current
     desc: |-
       
-      The following resolutions have been voted on by the members of the sponsoring work group [HL7 International Clinical Quality Information](http://www.hl7.org/Special/committees/cqi/index.cfm).
-
-      **Comments and their resolutions**
-
       The following trackers were applied for this version:
 
       **Status**: **Summary**:(**Jira Issue**)

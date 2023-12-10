@@ -39,6 +39,13 @@
       "resource": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example"
     } ],
     "parameter": [ {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+        "valueString": "System.Boolean"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessLevel",
+        "valueString": "public"
+      }],
       "name": "Is pregnancy confirmed",
       "use": "out",
       "min": 0,
@@ -49,6 +56,12 @@
         {
           "url": "http://hl7.org/fhir/StructureDefinition/cqf-defaultValue",
           "valueBoolean": false
+        }, {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+          "valueString": "System.Boolean"
+        }, {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessLevel",
+          "valueString": "public"
         }
       ],
       "name": "Is Antenatal Care Applicable",

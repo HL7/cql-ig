@@ -3,7 +3,7 @@
   "id": "cql-capabilitystatement",
   "extension" : [{
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
-    "valueInteger" : 1
+    "valueInteger" : 3
   },
   {
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
@@ -18,7 +18,6 @@
   "title": "CQL Capability Statement",
   "status": "active",
   "experimental": false,
-  "date": "2021-08-30",
   "publisher": "Clinical Decision Support WG",
   "contact": [
     {
