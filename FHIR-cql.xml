@@ -29,8 +29,6 @@
 <artifact id="ValueSet/anc-b5-de49" key="ValueSet-anc-b5-de49" name="Danger Signs - No danger signs Codes"/>
 <artifact id="StructureDefinition/cql-dangersigns-profile-example" key="StructureDefinition-cql-dangersigns-profile-example" name="Danger signs"/>
 <artifact id="ValueSet/anc-b5-de50" key="ValueSet-anc-b5-de50" name="Danger signs Codes"/>
-<artifact id="ValueSet/computable-example" key="ValueSet-computable-example" name="Danger signs Codes Grouper"/>
-<artifact id="ValueSet/expanded-example" key="ValueSet-expanded-example" name="Danger signs Codes Grouper"/>
 <artifact id="ValueSet/publishable-example" key="ValueSet-publishable-example" name="Danger signs Codes Grouper"/>
 <artifact id="StructureDefinition/cqf-defaultValue" key="StructureDefinition-cqf-defaultValue" name="Default Value"/>
 <artifact id="StructureDefinition/elm-library" key="StructureDefinition-elm-library" name="ELM Library"/>
@@ -38,8 +36,8 @@
 <artifact id="Library/module-example" key="Library-module-example" name="Example Logic Library - Module Definition"/>
 <artifact id="Parameters/qicore-modelinfosettings" key="Parameters-qicore-modelinfosettings" name="Example ModelInfo Settings Parameters"/>
 <artifact id="Library/FHIRCommon" key="Library-FHIRCommon" name="FHIR Common"/>
-<artifact id="Library/cql-example" key="Library-cql-example" name="FHIR Common"/>
-<artifact id="Library/elm-example" key="Library-elm-example" name="FHIR Common"/>
+<artifact id="Library/ELMExample" key="Library-ELMExample" name="FHIR Common (Compiled CQL Example)"/>
+<artifact id="Library/CQLExample" key="Library-CQLExample" name="FHIR Common (Source CQL Example)"/>
 <artifact id="StructureDefinition/cqf-fhirQueryPattern" key="StructureDefinition-cqf-fhirQueryPattern" name="FHIR Query Pattern"/>
 <artifact id="StructureDefinition/cqf-isSelective" key="StructureDefinition-cqf-isSelective" name="Is Selective"/>
 <artifact id="CapabilityStatement/cql-evaluation-service-example" key="CapabilityStatement-cql-evaluation-service-example" name="Library Evaluation Service Capability Statement Example"/>

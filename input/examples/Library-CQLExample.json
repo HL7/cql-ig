@@ -1,6 +1,6 @@
 {
     "resourceType": "Library",
-    "id": "cql-example",
+    "id": "CQLExample",
     "meta": {
       "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library" ]
     },
@@ -61,10 +61,10 @@
         "reference": "#options"
       }
     } ],
-    "url": "http://hl7.org/fhir/uv/cql/Library/cql-example",
+    "url": "http://hl7.org/fhir/uv/cql/Library/CQLExample",
     "version": "4.1.000",
-    "name": "FHIRCommon",
-    "title": "FHIR Common",
+    "name": "CQLExample",
+    "title": "FHIR Common (Source CQL Example)",
     "status": "active",
     "experimental": false,
     "type": {

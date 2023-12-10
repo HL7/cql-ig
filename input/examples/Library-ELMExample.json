@@ -1,6 +1,6 @@
 {
     "resourceType": "Library",
-    "id": "elm-example",
+    "id": "ELMExample",
     "meta": {
       "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-library" ]
     },
@@ -61,10 +61,10 @@
         "reference": "#options"
       }
     } ],
-    "url": "http://hl7.org/fhir/uv/cql/Library/elm-example",
+    "url": "http://hl7.org/fhir/uv/cql/Library/ELMExample",
     "version": "4.1.000",
-    "name": "FHIRCommon",
-    "title": "FHIR Common",
+    "name": "ELMExample",
+    "title": "FHIR Common (Compiled CQL Example)",
     "status": "active",
     "experimental": false,
     "type": {

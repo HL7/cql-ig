@@ -44,10 +44,10 @@ INFORMATION: Library/FHIRCommon: Library.extension[0]: This element does not mat
 INFORMATION: Library/FHIRCommon: Library.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/cql-module|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 
 # This extension does not appear in the source, it is added by the publisher
-INFORMATION: Library/cql-example: Library.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Library/CQLExample: Library.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 
 # This extension does not appear in the source, it is added by the publisher
-INFORMATION: Library/elm-example: Library.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/elm-library|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Library/ELMExample: Library.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/elm-library|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 
 # This extension does not appear in the source, it is added by the publisher
 INFORMATION: Library/module-example: Library.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/cql-module|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
