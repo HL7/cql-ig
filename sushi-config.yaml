@@ -60,7 +60,7 @@ jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 # use cases, the value can be an object with keys for `uri` and `version`.
 # For R5 ImplementationGuides, the object can also have a key for `reason`.
 dependencies:
-  hl7.fhir.uv.extensions.r4: 1.0.0
+  hl7.fhir.uv.extensions: current
 
 parameters:
   apply-contact: true
@@ -71,6 +71,7 @@ parameters:
   apply-copyright: true
   apply-wg: true
   excludettl: true
+  jira-code: uv-cql
   path-history: http://hl7.org/fhir/uv/cql/history.html
   special-url-base: http://hl7.org/fhir
 

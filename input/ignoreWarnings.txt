@@ -52,8 +52,20 @@ INFORMATION: Library/ELMExample: Library.extension[1]: This element does not mat
 # This extension does not appear in the source, it is added by the publisher
 INFORMATION: Library/module-example: Library.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/cql-module|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 
-# Accepted reference to the item with draft status in the 4.0.1 publication
+# Accepted references to draft published content
 INFORMATION: Library/module-example: Library.dataRequirement[0].extension[1].extension[1].value.ofType(code): Reference to draft item http://hl7.org/fhir/search-comparator|4.0.1
+INFORMATION: StructureDefinition/cqf-cqlAccessLevel: StructureDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: StructureDefinition/cqf-cqlType: StructureDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: StructureDefinition/cql-capabilitystatement: StructureDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: StructureDefinition/cql-evaluationresult: StructureDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: StructureDefinition/cql-implementationguide: StructureDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: StructureDefinition/cql-library: StructureDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: StructureDefinition/cql-modelinfo: StructureDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: StructureDefinition/cql-module: StructureDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: StructureDefinition/cql-structuredefinition: StructureDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: StructureDefinition/elm-library: StructureDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: OperationDefinition/cql-cql: OperationDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
+INFORMATION: OperationDefinition/cql-library-evaluate: OperationDefinition.extension[2].value.ofType(code): Reference to draft item http://hl7.org/fhir/standards-status|5.1.0-cibuild
 
 # This extension does not appear in the source, it is added by the publisher
 INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.extension[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/cql-structuredefinition|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
