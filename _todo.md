@@ -5,25 +5,21 @@
   * CQLCapabilityStatement X
   * CQLEvaluationResult X
   * CQLModule X
-  * CQLProfile
-  * CQLImplementationGuide
+  * CQLStructureDefinition X
+  * CQLImplementationGuide X
 * Extensions
-  * cqlType
-  * cqlAccessLevel
-  * cqlOptions
-  * cqlSupportedVersion
-  * modelInfo-isIncluded
-  * modelInfo-isRetrievable
-  * modelInfo-label
-  * modelInfo-primaryCodePath
-  * modelInfoSettings
+  * cqlType X
+  * cqlAccessLevel X
+  * cqlOptions X
+  * cqlSupportedVersion X
+  * modelInfo-isIncluded X
+  * modelInfo-isRetrievable X
+  * modelInfo-label X
+  * modelInfo-primaryCodePath X
+  * modelInfoSettings X
 * Operations
-  * $cql
-  * Library/$evaluate
+  * $cql X
+  * Library/$evaluate X
 * CapabilityStatements
-  * CQLEvaluationService
-* Libraries
-  * FHIRHelpers
-  * FHIRModelInfo
-  * FHIRCommon
+  * CQLEvaluationService X
 
