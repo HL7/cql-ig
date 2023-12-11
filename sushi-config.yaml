@@ -134,3 +134,9 @@ resources:
   Parameters/cql-evaluationresult-example:
     name: Example Evaluation Result Parameters
     description: Example Parameters resource demonstrating the use of data-absent-reason extension to indicate a null evaluation result.
+  Patient/example:
+    name: Example Patient
+    description: Example Patient resource used as part of the observation negation example.
+  Observation/negation-example:
+    name: Example Negation Observation
+    description: Example Observation resource illustrating negation and the use of the `notDoneValueSet` extension.

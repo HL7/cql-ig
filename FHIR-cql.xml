@@ -35,6 +35,8 @@
 <artifact id="Parameters/cql-evaluationresult-example" key="Parameters-cql-evaluationresult-example" name="Example Evaluation Result Parameters"/>
 <artifact id="Library/module-example" key="Library-module-example" name="Example Logic Library - Module Definition"/>
 <artifact id="Parameters/qicore-modelinfosettings" key="Parameters-qicore-modelinfosettings" name="Example ModelInfo Settings Parameters"/>
+<artifact id="Observation/negation-example" key="Observation-negation-example" name="Example Negation Observation"/>
+<artifact id="Patient/example" key="Patient-example" name="Example Patient"/>
 <artifact id="Library/FHIRCommon" key="Library-FHIRCommon" name="FHIR Common"/>
 <artifact id="Library/ELMExample" key="Library-ELMExample" name="FHIR Common (Compiled CQL Example)"/>
 <artifact id="Library/CQLExample" key="Library-CQLExample" name="FHIR Common (Source CQL Example)"/>
@@ -46,6 +48,7 @@
 <artifact id="StructureDefinition/cqf-modelInfo-label" key="StructureDefinition-cqf-modelInfo-label" name="ModelInfo Label"/>
 <artifact id="StructureDefinition/cqf-modelInfo-primaryCodePath" key="StructureDefinition-cqf-modelInfo-primaryCodePath" name="ModelInfo Primary Code Path"/>
 <artifact id="StructureDefinition/cqf-modelInfoSettings" key="StructureDefinition-cqf-modelInfoSettings" name="ModelInfo Settings"/>
+<artifact id="StructureDefinition/cqf-notDoneValueSet" key="StructureDefinition-cqf-notDoneValueSet" name="Not Done ValueSet"/>
 <artifact id="StructureDefinition/cql-specifichealthconcerns-profile-example" key="StructureDefinition-cql-specifichealthconcerns-profile-example" name="Specific health concern(s)"/>
 <artifact id="ValueSet/shareable-example" key="ValueSet-shareable-example" name="Specific health concern(s) Codes"/>
 <artifact id="Library/modelinfo-example" key="Library-modelinfo-example" name="USCore Model Definition"/>

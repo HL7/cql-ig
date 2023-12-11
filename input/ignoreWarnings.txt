@@ -73,3 +73,6 @@ INFORMATION: ImplementationGuide/publishable-example: ImplementationGuide.extens
 
 # This is inherited from the base definition
 WARNING: StructureDefinition/cql-capabilitystatement: StructureDefinition.snapshot.element[0].constraint[6].xpath: value should not start or finish with whitespace ' not(f:kind/@value='instance') or (not(exists(f:implementation)) and exists(f:software))'
+
+# The performer element is not relevant to this example
+WARNING: Observation/negation-example: Observation: Best Practice Recommendation: In general, all observations should have a performer
