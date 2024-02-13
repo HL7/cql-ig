@@ -159,8 +159,8 @@ Conformance Requirement 2.6 describes how to specify a code system within a CQL 
 {: #conformance-requirement-2-6}
 
 1. Within CQL, the identifier of any code system reference **SHALL** be specified using a URI for the code system.
-2. The URI **SHALL** be the canonical URL for the code system
-3. The Code System declaration **MAY** include a version, consistent with the URI specification for FHIR and the code system
+2. The URI **SHALL** be the canonical URL for the code system.
+3. The Code System declaration **MAY** include a version, consistent with the URI specification for FHIR and the code system.
 
 For example:
 
