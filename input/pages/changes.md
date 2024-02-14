@@ -14,4 +14,8 @@ This is the first ballot of this implementation guide in this form, but the cont
 
 The following changes were made as a result of ballot comments received in the September 2023 ballot of the Canonical Resource Management Infrastructure IG. One of those comments was the suggestion to break this CQL-specific content out into its own implementation guide; this IG is the result of that change.
 
+
+-  Missing periods ([FHIR-44087](https://jira.hl7.org/browse/FHIR-44087)) ([Applied here](using-cql.html#conformance-requirement-2-6))
+
+
 {{ site.data.package-list.list[0].desc }}
