@@ -3,8 +3,14 @@
 {: #changes}
 
 This page details changes made in each version of the Using CQL with FHIR Implementation Guide.
+### STU1 Reconciliation Changes (version 1.0.0-ballot)
 
-### Initial STU Ballot (version 1.0.0-ballot)
+Change Summary
+This ballot made the following major changes:
+
+- Missing period ([FHIR-44091](https://jira.hl7.org/browse/FHIR-44091)) ([Applied here](using-cql.html#conformance-requirement-2-10))
+
+### Initial STU 1 Ballot Changes (version 1.0.0-ballot)
 
 This is the first ballot of this implementation guide in this form, but the content has been balloted and published in multiple prior implementation guides, including:
 

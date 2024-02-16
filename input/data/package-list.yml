@@ -32,5 +32,5 @@ list:
       * **Applied**: Clarify language around CQL artifacts([FHIR-42559](https://jira.hl7.org/browse/FHIR-42559))
       * **Applied**: No content in this ModelInfo section of Using CQL([FHIR-41869](https://jira.hl7.org/browse/FHIR-41869))
       * **Applied**: Provide more context in examples([FHIR-41868](https://jira.hl7.org/browse/FHIR-41868))
-      * **Applied**: Missing period ([FHIR-44091](https://jira.hl7.org/browse/FHIR-44091)) ([Applied here](using-cql.html#conformance-requirement-2-10))      
+      
 
