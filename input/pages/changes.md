@@ -3,8 +3,15 @@
 {: #changes}
 
 This page details changes made in each version of the Using CQL with FHIR Implementation Guide.
+### STU1 Reconciliation Changes (version 1.0.0-ballot)
 
-### Initial STU Ballot (version 1.0.0-ballot)
+Change Summary
+This ballot made the following major changes:
+
+-  Missing periods ([FHIR-44087](https://jira.hl7.org/browse/FHIR-44087)) ([Applied here](using-cql.html#conformance-requirement-2-6))
+
+
+### Initial STU 1 Ballot Changes (version 1.0.0-ballot)
 
 This is the first ballot of this implementation guide in this form, but the content has been balloted and published in multiple prior implementation guides, including:
 
@@ -13,9 +20,6 @@ This is the first ballot of this implementation guide in this form, but the cont
 * [Canonical Resource Management Infrastructure](http://hl7.org/fhir/uv/crmi/2023Sep/using-cql.html)
 
 The following changes were made as a result of ballot comments received in the September 2023 ballot of the Canonical Resource Management Infrastructure IG. One of those comments was the suggestion to break this CQL-specific content out into its own implementation guide; this IG is the result of that change.
-
-
--  Missing periods ([FHIR-44087](https://jira.hl7.org/browse/FHIR-44087)) ([Applied here](using-cql.html#conformance-requirement-2-6))
 
 
 {{ site.data.package-list.list[0].desc }}
