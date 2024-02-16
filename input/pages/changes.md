@@ -4,6 +4,9 @@
 
 This page details changes made in each version of the Using CQL with FHIR Implementation Guide.
 
+### STU1 Reconciliation Changes Initial STU Ballot (version 1.0.0-ballot)
+
+
 ### Initial STU Ballot (version 1.0.0-ballot)
 
 This is the first ballot of this implementation guide in this form, but the content has been balloted and published in multiple prior implementation guides, including:

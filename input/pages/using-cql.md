@@ -553,8 +553,9 @@ In this example for negation rationale, the logic looks for a member of the valu
 for not administering any of the anticoagulant and antiplatelet medications specified in the "Antithrombotic Therapy"
 value set. 
 
+<div class="new-content"> </div>
 To represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
-Therapy" value set using the `cqf-notDoneValueSet` extension to indicate
+Therapy" value set using the ([cqf-notDoneValueSet](https://www.hl7.org/fhir/uv/crmi/2023Sep/StructureDefinition-cqf-notDoneValueSet.html)) extension to indicate
 providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
 set URI to negate the entire value set rather than reporting a specific member code from the value set, clinicians are
 not forced to arbitrarily select a specific medication from the "Antithrombotic Therapy" value set that they
