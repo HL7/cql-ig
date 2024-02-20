@@ -13,4 +13,4 @@ list:
       The following trackers were applied for this version:
 
       **Status**: **Summary**:(**Jira Issue**)
-        * **Applied**: add link to cqf-notDoneValueSet ([FHIR-44512](https://jira.hl7.org/browse/FHIR-44512)) ([Applied here]({{site.data.fhir.ver.hl7_fhir_uv_extensions}}/StructureDefinition-cqf-notDoneValueSet.html))
+        * **Applied**: add link to cqf-notDoneValueSet ([FHIR-44512](https://jira.hl7.org/browse/FHIR-44512)) ([Applied here](using-cql.html#negation-rationale))
