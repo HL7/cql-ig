@@ -7,7 +7,6 @@ This page details changes made in each version of the Using CQL with FHIR Implem
 
 The following changes were made as reconciliation of issues raised in the 1.0.0-ballot
 
-
 {{ site.data.package-list.list[0].desc }}
 
 ### Initial STU 1 Ballot Changes (version 1.0.0-ballot)
