@@ -13,5 +13,5 @@ list:
       The following trackers were applied for this version:
 
       **Status**: **Summary**:(**Jira Issue**)
-      * **Applied**: Confusing Terminology ([FHIR-44086]()) Applied ([here](using-cql.html#data-model))
+      * **Applied**: Confusing Terminology ([FHIR-44086](https://jira.hl7.org/browse/FHIR-44086)) Applied ([here](using-cql.html#data-model))
   
