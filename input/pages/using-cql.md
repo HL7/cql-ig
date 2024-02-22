@@ -41,12 +41,14 @@ There are three main types of changes that can be made to a library:
   2. A library can be changed by adding new components or functionality but without changing the way that existing components are used. 
   3. A library can be changed in a way that does not change existing components or add new components, but only corrects or improves the originally intended functionality.
 
+<div class="new-content">
 By exposing version numbers that identify all three types of changes, libraries can be versioned in a way that makes
 clear when a change will impact usage, versus when a change can potentially be safely incorporated as an update. The
-first type of change will be referred to as a "major" change, and will require incrementing of the "major version
-number". The second type of change will be referred to as a "minor" change, and will only require incrementing of the
+first type of change will be referred to as a "major" change, and will require incrementing the "major version
+number". The second type of change will be referred to as a "minor" change, and will only require incrementing the
 "minor version number". And finally, the third type of change will be referred to as a "patch", and will only require
 incrementing the "patch version number". Version numbers for CQL libraries can then be represented as:
+</div>
 
 ```xml
 <major>.<minor>.<patch>
@@ -572,7 +574,9 @@ All attributes referenced in the CQL follow Conformance Requirement 2.15.
       a. **SHOULD NOT** use quoted identifiers (unless required due to the attribute name in the model not being a valid identifier in CQL)<br/>
       b. **SHOULD** use camelCase (unless dictated by the attribute naming in the model being used)
 
-Examples of attributes conforming to Conformance Requirement 2.15 are given below. For a full list of valid of attributes, refer to an appropriate data model specification such as QI-Core.
+<div class="new-content">
+Examples of attributes conforming to Conformance Requirement 2.15 are given below. For a full list of valid attributes, refer to an appropriate data model specification such as QI-Core.
+</div>
 
 ```cql
 period
@@ -675,7 +679,7 @@ The prohibition against underscores in CQL library names is required to ensure c
 {: #conformance-requirement-2-20}
 
 1. Parameters to CQL libraries **SHALL** be either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations.
-2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resources types, optionally with profile designations
+2. <div class="new-content">Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations</div>
 3. Tuple types are represented with Parameters that have `part` elements corresponding to the elements of the tuple. List types are represented with Parameters that have a cardinality of 0..*.
 4. Libraries used in computable artifacts **SHALL** use the `parameter` element to identify input parameters as well as the type of all top-level expressions as output parameters.
 5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL:
@@ -919,13 +923,14 @@ Similar to CQL content, ModelInfo can be included in FHIR Library resources to f
 
 **Conformance Requirement 2.24 (ModelInfo Libraries):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-23)
 {: #conformance-requirement-2-24}
-
-1. Libraries used to packgae ModelInfo **SHALL** conform to the [CQLModelInfo](StructureDefinition-cql-modelinfo.html) profile
+<div class="new-content" markdown="1">
+1. Libraries used to package ModelInfo **SHALL** conform to the [CQLModelInfo](StructureDefinition-cql-modelinfo.html) profile
+</div>
 
 #### Profile-informed ModelInfo
-
-The process for producing ModelInfo from FHIR StructureDefinitions csn also be applied to FHIR profile definitions, allowing for ModelInfos that reflect profile definitions, using the following refinements:
-
+<div class="new-content">
+The process for producing ModelInfo from FHIR StructureDefinitions can also be applied to FHIR profile definitions, allowing for ModelInfos that reflect profile definitions, using the following refinements:
+</div>
 1. Each profile results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
 1. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
 2. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
