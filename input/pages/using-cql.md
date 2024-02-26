@@ -572,7 +572,7 @@ All elements referenced in the CQL follow Conformance Requirement 2.15.
       a. **SHOULD NOT** use quoted identifiers (unless required due to the element name in the model not being a valid identifier in CQL)<br/>
       b. **SHOULD** use camelCase (unless dictated by the element naming in the model being used)
 
-Examples of elements conforming to Conformance Requirement 2.15 are given below. For a full list of valid of elements, refer to an appropriate data model specification such as QI-Core.
+Examples of elements conforming to Conformance Requirement 2.15 are given below. For a full list of valid of elements, refer to an appropriate data model specification such as QI-Core.<br/><br/>
 Note: When FHIR and FHIR IGs are used as the data model, the term "element" is synonymous with "attribute". Some data models, such as QDM, use the term "attribute".
 </div>
 
