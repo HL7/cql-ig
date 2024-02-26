@@ -13,5 +13,5 @@ list:
       The following trackers were applied for this version:
 
       **Status**: **Summary**:(**Jira Issue**)
-      * **Applied**: 
+      * **Applied**: Missing period ([FHIR-44075](https://jira.hl7.org/browse/FHIR-44075)) Applied ([here](using-cql.html#conformance-requirement-2-1))
 
