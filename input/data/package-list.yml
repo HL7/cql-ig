@@ -11,7 +11,7 @@ list:
     desc: |-
       
       The following trackers were applied for this version:
-
+ 
       **Status**: **Summary**:(**Jira Issue**)
-      * **Applied**: Confusing Terminology ([FHIR-44089](https://jira.hl7.org/browse/FHIR-44089)) Applied ([here](using-cql.html#data-model))
+      * **Applied**: Value set is written 5 different ways ([FHIR-44089](https://jira.hl7.org/browse/FHIR-44089)) Changes applied in the whole section ([here](using-cql.html#value-sets-notes))
 

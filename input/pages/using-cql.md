@@ -186,7 +186,9 @@ system version available on the server.
 
 ### Value Sets
 {: #value-sets-notes}
-##### Note: Value set spelling and case usage.
+<div class="new-content"> </div>
+
+##### Value set spelling and case usage.
 
         "Value set", with two words, regardless of case, is the human-readable spelling. 
         "ValueSet", with one word and in PascalCase, is the FHIR Type.
