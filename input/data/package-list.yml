@@ -13,5 +13,5 @@ list:
       The following trackers were applied for this version:
 
       **Status**: **Summary**:(**Jira Issue**)
-      * **Applied**: 
+      * **Applied**: Misspelling of "Explain" in Status: Summary ([FHIR-44065](https://jira.hl7.org/browse/FHIR-44065)) Applied ([here](changes.html#new-content))
 
