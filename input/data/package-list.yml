@@ -13,4 +13,4 @@ list:
       The following trackers were applied for this version:
 
       **Status**: **Summary**:(**Jira Issue**)
-        * **Applied**: add link to cqf-notDoneValueSet ([FHIR-44090](https://jira.hl7.org/browse/FHIR-44090)) ([Applied here](using-cql.html#conformance-requirement-2-9))
+        * **Applied**: Consider including the terminology operators link ([FHIR-44090](https://jira.hl7.org/browse/FHIR-44090)) ([Applied here](using-cql.html#conformance-requirement-2-9))
