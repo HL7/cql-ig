@@ -185,9 +185,18 @@ If no version is specified, then the default behavior for a FHIR terminology ser
 system version available on the server.
 
 ### Value Sets
+{: #value-sets-notes}
+##### Note: Value set spelling and case usage.
+
+        "Value set", with two words, regardless of case, is the human-readable spelling. 
+        "ValueSet", with one word and in PascalCase, is the FHIR Type.
+        "valueset", with one word and all lower case, is the proper spelling for use within cql statements and expressions, except when used within a URL.
+
+
+
 {: #value-sets}
 
-Conformance Requirement 2.7 describes how to specify a valueset within a CQL library.
+Conformance Requirement 2.7 describes how to specify a value set within a CQL library.
 
 **Conformance Requirement 2.7 (Value Set Specification):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-7)
 {: #conformance-requirement-2-7}
@@ -274,7 +283,7 @@ results of an expansion.
 **Conformance Requirement 2.9 (Value Set Expansion):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-9)
 {: #conformance-requirement-2-9}
 
-1. Valueset membership testing **SHOULD** use the terminology membership operation in CQL (`in(ValueSet)`), as opposed to requiring computation on the lists of codes in a value set.  Please reference  http://cql.hl7.org/02-authorsguide.html#terminology-operators for more information.
+1. Value set membership testing **SHOULD** use the terminology membership operation in CQL (`in(ValueSet)`), as opposed to requiring computation on the lists of codes in a value set.  Please reference  http://cql.hl7.org/02-authorsguide.html#terminology-operators for more information.
 
 For example, rather than combining multiple value sets using a `union`, separate membership tests in each value set **SHOULD** be used. For more information, see the [Value Set Expansion](http://hl7.org/fhir/valueset.html#expansion) topic in the base FHIR specification.
 
@@ -299,7 +308,7 @@ Although CQL allows the use of strings as input to membership testing in value s
 
 1. String-based membership testing **SHALL NOT** be used in CQL libraries
 
-For example, given a valueset named `"Administrative Gender"`, the following CQL expression would be non-conformant:
+For example, given a value set named `"Administrative Gender"`, the following CQL expression would be non-conformant:
 
 ```cql
 'female' in "Administrative Gender"
@@ -375,13 +384,13 @@ define "BMI in Measurement Period":
 ### Concepts
 {: #concepts}
 
-In addition to codes, CQL supports a concept construct, which is defined as a set of codes that are all _about_ the same concept, (e.g. the same concept represented in different code systems, or the same concept from the same code system represented at different levels of detail), but CQL itself will make no attempt to ensure that is the case. Concepts should never be used as a surrogate for proper valueset definition. In other words, the Concept declaration should not be used to define sets of codes for membership testing.
+In addition to codes, CQL supports a concept construct, which is defined as a set of codes that are all _about_ the same concept, (e.g. the same concept represented in different code systems, or the same concept from the same code system represented at different levels of detail), but CQL itself will make no attempt to ensure that is the case. Concepts should never be used as a surrogate for proper value set definition. In other words, the Concept declaration should not be used to define sets of codes for membership testing.
 
 **Conformance Requirement 2.12 (Concepts):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-12)
 {: #conformance-requirement-2-12}
 
 1. The CQL concept construct **MAY** be used.
-2. The CQL concept construct **SHALL NOT** be used as a surrogate for valueset definition.
+2. The CQL concept construct **SHALL NOT** be used as a surrogate for value set definition.
 
 As an example of an anti-pattern for Concept usage, consider the following:
 
