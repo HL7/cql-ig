@@ -42,15 +42,18 @@ The intent of this implementation guide is to support the use of CQL with FHIR i
 
 This Guide is divided into several pages which are listed at the top of each
 page in the menu bar:
-
--  **[Home](index.html)**: Summary and background information for the Canonical Resource Management Infrastructure Implementation Guide
--  **[Using CQL](using-cql.html)**: Using Clinical Quality Language as part of knowledge artifacts
--  **[Profiles](profiles.html)**: List of profiles defined for use by knowledge artifacts
--  **[Extensions](extensions.html)**: List of extensions defined and used by knowledge artifacts
--  **[Operations](operations.html)**: List of operations and operation pattern profiles
--  **[Capabilities](capabilities.html)**: Definitions of services and operations in support of authoring, publishing, and distributing canonical resources and knowledge artifacts
+<div class="new-content"> </div>
+-  **[Home](index.html)**: Summary and background information for the Canonical Resource Management Infrastructure Implementation Guide.
+-  **[Using CQL](using-cql.html)**: Using Clinical Quality Language as part of knowledge artifacts.
+-  **[Profiles](profiles.html)**: List of profiles defined for use by knowledge artifacts.
+-  **[Extensions](extensions.html)**: List of extensions defined and used by knowledge artifacts.
+-  **[Operations](operations.html)**: List of operations and operation pattern profiles.
+-  **[Capabilities](capabilities.html)**: Definitions of services and operations in support of authoring, publishing, and distributing canonical resources and knowledge artifacts.
+-  **[Terminology](terminology.html)**: List of CodeSystems and ValueSets.
+-  **[Artifacts Summary](artifacts.html)**: List of the FHIR artifacts defined as part of this implementation guide.
+-  **[Acknowledgements](acknowledgements.html)**: Acknowledgements of contributors/authors.
 -  **[Downloads](downloads.html)**: Links to downloadable artifacts for implementations.
--  **[Acknowledgements](acknowledgements.html)**
+-  **[Version History](changes.html)**: Changes made in each version of the Using CQL with FHIR Implementation Guide.
 
 ### Must Support
 

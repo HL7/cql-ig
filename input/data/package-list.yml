@@ -13,5 +13,5 @@ list:
       The following trackers were applied for this version:
 
       **Status**: **Summary**:(**Jira Issue**)
-      * **Applied**: 
+      * **Applied**:  Page listing does not match menu ([FHIR-43731](https://jira.hl7.org/browse/FHIR-43731)) Applied ([here](index.html#how-to-read-this-guide)) and in menu.xml
 
