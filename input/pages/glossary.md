@@ -44,6 +44,9 @@ A clinical quality measure that is expressed and formatted to use data from elec
 
 A clinical quality measure that is expressed and formatted to use data from electronic health records (EHR) and/or health information technology systems to measure healthcare quality, specifically data captured in structured form during the process of patient care. So they can be reported from an EHR, the FHIR Measure Resource is used to format the eCQM content using QI Core to define the data elements and Clinical Quality Language (CQL) to express the logic needed to evaluate a provider or organization's performance. [Source](https://ecqi.healthit.gov/glossary)
 
+#### HL7 Terminology (THO)
+An IG for terminology from HL7. ([https://terminology.hl7.org/](https://terminology.hl7.org/))
+
 #### Health Quality Measures Format (HQMF)
 
 An HL7 Version 3 normative standard for the representation of quality measures. This specification provided the base requirements for the FHIR Measure resource.
@@ -51,6 +54,10 @@ An HL7 Version 3 normative standard for the representation of quality measures. 
 #### Initial Population
 
 The initial population criteria refers to all patients, subjects, or events to be evaluated by a quality measure involving patients or subjects who share a common set of specified characteristics. All patients, subjects, or events counted (for example, as numerator, as denominator) are drawn from the initial population.
+
+#### International Patient Summary
+
+An IG for International Patient Summary document is an electronic health record extract containing essential healthcare information about a subject of care. ([https://www.hl7.org/fhir/uv/ips/](https://www.hl7.org/fhir/uv/ips/))
 
 #### Measure Population
 
@@ -107,36 +114,43 @@ Criteria used to classify populations into one or more characteristics, variable
 Additional variables required for risk adjustment or other purposes of data aggregation. Comparison of results across strata can be used to show where disparities exist or where there is a need to expose differences in results. Examples of supplemental data elements include payer, ethnicity, race and gender.
 
 
+
+
+
+
 ### Acronyms
 
-| Acronym |  |  Definition        |
-| :--- | :---: | :--- |
-| API | --- |	Application Program Interface |
-| CDS |	--- | Clinical Decision Support |
-| CMS |	--- | Centers for Medicare and Medicaid Services |
-| CQFM | --- |	Clinical Quality Framework Measures |
-| CQL |	--- | Clinical Quality Language |
-| CQM |	--- | Clinical Quality Measures |
-| dQM | --- | Digital Quality Measure |
-| eCQM | --- | 	electronic Clinical Quality Measures |
-| DEQM | --- |	Data Exchange for Quality Measures |
-| EHR |	--- | Electronic Health Record |
-| ELM |	--- | Expression Logical Model |
-| FHIR | --- |	Fast Healthcare Interoperability Resources |
-| HEDIS |	--- | Healthcare Effectiveness Data and Information Set |
-| HL7 | --- | Health Level Seven |
-| HQMF |	--- | Health Quality Measure Format |
-| ICU |	--- | Intensive Care Unit |
-| IG |	--- | Implementation Guide |
-| JSON |	--- | JavaScript Object Notation |
-| LOINC |	--- | Logical Observation Identifiers Names and Codes |
-| QDM |	--- |Quality Data Model |
-| QI Core |	--- | Quality Improvement Core |
-| QRDA |	--- | Quality Reporting Document Architecture |
-| R4 |	--- | FHIR Release 4 |
-| REST | --- |	Representational State Transfer |
+| Acronym   |  | Definition                                              |
+|:----------| :---: |:--------------------------------------------------------|
+| API       | --- | 	Application Program Interface                          |
+| CDS       |	--- | Clinical Decision Support                               |
+| CMS       |	--- | Centers for Medicare and Medicaid Services              |
+| CQFM      | --- | 	Clinical Quality Framework Measures                    |
+| CQL       |	--- | Clinical Quality Language                               |
+| CQM       |	--- | Clinical Quality Measures                               |
+| dQM       | --- | Digital Quality Measure                                 |
+| eCQM      | --- | 	electronic Clinical Quality Measures                   |
+| DEQM      | --- | 	Data Exchange for Quality Measures                     |
+| EHR       |	--- | Electronic Health Record                                |
+| ELM       |	--- | Expression Logical Model                                |
+| FHIR      | --- | 	Fast Healthcare Interoperability Resources             |
+| HEDIS     |	--- | Healthcare Effectiveness Data and Information Set       |
+| HL7       | --- | Health Level Seven                                      |
+| HQMF      |	--- | Health Quality Measure Format                           |
+| ICU       |	--- | Intensive Care Unit                                     |
+| IG        |	--- | Implementation Guide                                    |
+| IP        | --- | Initial Population                                      |
+| IPS       | --- | International Patient Summary                           |
+| JSON      |	--- | JavaScript Object Notation                              |
+| LOINC     |	--- | Logical Observation Identifiers Names and Codes         |
+| QDM       |	--- | Quality Data Model                                      |
+| QI Core   |	--- | Quality Improvement Core                                |
+| QRDA      |	--- | Quality Reporting Document Architecture                 |
+| R4        |	--- | FHIR Release 4                                          |
+| REST      | --- | 	Representational State Transfer                        |
 | SNOMED-CT |	--- | Systematized Nomenclature of Medicine -- Clinical Terms |
-| STU3 | --- |	FHIR Release 3 (STU) |
-| URI | --- |	Uniform Resource Identifier |
-| URL | --- |	Uniform Resource Locater |
-| XML | --- |	eXtensible Markup Language |
+| STU3      | --- | 	FHIR Release 3 (STU)                                   |
+| THO       | --- | 	HL7 Terminology (THO)                                  |
+| URI       | --- | 	Uniform Resource Identifier                            |
+| URL       | --- | 	Uniform Resource Locater                               |
+| XML       | --- | 	eXtensible Markup Language                             |
