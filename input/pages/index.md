@@ -42,7 +42,7 @@ The intent of this implementation guide is to support the use of CQL with FHIR i
 
 This Guide is divided into several pages which are listed at the top of each
 page in the menu bar:
-
+<div class="new-content"></div>
 -  **[Home](index.html)**: Summary and background information for the Canonical Resource Management Infrastructure Implementation Guide
 -  **[Using CQL](using-cql.html)**: Using Clinical Quality Language as part of knowledge artifacts
 -  **[Profiles](profiles.html)**: List of profiles defined for use by knowledge artifacts
@@ -51,6 +51,7 @@ page in the menu bar:
 -  **[Capabilities](capabilities.html)**: Definitions of services and operations in support of authoring, publishing, and distributing canonical resources and knowledge artifacts
 -  **[Downloads](downloads.html)**: Links to downloadable artifacts for implementations.
 -  **[Acknowledgements](acknowledgements.html)**
+-  **[Glossary](glossary.html)**: List of terms and acronyms used in this IG.
 
 ### Must Support
 
