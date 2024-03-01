@@ -297,9 +297,7 @@ Although CQL allows the use of strings as input to membership testing in value s
 **Conformance Requirement 2.10 (String-based Membership Testing):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-10)
 {: #conformance-requirement-2-10}
 
-<div class="new-content">
 1. String-based membership testing **SHALL NOT** be used in CQL libraries.
-</div>
 
 For example, given a valueset named `"Administrative Gender"`, the following CQL expression would be non-conformant:
 
@@ -516,7 +514,6 @@ of medication included within a value set for "Antithrombotic Therapy".
 {: #presence}
 
 Evidence that "Antithrombotic Therapy" (defined by a medication-specific value set) was administered:
-<div class="new-content"></div>
 ```cql
 define "Antithrombotic Administered":
   [MedicationAdministration: "Antithrombotic Therapy"] AntithromboticTherapy
@@ -527,7 +524,6 @@ define "Antithrombotic Administered":
 {: #absence}
 
 No evidence that "Antithrombotic Therapy" medication was administered:
-<div class="new-content"></div>
 ```cql
 define "No Antithrombotic Therapy":
   not exists (
@@ -542,7 +538,6 @@ define "No Antithrombotic Therapy":
 
 Evidence that "Antithrombotic Therapy" medication administration did not occur for an acceptable medical reason as
 defined by a value set referenced by the clinical logic (i.e., negation rationale):
-<div class="new-content"></div>
 ```cql
 define "Antithrombotic Not Administered":
   [MedicationAdministration: "Antithrombotic Therapy"] NotAdministered
