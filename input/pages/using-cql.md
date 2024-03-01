@@ -665,8 +665,29 @@ The prohibition against underscores in CQL library names is required to ensure c
 {: .grid }
 
 2. In addition:
+
 * List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
+
+For example:
+
+```cql
+define "Non Elective Inpatient Encounter":
+  ["Encounter": "Nonelective Inpatient Encounter"] NonElectiveEncounter
+        where NonElectiveEncounter.period ends during day of "Measurement Period"
+```
+
 * Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
+
+For example:
+
+```cql
+define "SDE Ethnicity":
+  Patient.ethnicity E
+    return Tuple {
+      codes: { E.ombCategory } union E.detailed,
+      display: E.text
+    }
+```
 
 #### Parameters and Data Requirements
 {: #parameters-and-data-requirements}
