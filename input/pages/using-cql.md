@@ -159,14 +159,8 @@ Conformance Requirement 2.6 describes how to specify a code system within a CQL 
 {: #conformance-requirement-2-6}
 
 1. Within CQL, the identifier of any code system reference **SHALL** be specified using a URI for the code system.
-<div class="new-content">
-
 2. The URI **SHALL** be the canonical URL for the code system.
-</div>
-<div class="new-content">
-
 3. The Code System declaration **MAY** include a version, consistent with the URI specification for FHIR and the code system.
-</div>
 For example:
 
 ```cql
@@ -302,9 +296,7 @@ Although CQL allows the use of strings as input to membership testing in value s
 **Conformance Requirement 2.10 (String-based Membership Testing):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-10)
 {: #conformance-requirement-2-10}
 
-<div class="new-content">
 1. String-based membership testing **SHALL NOT** be used in CQL libraries.
-</div>
 
 For example, given a valueset named `"Administrative Gender"`, the following CQL expression would be non-conformant:
 
