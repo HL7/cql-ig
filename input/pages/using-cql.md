@@ -32,7 +32,7 @@ This IG recommends [Semantic Versioning](https://semver.org) be used to version 
   1. The library declaration **SHOULD** specify a version.
   2. The library version **SHOULD** follow the convention :  
        < major >.< minor >.< patch >
-3. <div class="new-content">For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable.</div>
+3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable.
   4. The versioning scheme **SHALL** apply when an artifact moves to active status.
 
 There are three main types of changes that can be made to a library:
@@ -297,9 +297,7 @@ Although CQL allows the use of strings as input to membership testing in value s
 **Conformance Requirement 2.10 (String-based Membership Testing):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-10)
 {: #conformance-requirement-2-10}
 
-<div class="new-content">
 1. String-based membership testing **SHALL NOT** be used in CQL libraries.
-</div>
 
 For example, given a valueset named `"Administrative Gender"`, the following CQL expression would be non-conformant:
 
