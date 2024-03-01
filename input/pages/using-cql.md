@@ -186,7 +186,6 @@ system version available on the server.
 
 ### Value Sets
 {: #value-sets-notes}
-<div class="new-content"> </div>
 
 ##### Value set spelling and case usage.
 
@@ -308,9 +307,7 @@ Although CQL allows the use of strings as input to membership testing in value s
 **Conformance Requirement 2.10 (String-based Membership Testing):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-10)
 {: #conformance-requirement-2-10}
 
-<div class="new-content">
 1. String-based membership testing **SHALL NOT** be used in CQL libraries.
-</div>
 
 For example, given a value set named `"Administrative Gender"`, the following CQL expression would be non-conformant:
 
