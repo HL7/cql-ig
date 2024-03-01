@@ -273,7 +273,7 @@ results of an expansion.
 
 **Conformance Requirement 2.9 (Value Set Expansion):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-9)
 {: #conformance-requirement-2-9}
-<div class="new-content"></div>
+
 1. Valueset membership testing **SHOULD** use the terminology membership operation in CQL (`in(ValueSet)`), as opposed to requiring computation on the lists of codes in a value set.  Please reference  [http://cql.hl7.org/02-authorsguide.html#terminology-operators](http://cql.hl7.org/02-authorsguide.html#terminology-operators) for more information.
 
 For example, rather than combining multiple value sets using a `union`, separate membership tests in each value set **SHOULD** be used. For more information, see the [Value Set Expansion](http://hl7.org/fhir/valueset.html#expansion) topic in the base FHIR specification.
@@ -297,9 +297,7 @@ Although CQL allows the use of strings as input to membership testing in value s
 **Conformance Requirement 2.10 (String-based Membership Testing):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-10)
 {: #conformance-requirement-2-10}
 
-<div class="new-content">
 1. String-based membership testing **SHALL NOT** be used in CQL libraries.
-</div>
 
 For example, given a valueset named `"Administrative Gender"`, the following CQL expression would be non-conformant:
 
