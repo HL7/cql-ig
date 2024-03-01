@@ -297,9 +297,7 @@ Although CQL allows the use of strings as input to membership testing in value s
 **Conformance Requirement 2.10 (String-based Membership Testing):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-10)
 {: #conformance-requirement-2-10}
 
-<div class="new-content">
 1. String-based membership testing **SHALL NOT** be used in CQL libraries.
-</div>
 
 For example, given a valueset named `"Administrative Gender"`, the following CQL expression would be non-conformant:
 
@@ -564,19 +562,16 @@ did not administer in order to negate.
 
 ### Element Names
 {: #element-names}
-<div class="new-content">
+
 All elements referenced in the CQL follow Conformance Requirement 2.15.
-</div>
 **Conformance Requirement 2.15 (Element Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-15)
 {: #conformance-requirement-2-15}
-<div class="new-content">
 1. Data model elements referenced in the CQL:<br/>
       a. **SHOULD NOT** use quoted identifiers (unless required due to the element name in the model not being a valid identifier in CQL)<br/>
       b. **SHOULD** use camelCase (unless dictated by the element naming in the model being used)
 
 Examples of elements conforming to Conformance Requirement 2.15 are given below. For a full list of valid of elements, refer to an appropriate data model specification such as QI-Core.<br/><br/>
 Note: When FHIR and FHIR IGs are used as the data model, the term "element" is synonymous with "attribute". Some data models, such as QDM, use the term "attribute".
-</div>
 
 ```cql
 period
