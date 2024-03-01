@@ -1,5 +1,4 @@
 {:toc}
-<div class="new-content">This whole page is new to the IG.</div>
 ### Glossary
 See the [eCQI Resource Center](https://ecqi.healthit.gov/glossary) for additional definitions
 
