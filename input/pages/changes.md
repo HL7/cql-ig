@@ -40,3 +40,4 @@ The following changes were made as a result of ballot comments received in the S
 - Clarify language around CQL artifacts([FHIR-42559](https://jira.hl7.org/browse/FHIR-42559))
 - No content in this ModelInfo section of Using CQL([FHIR-41869](https://jira.hl7.org/browse/FHIR-41869))
 - Provide more context in examples([FHIR-41868](https://jira.hl7.org/browse/FHIR-41868))
+- Made some typo fixes on using CQL page ([FHIR-43418](https://jira.hl7.org/browse/FHIR-43418))
