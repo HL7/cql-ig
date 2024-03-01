@@ -1,7 +1,7 @@
 {:toc}
 
 {: #profiles}
-<div class="new-content"></div>
+
 <table class="grid">
   <tr><th>Profile</th><th>Description</th></tr>
   <tr><td><a href="StructureDefinition-cql-capabilitystatement.html">CQLCapabilityStatement</a></td><td>A system capability statement that can express which version of CQL is supported.</td></tr>
