@@ -13,5 +13,6 @@ list:
       The following trackers were applied for this version:
 
       **Status**: **Summary**:(**Jira Issue**)
+      * **Applied**:  Missing period ([FHIR-44091](https://jira.hl7.org/browse/FHIR-44091)) ([Applied here](using-cql.html#conformance-requirement-2-10))
       * **Applied**: Consider adding an acronyms page ([FHIR-44063](https://jira.hl7.org/browse/FHIR-44063)) Applied ([here](glossary.html)) and ([here](index.html#how-to-read-this-guide))
 
