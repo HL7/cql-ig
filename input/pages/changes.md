@@ -13,9 +13,6 @@ The following changes were made as reconciliation of issues raised in the 1.0.0-
 
 This is the first ballot of this implementation guide in this form, but the content has been balloted and published in multiple prior implementation guides, including:
 
-Change Summary
-This ballot made the following major changes:
-
 * [Clinical Guidelines](http://hl7.org/fhir/uv/cpg/libraries.html)
 * [Quality Measures](https://hl7.org/fhir/us/cqfmeasures/using-cql.html)
 * [Canonical Resource Management Infrastructure](http://hl7.org/fhir/uv/crmi/2023Sep/using-cql.html)
