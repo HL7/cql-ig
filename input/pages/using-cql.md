@@ -556,7 +556,6 @@ for not administering any of the anticoagulant and antiplatelet medications spec
 value set. 
 
 To represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
-<div class="new-content"> </div>                                                    
 Therapy" value set using the ([cqf-notDoneValueSet]({{site.data.fhir.ver.hl7_fhir_uv_extensions}}/StructureDefinition-cqf-notDoneValueSet.html)) extension to indicate
 providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
 set URI to negate the entire value set rather than reporting a specific member code from the value set, clinicians are
