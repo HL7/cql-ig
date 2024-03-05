@@ -882,14 +882,11 @@ FHIR-based knowledge artifacts using model information based on implementation g
 these will be the author-friendly identifiers for the profile. Data types referenced in CQL libraries to be included
 in a knowledge artifact must conform to Conformance Requirement 2.23.
 
-PascalCase (or UpperCamelCase): Each word in the identifier is capitalized, including the first word.
-Example: MedicationRequest
+**PascalCase** (or UpperCamelCase) Each word in the identifier is capitalized, including the first word. Example: MedicationRequest
 
-camelCase (or lowerCamelCase): The first word starts with lowercase, and subsequent words start with uppercase.
-Example: medicationRequest
+**camelCase** (or lowerCamelCase) The first word starts with lowercase, and subsequent words start with uppercase. Example: medicationRequest
 
-Title Case: The first letter of each word is capitalized, except for certain small words like articles, conjunctions, and prepositions unless they are the first word.
-Example: "Medication Request"
+**Title Case** The first letter of each word is capitalized, except for certain small words like articles, conjunctions, and prepositions unless they are the first word. Example: "Medication Request"
 
 
 **Conformance Requirement 2.23 (Data Type Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-23)
