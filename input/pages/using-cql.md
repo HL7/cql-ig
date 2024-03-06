@@ -930,10 +930,13 @@ Similar to CQL content, ModelInfo can be included in FHIR Library resources to f
 
 **Conformance Requirement 2.24 (ModelInfo Libraries):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-23)
 {: #conformance-requirement-2-24}
+
 1. Libraries used to package ModelInfo **SHALL** conform to the [CQLModelInfo](StructureDefinition-cql-modelinfo.html) profile
 
 #### Profile-informed ModelInfo
+
 The process for producing ModelInfo from FHIR StructureDefinitions can also be applied to FHIR profile definitions, allowing for ModelInfos that reflect profile definitions, using the following refinements:
+
 1. Each profile results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
 1. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
 2. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
