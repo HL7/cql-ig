@@ -23,7 +23,7 @@ The following changes were made as a result of ballot comments received in the S
 - Add guidance on missing information([FHIR-43075](https://jira.hl7.org/browse/FHIR-43075))
 - Consider requiring the use of a SignatureLevel higher than none([FHIR-42921](https://jira.hl7.org/browse/FHIR-42921))
 - Libraries are not required for CQL([FHIR-42574](https://jira.hl7.org/browse/FHIR-42574))
-- Explaing conformance requirement 4.12([FHIR-42573](https://jira.hl7.org/browse/FHIR-42573))
+- Explaining conformance requirement 4.12([FHIR-42573](https://jira.hl7.org/browse/FHIR-42573))
 - Representation in a Library needs clarification([FHIR-42571](https://jira.hl7.org/browse/FHIR-42571))
 - Code URI expectation inconsistent([FHIR-42570](https://jira.hl7.org/browse/FHIR-42570))
 - What is "knowledge artifact CQL"?([FHIR-42569](https://jira.hl7.org/browse/FHIR-42569))
