@@ -627,7 +627,7 @@ In addition to the use of CQL directly in expression-valued elements, CQL conten
 **Conformance Requirement 2.17 (Library Resources):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-17)
 {: #conformance-requirement-2-17}
 
-1. Content conforming to this implementation guide **SHALL** use FHIR Library resources to represent and CQL libraries in FHIR.
+1. Content conforming to this implementation guide **SHALL** use FHIR Library resources to represent CQL libraries in FHIR.
 
 #### Library Name and URL
 {: #library-name-and-url}
