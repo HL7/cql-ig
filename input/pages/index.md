@@ -49,6 +49,7 @@ page in the menu bar:
 -  **[Terminology](terminology.html)**: List of CodeSystems and ValueSets.
 -  **[Artifacts Summary](artifacts.html)**: List of the FHIR artifacts defined as part of this implementation guide.
 -  **[Acknowledgements](acknowledgements.html)**: Acknowledgements of contributors/authors.
+-  **[Glossary](glossary.html)**: List of terms and acronyms used in this IG.
 -  **[Downloads](downloads.html)**: Links to downloadable artifacts for implementations.
 -  **[Version History](changes.html)**: Changes made in each version of the Using CQL with FHIR Implementation Guide.
 
