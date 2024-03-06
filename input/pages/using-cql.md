@@ -35,8 +35,8 @@ This IG recommends [Semantic Versioning](https://semver.org) be used to version 
 
 There are three main types of changes that can be made to a library:
 
-  1. A library can be changed in a way that would alter the public use of its components. 
-  2. A library can be changed by adding new components or functionality but without changing the way that existing components are used. 
+  1. A library can be changed in a way that would alter the public use of its components.
+  2. A library can be changed by adding new components or functionality but without changing the way that existing components are used.
   3. A library can be changed in a way that does not change existing components or add new components, but only corrects or improves the originally intended functionality.
 
 By exposing version numbers that identify all three types of changes, libraries can be versioned in a way that makes
@@ -99,7 +99,7 @@ contained within a single library.
 2. CQL libraries **SHALL** use a `called` clause for all included libraries
 3. The `called`-alias for an included library **SHOULD** be consistent for usages across libraries
 
-The recommendation that CQL libraries be structured such that all references to expressions from a FHIR artifact is a simplification to ensure that expression references from FHIR artifacts don't require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references. 
+The recommendation that CQL libraries be structured such that all expressions used in a given FHIR artifact are contained within a single CQL library is a simplification to ensure that expression references from FHIR artifacts don't require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references. 
 
 #### Library Namespaces
 {: #library-namespaces}
@@ -212,9 +212,9 @@ valueset "Absent or Unknown Allergies - IPS": 'http://hl7.org/fhir/uv/ips/ValueS
 Snippet 2-5: Valueset reference from EXM146.cql
 
 The canonical URL for a value set is typically defined by the value set author, though it may be provided by the
-publisher as well. For example, value sets defined in the International Patient Summary have a base URL of `http://hl7.org/fhir/uv/ips/`. 
-This base is then used to construct the canonical URL for the value set (in the same way as any FHIR URL) using the resource type 
-(`ValueSet` in this case) and a unique identifier for the value set within that url (typically the same as the value set id in 
+publisher as well. For example, value sets defined in the International Patient Summary have a base URL of `http://hl7.org/fhir/uv/ips/`.
+This base is then used to construct the canonical URL for the value set (in the same way as any FHIR URL) using the resource type
+(`ValueSet` in this case) and a unique identifier for the value set within that url (typically the same as the value set id in
 the implementation guide). Note that the _canonical URL_ is a globally unique, stable, version-independent identifier for the
 value set. See [Canonical URLs](http://hl7.org/fhir/references.html#canonical) in the base FHIR specification for more information.
 
@@ -444,8 +444,8 @@ The `"Includes Or Starts During"` is the library-level identifier in this exampl
 
 A "data type" in CQL refers to any named type used within CQL expressions. They may be primitive types, such as the
 system-defined "Integer" and "DateTime", or they may be model-defined types such as "Encounter" or "Medication". For
-FHIR-based knowledge artifacts using model information based on implementation guides (such as the QI-Core profiles), 
-these will be the author-friendly identifiers for the profile. Data types referenced in CQL libraries to be included 
+FHIR-based knowledge artifacts using model information based on implementation guides (such as the QI-Core profiles),
+these will be the author-friendly identifiers for the profile. Data types referenced in CQL libraries to be included
 in a knowledge artifact must conform to Conformance Requirement 2.14.
 
 **Conformance Requirement 2.14 (Data Type Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-14)
@@ -562,7 +562,7 @@ define "Antithrombotic Not Administered":
 
 In this example for negation rationale, the logic looks for a member of the value set "Medical Reason" as the rationale
 for not administering any of the anticoagulant and antiplatelet medications specified in the "Antithrombotic Therapy"
-value set. 
+value set.
 
 To represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
 Therapy" value set using the ([cqf-notDoneValueSet]({{site.data.fhir.ver.hl7_fhir_uv_extensions}}/StructureDefinition-cqf-notDoneValueSet.html)) extension to indicate
@@ -676,8 +676,29 @@ The prohibition against underscores in CQL library names is required to ensure c
 {: .grid }
 
 2. In addition:
-* List types **SHALL** be lists of element types that map to FHIR
-* Tuple types **SHALL** consist only of elements of types that map to FHIR
+
+* List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
+
+For example:
+
+```cql
+define "Non Elective Inpatient Encounter":
+  ["Encounter": "Nonelective Inpatient Encounter"] NonElectiveEncounter
+        where NonElectiveEncounter.period ends during day of "Measurement Period"
+```
+
+* Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
+
+For example:
+
+```cql
+define "SDE Ethnicity":
+  Patient.ethnicity E
+    return Tuple {
+      codes: { E.ombCategory } union E.detailed,
+      display: E.text
+    }
+```
 
 #### Parameters and Data Requirements
 {: #parameters-and-data-requirements}
@@ -950,4 +971,3 @@ In addition, to support more fine-grained control over the process of producing 
 * cqf-modelInfo-label - Specifies an author-friendly title for the ClassInfo (i.e. an alternate name by which the type can be referenced in CQL type specifiers)
 * cqf-modelInfo-primaryCodePath - Specifies the primary code path for the ClassInfo produced from the profile on which it appears (i.e. the default path for terminology-valued filters when the type is used in a Retrieve in CQL)
 * cqf-modelInfoSettings - Specifies additional settings used to produce the ModelInfo for profiles and extensions defined in the Implementation Guide on which it appears
-
