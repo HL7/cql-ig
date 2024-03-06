@@ -14,6 +14,8 @@ list:
 
       **Status**: **Summary**:(**Jira Issue**)
       * **Applied**:  Missing period ([FHIR-44091](https://jira.hl7.org/browse/FHIR-44091)) ([Applied here](using-cql.html#conformance-requirement-2-10))
+      * **Applied**: Conformance requirement 2.10 - provide example  ([FHIR-43698](https://jira.hl7.org/browse/FHIR-43698)) Applied ([here](using-cql.html#conformance-requirement-2-10))
+      * **Applied**: Relax prohibition against string-based membership testing  ([FHIR-43780](https://jira.hl7.org/browse/FHIR-43780)) Applied ([here](using-cql.html#conformance-requirement-2-10))
       * **Applied**: Value set is written 5 different ways ([FHIR-44089](https://jira.hl7.org/browse/FHIR-44089)) Changes applied in the whole section ([here](using-cql.html#value-sets-notes))
       * **Applied**: Conflicting information about underscores ([FHIR-44075](https://jira.hl7.org/browse/FHIR-44075)) Applied ([here](using-cql.html#conformance-requirement-2-1))
       * **Applied**:  A Conformance Requirement that SHOULD be followed is confusing ([FHIR-43885](https://jira.hl7.org/browse/FHIR-43885)) Applied ([here](using-cql.html#elm-suitability))

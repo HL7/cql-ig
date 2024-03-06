@@ -306,13 +306,21 @@ Although CQL allows the use of strings as input to membership testing in value s
 **Conformance Requirement 2.10 (String-based Membership Testing):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-10)
 {: #conformance-requirement-2-10}
 
-1. String-based membership testing **SHALL NOT** be used in CQL libraries.
+1. String-based membership testing **SHOULD NOT** be used in CQL libraries
 
-For example, given a value set named `"Administrative Gender"`, the following CQL expression would be non-conformant:
+For example, given a valueset named `"Administrative Gender"`, the following CQL expression is not recommended:
 
 ```cql
 'female' in "Administrative Gender"
 ```
+
+This is because there is no code system associated with the string `'female'` so the comparison to codes in the value set is only partial. There are use cases for this, such as when comparing a string-valued element in FHIR, for example:
+
+```cql
+First(Patient.address).state in "New England States"
+```
+
+In this case, because the `state` element is string-valued, there is no straightforward way to associate a system, and the string-based membership testing is simpler than requiring the construction of a `Code` value. However, care should be taken with this usage to ensure the string values do not match codes from an unexpected system. Furthermore, if the element being tested is terminology-valued, terminology membership testing SHOULD be used.
 
 ### Codes
 {: #codes}
