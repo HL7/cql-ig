@@ -15,4 +15,12 @@ list:
       **Status**: **Summary**:(**Jira Issue**)
       * **Applied**:  Missing period ([FHIR-44091](https://jira.hl7.org/browse/FHIR-44091)) ([Applied here](using-cql.html#conformance-requirement-2-10))
       * **Applied**: Consider including the terminology operators link ([FHIR-44090](https://jira.hl7.org/browse/FHIR-44090)) ([Applied here](using-cql.html#conformance-requirement-2-9))
+      * **Applied**: Consider updating examples to align with Conformance Requirement 2.14  ([FHIR-44113](https://jira.hl7.org/browse/FHIR-44113)) Applied ([here](using-cql.html#presence)), ([here](using-cql.html#absence)), and ([here](using-cql.html#negation-rationale))
+      * **Applied**: Attributes versus Elements ([FHIR-44541](https://jira.hl7.org/browse/FHIR-44541)) ([Applied here](using-cql.html#conformance-requirement-2-15))
+      * **Applied**:  Too many spaces before colon ([FHIR-44077](https://jira.hl7.org/browse/FHIR-44077)) ([Applied here](using-cql.html#conformance-requirement-2-2))
+      * **Applied**: Missing period ([FHIR-44079](https://jira.hl7.org/browse/FHIR-44079)) ([Applied here](using-cql.html#conformance-requirement-2-2))
+      * **Applied**: Confusing Terminology ([FHIR-44086](https://jira.hl7.org/browse/FHIR-44086)) Applied ([here](using-cql.html#data-model))
+      * **Applied**: add link to cqf-notDoneValueSet ([FHIR-44512](https://jira.hl7.org/browse/FHIR-44512)) ([Applied here](using-cql.html#negation-rationale))
+      * **Applied**: Large number of technical corrections ([FHIR-44548 ](https://jira.hl7.org/browse/FHIR-44548))Applied ([here](using-cql.html#conformance-requirement-2-2)), ([here](using-cql.html#attribute-names)), ([here](using-cql.html#conformance-requirement-2-20)), ([here](profiles.html)), and ([here](extensions.html))
+      * **Applied**: Missing periods  ([FHIR-44087](https://jira.hl7.org/browse/FHIR-44087)) ([Applied here](using-cql.html#conformance-requirement-2-6))
 
