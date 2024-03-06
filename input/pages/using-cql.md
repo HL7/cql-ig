@@ -32,7 +32,7 @@ This IG recommends [Semantic Versioning](https://semver.org) be used to version 
   1. The library declaration **SHOULD** specify a version.
   2. The library version **SHOULD** follow the convention :  
        < major >.< minor >.< patch >
-  3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable
+3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable.
   4. The versioning scheme **SHALL** apply when an artifact moves to active status.
 
 There are three main types of changes that can be made to a library:
