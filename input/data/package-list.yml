@@ -14,6 +14,7 @@ list:
 
       **Status**: **Summary**:(**Jira Issue**)
       * **Applied**:  Missing period ([FHIR-44091](https://jira.hl7.org/browse/FHIR-44091)) ([Applied here](using-cql.html#conformance-requirement-2-10))
+      * **Applied**:  Clarify double-braces / context in FHIR Query Pattern extension ([FHIR-43915](https://jira.hl7.org/browse/FHIR-43195)) Applied ([here](extensions.html#cql-related-extensions))
       * **Applied**: Typos: packgae, csn ([FHIR-43881](https://jira.hl7.org/browse/FHIR-43881)) Applied ([here](using-cql.html#conformance-requirement-2-24))
       * **Applied**: Consider adding an acronyms page  ([FHIR-44063](https://jira.hl7.org/browse/FHIR-44063)) Applied ([here](glossary.html)) and ([here](index.html#how-to-read-this-guide))
       * **Applied**:  Typo: A library profiles ([FHIR-43733](https://jira.hl7.org/browse/FHIR-43733)) Applied ([here](profiles.html#profiles))
