@@ -14,6 +14,7 @@ list:
 
       **Status**: **Summary**:(**Jira Issue**)
       * **Applied**:  Missing period ([FHIR-44091](https://jira.hl7.org/browse/FHIR-44091)) ([Applied here](using-cql.html#conformance-requirement-2-10))
+      * **Applied**: "When" should be lower case ([FHIR-44069](https://jira.hl7.org/browse/FHIR-44069)) Applied ([here](using-cql.html#libraries))
       * **Applied**: Misspelling of "Explain" in Status: Summary ([FHIR-44065](https://jira.hl7.org/browse/FHIR-44065)) Applied ([here](changes.html))
       * **Applied**: Conformance requirement 2.10 - provide example  ([FHIR-43698](https://jira.hl7.org/browse/FHIR-43698)) Applied ([here](using-cql.html#conformance-requirement-2-10))
       * **Applied**: Relax prohibition against string-based membership testing  ([FHIR-43780](https://jira.hl7.org/browse/FHIR-43780)) Applied ([here](using-cql.html#conformance-requirement-2-10))
