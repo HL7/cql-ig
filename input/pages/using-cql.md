@@ -866,9 +866,9 @@ The `cqlOptions` extension references a contained `Parameters` resource that con
 ```
 
 #### ELM Suitability
+{: #elm-suitability}
 
-Because certain translator options impact language features and functionality, translated ELM may not be suitable for use in all contexts if the options used to produce the ELM are inconsistent with the options in use in the evaluating environment. To determine suitability of ELM for use in a given environment, the following guidance **SHOULD** be followed:
-
+Because certain translator options impact language features and functionality, translated ELM may not be suitable for use in all contexts if the options used to produce the ELM are inconsistent with the options in use in the evaluating environment. To determine suitability of ELM for use in a given environment, the following guidance **SHALL** be followed:
 **Conformance Requirement 2.23 (ELM Suitability):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-23)
 {: #conformance-requirement-2-23}
 
