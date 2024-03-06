@@ -14,6 +14,8 @@ Declarations in CQL are packaged in containers called _libraries_ which provide 
   1. Any CQL library used by a FHIR artifact **SHALL** contain a [library declaration.](https://cql.hl7.org/02-authorsguide.html#library)
   2. The library identifier **SHALL** be a valid un-quoted identifier and **SHALL NOT** contain underscores. The library identifier **SHALL** only contain alphanumeric characters.
 
+**Note** The example in the Author's Guide from the above library declaration link is not following the "Using CQL With FHIR" convention of prohibiting underscores in library names.
+
 For example:
 
 ```cql
