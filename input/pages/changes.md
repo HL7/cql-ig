@@ -21,12 +21,12 @@ This ballot made the following major changes:
 * [Canonical Resource Management Infrastructure](http://hl7.org/fhir/uv/crmi/2023Sep/using-cql.html)
 
 The following changes were made as a result of ballot comments received in the September 2023 ballot of the Canonical Resource Management Infrastructure IG. One of those comments was the suggestion to break this CQL-specific content out into its own implementation guide; this IG is the result of that change.
-
+{: #new-content}
 - Use a dataAbsentReason extension to indicate missing results([FHIR-43076](https://jira.hl7.org/browse/FHIR-43076))
 - Add guidance on missing information([FHIR-43075](https://jira.hl7.org/browse/FHIR-43075))
 - Consider requiring the use of a SignatureLevel higher than none([FHIR-42921](https://jira.hl7.org/browse/FHIR-42921))
 - Libraries are not required for CQL([FHIR-42574](https://jira.hl7.org/browse/FHIR-42574))
-- Explaing conformance requirement 4.12([FHIR-42573](https://jira.hl7.org/browse/FHIR-42573))
+- Explaining conformance requirement 4.12([FHIR-42573](https://jira.hl7.org/browse/FHIR-42573))
 - Representation in a Library needs clarification([FHIR-42571](https://jira.hl7.org/browse/FHIR-42571))
 - Code URI expectation inconsistent([FHIR-42570](https://jira.hl7.org/browse/FHIR-42570))
 - What is "knowledge artifact CQL"?([FHIR-42569](https://jira.hl7.org/browse/FHIR-42569))
@@ -41,3 +41,7 @@ The following changes were made as a result of ballot comments received in the S
 - No content in this ModelInfo section of Using CQL([FHIR-41869](https://jira.hl7.org/browse/FHIR-41869))
 - Provide more context in examples([FHIR-41868](https://jira.hl7.org/browse/FHIR-41868))
 - Fixed a typo in 2.14 ([FHIR-43789](https://jira.hl7.org/browse/FHIR-43789))
+- Made some typo fixes on using CQL page ([FHIR-43418](https://jira.hl7.org/browse/FHIR-43418))
+- Finished sentence on 2.1.2 ([FHIR-43436](https://jira.hl7.org/browse/FHIR-43436))
+- Added -version to the CQL naming convention conformance requirement 2.18 ([FHIR-43582](https://jira.hl7.org/browse/FHIR-43582))
+- Clarify FHIR Type Mapping for List and Tuple types ([FHIR-43793](https://jira.hl7.org/browse/FHIR-43793))
