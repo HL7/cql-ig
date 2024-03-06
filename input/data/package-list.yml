@@ -14,6 +14,7 @@ list:
 
       **Status**: **Summary**:(**Jira Issue**)
       * **Applied**:  Missing period ([FHIR-44091](https://jira.hl7.org/browse/FHIR-44091)) ([Applied here](using-cql.html#conformance-requirement-2-10))
+      * **Applied**:  Convert text link to hyperlink ([FHIR-43777](https://jira.hl7.org/browse/FHIR-43777)) ([Applied here](using-cql.html#conformance-requirement-2-9))
       * **Applied**:  Define or Replace "Initial Case" ([FHIR-43785](https://jira.hl7.org/browse/FHIR-43785)) ([Applied here](using-cql.html#conformance-requirement-2-13))
       * **Applied**:  CQL Library Evaluate: return parameter doesn't always return all expressions ([FHIR-43886](https://jira.hl7.org/browse/FHIR-43886)) ([Applied here](OperationDefinition-cql-library-evaluate.html))
       * **Applied**:  Repetitive IG ([FHIR-44059](https://jira.hl7.org/browse/FHIR-44059)) ([Applied here](index.html#summary))
