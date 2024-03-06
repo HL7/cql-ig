@@ -14,6 +14,7 @@ list:
 
       **Status**: **Summary**:(**Jira Issue**)
       * **Applied**:  Missing period ([FHIR-44091](https://jira.hl7.org/browse/FHIR-44091)) ([Applied here](using-cql.html#conformance-requirement-2-10))
+      * **Applied**:  Typo: A library profiles ([FHIR-43733](https://jira.hl7.org/browse/FHIR-43733)) Applied ([here](profiles.html#profiles))
       * **Applied**: Incorrect reference to CRMI IG ([FHIR-43732](https://jira.hl7.org/browse/FHIR-43732)) Applied ([here](index.html#conformance-requirement-1-1))
       * **Applied**: Incomplete Sentence ([FHIR-44082](https://jira.hl7.org/browse/FHIR-44082)) Applied ([here](using-cql.html#conformance-requirement-2-3))
       * **Applied**:  Page listing does not match menu ([FHIR-43731](https://jira.hl7.org/browse/FHIR-43731)) Applied ([here](index.html#how-to-read-this-guide)) and in menu.xml
