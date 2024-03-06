@@ -21,7 +21,7 @@ This ballot made the following major changes:
 * [Canonical Resource Management Infrastructure](http://hl7.org/fhir/uv/crmi/2023Sep/using-cql.html)
 
 The following changes were made as a result of ballot comments received in the September 2023 ballot of the Canonical Resource Management Infrastructure IG. One of those comments was the suggestion to break this CQL-specific content out into its own implementation guide; this IG is the result of that change.
-
+{: #new-content}
 - Use a dataAbsentReason extension to indicate missing results([FHIR-43076](https://jira.hl7.org/browse/FHIR-43076))
 - Add guidance on missing information([FHIR-43075](https://jira.hl7.org/browse/FHIR-43075))
 - Consider requiring the use of a SignatureLevel higher than none([FHIR-42921](https://jira.hl7.org/browse/FHIR-42921))

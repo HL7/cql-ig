@@ -306,9 +306,9 @@ Although CQL allows the use of strings as input to membership testing in value s
 **Conformance Requirement 2.10 (String-based Membership Testing):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-10)
 {: #conformance-requirement-2-10}
 
-1. String-based membership testing **SHOULD NOT** be used in CQL libraries
+1. String-based membership testing **SHOULD NOT** be used in CQL libraries.
 
-For example, given a valueset named `"Administrative Gender"`, the following CQL expression is not recommended:
+For example, given a value set named `"Administrative Gender"`, the following CQL expression is not recommended:
 
 ```cql
 'female' in "Administrative Gender"
