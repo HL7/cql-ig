@@ -559,19 +559,19 @@ set URI to negate the entire value set rather than reporting a specific member c
 not forced to arbitrarily select a specific medication from the "Antithrombotic Therapy" value set that they
 did not administer in order to negate.
 
-### Attribute Names
-{: #attribute-names}
+### Element Names
+{: #element-names}
 
-All attributes referenced in the CQL follow Conformance Requirement 2.15.
-
-**Conformance Requirement 2.15 (Attribute Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-15)
+All elements referenced in the CQL follow Conformance Requirement 2.15.
+**Conformance Requirement 2.15 (Element Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-15)
 {: #conformance-requirement-2-15}
+1. Data model elements referenced in the CQL:<br/>
+      a. **SHOULD NOT** use quoted identifiers (unless required due to the element name in the model not being a valid identifier in CQL)<br/>
+      b. **SHOULD** use camelCase (unless dictated by the element naming in the model being used)
 
-1. Data model attributes referenced in the CQL:<br/>
-      a. **SHOULD NOT** use quoted identifiers (unless required due to the attribute name in the model not being a valid identifier in CQL)<br/>
-      b. **SHOULD** use camelCase (unless dictated by the attribute naming in the model being used)
+Examples of elements conforming to Conformance Requirement 2.15 are given below. For a full list of valid of elements, refer to an appropriate data model specification such as QI-Core.<br/><br/>
 
-Examples of attributes conforming to Conformance Requirement 2.15 are given below. For a full list of valid attributes, refer to an appropriate data model specification such as QI-Core.
+Note: When FHIR and FHIR IGs are used as the data model, the term "element" is synonymous with "attribute". Some data models, such as QDM, use the term "attribute".
 
 ```cql
 period
