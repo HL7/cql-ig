@@ -513,23 +513,20 @@ of medication included within a value set for "Antithrombotic Therapy".
 {: #presence}
 
 Evidence that "Antithrombotic Therapy" (defined by a medication-specific value set) was administered:
-
 ```cql
 define "Antithrombotic Administered":
-  ["MedicationAdministration": "Antithrombotic Therapy"] AntithromboticTherapy
+  [MedicationAdministration: "Antithrombotic Therapy"] AntithromboticTherapy
     where AntithromboticTherapy.status = 'completed'
       and AntithromboticTherapy.category ~ "Inpatient Setting"
 ```
-
 #### Absence
 {: #absence}
 
 No evidence that "Antithrombotic Therapy" medication was administered:
-
 ```cql
 define "No Antithrombotic Therapy":
   not exists (
-    ["MedicationAdministration": "Antithrombotic Therapy"] AntithromboticTherapy
+    [MedicationAdministration: "Antithrombotic Therapy"] AntithromboticTherapy
       where AntithromboticTherapy.status = 'completed'
         and AntithromboticTherapy.category ~ "Inpatient Setting"
   )
@@ -540,10 +537,9 @@ define "No Antithrombotic Therapy":
 
 Evidence that "Antithrombotic Therapy" medication administration did not occur for an acceptable medical reason as
 defined by a value set referenced by the clinical logic (i.e., negation rationale):
-
 ```cql
 define "Antithrombotic Not Administered":
-  ["MedicationAdministration": "Antithrombotic Therapy"] NotAdministered
+  [MedicationAdministration: "Antithrombotic Therapy"] NotAdministered
     where NotAdministered.status = 'not-done'
       and NotAdministered.statusReason in "Medical Reason"
 ```
