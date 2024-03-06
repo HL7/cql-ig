@@ -136,7 +136,7 @@ In addition, because the namespace of a library functions as part of the globall
 
 CQL can be used with any data model(s). To be used with FHIR, CQL requires model information. To facilitate use with any FHIR content, a general-purpose FHIR information model is included in the [Common](https://fhir.org/guides/cqf/common) implementation guide. However, CQL may also be used with implementation-guide specific model information (i.e. structures based on the profile definitions in an IG).
 
-**Conformance Requirement 2.5 (CQL Data Model):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-5)
+**Conformance Requirement 2.5 (CQL Using FHIR-based Data Models):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-5)
 {: #conformance-requirement-2-5}
 
 1. All libraries and CQL expressions used directly or indirectly within a knowledge artifact **SHOULD** use FHIR-based data models.
