@@ -12,7 +12,7 @@ Declarations in CQL are packaged in containers called _libraries_ which provide 
 **Conformance Requirement 2.1 (Library Declaration):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-1)
 {: #conformance-requirement-2-1}
   1. Any CQL library used by a FHIR artifact **SHALL** contain a [library declaration.](https://cql.hl7.org/02-authorsguide.html#library)
-  2. The library identifier **SHALL** be a valid un-quoted identifier and **SHALL NOT** contain underscores
+  2. The library identifier **SHALL** be a valid un-quoted identifier and **SHALL NOT** contain underscores. The library identifier **SHALL** only contain alphanumeric characters.
 
 For example:
 
@@ -30,9 +30,9 @@ This IG recommends [Semantic Versioning](https://semver.org) be used to version 
 **Conformance Requirement 2.2 (Library Versioning):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-2)
 {: #conformance-requirement-2-2}
   1. The library declaration **SHOULD** specify a version.
-  2. The library version **SHOULD** follow the convention :  
+  2. The library version **SHOULD** follow the convention:
        < major >.< minor >.< patch >
-  3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable
+3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable.
   4. The versioning scheme **SHALL** apply when an artifact moves to active status.
 
 There are three main types of changes that can be made to a library:
@@ -43,8 +43,8 @@ There are three main types of changes that can be made to a library:
 
 By exposing version numbers that identify all three types of changes, libraries can be versioned in a way that makes
 clear when a change will impact usage, versus when a change can potentially be safely incorporated as an update. The
-first type of change will be referred to as a "major" change, and will require incrementing of the "major version
-number". The second type of change will be referred to as a "minor" change, and will only require incrementing of the
+first type of change will be referred to as a "major" change, and will require incrementing the "major version
+number". The second type of change will be referred to as a "minor" change, and will only require incrementing the
 "minor version number". And finally, the third type of change will be referred to as a "patch", and will only require
 incrementing the "patch version number". Version numbers for CQL libraries can then be represented as:
 
@@ -136,7 +136,7 @@ In addition, because the namespace of a library functions as part of the globall
 
 CQL can be used with any data model(s). To be used with FHIR, CQL requires model information. To facilitate use with any FHIR content, a general-purpose FHIR information model is included in the [Common](https://fhir.org/guides/cqf/common) implementation guide. However, CQL may also be used with implementation-guide specific model information (i.e. structures based on the profile definitions in an IG).
 
-**Conformance Requirement 2.5 (CQL Data Model):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-5)
+**Conformance Requirement 2.5 (CQL Using FHIR-based Data Models):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-5)
 {: #conformance-requirement-2-5}
 
 1. All libraries and CQL expressions used directly or indirectly within a knowledge artifact **SHOULD** use FHIR-based data models.
@@ -159,9 +159,8 @@ Conformance Requirement 2.6 describes how to specify a code system within a CQL 
 {: #conformance-requirement-2-6}
 
 1. Within CQL, the identifier of any code system reference **SHALL** be specified using a URI for the code system.
-2. The URI **SHALL** be the canonical URL for the code system
-3. The Code System declaration **MAY** include a version, consistent with the URI specification for FHIR and the code system
-
+2. The URI **SHALL** be the canonical URL for the code system.
+3. The Code System declaration **MAY** include a version, consistent with the URI specification for FHIR and the code system.
 For example:
 
 ```cql
@@ -284,7 +283,7 @@ results of an expansion.
 **Conformance Requirement 2.9 (Value Set Expansion):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-9)
 {: #conformance-requirement-2-9}
 
-1. Value set membership testing **SHOULD** use the terminology membership operation in CQL (`in(ValueSet)`), as opposed to requiring computation on the lists of codes in a value set.  Please reference  http://cql.hl7.org/02-authorsguide.html#terminology-operators for more information.
+1. Value set membership testing **SHOULD** use the terminology membership operation in CQL (`in(ValueSet)`), as opposed to requiring computation on the lists of codes in a value set.  See the [Terminology Operators](http://cql.hl7.org/02-authorsguide.html#terminology-operators) section of the CQL specification for more information.
 
 For example, rather than combining multiple value sets using a `union`, separate membership tests in each value set **SHOULD** be used. For more information, see the [Value Set Expansion](http://hl7.org/fhir/valueset.html#expansion) topic in the base FHIR specification.
 
@@ -524,23 +523,20 @@ of medication included within a value set for "Antithrombotic Therapy".
 {: #presence}
 
 Evidence that "Antithrombotic Therapy" (defined by a medication-specific value set) was administered:
-
 ```cql
 define "Antithrombotic Administered":
-  ["MedicationAdministration": "Antithrombotic Therapy"] AntithromboticTherapy
+  [MedicationAdministration: "Antithrombotic Therapy"] AntithromboticTherapy
     where AntithromboticTherapy.status = 'completed'
       and AntithromboticTherapy.category ~ "Inpatient Setting"
 ```
-
 #### Absence
 {: #absence}
 
 No evidence that "Antithrombotic Therapy" medication was administered:
-
 ```cql
 define "No Antithrombotic Therapy":
   not exists (
-    ["MedicationAdministration": "Antithrombotic Therapy"] AntithromboticTherapy
+    [MedicationAdministration: "Antithrombotic Therapy"] AntithromboticTherapy
       where AntithromboticTherapy.status = 'completed'
         and AntithromboticTherapy.category ~ "Inpatient Setting"
   )
@@ -551,10 +547,9 @@ define "No Antithrombotic Therapy":
 
 Evidence that "Antithrombotic Therapy" medication administration did not occur for an acceptable medical reason as
 defined by a value set referenced by the clinical logic (i.e., negation rationale):
-
 ```cql
 define "Antithrombotic Not Administered":
-  ["MedicationAdministration": "Antithrombotic Therapy"] NotAdministered
+  [MedicationAdministration: "Antithrombotic Therapy"] NotAdministered
     where NotAdministered.status = 'not-done'
       and NotAdministered.statusReason in "Medical Reason"
 ```
@@ -564,25 +559,25 @@ for not administering any of the anticoagulant and antiplatelet medications spec
 value set. 
 
 To represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
-Therapy" value set using the `cqf-notDoneValueSet` extension to indicate
+Therapy" value set using the ([cqf-notDoneValueSet]({{site.data.fhir.ver.hl7_fhir_uv_extensions}}/StructureDefinition-cqf-notDoneValueSet.html)) extension to indicate
 providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
 set URI to negate the entire value set rather than reporting a specific member code from the value set, clinicians are
 not forced to arbitrarily select a specific medication from the "Antithrombotic Therapy" value set that they
 did not administer in order to negate.
 
-### Attribute Names
-{: #attribute-names}
+### Element Names
+{: #element-names}
 
-All attributes referenced in the CQL follow Conformance Requirement 2.15.
-
-**Conformance Requirement 2.15 (Attribute Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-15)
+All elements referenced in the CQL follow Conformance Requirement 2.15.
+**Conformance Requirement 2.15 (Element Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-15)
 {: #conformance-requirement-2-15}
+1. Data model elements referenced in the CQL:<br/>
+      a. **SHOULD NOT** use quoted identifiers (unless required due to the element name in the model not being a valid identifier in CQL)<br/>
+      b. **SHOULD** use camelCase (unless dictated by the element naming in the model being used)
 
-1. Data model attributes referenced in the CQL:<br/>
-      a. **SHOULD NOT** use quoted identifiers (unless required due to the attribute name in the model not being a valid identifier in CQL)<br/>
-      b. **SHOULD** use camelCase (unless dictated by the attribute naming in the model being used)
+Examples of elements conforming to Conformance Requirement 2.15 are given below. For a full list of valid of elements, refer to an appropriate data model specification such as QI-Core.<br/><br/>
 
-Examples of attributes conforming to Conformance Requirement 2.15 are given below. For a full list of valid of attributes, refer to an appropriate data model specification such as QI-Core.
+Note: When FHIR and FHIR IGs are used as the data model, the term "element" is synonymous with "attribute". Some data models, such as QDM, use the term "attribute".
 
 ```cql
 period
@@ -685,7 +680,7 @@ The prohibition against underscores in CQL library names is required to ensure c
 {: #conformance-requirement-2-20}
 
 1. Parameters to CQL libraries **SHALL** be either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations.
-2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resources types, optionally with profile designations
+2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations
 3. Tuple types are represented with Parameters that have `part` elements corresponding to the elements of the tuple. List types are represented with Parameters that have a cardinality of 0..*.
 4. Libraries used in computable artifacts **SHALL** use the `parameter` element to identify input parameters as well as the type of all top-level expressions as output parameters.
 5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL:
@@ -881,9 +876,9 @@ The `cqlOptions` extension references a contained `Parameters` resource that con
 ```
 
 #### ELM Suitability
+{: #elm-suitability}
 
-Because certain translator options impact language features and functionality, translated ELM may not be suitable for use in all contexts if the options used to produce the ELM are inconsistent with the options in use in the evaluating environment. To determine suitability of ELM for use in a given environment, the following guidance **SHOULD** be followed:
-
+Because certain translator options impact language features and functionality, translated ELM may not be suitable for use in all contexts if the options used to produce the ELM are inconsistent with the options in use in the evaluating environment. To determine suitability of ELM for use in a given environment, the following guidance **SHALL** be followed:
 **Conformance Requirement 2.23 (ELM Suitability):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-23)
 {: #conformance-requirement-2-23}
 
@@ -929,13 +924,10 @@ Similar to CQL content, ModelInfo can be included in FHIR Library resources to f
 
 **Conformance Requirement 2.24 (ModelInfo Libraries):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-23)
 {: #conformance-requirement-2-24}
-
-1. Libraries used to packgae ModelInfo **SHALL** conform to the [CQLModelInfo](StructureDefinition-cql-modelinfo.html) profile
+1. Libraries used to package ModelInfo **SHALL** conform to the [CQLModelInfo](StructureDefinition-cql-modelinfo.html) profile
 
 #### Profile-informed ModelInfo
-
-The process for producing ModelInfo from FHIR StructureDefinitions csn also be applied to FHIR profile definitions, allowing for ModelInfos that reflect profile definitions, using the following refinements:
-
+The process for producing ModelInfo from FHIR StructureDefinitions can also be applied to FHIR profile definitions, allowing for ModelInfos that reflect profile definitions, using the following refinements:
 1. Each profile results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
 1. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
 2. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
