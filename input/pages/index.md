@@ -7,7 +7,6 @@ Where possible, new and updated content will be highlighted with green text and 
 {:.new-content}
 -->
 
-<div markdown="1" class="bg-info">
 
 This is the first ballot of this implementation guide in this form, but the content has been balloted and published in multiple prior implementation guides, including:
 
@@ -19,7 +18,6 @@ The following changes were made as a result of ballot comments received in the S
 
 {{ site.data.package-list.list[0].desc }}
 
-</div>
 
 {: #using-cql-with-fhir-implementation-guide}
 
