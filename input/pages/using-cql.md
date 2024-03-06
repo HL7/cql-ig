@@ -30,7 +30,7 @@ This IG recommends [Semantic Versioning](https://semver.org) be used to version 
 **Conformance Requirement 2.2 (Library Versioning):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-2)
 {: #conformance-requirement-2-2}
   1. The library declaration **SHOULD** specify a version.
-  2. The library version **SHOULD** follow the convention :  
+  2. The library version **SHOULD** follow the convention:
        < major >.< minor >.< patch >
 3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable.
   4. The versioning scheme **SHALL** apply when an artifact moves to active status.
