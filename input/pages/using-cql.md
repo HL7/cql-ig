@@ -428,7 +428,7 @@ meaningful name (avoid abbreviations) and conform to Conformance Requirement 2.1
       b. **SHOULD** Use Initial Case<br/>
       c. **MAY** Include spaces
 
-**Initial Case Definition** is defined as capitalization where only the first letter of the first word in a sentence or phrase is capitalized, while the words are in lowercase, except for proper nouns and certain other exceptions.
+**Initial Case Definition** is defined as the first letter of every word is capitalized (e.g. "Observation With Status") (as opposed to Title Case, which would be "Observation with Status")
 
 For example:
 
