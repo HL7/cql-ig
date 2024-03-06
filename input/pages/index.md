@@ -7,7 +7,6 @@ Where possible, new and updated content will be highlighted with green text and 
 {:.new-content}
 -->
 
-<div markdown="1" class="bg-info">
 
 This is the first ballot of this implementation guide in this form, but the content has been balloted and published in multiple prior implementation guides, including:
 
@@ -19,7 +18,6 @@ The following changes were made as a result of ballot comments received in the S
 
 {{ site.data.package-list.list[0].desc }}
 
-</div>
 
 {: #using-cql-with-fhir-implementation-guide}
 
@@ -42,15 +40,17 @@ The intent of this implementation guide is to support the use of CQL with FHIR i
 
 This Guide is divided into several pages which are listed at the top of each
 page in the menu bar:
-
--  **[Home](index.html)**: Summary and background information for the Canonical Resource Management Infrastructure Implementation Guide
--  **[Using CQL](using-cql.html)**: Using Clinical Quality Language as part of knowledge artifacts
--  **[Profiles](profiles.html)**: List of profiles defined for use by knowledge artifacts
--  **[Extensions](extensions.html)**: List of extensions defined and used by knowledge artifacts
--  **[Operations](operations.html)**: List of operations and operation pattern profiles
--  **[Capabilities](capabilities.html)**: Definitions of services and operations in support of authoring, publishing, and distributing canonical resources and knowledge artifacts
+-  **[Home](index.html)**: Summary and background information for the Canonical Resource Management Infrastructure Implementation Guide.
+-  **[Using CQL](using-cql.html)**: Using Clinical Quality Language as part of knowledge artifacts.
+-  **[Profiles](profiles.html)**: List of profiles defined for use by knowledge artifacts.
+-  **[Extensions](extensions.html)**: List of extensions defined and used by knowledge artifacts.
+-  **[Operations](operations.html)**: List of operations and operation pattern profiles.
+-  **[Capabilities](capabilities.html)**: Definitions of services and operations in support of authoring, publishing, and distributing canonical resources and knowledge artifacts.
+-  **[Terminology](terminology.html)**: List of CodeSystems and ValueSets.
+-  **[Artifacts Summary](artifacts.html)**: List of the FHIR artifacts defined as part of this implementation guide.
+-  **[Acknowledgements](acknowledgements.html)**: Acknowledgements of contributors/authors.
 -  **[Downloads](downloads.html)**: Links to downloadable artifacts for implementations.
--  **[Acknowledgements](acknowledgements.html)**
+-  **[Version History](changes.html)**: Changes made in each version of the Using CQL with FHIR Implementation Guide.
 
 ### Must Support
 
@@ -73,7 +73,8 @@ For resource instances claiming to conform to profiles from this IG, Must Suppor
 ### References
 {: #references}
 
-Health level seven. Clinical Quality Framework - HL7 Clinical Decision Support Work Group Confluence Page. [Online]. Available from: [https://confluence.hl7.org/display/CQIWC/Clinical Quality Framework](https://confluence.hl7.org/display/CQIWC/Clinical%20Quality%20Framework) [Accessed 11 October 2019].
+Health Level Seven. Clinical Quality Framework - HL7 Clinical Decision Support Work Group Confluence Page. [Online]. Available from: [https://confluence.hl7.org/display/CQIWC/Clinical Quality Framework](https://confluence.hl7.org/display/CQIWC/Clinical%20Quality%20Framework) [Accessed 11 October 2019].
+
 
 ### Dependencies
 
