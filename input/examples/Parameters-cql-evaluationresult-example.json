@@ -12,5 +12,13 @@
           "valueCode": "unknown"
         }]
       }
+    }, {
+      "name": "Empty List-Valued Expression",
+      "_valueString": {
+        "extension": [{
+          "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+          "valueCode": "not-applicable"
+        }]
+      }
     }]
 }
