@@ -6,11 +6,15 @@ This topic specifies conformance requirements and guidance for the use of CQL wi
 
 ### Libraries
 {: #libraries}
+
 Declarations in CQL are packaged in containers called _libraries_ which provide a unit for the definition, distribution, and versioning of CQL logic. The following conformance requirements and guidance apply when libraries of CQL are used with FHIR knowledge artifacts.
+
 **Conformance Requirement 2.1 (Library Declaration):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-1)
 {: #conformance-requirement-2-1}
   1. Any CQL library used by a FHIR artifact **SHALL** contain a [library declaration.](https://cql.hl7.org/02-authorsguide.html#library)
   2. The library identifier **SHALL** be a valid un-quoted identifier and **SHALL NOT** contain underscores. The library identifier **SHALL** only contain alphanumeric characters.
+
+**Note** The example in the Author's Guide from the above library declaration link is not following the "Using CQL With FHIR" convention of prohibiting underscores in library names.
 
 For example:
 
@@ -99,7 +103,7 @@ contained within a single library.
 2. CQL libraries **SHALL** use a `called` clause for all included libraries
 3. The `called`-alias for an included library **SHOULD** be consistent for usages across libraries
 
-The recommendation that CQL libraries be structured such that all expressions used in a given FHIR artifact are contained within a single CQL library is a simplification to ensure that expression references from FHIR artifacts don't require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references.
+The recommendation that CQL libraries be structured such that all references to expressions from a FHIR artifact are to a single Library is a simplification to ensure that expression references from FHIR artifacts don’t require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references. However, when an artifact uses multiple libraries, all expressions within the artifact SHALL be qualified. 
 
 #### Library Namespaces
 {: #library-namespaces}
@@ -426,6 +430,8 @@ meaningful name (avoid abbreviations) and conform to Conformance Requirement 2.1
       b. **SHOULD** Use Initial Case<br/>
       c. **MAY** Include spaces
 
+**Initial Case Definition** is defined as the first letter of every word is capitalized (e.g. "Observation With Status") (as opposed to Title Case, which would be "Observation with Status")
+
 For example:
 
 ```cql
@@ -625,7 +631,7 @@ In addition to the use of CQL directly in expression-valued elements, CQL conten
 **Conformance Requirement 2.17 (Library Resources):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-17)
 {: #conformance-requirement-2-17}
 
-1. Content conforming to this implementation guide **SHALL** use FHIR Library resources to represent and CQL libraries in FHIR.
+1. Content conforming to this implementation guide **SHALL** use FHIR Library resources to represent CQL libraries in FHIR.
 
 #### Library Name and URL
 {: #library-name-and-url}
@@ -642,7 +648,7 @@ In addition to the use of CQL directly in expression-valued elements, CQL conten
 * CQL namespace name **SHALL** be IG.packageId
 * CQL namespace url **SHALL** be IG.canonicalBase
 
-3. CQL library source files **SHOULD** be named `<CQLLibraryName>.cql`
+3. CQL library source files **SHOULD** be named `<CQLLibraryName>-<version>.cql`
 4. To avoid issues with characters between web ids and names, library names **SHALL NOT** have underscores.
 
 The prohibition against underscores in CQL library names is required to ensure compliance with the canonical URL pattern (because URLs by convention should not use underscores). In addition, many publishing environments will use the canonical tail (i.e. the name of the library) as the logical id of the Library resource, which does not allow underscores per the FHIR specification.

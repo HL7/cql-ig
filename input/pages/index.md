@@ -26,6 +26,8 @@ The following changes were made as a result of ballot comments received in the S
 
 [Clinical Quality Language (CQL)](http://cql.hl7.org) is a clinically-focused query language that can be used to express logic in a broad range of healthcare use cases, including clinical decision and cognitive support, public health and quality reporting, computable clinical guidelines, research trial eligibility, and many others. Several implementation guides have been published that include conformance criteria related to the use of CQL in these contexts. This implementation guide is the result of extracting common aspects of that support to a universal realm, broadly applicable implementation guide that supports the use of CQL with FHIR. Future versions of those implementation guides should consider referencing the conformance and guidance established here.
 
+Some of the conformance language and requirements described in this implementation guide, particularly around the use of terminology, may be applicable more broadly. We propose the inclusion of appropriate conformance requirements and guidance in a future version of the CQL specification.
+
 ### Scope of Use
 
 The intent of this implementation guide is to support the use of CQL with FHIR in general. It is a universal realm specification and is intended to be broadly applicable to any use case that involves libraries or expressions of CQL evaluating against FHIR resources, including:

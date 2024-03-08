@@ -152,7 +152,7 @@
       "use" : "out",
       "min" : 1,
       "max" : "1",
-      "documentation" : "The results of the library evaluation, returned as a Parameters resource with a parameter for each named expression defined in the library. The value of each expression is returned as a FHIR type, either a resource, or a FHIR-defined type corresponding to the CQL return type, as defined in the Using CQL section of this implementation guide. If the result of an expression is a list of resources, that parameter will be repeated for each element in the result",
+      "documentation" : "The results of the library evaluation, returned as a Parameters resource with a parameter for each named expression requested by the expression input parameter (or all public expressions defined in the library if no expression input parameter was specified). Note that explicit request for evaluation of an expression does not respect the access modifier (i.e. even private expressions can be evaluated by directly requesting evaluation of the expression by name).",
       "type" : "Parameters"
     }]
   }
