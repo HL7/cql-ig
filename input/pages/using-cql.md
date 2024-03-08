@@ -99,7 +99,7 @@ contained within a single library.
 2. CQL libraries **SHALL** use a `called` clause for all included libraries
 3. The `called`-alias for an included library **SHOULD** be consistent for usages across libraries
 
-The recommendation that CQL libraries be structured such that all expressions used in a given FHIR artifact are contained within a single CQL library is a simplification to ensure that expression references from FHIR artifacts don't require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references. 
+The recommendation that CQL libraries be structured such that all expressions used in a given FHIR artifact are contained within a single CQL library is a simplification to ensure that expression references from FHIR artifacts don't require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references.
 
 #### Library Namespaces
 {: #library-namespaces}
@@ -186,7 +186,7 @@ system version available on the server.
 
 ##### Value set spelling and case usage.
 
-        "Value set", with two words, regardless of case, is the human-readable spelling. 
+        "Value set", with two words, regardless of case, is the human-readable spelling.
         "ValueSet", with one word and in PascalCase, is the FHIR Type.
         "valueset", with one word and all lower case, is the proper spelling for use within cql statements and expressions, except when used within a URL.
 
@@ -686,7 +686,30 @@ define "Non Elective Inpatient Encounter":
   ["Encounter": "Nonelective Inpatient Encounter"] NonElectiveEncounter
         where NonElectiveEncounter.period ends during day of "Measurement Period"
 ```
-
+Which might be represented as
+```
+{
+    "resourceType": "Parameters",
+    "id": "cql-list-example",
+    "meta": {
+      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
+    },
+    "parameter": [ {
+      "name": "Non Elective Inpatient Encounter",
+      "resource": {
+        "resourceType": "Encounter",
+        ...
+      }
+    }, {
+      "name": "Non Elective Inpatient Encounter",
+      "resource": {
+      "resourceType": "Encounter",
+      ...
+      }
+    }
+  ]
+}
+```
 * Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
 
 For example:
@@ -699,7 +722,29 @@ define "SDE Ethnicity":
       display: E.text
     }
 ```
-
+Which might be represented as
+```
+{
+    "resourceType": "Parameters",
+    "id": "cql-tuple-example",
+    "meta": {
+      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
+    },
+    "parameter": [ {
+      "name": "SDE Ethnicity",
+      "part": [
+        {
+          "name": "code",
+          "valueCode": "2135-2"
+        },
+        {
+          "name": "display",
+          "valueString": "Hispanic or Latino"
+        }
+      ]
+    }]
+}
+```
 #### Parameters and Data Requirements
 {: #parameters-and-data-requirements}
 
