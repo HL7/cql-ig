@@ -98,8 +98,6 @@ pages:
     title: Version History
   acknowledgements.md:
     title: Acknowledgements
-  glossary.md:
-    title: Glossary
 
 # The resources property corresponds to IG.definition.resource.
 # SUSHI can auto-generate all of the resource entries based on
