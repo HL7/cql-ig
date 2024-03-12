@@ -63,6 +63,8 @@
       {
         "id": "Library",
         "path": "Library",
+        "min": 1,
+        "max": "*",
         "mustSupport": false
       },
       {
