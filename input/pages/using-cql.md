@@ -2,7 +2,7 @@
 
 {: #using-cql}
 
-This topic specifies conformance requirements and guidance for the use of CQL with FHIR, whether that be as in-line expressions in expression-valued elements, or in CQL libraries contained in FHIR Library resources.
+This topic specifies conformance requirements and guidance for the use of Clinical Quality Language (CQL) with Fast Healthcare Interoperability Resources (FHIR), whether that be as in-line expressions in expression-valued elements, or in CQL libraries contained in FHIR Library resources.
 
 ### Libraries
 {: #libraries}
@@ -27,7 +27,7 @@ This declaration specifies the name of the library as `EXM146`. See the discussi
 #### Library Versioning
 {: #library-versioning}
 
-This IG recommends [Semantic Versioning](https://semver.org) be used to version libraries used within knowledge artifacts to help track and manage dependencies.
+This Implementation Guide (IG) recommends [Semantic Versioning](https://semver.org) be used to version libraries used within knowledge artifacts to help track and manage dependencies.
 
 **Conformance Requirement 2.2 (Library Versioning):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-2)
 {: #conformance-requirement-2-2}
@@ -118,10 +118,10 @@ library CMS.Common version '2.0.0'
 ```
 
 This example declares a library named Common in the CMS namespace. Per the [CQL specification](https://cql.hl7.org/04-logicalspecification.html#versionedidentifier), the namespace for a
-library is included in the ELM in the `Library.identifier` element, along with a URI that provides a globally unique, stable identifier for the namespace.
+library is included in the ELM in the `Library.identifier` element, along with a Uniform Resource Identifier (URI) that provides a globally unique, stable identifier for the namespace.
 For example, the URI for the CMS namespace might be `https://ecqi.healthit.gov/ecqm/measures`.
 
-Note that this is a URI that may or may not correspond to a reachable web address (a URL). The important aspect is not
+Note that this is a URI that may or may not correspond to a reachable web address (a Uniform Resource Locater (URL)). The important aspect is not
 the addressability, but the uniqueness, ensuring that library name collisions cannot occur.
 
 **Conformance Requirement 2.4 (Library Namespaces):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-4)
@@ -173,7 +173,7 @@ codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct'
 Snippet 2-4: codesystem definition line from Terminology.cql.
 
 The canonical URL for a code system is a globally unique, stable, version-independent identifier for the code system.
-The [HL7 Terminology site (THO)](http://terminology.hl7.org) defines canonical URLs for most common code systems.
+The [HL7 Terminology (THO) site ](http://terminology.hl7.org) defines canonical URLs for most common code systems.
 
 The local identifier for the codesystem ("SNOMED CT:2017-09" in this case) should include the friendly name of the code system
 and optionally, an indication of the version, separated with a colon.
