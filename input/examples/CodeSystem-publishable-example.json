@@ -3,7 +3,7 @@
   "id": "publishable-example",
   "url": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
   "name": "ANCMConceptCodes",
-  "title": "ANCM Concept Codes",
+  "title": "Example ANCM Concept Codes",
   "status": "draft",
   "experimental": false,
   "description": "Set of codes representing all concepts used in the implementation guide",

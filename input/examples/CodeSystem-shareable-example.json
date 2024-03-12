@@ -3,7 +3,7 @@
     "id": "shareable-example",
     "url": "http://hl7.org/fhir/uv/cql/CodeSystem/shareable-example",
     "name": "ANCMActivityCodes",
-    "title": "ANCM Activity Codes",
+    "title": "Example ANCM Activity Codes",
     "status": "draft",
     "experimental": false,
     "description": "Set of codes representing all activities used in the ANC Mini implementation guide",
