@@ -86,9 +86,9 @@
         "id": "Library.extension:inputParameters",
         "path": "Library.extension",
         "sliceName": "inputParameters",
+        "short": "The cqf-inputParameters extension is used to provide the actual parameters given to an operation (i.e. when the module is the result of a $data-requirements operation, what were the parameters to the operation). As opposed to the Library.parameter element, which provides the definition of parameters for the module.",
         "min": 0,
         "max": "1",
-        "comment": "The cqf-inputParameters extension is used to provide the actual parameters given to an operation (i.e. when the module is the result of a $data-requirements operation, what were the parameters to the operation). As opposed to the Library.parameter element, which provides the definition of parameters for the module.",
         "type": [
           {
             "code": "Extension",
@@ -123,15 +123,14 @@
       {
         "id": "Library.parameter",
         "path": "Library.parameter",
+        "short": "Provides the definition of parameters for the module.",
         "requirements": "A module definition library must define any input and output parameters.",
-        "comment": "Provides the definition of parameters for the module.",
         "mustSupport": true
       },
       {
         "id": "Library.parameter.extension:defaultValue",
         "path": "Library.parameter.extension",
         "sliceName": "defaultValue",
-        "short": "cqf-defaultValue is used if the parameter definition has a default to provide the expected value of the default. Note that the value is provided according to the FHIR Type Mapping",
         "min": 0,
         "max": "1",
         "type": [
@@ -148,7 +147,6 @@
         "id": "Library.parameter.extension:cqlType",
         "path": "Library.parameter.extension",
         "sliceName": "cqlType",
-        "short": "cqf-cqlType is used to ensure that the type of the parameter can be unambiguously provided, given that the FHIR Type Mapping is potentially ambiguous (for the Period type specifically)",
         "min": 0,
         "max": "1",
         "type": [
