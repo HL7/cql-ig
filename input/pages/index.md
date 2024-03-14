@@ -14,7 +14,7 @@ This is the first ballot of this implementation guide in this form, but the cont
 * [Quality Measures](https://hl7.org/fhir/us/cqfmeasures/using-cql.html)
 * [Canonical Resource Management Infrastructure](http://hl7.org/fhir/uv/crmi/2023Sep/using-cql.html)
 
-The following changes were made as a result of ballot comments received in the September 2023 ballot of the Canonical Resource Management Infrastructure IG. One of those comments was the suggestion to break this CQL-specific content out into its own implementation guide; this IG is the result of that change.
+The following changes were made as a result of ballot comments received in the September 2023 ballot of the Canonical Resource Management Infrastructure Implementation Guide (IG). One of those comments was the suggestion to break this CQL-specific content out into its own implementation guide; this IG is the result of that change.
 
 {{ site.data.package-list.list[0].desc }}
 
@@ -24,7 +24,7 @@ The following changes were made as a result of ballot comments received in the S
 ### Summary
 {: #summary}
 
-[Clinical Quality Language (CQL)](http://cql.hl7.org) is a clinically-focused query language that can be used to express logic in a broad range of healthcare use cases, including clinical decision and cognitive support, public health and quality reporting, computable clinical guidelines, research trial eligibility, and many others. Several implementation guides have been published that include conformance criteria related to the use of CQL in these contexts. This implementation guide is the result of extracting common aspects of that support to a universal realm, broadly applicable implementation guide that supports the use of CQL with FHIR. Future versions of those implementation guides should consider referencing the conformance and guidance established here.
+[Clinical Quality Language (CQL)](http://cql.hl7.org) is a clinically-focused query language that can be used to express logic in a broad range of healthcare use cases, including clinical decision and cognitive support, public health and quality reporting, computable clinical guidelines, research trial eligibility, and many others. Several implementation guides have been published that include conformance criteria related to the use of CQL in these contexts. This implementation guide is the result of extracting common aspects of that support to a universal realm, broadly applicable implementation guide that supports the use of CQL with Fast Healthcare Interoperability Resources (FHIR). Future versions of those implementation guides should consider referencing the conformance and guidance established here.
 
 Some of the conformance language and requirements described in this implementation guide, particularly around the use of terminology, may be applicable more broadly. We propose the inclusion of appropriate conformance requirements and guidance in a future version of the CQL specification.
 
@@ -51,7 +51,6 @@ page in the menu bar:
 -  **[Terminology](terminology.html)**: List of CodeSystems and ValueSets.
 -  **[Artifacts Summary](artifacts.html)**: List of the FHIR artifacts defined as part of this implementation guide.
 -  **[Acknowledgements](acknowledgements.html)**: Acknowledgements of contributors/authors.
--  **[Glossary](glossary.html)**: List of terms and acronyms used in this IG.
 -  **[Downloads](downloads.html)**: Links to downloadable artifacts for implementations.
 -  **[Version History](changes.html)**: Changes made in each version of the Using CQL with FHIR Implementation Guide.
 
@@ -59,7 +58,7 @@ page in the menu bar:
 
 Certain elements in the profiles defined in this implementation guide are marked as Must Support. This flag is used to indicate that the element plays a critical role in defining, sharing, and implementing artifacts, and implementations **SHALL** understand and process the element.
 
-In addition, because artifact specifications typically make use of data implementation guides (e.g. IPS, US Core, QI-Core), the implications of the Must Support flag for profiles used from those implementation guides must be considered.
+In addition, because artifact specifications typically make use of data implementation guides (e.g. International Patient Summary(IPS), US Core, QI-Core), the implications of the Must Support flag for profiles used from those implementation guides must be considered.
 
 For more information, see the definition of [Must Support](https://hl7.org/fhir/R4/profiling.html#mustsupport) in the base FHIR specification.
 
