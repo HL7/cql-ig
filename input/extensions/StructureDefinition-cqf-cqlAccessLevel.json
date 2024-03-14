@@ -75,9 +75,13 @@
         "path": "Extension.value[x]",
         "type": [
           {
-            "code": "string"
+            "code": "code"
           }
-        ]
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://terminology.hl7.org/ValueSet/cql-access-modifier"
+        }
       }
     ]
   }
