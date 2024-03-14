@@ -2,7 +2,7 @@
 
 {: #using-cql}
 
-This topic specifies conformance requirements and guidance for the use of CQL with FHIR, whether that be as in-line expressions in expression-valued elements, or in CQL libraries contained in FHIR Library resources.
+This topic specifies conformance requirements and guidance for the use of Clinical Quality Language (CQL) with Fast Healthcare Interoperability Resources (FHIR), whether that be as in-line expressions in expression-valued elements, or in CQL libraries contained in FHIR Library resources.
 
 ### Libraries
 {: #libraries}
@@ -27,7 +27,7 @@ This declaration specifies the name of the library as `EXM146`. See the discussi
 #### Library Versioning
 {: #library-versioning}
 
-This IG recommends [Semantic Versioning](https://semver.org) be used to version libraries used within knowledge artifacts to help track and manage dependencies.
+This Implementation Guide (IG) recommends [Semantic Versioning](https://semver.org) be used to version libraries used within knowledge artifacts to help track and manage dependencies.
 
 **Conformance Requirement 2.2 (Library Versioning):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-2)
 {: #conformance-requirement-2-2}
@@ -103,7 +103,7 @@ contained within a single library.
 2. CQL libraries **SHALL** use a `called` clause for all included libraries
 3. The `called`-alias for an included library **SHOULD** be consistent for usages across libraries
 
-The recommendation that CQL libraries be structured such that all references to expressions from a FHIR artifact are to a single Library is a simplification to ensure that expression references from FHIR artifacts don’t require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references. However, when an artifact uses multiple libraries, all expressions within the artifact SHALL be qualified. 
+The recommendation that CQL libraries be structured such that all references to expressions from a FHIR artifact are to a single Library is a simplification to ensure that expression references from FHIR artifacts don’t require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references. However, when an artifact uses multiple libraries, all expressions within the artifact SHALL be qualified.
 
 #### Library Namespaces
 {: #library-namespaces}
@@ -118,10 +118,10 @@ library CMS.Common version '2.0.0'
 ```
 
 This example declares a library named Common in the CMS namespace. Per the [CQL specification](https://cql.hl7.org/04-logicalspecification.html#versionedidentifier), the namespace for a
-library is included in the ELM in the `Library.identifier` element, along with a URI that provides a globally unique, stable identifier for the namespace.
+library is included in the ELM in the `Library.identifier` element, along with a Uniform Resource Identifier (URI) that provides a globally unique, stable identifier for the namespace.
 For example, the URI for the CMS namespace might be `https://ecqi.healthit.gov/ecqm/measures`.
 
-Note that this is a URI that may or may not correspond to a reachable web address (a URL). The important aspect is not
+Note that this is a URI that may or may not correspond to a reachable web address (a Uniform Resource Locater (URL)). The important aspect is not
 the addressability, but the uniqueness, ensuring that library name collisions cannot occur.
 
 **Conformance Requirement 2.4 (Library Namespaces):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-4)
@@ -173,7 +173,7 @@ codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct'
 Snippet 2-4: codesystem definition line from Terminology.cql.
 
 The canonical URL for a code system is a globally unique, stable, version-independent identifier for the code system.
-The [HL7 Terminology site (THO)](http://terminology.hl7.org) defines canonical URLs for most common code systems.
+The [HL7 Terminology (THO) site ](http://terminology.hl7.org) defines canonical URLs for most common code systems.
 
 The local identifier for the codesystem ("SNOMED CT:2017-09" in this case) should include the friendly name of the code system
 and optionally, an indication of the version, separated with a colon.
@@ -190,7 +190,7 @@ system version available on the server.
 
 ##### Value set spelling and case usage.
 
-        "Value set", with two words, regardless of case, is the human-readable spelling. 
+        "Value set", with two words, regardless of case, is the human-readable spelling.
         "ValueSet", with one word and in PascalCase, is the FHIR Type.
         "valueset", with one word and all lower case, is the proper spelling for use within cql statements and expressions, except when used within a URL.
 
@@ -692,7 +692,30 @@ define "Non Elective Inpatient Encounter":
   ["Encounter": "Nonelective Inpatient Encounter"] NonElectiveEncounter
         where NonElectiveEncounter.period ends during day of "Measurement Period"
 ```
-
+Which might be represented as
+```
+{
+    "resourceType": "Parameters",
+    "id": "cql-list-example",
+    "meta": {
+      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
+    },
+    "parameter": [ {
+      "name": "Non Elective Inpatient Encounter",
+      "resource": {
+        "resourceType": "Encounter",
+        ...
+      }
+    }, {
+      "name": "Non Elective Inpatient Encounter",
+      "resource": {
+      "resourceType": "Encounter",
+      ...
+      }
+    }
+  ]
+}
+```
 * Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
 
 For example:
@@ -705,7 +728,29 @@ define "SDE Ethnicity":
       display: E.text
     }
 ```
-
+Which might be represented as
+```
+{
+    "resourceType": "Parameters",
+    "id": "cql-tuple-example",
+    "meta": {
+      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
+    },
+    "parameter": [ {
+      "name": "SDE Ethnicity",
+      "part": [
+        {
+          "name": "code",
+          "valueCode": "2135-2"
+        },
+        {
+          "name": "display",
+          "valueString": "Hispanic or Latino"
+        }
+      ]
+    }]
+}
+```
 #### Parameters and Data Requirements
 {: #parameters-and-data-requirements}
 
@@ -713,8 +758,8 @@ define "SDE Ethnicity":
 {: #conformance-requirement-2-20}
 
 1. Parameters to CQL libraries **SHALL** be either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations.
-2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations
-3. Tuple types are represented with Parameters that have `part` elements corresponding to the elements of the tuple. List types are represented with Parameters that have a cardinality of 0..*.
+2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types (as defined in 2.19), or FHIR resources types, optionally with profile designations
+3. Tuple types are represented in FHIR as a `parameter` that has parts corresponding to the elements of the tuple type. List types are represented in FHIR as a `parameter` that has a cardinality of 0..*.
 4. Libraries used in computable artifacts **SHALL** use the `parameter` element to identify input parameters as well as the type of all top-level expressions as output parameters.
 5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL:
 
