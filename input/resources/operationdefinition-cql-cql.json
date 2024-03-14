@@ -28,7 +28,7 @@
         "value" : "http://www.hl7.org/Special/committees/dss"
       }]
     }],
-    "description" : "Evaluates a CQL expression and returns the results as a Parameters resource.",
+    "description" : "The $cql operation evaluates a CQL expression and returns the result. The operation has a single return parameter that can be of any type to accommodate the possible result types of a CQL expression.",
     "jurisdiction" : [{
       "coding" : [{
         "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
@@ -166,7 +166,7 @@
       "use" : "out",
       "min" : 1,
       "max" : "*",
-      "documentation" : "The result of evaluating the given expression, returned as a FHIR type, either a resource, or a FHIR-defined type corresponding to the CQL return type, as defined in the Using CQL section of this implementation guide. If the result is a List of resources, the result will be a Bundle. If the result is a CQL system-defined or FHIR-defined type, the result is returned as a Parameters resource",
-      "type" : "Resource"
+      "documentation" : "The result of evaluating the given expression, returned as a FHIR Type following the mapping from CQL to FHIR types (link to mapping). If the result is a list, the parameter will be repeated for each element in the list, with the special case that an empty list is represented with a parameter with no value but a cqlType extension indicating the type of the result (e.g. List<Integer>) and the cqf-isEmptyList extension (as defined in https://jira.hl7.org/browse/FHIR-43795)\n\nBecause the cardinality of the return parameter is 1..*, this means the result of the $cql evaluate will always be a Parameters resource.",
+      "type" : "Any"
     }]
   }
