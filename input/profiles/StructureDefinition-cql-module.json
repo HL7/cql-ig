@@ -86,6 +86,7 @@
         "id": "Library.extension:inputParameters",
         "path": "Library.extension",
         "sliceName": "inputParameters",
+        "short": "The cqf-inputParameters extension is used to provide the actual parameters given to an operation (i.e. when the module is the result of a $data-requirements operation, what were the parameters to the operation). As opposed to the Library.parameter element, which provides the definition of parameters for the module.",
         "min": 0,
         "max": "1",
         "type": [
@@ -122,6 +123,7 @@
       {
         "id": "Library.parameter",
         "path": "Library.parameter",
+        "short": "Provides the definition of parameters for the module.",
         "requirements": "A module definition library must define any input and output parameters.",
         "mustSupport": true
       },

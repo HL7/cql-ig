@@ -190,7 +190,7 @@ system version available on the server.
 
 ##### Value set spelling and case usage.
 
-        "Value set", with two words, regardless of case, is the human-readable spelling. 
+        "Value set", with two words, regardless of case, is the human-readable spelling.
         "ValueSet", with one word and in PascalCase, is the FHIR Type.
         "valueset", with one word and all lower case, is the proper spelling for use within cql statements and expressions, except when used within a URL.
 
@@ -692,7 +692,30 @@ define "Non Elective Inpatient Encounter":
   ["Encounter": "Nonelective Inpatient Encounter"] NonElectiveEncounter
         where NonElectiveEncounter.period ends during day of "Measurement Period"
 ```
-
+Which might be represented as
+```
+{
+    "resourceType": "Parameters",
+    "id": "cql-list-example",
+    "meta": {
+      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
+    },
+    "parameter": [ {
+      "name": "Non Elective Inpatient Encounter",
+      "resource": {
+        "resourceType": "Encounter",
+        ...
+      }
+    }, {
+      "name": "Non Elective Inpatient Encounter",
+      "resource": {
+      "resourceType": "Encounter",
+      ...
+      }
+    }
+  ]
+}
+```
 * Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
 
 For example:
@@ -705,7 +728,29 @@ define "SDE Ethnicity":
       display: E.text
     }
 ```
-
+Which might be represented as
+```
+{
+    "resourceType": "Parameters",
+    "id": "cql-tuple-example",
+    "meta": {
+      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
+    },
+    "parameter": [ {
+      "name": "SDE Ethnicity",
+      "part": [
+        {
+          "name": "code",
+          "valueCode": "2135-2"
+        },
+        {
+          "name": "display",
+          "valueString": "Hispanic or Latino"
+        }
+      ]
+    }]
+}
+```
 #### Parameters and Data Requirements
 {: #parameters-and-data-requirements}
 
@@ -713,8 +758,8 @@ define "SDE Ethnicity":
 {: #conformance-requirement-2-20}
 
 1. Parameters to CQL libraries **SHALL** be either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations.
-2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations
-3. Tuple types are represented with Parameters that have `part` elements corresponding to the elements of the tuple. List types are represented with Parameters that have a cardinality of 0..*.
+2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resources types, optionally with profile designations
+3. Tuple types are represented in FHIR as a `parameter` that has parts corresponding to the elements of the tuple types. List types are represented in FHIR as a `parameter` that has a cardinality of 0..*.
 4. Libraries used in computable artifacts **SHALL** use the `parameter` element to identify input parameters as well as the type of all top-level expressions as output parameters.
 5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL:
 
