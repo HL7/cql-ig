@@ -103,7 +103,7 @@ contained within a single library.
 2. CQL libraries **SHALL** use a `called` clause for all included libraries
 3. The `called`-alias for an included library **SHOULD** be consistent for usages across libraries
 
-The recommendation that CQL libraries be structured such that all references to expressions from a FHIR artifact are to a single Library is a simplification to ensure that expression references from FHIR artifacts don’t require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references. However, when an artifact uses multiple libraries, all expressions within the artifact SHALL be qualified. 
+The recommendation that CQL libraries be structured such that all references to expressions from a FHIR artifact are to a single Library is a simplification to ensure that expression references from FHIR artifacts don’t require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references. However, when an artifact uses multiple libraries, all expressions within the artifact SHALL be qualified.
 
 #### Library Namespaces
 {: #library-namespaces}
@@ -190,7 +190,7 @@ system version available on the server.
 
 ##### Value set spelling and case usage.
 
-        "Value set", with two words, regardless of case, is the human-readable spelling. 
+        "Value set", with two words, regardless of case, is the human-readable spelling.
         "ValueSet", with one word and in PascalCase, is the FHIR Type.
         "valueset", with one word and all lower case, is the proper spelling for use within cql statements and expressions, except when used within a URL.
 
@@ -713,7 +713,7 @@ define "SDE Ethnicity":
 {: #conformance-requirement-2-20}
 
 1. Parameters to CQL libraries **SHALL** be either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations.
-2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations
+2. Top level expressions in CQL libraries **SHALL** return either CQL types that can be mapped to FHIR types (as defined in 2.19), or FHIR resource types, optionally with profile designations
 3. Tuple types are represented with Parameters that have `part` elements corresponding to the elements of the tuple. List types are represented with Parameters that have a cardinality of 0..*.
 4. Libraries used in computable artifacts **SHALL** use the `parameter` element to identify input parameters as well as the type of all top-level expressions as output parameters.
 5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL:
