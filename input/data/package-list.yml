@@ -42,3 +42,4 @@ list:
       * **Applied**: add link to cqf-notDoneValueSet ([FHIR-44512](https://jira.hl7.org/browse/FHIR-44512)) ([Applied here](using-cql.html#negation-rationale))
       * **Applied**: Large number of technical corrections ([FHIR-44548 ](https://jira.hl7.org/browse/FHIR-44548))Applied ([here](using-cql.html#conformance-requirement-2-2)), ([here](using-cql.html#attribute-names)), ([here](using-cql.html#conformance-requirement-2-20)), ([here](profiles.html)), and ([here](extensions.html))
       * **Applied**: Missing periods  ([FHIR-44087](https://jira.hl7.org/browse/FHIR-44087)) ([Applied here](using-cql.html#conformance-requirement-2-6))
+      * **Applied**: Mismatch between CQL Capability Statement profile and example  ([FHIR-43734](https://jira.hl7.org/browse/FHIR-43734)) Applied ([here](StructureDefinition-cql-capabilitystatement.html))
