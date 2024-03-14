@@ -713,8 +713,8 @@ define "SDE Ethnicity":
 {: #conformance-requirement-2-20}
 
 1. Parameters to CQL libraries **SHALL** be either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations.
-2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations
-3. Tuple types are represented with Parameters that have `part` elements corresponding to the elements of the tuple. List types are represented with Parameters that have a cardinality of 0..*.
+2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resources types, optionally with profile designations
+3. Tuple types are represented in FHIR as a `parameter` that has parts corresponding to the elements of the tuple types. List types are represented in FHIR as a `parameter` that has a cardinality of 0..*.
 4. Libraries used in computable artifacts **SHALL** use the `parameter` element to identify input parameters as well as the type of all top-level expressions as output parameters.
 5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL:
 
