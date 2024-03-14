@@ -99,6 +99,7 @@
             ]
           }
         ],
+        "defaultValue": "unknown",
         "mustSupport": true
       }
     ]
