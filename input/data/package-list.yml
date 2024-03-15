@@ -46,3 +46,4 @@ list:
       * **Applied**: CQL Module: Consider using invariant to require parameters have defaultValue or cqlType ([FHIR-43741](https://jira.hl7.org/browse/FHIR-43741)) ([Applied here](StructureDefinition-cql-module-definitions.html))
       * **Applied**: CQL CQL Operation: Clarify return  ([FHIR-43762](https://jira.hl7.org/browse/FHIR-43762)) ([Applied here](OperationDefinition-cql-cql.html))
       * **Applied**: CQL Module: Clarify inputParameters extension vs Library.parameter element  ([FHIR-43740](https://jira.hl7.org/browse/FHIR-43740)) ([Applied here](StructureDefinition-cql-module-definitions.html))
+      * **Applied**: Clarify Data Type Names section ([FHIR-43786](https://jira.hl7.org/browse/FHIR-43786)) Applied ([here](using-cql.html))

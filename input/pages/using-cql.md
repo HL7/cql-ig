@@ -34,7 +34,7 @@ This Implementation Guide (IG) recommends [Semantic Versioning](https://semver.o
   1. The library declaration **SHOULD** specify a version.
   2. The library version **SHOULD** follow the convention:
        < major >.< minor >.< patch >
-3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable.
+  3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable
   4. The versioning scheme **SHALL** apply when an artifact moves to active status.
 
 There are three main types of changes that can be made to a library:
@@ -904,6 +904,46 @@ Because certain translator options impact language features and functionality, t
 
 When using CQL with FHIR, FHIR StructureDefinition resources are used to create the ModelInfo that describes the types for use in CQL, according to the following rules:
 
+#### Data Type Names
+{: #data-type-names}
+
+A "data type" in CQL refers to any named type used within CQL expressions. They may be primitive types, such as the
+system-defined "Integer" and "DateTime", or they may be model-defined types such as "Encounter" or "Medication". For
+FHIR-based knowledge artifacts using model information based on implementation guides (such as the QI-Core profiles),
+these will be the author-friendly identifiers for the profile. Data types referenced in CQL libraries to be included
+in a knowledge artifact must conform to Conformance Requirement 2.24.
+
+**PascalCase (or UpperCamelCase)**: Each word in the identifier is capitalized, including the first word.
+Example: MedicationRequest
+
+**camelCase (or lowerCamelCase)**: The first word starts with lowercase, and subsequent words start with uppercase.
+Example: medicationRequest
+
+**Title Case**: The first letter of each word is capitalized, except for certain small words like articles, conjunctions, and prepositions unless they are the first word.
+Example: "Medication Request"
+
+
+**Conformance Requirement 2.24 (Data Type Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-24)
+{: #conformance-requirement-2-24}
+
+1. Data type names referenced in CQL **SHALL**:<br/>
+   a. Use quoted identifiers only if necessary (i.e. the data type name includes spaces)<br/>
+   b. Use PascalCase plus appropriate spacing
+
+For example:
+
+```cql
+define "Flexible Sigmoidoscopy Performed":
+  [Procedure: "Flexible Sigmoidoscopy"] FlexibleSigmoidoscopy
+    where FlexibleSigmoidoscopy.status = 'completed'
+      and FlexibleSigmoidoscopy.performed ends 5 years or less on or before end of "Measurement Period"
+```
+
+Snippet 2-9: Expression definition from EXM130.cql
+
+The `Procedure` is the name of the model data type (FHIR resource type) in this example.
+
+
 1. For each StructureDefinition, if the kind is `primitive-type`, `complex-type` (except for types based on Extension), or `resource` (with no derivation or a derivation of `specialization`), a ClassInfo with the same name as the structure definition is created
     1. For each element:
         1. If the element is not a backbone element, a corresponding element with the name and type is added to the ClassInfo. If the maximum cardinality of the element is not "1", the element is created as a list type.
@@ -921,8 +961,10 @@ To facilitate comparison by authors, these primitives can be implicitly converte
 
 Similar to CQL content, ModelInfo can be included in FHIR Library resources to facilitate distribution.
 
-**Conformance Requirement 2.24 (ModelInfo Libraries):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-23)
-{: #conformance-requirement-2-24}
+
+
+**Conformance Requirement 2.25 (ModelInfo Libraries):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-25)
+{: #conformance-requirement-2-25}
 
 1. Libraries used to packgae ModelInfo **SHALL** conform to the [CQLModelInfo](StructureDefinition-cql-modelinfo.html) profile
 
