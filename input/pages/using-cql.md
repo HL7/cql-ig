@@ -2,17 +2,19 @@
 
 {: #using-cql}
 
-This topic specifies conformance requirements and guidance for the use of CQL with FHIR, whether that be as in-line expressions in expression-valued elements, or in CQL libraries contained in FHIR Library resources.
+This topic specifies conformance requirements and guidance for the use of Clinical Quality Language (CQL) with Fast Healthcare Interoperability Resources (FHIR), whether that be as in-line expressions in expression-valued elements, or in CQL libraries contained in FHIR Library resources.
 
 ### Libraries
 {: #libraries}
 
-Declarations in CQL are packaged in containers called _libraries_ which provide a unit for the definition, distribution, and versioning of CQL logic. The following conformance requirements and guidance apply When libraries of CQL are used with FHIR knowledge artifacts.
+Declarations in CQL are packaged in containers called _libraries_ which provide a unit for the definition, distribution, and versioning of CQL logic. The following conformance requirements and guidance apply when libraries of CQL are used with FHIR knowledge artifacts.
 
 **Conformance Requirement 2.1 (Library Declaration):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-1)
 {: #conformance-requirement-2-1}
   1. Any CQL library used by a FHIR artifact **SHALL** contain a [library declaration.](https://cql.hl7.org/02-authorsguide.html#library)
-  2. The library identifier **SHALL** be a valid un-quoted identifier and **SHALL NOT** contain underscores
+  2. The library identifier **SHALL** be a valid un-quoted identifier and **SHALL NOT** contain underscores. The library identifier **SHALL** only contain alphanumeric characters.
+
+**Note** The example in the Author's Guide from the above library declaration link is not following the "Using CQL With FHIR" convention of prohibiting underscores in library names.
 
 For example:
 
@@ -25,26 +27,26 @@ This declaration specifies the name of the library as `EXM146`. See the discussi
 #### Library Versioning
 {: #library-versioning}
 
-This IG recommends [Semantic Versioning](https://semver.org) be used to version libraries used within knowledge artifacts to help track and manage dependencies.
+This Implementation Guide (IG) recommends [Semantic Versioning](https://semver.org) be used to version libraries used within knowledge artifacts to help track and manage dependencies.
 
 **Conformance Requirement 2.2 (Library Versioning):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-2)
 {: #conformance-requirement-2-2}
   1. The library declaration **SHOULD** specify a version.
-  2. The library version **SHOULD** follow the convention :  
+  2. The library version **SHOULD** follow the convention:
        < major >.< minor >.< patch >
-  3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable
+3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable.
   4. The versioning scheme **SHALL** apply when an artifact moves to active status.
 
 There are three main types of changes that can be made to a library:
 
-  1. A library can be changed in a way that would alter the public use of its components. 
-  2. A library can be changed by adding new components or functionality but without changing the way that existing components are used. 
+  1. A library can be changed in a way that would alter the public use of its components.
+  2. A library can be changed by adding new components or functionality but without changing the way that existing components are used.
   3. A library can be changed in a way that does not change existing components or add new components, but only corrects or improves the originally intended functionality.
 
 By exposing version numbers that identify all three types of changes, libraries can be versioned in a way that makes
 clear when a change will impact usage, versus when a change can potentially be safely incorporated as an update. The
-first type of change will be referred to as a "major" change, and will require incrementing of the "major version
-number". The second type of change will be referred to as a "minor" change, and will only require incrementing of the
+first type of change will be referred to as a "major" change, and will require incrementing the "major version
+number". The second type of change will be referred to as a "minor" change, and will only require incrementing the
 "minor version number". And finally, the third type of change will be referred to as a "patch", and will only require
 incrementing the "patch version number". Version numbers for CQL libraries can then be represented as:
 
@@ -426,6 +428,35 @@ Snippet 2-8: Function definition from Common.cql
 
 The `"Includes Or Starts During"` is the library-level identifier in this example.
 
+### Data Type Names
+{: #data-type-names}
+
+A "data type" in CQL refers to any named type used within CQL expressions. They may be primitive types, such as the
+system-defined "Integer" and "DateTime", or they may be model-defined types such as "Encounter" or "Medication". For
+FHIR-based knowledge artifacts using model information based on implementation guides (such as the QI-Core profiles), 
+these will be the author-friendly identifiers for the profile. Data types referenced in CQL libraries to be included 
+in a knowledge artifact must conform to Conformance Requirement 2.14.
+
+**Conformance Requirement 2.14 (Data Type Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-14)
+{: #conformance-requirement-2-14}
+
+1. Data type names referenced in CQL **SHALL**:<br/>
+       a. Use quoted identifiers only if necessary (i.e. the data type name includes spaces)<br/>
+       b. Use PascalCase plus appropriate spacing
+
+For example:
+
+```cql
+define "Flexible Sigmoidoscopy Performed":
+  [Procedure: "Flexible Sigmoidoscopy"] FlexibleSigmoidoscopy
+    where FlexibleSigmoidoscopy.status = 'completed'
+      and FlexibleSigmoidoscopy.performed ends 5 years or less on or before end of "Measurement Period"
+```
+
+Snippet 2-9: Expression definition from EXM130.cql
+
+The `Procedure` is the name of the model data type (FHIR resource type) in this example.
+
 ### Missing Information
 
 Because clinical information is often incomplete, CQL provides constructs and support for representing and dealing with _unknown_ or missing information. In FHIR, when the value of an element is not present, accessing that element will result in a `null`:
@@ -536,16 +567,16 @@ did not administer in order to negate.
 ### Attribute Names
 {: #attribute-names}
 
-All attributes referenced in the CQL follow Conformance Requirement 2.14.
+All attributes referenced in the CQL follow Conformance Requirement 2.15.
 
-**Conformance Requirement 2.14 (Attribute Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-14)
-{: #conformance-requirement-2-14}
+**Conformance Requirement 2.15 (Attribute Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-15)
+{: #conformance-requirement-2-15}
 
 1. Data model attributes referenced in the CQL:<br/>
       a. **SHOULD NOT** use quoted identifiers (unless required due to the attribute name in the model not being a valid identifier in CQL)<br/>
       b. **SHOULD** use camelCase (unless dictated by the attribute naming in the model being used)
 
-Examples of attributes conforming to Conformance Requirement 2.14 are given below. For a full list of valid of attributes, refer to an appropriate data model specification such as QI-Core.
+Examples of attributes conforming to Conformance Requirement 2.15 are given below. For a full list of valid of attributes, refer to an appropriate data model specification such as QI-Core.
 
 ```cql
 period
@@ -558,10 +589,10 @@ result
 
 Aliases are used in CQL to reference items within the scope of a query. When defining a function, argument names
 are used to create scoped identifiers that refer to the function inputs. Both aliases and argument names conform to
-Conformance Requirement 2.15.
+Conformance Requirement 2.16.
 
-**Conformance Requirement 2.15 (Aliases and Argument Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-15)
-{: #conformance-requirement-2-15}
+**Conformance Requirement 2.16 (Aliases and Argument Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-16)
+{: #conformance-requirement-2-16}
 
 1. Aliases and argument names referenced in the CQL:<br/>
       a. **SHALL NOT** Use quoted identifiers<br/>
@@ -584,16 +615,16 @@ define function "ED Stay Time"(Encounter "Encounter"):
 
 In addition to the use of CQL directly in expression-valued elements, CQL content used within knowledge artifacts can be included through the use of a Library resource. These libraries can then be referenced from FHIR resources such as PlanDefinition and Measure using the `library` element (as well as the `cqf-library` extension for resources that do not declare a `library` element). The content of the CQL library is included using the `content` element of the Library.
 
-**Conformance Requirement 2.16 (Library Resources):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-16)
-{: #conformance-requirement-2-16}
+**Conformance Requirement 2.17 (Library Resources):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-17)
+{: #conformance-requirement-2-17}
 
 1. Content conforming to this implementation guide **SHALL** use FHIR Library resources to represent and CQL libraries in FHIR.
 
 #### Library Name and URL
 {: #library-name-and-url}
 
-**Conformance Requirement 2.17 (Library Name and URL):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-17)
-{: #conformance-requirement-2-17}
+**Conformance Requirement 2.18 (Library Name and URL):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-18)
+{: #conformance-requirement-2-18}
 
 1. The identifying elements of a library **SHALL** conform to the following requirements:
 * Library.url **SHALL** be `<CQL namespace url>/Library/<CQL library name>`
@@ -612,8 +643,8 @@ The prohibition against underscores in CQL library names is required to ensure c
 #### FHIR Type Mapping
 {: #fhir-type-mapping}
 
-**Conformance Requirement 2.18 (FHIR Type Mapping):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-18)
-{: #conformance-requirement-2-18}
+**Conformance Requirement 2.19 (FHIR Type Mapping):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-19)
+{: #conformance-requirement-2-19}
 
 1. CQL defined types **SHALL** map to types in FHIR according to the following mapping:
 
@@ -644,8 +675,8 @@ The prohibition against underscores in CQL library names is required to ensure c
 #### Parameters and Data Requirements
 {: #parameters-and-data-requirements}
 
-**Conformance Requirement 2.19 (FHIR Type Mapping):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-19)
-{: #conformance-requirement-2-19}
+**Conformance Requirement 2.20 (FHIR Type Mapping):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-20)
+{: #conformance-requirement-2-20}
 
 1. Parameters to CQL libraries **SHALL** be either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations.
 2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resources types, optionally with profile designations
@@ -672,8 +703,8 @@ The prohibition against underscores in CQL library names is required to ensure c
 #### RelatedArtifacts
 {: #relatedartifacts}
 
-**Conformance Requirement 2.20 (Related Artifacts):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-20)
-{: #conformance-requirement-2-20}
+**Conformance Requirement 2.21 (Related Artifacts):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-21)
+{: #conformance-requirement-2-21}
 
 1. Libraries used in computable artifacts **SHALL** use the `relatedArtifact` element to identify includes, code systems, value sets, and data models used by the CQL library:
 
@@ -763,8 +794,8 @@ For knowledge artifact development with FHIR, the following options are recommen
 
 The FHIR specification defines the [cqlOptions](http://hl7.org/fhir/extensions/StructureDefinition-cqf-cqlOptions.html) extension to support defining the expected translator options used with a given Library, or set of Libraries. When this extension is not used, the recommended options above **SHOULD** be used. When this extension is present on a Library, it **SHALL** be used to provide options to the translator when translating CQL for that library. When this extension is present in an asset collection or implementation guide, it **SHALL** be used to provide options to the translator unless the options are provided directly by the library.
 
-**Conformance Requirement 2.21 (Translator Options):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-21)
-{: #conformance-requirement-2-21}
+**Conformance Requirement 2.22 (Translator Options):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-22)
+{: #conformance-requirement-2-22}
 
 1. Translator options **SHOULD** be provided in either a CQLLibrary or an ELMLibrary
 2. Translator options specified in a Library take precedence over options defined in an asset collection or implementation guide
@@ -847,8 +878,8 @@ The `cqlOptions` extension references a contained `Parameters` resource that con
 
 Because certain translator options impact language features and functionality, translated ELM may not be suitable for use in all contexts if the options used to produce the ELM are inconsistent with the options in use in the evaluating environment. To determine suitability of ELM for use in a given environment, the following guidance **SHOULD** be followed:
 
-**Conformance Requirement 2.22 (ELM Suitability):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-22)
-{: #conformance-requirement-2-22}
+**Conformance Requirement 2.23 (ELM Suitability):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-23)
+{: #conformance-requirement-2-23}
 
 1. If the library has function overloads (i.e. function definitions with the same name and different argument lists), the ELM **SHALL** have been translated with a SignatureLevel of `Overloads` or `All`
 2. If the evaluation environment or the ELM translator options have a compatibility level set, the compatibility level of the environment **SHALL** be consistent with the compatibility level used to produce the ELM
@@ -873,43 +904,6 @@ Because certain translator options impact language features and functionality, t
 
 When using CQL with FHIR, FHIR StructureDefinition resources are used to create the ModelInfo that describes the types for use in CQL, according to the following rules:
 
-#### Data Type Names
-{: #data-type-names}
-
-A "data type" in CQL refers to any named type used within CQL expressions. They may be primitive types, such as the
-system-defined "Integer" and "DateTime", or they may be model-defined types such as "Encounter" or "Medication". For
-FHIR-based knowledge artifacts using model information based on implementation guides (such as the QI-Core profiles),
-these will be the author-friendly identifiers for the profile. Data types referenced in CQL libraries to be included
-in a knowledge artifact must conform to Conformance Requirement 2.23.
-
-**PascalCase** (or UpperCamelCase) Each word in the identifier is capitalized, including the first word. Example: MedicationRequest
-
-**camelCase** (or lowerCamelCase) The first word starts with lowercase, and subsequent words start with uppercase. Example: medicationRequest
-
-**Title Case** The first letter of each word is capitalized, except for certain small words like articles, conjunctions, and prepositions unless they are the first word. Example: "Medication Request"
-
-
-**Conformance Requirement 2.23 (Data Type Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-23)
-{: #conformance-requirement-2-23}
-
-1. Data type names referenced in CQL **SHALL**:<br/>
-   a. Use quoted identifiers only if necessary (i.e. the data type name includes spaces)<br/>
-   b. Use PascalCase plus appropriate spacing
-
-For example:
-
-```cql
-define "Flexible Sigmoidoscopy Performed":
-  [Procedure: "Flexible Sigmoidoscopy"] FlexibleSigmoidoscopy
-    where FlexibleSigmoidoscopy.status = 'completed'
-      and FlexibleSigmoidoscopy.performed ends 5 years or less on or before end of "Measurement Period"
-```
-
-Snippet 2-9: Expression definition from EXM130.cql
-
-The `Procedure` is the name of the model data type (FHIR resource type) in this example.
-
-
 1. For each StructureDefinition, if the kind is `primitive-type`, `complex-type` (except for types based on Extension), or `resource` (with no derivation or a derivation of `specialization`), a ClassInfo with the same name as the structure definition is created
     1. For each element:
         1. If the element is not a backbone element, a corresponding element with the name and type is added to the ClassInfo. If the maximum cardinality of the element is not "1", the element is created as a list type.
@@ -927,20 +921,18 @@ To facilitate comparison by authors, these primitives can be implicitly converte
 
 Similar to CQL content, ModelInfo can be included in FHIR Library resources to facilitate distribution.
 
-
-
-**Conformance Requirement 2.24 (ModelInfo Libraries):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-24)
+**Conformance Requirement 2.24 (ModelInfo Libraries):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-23)
 {: #conformance-requirement-2-24}
 
-1. Libraries used to package ModelInfo **SHALL** conform to the [CQLModelInfo](StructureDefinition-cql-modelinfo.html) profile
+1. Libraries used to packgae ModelInfo **SHALL** conform to the [CQLModelInfo](StructureDefinition-cql-modelinfo.html) profile
 
 #### Profile-informed ModelInfo
 
 The process for producing ModelInfo from FHIR StructureDefinitions csn also be applied to FHIR profile definitions, allowing for ModelInfos that reflect profile definitions, using the following refinements:
 
 1. Each profile results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
-2. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
-3. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
+1. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
+2. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
 
 #### ModelInfo Settings
 
