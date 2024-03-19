@@ -292,7 +292,7 @@ For example, rather than combining multiple value sets using a `union`, separate
 #### Representation in Narrative
 {: #valueset-representation-in-narrative}
 
-When value sets are used within knowledge artifacts, if the artifact includes narrative (Human-readable), it SHALL include a representation of at least the following information for each value set:
+When value sets are used within knowledge artifacts, if the artifact includes narrative (Human-readable), it **SHALL** include a representation of at least the following information for each value set:
 
     The local identifier for the value set
     The external identifier for the value set
