@@ -292,10 +292,15 @@ For example, rather than combining multiple value sets using a `union`, separate
 #### Representation in Narrative
 {: #valueset-representation-in-narrative}
 
-When value sets are used within knowledge artifacts, they will be represented in the narrative (Human-readable) as:
+When value sets are used within knowledge artifacts, if the artifact includes narrative (Human-readable), it SHALL include a representation of at least the following information for each value set:
 
+    The local identifier for the value set
+    The external identifier for the value set
+    The version of the value set, if specified
+
+For example:
 ```html
-"Encounter Inpatient" using "Encounter Inpatient SNOMEDCT Value Set" (http://example.org/fhir/ValueSet/encounter-inpatient, version 20160929)
+"Encounter Inpatient": "Encounter Inpatient SNOMEDCT Value Set" (http://example.org/fhir/ValueSet/encounter-inpatient, version 20160929)
 ```
 
 In other words, the local identifier for the value set, followed by the value set information from the value set declaration, including version if specified.
