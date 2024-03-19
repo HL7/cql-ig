@@ -47,3 +47,4 @@ list:
       * **Applied**: CQL CQL Operation: Clarify return  ([FHIR-43762](https://jira.hl7.org/browse/FHIR-43762)) ([Applied here](OperationDefinition-cql-cql.html))
       * **Applied**: CQL Module: Clarify inputParameters extension vs Library.parameter element  ([FHIR-43740](https://jira.hl7.org/browse/FHIR-43740)) ([Applied here](StructureDefinition-cql-module-definitions.html))
       * **Applied**: Clarify use of data absent reason codes in CQL Evaluation Result  ([FHIR-43737](https://jira.hl7.org/browse/FHIR-43737)) Applied ([here](StructureDefinition-cql-evaluationresult.html))
+      * **Applied**: FHIR version of code structure does not include the term "using" ([FHIR-44099](https://jira.hl7.org/browse/FHIR-44099)) Applied ([here](using-cql.html#code-representation-in-narrative))
