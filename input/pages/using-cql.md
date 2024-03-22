@@ -1012,9 +1012,10 @@ Similar to CQL content, ModelInfo can be included in FHIR Library resources to f
 
 The process for producing ModelInfo from FHIR StructureDefinitions can also be applied to FHIR profile definitions, allowing for ModelInfos that reflect profile definitions, using the following refinements:
 
-1. Each profile results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
-1. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
-2. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
+1. Profiles are StructureDefinitions with derivation set to constraint
+2. Each profile results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
+3. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
+4. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
 
 #### ModelInfo Settings
 
