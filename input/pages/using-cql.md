@@ -439,7 +439,7 @@ For example:
 
 ```cql
 define function
-   "Includes Or Starts During"(Condition "Condition", Encounter "Encounter"):
+   "Includes Or Starts During"(Condition Condition, Encounter Encounter):
       Interval[Condition.onset, Condition.abatement] includes Encounter.period
          or Condition.onset during Encounter.period
 ```
