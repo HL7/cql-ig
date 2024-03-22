@@ -984,7 +984,7 @@ Because certain translator options impact language features and functionality, t
 ### ModelInfo
 {: #modelinfo}
 
-When using CQL with FHIR, FHIR StructureDefinition resources are used to create the ModelInfo that describes the types for use in CQL, according to the following rules:
+To use CQL with FHIR, [model information (ModelInfo)](https://cql.hl7.org/07-physicalrepresentation.html#data-model-references) must be provided to the implementation environment. To create this ModelInfo FHIR StructureDefinition resources can be processed according to the following rules:
 
 1. For each StructureDefinition, if the kind is `primitive-type`, `complex-type` (except for types based on Extension), or `resource` (with no derivation or a derivation of `specialization`), a ClassInfo with the same name as the structure definition is created
     1. For each element:
@@ -997,7 +997,7 @@ If this process is run against the StructureDefinitions from the base FHIR speci
 Patient.gender.value = 'female'
 ```
 
-To facilitate comparison by authors, these primitives can be implicitly converted to CQL primitive types, and the FHIRHelpers library (typically generated alongside the ModelInfo) defines these implicit conversions. See the [CQF Common](http://fhir.org/guides/cqf/common) implementation guide for a complete FHIR ModelInfo as well as FHIRHelpers library representing the FHIR specification.
+To facilitate comparison by authors, these primitives can be implicitly converted to CQL primitive types, and the FHIRHelpers library (generated alongside the ModelInfo) defines these implicit conversions. See the [CQF Common](http://fhir.org/guides/cqf/common) implementation guide for a complete FHIR ModelInfo as well as FHIRHelpers library representing the FHIR specification.
 
 #### ModelInfo Libraries
 
@@ -1010,19 +1010,60 @@ Similar to CQL content, ModelInfo can be included in FHIR Library resources to f
 
 #### Profile-informed ModelInfo
 
-The process for producing ModelInfo from FHIR StructureDefinitions can also be applied to FHIR profile definitions, allowing for ModelInfos that reflect profile definitions, using the following refinements:
+CQL can be used with a FHIR ModelInfo directly, as described above. However, FHIR profiles include a wealth of computable information about the intended structure of the clinical data involved in an exchange, including terminology bindings, constraints, descriptive metadata, _slices_ and _extensions_. To facilitate authoring that can easily reference this information, the tooling to construct ModelInfo from the base FHIR StructureDefinitions has been enhanced to support building ModelInfo that is specific to an implementation guide:
 
-1. Profiles are StructureDefinitions with derivation set to constraint
-2. Each profile results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
-3. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
-4. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
+1. Each profile (StructureDefinition with derivation set to `constraint`) results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
+    1. `namespace` is set to the `modelName`
+    2. `name` is set to the `name` element of the StructureDefinition
+    3. `baseType` is set to the qualified name of the class corresponding to the `baseDefinition`
+    4. `identifier` is set to the canonical `url` of the StructureDefinition
+    5. `label` is set to the `title` of the StructureDefinition (unless overridden by the cqf-modelInfo-label extension)
+    6. `retrievable` is set to `true` (unless overridden by the cqf-modelInfo-isRetrievable extension)
+    7. `primaryCodePath` is set based on the cqf-modelInfo-primaryCodePath extenssion
+2. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section.
+3. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo. Specifically, ClassInfo structures are created with elements as defined by the slice or extension definitions.
+    1. For slices, a new ClassInfo is created derived from the ClassInfo corresponding to the element being sliced, and named based on the `sliceName` element of the slice definition. An element of this type and named with the `sliceName` is then added to the containing ClassInfo.
+    2. For extensions, a new ClassInfo is created derived from the `Extension` ClassInfo and named based on the `name` of the extension definition. An element of this type and naamed with the extension `sliceName` is then added to the containing ClassInfo.
+
+For example, consider the [US Core Blood Pressure Profile](https://hl7.org/fhir/us/core/StructureDefinition-us-core-blood-pressure.html). This profile has two slices of the `component` element, named `systolic` and `diastolic`. The resulting USCore ModelInfo has classes derived from the `USCore.Observation.Component` class:
+
+```xml
+  <typeInfo xsi:type="ClassInfo" namespace="USCore" name="Observation.Component.systolic" retrievable="false" baseType="USCore.Observation.Component"/>
+  <typeInfo xsi:type="ClassInfo" namespace="USCore" name="Observation.Component.diastolic" retrievable="false" baseType="USCore.Observation.Component"/>
+```
+
+and then elements in the `USCore.BloodPressureProfile` class corresponding to these slices:
+
+```xml
+  <element name="systolic" elementType="USCore.Observation.Component.systolic"/>
+  <element name="diastolic" elementType="USCore.Observation.Component.diastolic"/>
+```
+
+For extensions, consider the [US Core Ethnicity Extension](https://hl7.org/fhir/us/core/StructureDefinition-us-core-ethnicity.html). This is a complex extension, and so the constructed ClassInfo has elements for each of the elements defined by the extension:
+
+```xml
+  <typeInfo xsi:type="ClassInfo" namespace="USCore" name="EthnicityExtension" identifier="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity" label="US Core Ethnicity Extension" retrievable="false" baseType="USCore.Extension">
+      <element name="ombCategory" elementType="System.Code"/>
+      <element name="detailed">
+          <elementTypeSpecifier xsi:type="ListTypeSpecifier" elementType="System.Code"/>
+      </element>
+      <element name="text" elementType="System.String"/>
+      <element name="url" elementType="System.String"/>
+  </typeInfo>
+```
+
+And the `USCore.PatientProfile` class then has an element named `ethnicity` of this type:
+
+```xml
+  <element name="ethnicity" elementType="USCore.EthnicityExtension"/>
+```
 
 #### ModelInfo Settings
 
 In addition, to support more fine-grained control over the process of producing ModelInfo from FHIR StructureDefinitions, this implementation guide defines several ModelInfo-related extensions:
 
-* cqf-modelInfo-isIncluded - Determines whether to create a ClassInfo for the profile or extension on which it appears
-* cqf-modelInfo-isRetrievable - Determines whether the ClassInfo for the profile on which it appears is marked retrievable (i.e. can appear as the target type of a Retrieve in CQL)
-* cqf-modelInfo-label - Specifies an author-friendly title for the ClassInfo (i.e. an alternate name by which the type can be referenced in CQL type specifiers)
-* cqf-modelInfo-primaryCodePath - Specifies the primary code path for the ClassInfo produced from the profile on which it appears (i.e. the default path for terminology-valued filters when the type is used in a Retrieve in CQL)
-* cqf-modelInfoSettings - Specifies additional settings used to produce the ModelInfo for profiles and extensions defined in the Implementation Guide on which it appears
+* [cqf-modelInfo-isIncluded]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-modelInfo-isIncluded.html) - Determines whether to create a ClassInfo for the profile or extension on which it appears
+* [cqf-modelInfo-isRetrievable]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-modelInfo-isRetrievable.html) - Determines whether the ClassInfo for the profile on which it appears is marked retrievable (i.e. can appear as the target type of a Retrieve in CQL)
+* [cqf-modelInfo-label]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-modelInfo-label.html) - Specifies an author-friendly title for the ClassInfo (i.e. an alternate name by which the type can be referenced in CQL type specifiers)
+* [cqf-modelInfo-primaryCodePath]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-modelInfo-primaryCodePath.html) - Specifies the primary code path for the ClassInfo produced from the profile on which it appears (i.e. the default path for terminology-valued filters when the type is used in a Retrieve in CQL)
+* [cqf-modelInfoSettings]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-modelInfo-modelInfoSettings.html) - Specifies additional settings used to produce the ModelInfo for profiles and extensions defined in the Implementation Guide on which it appears
