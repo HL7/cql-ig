@@ -47,3 +47,5 @@ list:
       * **Applied**: CQL CQL Operation: Clarify return  ([FHIR-43762](https://jira.hl7.org/browse/FHIR-43762)) ([Applied here](OperationDefinition-cql-cql.html))
       * **Applied**: CQL Module: Clarify inputParameters extension vs Library.parameter element  ([FHIR-43740](https://jira.hl7.org/browse/FHIR-43740)) ([Applied here](StructureDefinition-cql-module-definitions.html))
       * **Applied**: Clarify use of data absent reason codes in CQL Evaluation Result  ([FHIR-43737](https://jira.hl7.org/browse/FHIR-43737)) Applied ([here](StructureDefinition-cql-evaluationresult.html))
+      * **Applied**: Consider tightening ELM Library profile requirements w/ invariants ([FHIR-43742](https://jira.hl7.org/browse/FHIR-43742)) Applied ([here](StructureDefinition-elm-library.html))
+      * **Applied**: Clarify purpose of "Representation in Narrative" section  ([FHIR-43783](https://jira.hl7.org/browse/FHIR-43783)) Applied ([here](using-cql.html#valueset-representation-in-narrative))
