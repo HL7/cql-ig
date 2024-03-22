@@ -292,13 +292,16 @@ For example, rather than combining multiple value sets using a `union`, separate
 #### Representation in Narrative
 {: #valueset-representation-in-narrative}
 
-When value sets are used within knowledge artifacts, they will be represented in the narrative (Human-readable) as:
+When value sets are used within knowledge artifacts, if the artifact includes narrative (Human-readable), it **SHALL** include a representation of at least the following information for each value set:
 
+    The local identifier for the value set.
+    The external identifier for the value set.
+    The version of the value set, if specified.
+
+For example:
 ```html
-"Encounter Inpatient" using "Encounter Inpatient SNOMEDCT Value Set" (http://example.org/fhir/ValueSet/encounter-inpatient, version 20160929)
+"Encounter Inpatient": "Encounter Inpatient SNOMEDCT Value Set" (http://example.org/fhir/ValueSet/encounter-inpatient, version 20160929)
 ```
-
-In other words, the local identifier for the value set, followed by the value set information from the value set declaration, including version if specified.
 
 #### String-based Membership Testing
 {: #string-based-membership-testing}
@@ -439,7 +442,7 @@ For example:
 
 ```cql
 define function
-   "Includes Or Starts During"(Condition "Condition", Encounter "Encounter"):
+   "Includes Or Starts During"(Condition Condition, Encounter Encounter):
       Interval[Condition.onset, Condition.abatement] includes Encounter.period
          or Condition.onset during Encounter.period
 ```
@@ -1012,9 +1015,10 @@ Similar to CQL content, ModelInfo can be included in FHIR Library resources to f
 
 The process for producing ModelInfo from FHIR StructureDefinitions can also be applied to FHIR profile definitions, allowing for ModelInfos that reflect profile definitions, using the following refinements:
 
-1. Each profile results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
-1. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
-2. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
+1. Profiles are StructureDefinitions with derivation set to constraint
+2. Each profile results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
+3. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
+4. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
 
 #### ModelInfo Settings
 
