@@ -574,7 +574,7 @@ for not administering any of the anticoagulant and antiplatelet medications spec
 value set.
 
 To represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
-Therapy" value set using the ([cqf-notDoneValueSet]({{site.data.fhir.ver.hl7_fhir_uv_extensions}}/StructureDefinition-cqf-notDoneValueSet.html)) extension to indicate
+Therapy" value set using the ([cqf-notDoneValueSet]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-notDoneValueSet.html)) extension to indicate
 providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
 set URI to negate the entire value set rather than reporting a specific member code from the value set, clinicians are
 not forced to arbitrarily select a specific medication from the "Antithrombotic Therapy" value set that they
@@ -981,6 +981,211 @@ Because certain translator options impact language features and functionality, t
     * EnableLocators
     * EnableResultTypes
 
+### Patterns
+
+The following sections provide patterns that facilitate authoring CQL directly with the FHIR data model, including support for primitives, choices, slices, and extensions.
+
+#### Primitives
+
+As an exchange specification, FHIR has a rich syntax for expressing the values of elements defined in FHIR
+resources. In particular, FHIR data types for representing basic values such as integers, strings, and dates and
+times allow for [extensions](http://hl7.org/fhir/extensibility.html#extension). This means that a FHIR
+`string` is not just a string value, but has elements (specifically, `id`, `extension`, and
+`value`, where the `value` element contains the actual string value). This means that to access
+the actual value of a FHIR `string` element in CQL, authors would need to reference the `value` element:
+
+```cql
+define "Patient is Female":
+  Patient.gender.value = 'female'
+```
+  
+To avoid this, the FHIRHelpers library defines implicit conversions for all the FHIR types, allowing authors to treat
+FHIR elements as integers, strings, etc. directly:
+
+```cql
+define "Patient is Female":
+  Patient.gender = 'female'
+```
+
+Note that these conversions are performed automatically by the [CQL-to-ELM translator](https://github.com/cqframework/clinical_quality_language/blob/master/Src/java/cql-to-elm/OVERVIEW.md) when they are used by CQL, resulting in a conversion error if the FHIRHelpers library is not included using
+  an [include declaration](https://cql.hl7.org/02-authorsguide.html#libraries):
+  
+```cql
+include FHIRHelpers version '4.0.1'
+```
+
+The version of the library is not required by CQL, but for the FHIRHelpers reference, because it is so closely tied to the
+FHIR ModelInfo, best-practice is to include the version of FHIRHelpers.
+
+#### Choices
+
+FHIR includes the notion of [_choice_](https://hl7.org/fhir/formats.html#choice) types, or elements that can be represented as any of a number of types. For example,
+the `Patient.deceased` element can be specified as a `boolean` or as a `dateTime`. CQL also supports [choice](https://cql.hl7.org/03-developersguide.html#choice-types) types, these elements are manifest directly as Choice Types within the Model Info.
+
+When authoring CQL using FHIR, logic must take into account the possible choice types of the elements involved. For example, the `Observation.effective` element may be represented as a `dateTime` or a `Period` (among other types):
+
+```cql
+define "Blood Pressure Observations Within 30 Days":
+  [Observation: "Blood Pressure"] O
+    where O.status = 'final'
+      and (
+        (O.effective as dateTime).value 30 days or less before Today()
+          or (O.effective as Period) starts 30 days or less before Today()
+      )
+```
+
+Rather than requiring different representations to be considered in the logic each time they are encountered, a function can be defined that accepts a choice type argument:
+
+```cql
+define fluent function toInterval(choice Choice<FHIR.dateTime, FHIR.Period>):
+  case
+    when choice is FHIR.dateTime then
+      Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]
+    when choice is FHIR.Period then
+      FHIRHelpers.ToInterval(choice as FHIR.Period)
+    else null as Interval<DateTime>
+  end
+```
+
+This can then be written as:
+
+```cql
+define "Blood Pressure Observations Within 30 Days (refined)":
+  [Observation: "Blood Pressure"] O
+    where O.status = 'final'
+      and O.effective.toInterval() starts 30 days or less before Today()
+```
+
+#### Slices
+
+Another common pattern in FHIR is the use of [_slices_](https://hl7.org/fhir/profiling.html#slicing) to constrain list-valued elements into sub-lists and elements. Consider the [Blood Pressure](http://hl7.org/fhir/bp.html) that defines "Systolic" and "Diastolic" elements:
+
+```cql
+define "Blood Pressure With Slices":
+  [Observation: "Blood Pressure"] BP
+    where (singleton from (BP.component C where C.code ~ "Systolic blood pressure")).value < 140 'mm[Hg]'
+      and (singleton from (BP.component C where C.code ~ "Diastolic blood pressure")).value < 90 'mm[Hg]'
+```
+
+To reuse slices, CQL fluent functions can be defined for each slice:
+
+```cql
+define fluent function systolic(observation Observation):
+  singleton from (observation.component C where C.code ~ "Systolic blood pressure")
+
+define fluent function diastolic(observation Observation):
+  singleton from (observation.component C where C.code ~ "Diastolic blood pressure")
+```
+
+These fluent functions can then be used to access the slices:
+
+```cql
+define "Blood Pressure With Slices (refined)":
+  [Observation: "Blood Pressure"] BP
+    where BP.systolic().value < 140 'mm[Hg]'
+      and BP.diastolic().value < 90 'mm[Hg]'
+```
+
+#### Extensions
+
+FHIR also supports defining [_extensions_](https://hl7.org/fhir/extensibility.html) to allow additional information beyond what is available in the base FHIR resources to be specified. Profiles then make use of these extensions to establish how this additional information is exchanged in specific use cases. As a simple example, consider the [birthsex](https://hl7.org/fhir/us/core/StructureDefinition-us-core-patient-definitions.html#Patient.extension:birthsex) extension in US Core:
+
+```cql
+define "Patient Birth Sex Is Male":
+  Patient P
+    let birthsex: singleton from (
+        P.extension E where E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+    ).value as FHIR.code
+    where birthsex = 'M'
+```
+
+In this example, a _let clause_ is used to build a `birthsex` element in the query that finds the birthsex extension value. As with slicing, fluent functions can be used to provide access to extensions:
+
+```cql
+define fluent function birthsex(patient Patient):
+  (singleton from (
+    patient.extension E where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+  )).value as FHIR.code
+```
+
+This function can then be used to easily access the birthsex extension:
+
+```cql
+define "Patient Birth Sex Is Male (refined)":
+  Patient P
+    where P.birthsex() = 'M'
+```
+
+As a more complex example, consider the [race](https://hl7.org/fhir/us/core/StructureDefinition-us-core-race.html) extension. This is a complex extension that define elements for `ombCategory`, `detailed`, and `text`:
+
+```cql
+define "Patient With Race Category":
+  Patient P
+    let
+      race: singleton from (
+        P.extension E where E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+      ),
+      ombCategory: race.extension E where E.url.value = 'ombCategory',
+      detailed: race.extension E where E.url.value = 'detailed'
+    where (ombCategory O return O.value as FHIR.Coding) contains "American Indian or Alaska Native"
+      and (detailed O return O.value as FHIR.Coding) contains "Alaska Native"
+```
+
+Again, these can be access directly using a let clause, or a fluent function can be defined to allow access:
+
+```cql
+define fluent function race(patient Patient):
+  (singleton from (patient.extension E where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race')) race
+    let 
+      ombCategory: race.extension E where E.url = 'ombCategory' return E.value as Coding,
+      detailed: race.extension E where E.url = 'detailed' return E.value as Coding,
+      text: singleton from (race.extension E where E.url = 'text' return E.value as string)
+    return { ombCategory: ombCategory, detailed: detailed, text: text }
+```
+
+```cql
+define "Patient With Race Category (refined)":
+  Patient P
+    where P.race().ombCategory contains "American Indian or Alaska Native"
+      and P.race().detailed contains "Alaska Native"
+```
+
+#### FHIRCommon
+
+For common use cases, the [CQF Common](http://fhir.org/guides/cqf/common) implementation guide provides a FHIRCommon library that defines many of these types of functions and declarations that are commonly used with CQL and FHIR. By including a reference to this implementation guide, content IGs can build CQL that refers to these common functions by including the FHIRCommon library:
+
+```cql
+include fhir.cqf.common.FHIRCommon
+```
+
+#### Profile-informed Authoring
+
+Note that rather than using FHIR directly, CQL also supports models derived from implementation guides specifically. For example:
+
+```cql
+using USCore version '6.1.0'
+```
+
+With this approach, the profiles defined in the USCore implementation guide are used to provide the model. This approach is referred to as "profile-informed authoring" and automates the patterns described above, so that rather than building fluent functions, the model contains elements for slices and extensions defined in the profiles of the implementation guide. For example:
+
+```cql
+define "Blood Pressure With Slices":
+  ["BloodPressureProfile"] BP
+    where BP.systolic.value < 140 'mm[Hg]'
+      and BP.diastolic.value < 90 'mm[Hg]'
+
+define "Patient With Birthsex":
+  Patient P
+    where P.birthsex = 'M'
+
+define "Patient With Race":
+  Patient P
+    where P.race.ombCategory contains "American Indian or Alaska Native"
+      and P.race.detailed contains "Alaska Native"
+```
+
+For detailed information on how model information is produced for an implementation guide, see the [Profile-informed ModelInfo](profile-informed-modelinfo) section.
+
 ### ModelInfo
 {: #modelinfo}
 
@@ -998,6 +1203,12 @@ Patient.gender.value = 'female'
 ```
 
 To facilitate comparison by authors, these primitives can be implicitly converted to CQL primitive types, and the FHIRHelpers library (generated alongside the ModelInfo) defines these implicit conversions. See the [CQF Common](http://fhir.org/guides/cqf/common) implementation guide for a complete FHIR ModelInfo as well as FHIRHelpers library representing the FHIR specification.
+
+To make use of these implicit conversions within a CQL library, include the FHIRHelpers library:
+
+```cql
+include FHIRHelpers version '4.0.1'
+```
 
 #### ModelInfo Libraries
 
