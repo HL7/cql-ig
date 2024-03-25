@@ -355,14 +355,17 @@ CQL supports both version-specific and version-independent specification of and 
 
 #### Representation in Narrative
 {: #code-representation-in-narrative}
+When direct-reference codes are used within knowledge artifacts, if the artifact includes narrative (Human-readable), it **SHALL** include a representation of at least the following information for each direct-reference code:
 
-When direct-reference codes are used within knowledge artifacts, they will be represented in the narrative (Human-readable) as:
+    The local identifier for the code within the codesystem.
+    The external identifier for the codesystem.
+    The version of the codesystem, if specified.
+    The display value from the code system.
 
+For example:
 ```html
-"Venous foot pump, device (physical object)" using "Venous foot pump, device (physical object) SNOMED CT Code (442023007)"
+code "Venous foot pump, device (physical object)":  '442023007' from "SNOMEDCT" display Venous foot pump, device (physical object)"
 ```
-
-In other words, the library identifier followed by the code and code system information from the code declaration.
 
 ### UCUM Best Practices
 {: #ucum-best-practices}
