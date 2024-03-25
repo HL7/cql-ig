@@ -433,7 +433,7 @@ meaningful name (avoid abbreviations) and conform to Conformance Requirement 2.1
       b. **SHOULD** Use Initial Case<br/>
       c. **MAY** Include spaces
 
-**Initial Case Definition** is defined as the first letter of every word is capitalized (e.g. "Observation With Status") (as opposed to Title Case, which would be "Observation with Status")
+> NOTE: **Initial Case** is defined as the first letter of every word is capitalized (e.g. "Observation With Status") (as opposed to Title Case, which traditionally does not capitalize conjunctions and prepositions, e.g. "Observation with Status")
 
 For example:
 
@@ -517,7 +517,14 @@ For more information about dealing with Missing Information in CQL in general, s
 ### Negation in FHIR
 {: #negation-in-fhir}
 
-Two commonly used patterns for negation in clinical logic are:
+The [HL7 Cross-Paradigm Specification: Representing Negatives](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=592) provides guidance and best practices for the representation of pertinent negatives and other negative semantics in clinical information. The following sections describe how these best practices may be represented in FHIR resources and profiles, as well as guidance for accessing negated information in CQL.
+
+For an example of a set of profiles following these best practices to support the representation of negation in FHIR, see the [Negation](https://hl7.org/fhir/us/qicore/negation.html) profiles in QI-Core. In summary, negation statements typically cover two different _extents_:
+
+1) Documentation that a particular activity/event should not or did not occur
+2) Documentation that a class of activities/events should not or did not occur (typically represented with a value set)
+
+Given the representation of negative information in FHIR, two commonly used patterns for negation in clinical logic are:
 
 * Absence of evidence for a particular event
 * Documentation of an event not occurring, together with a reason
@@ -526,7 +533,7 @@ For the purposes of clinical reasoning, when looking for documentation that a pa
 be documented with a reason in order to meet the intent. If a reason is not part of the intent, then the absence of
 evidence pattern **SHOULD** be used, rather than documentation of an event not occurring.
 
-To address the reason an action did not occur (negation rationale), an artifact must define the event it expects to occur
+To address the reason an action did not occur (negation rationale), clinical logic must define the event it expects to occur
 using appropriate terminology to identify the kind of event (using a value set or direct-reference code), and then use
 additional criteria to indicate that the event did not occur, as well as identifying a reason.
 
@@ -538,16 +545,19 @@ of medication included within a value set for "Antithrombotic Therapy".
 {: #presence}
 
 Evidence that "Antithrombotic Therapy" (defined by a medication-specific value set) was administered:
+
 ```cql
 define "Antithrombotic Administered":
   [MedicationAdministration: "Antithrombotic Therapy"] AntithromboticTherapy
     where AntithromboticTherapy.status = 'completed'
       and AntithromboticTherapy.category ~ "Inpatient Setting"
 ```
+
 #### Absence
 {: #absence}
 
 No evidence that "Antithrombotic Therapy" medication was administered:
+
 ```cql
 define "No Antithrombotic Therapy":
   not exists (
@@ -562,6 +572,7 @@ define "No Antithrombotic Therapy":
 
 Evidence that "Antithrombotic Therapy" medication administration did not occur for an acceptable medical reason as
 defined by a value set referenced by the clinical logic (i.e., negation rationale):
+
 ```cql
 define "Antithrombotic Not Administered":
   [MedicationAdministration: "Antithrombotic Therapy"] NotAdministered
@@ -580,12 +591,35 @@ set URI to negate the entire value set rather than reporting a specific member c
 not forced to arbitrarily select a specific medication from the "Antithrombotic Therapy" value set that they
 did not administer in order to negate.
 
+When this pattern is used in FHIR resources, the CQL needs to take this into account by looking for the `notDoneValueSet` extension:
+
+```cql
+define "Antithrombotic Class Not Administered":
+  [MedicationAdministration] NotAdministered
+    where NotAdministered.medication.notDoneValueSet() = "Antithrombotic Therapy".id
+      and NotAdministered.status = 'not-done'
+      and NotAdministered.statusReason in "Medical Reason"
+```
+
+To ensure both cases are accounted for, these two expressions would then be used together:
+
+```cql
+define "Antithrombotics Not Administered":
+  "Antithrombotic Not Administered"
+    union "Antithrombotic Class Not Administered"
+```
+
+This approach ensures that the logic will retrieve negated activities whether they are recorded as singular activities (i.e. with a code from the value set) or as indications that none of the activities were performed (i.e. with a reference to a value set).
+
+> NOTE: Profile-informed authoring exposes elements that have a `notDoneValueSet` extension using a Choice of CodeableConcept and ValueSet, which is then translated as a union, accounting for both cases as part of profile-informed authoring.
+
 ### Element Names
 {: #element-names}
 
 All elements referenced in the CQL follow Conformance Requirement 2.15.
 **Conformance Requirement 2.15 (Element Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-15)
 {: #conformance-requirement-2-15}
+
 1. Data model elements referenced in the CQL:<br/>
       a. **SHOULD NOT** use quoted identifiers (unless required due to the element name in the model not being a valid identifier in CQL)<br/>
       b. **SHOULD** use camelCase (unless dictated by the element naming in the model being used)
@@ -695,7 +729,9 @@ define "Non Elective Inpatient Encounter":
   ["Encounter": "Nonelective Inpatient Encounter"] NonElectiveEncounter
         where NonElectiveEncounter.period ends during day of "Measurement Period"
 ```
+
 Which might be represented as
+
 ```
 {
     "resourceType": "Parameters",
@@ -719,6 +755,7 @@ Which might be represented as
   ]
 }
 ```
+
 * Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
 
 For example:
@@ -731,7 +768,9 @@ define "SDE Ethnicity":
       display: E.text
     }
 ```
+
 Which might be represented as
+
 ```
 {
     "resourceType": "Parameters",
@@ -1159,6 +1198,7 @@ include fhir.cqf.common.FHIRCommon
 ```
 
 #### Profile-informed Authoring
+{: #profile-informed-authoring}
 
 Note that rather than using FHIR directly, CQL also supports models derived from implementation guides specifically. For example:
 
@@ -1220,6 +1260,7 @@ Similar to CQL content, ModelInfo can be included in FHIR Library resources to f
 1. Libraries used to package ModelInfo **SHALL** conform to the [CQLModelInfo](StructureDefinition-cql-modelinfo.html) profile
 
 #### Profile-informed ModelInfo
+{: #profile-informed-modelinfo}
 
 CQL can be used with a FHIR ModelInfo directly, as described above. However, FHIR profiles include a wealth of computable information about the intended structure of the clinical data involved in an exchange, including terminology bindings, constraints, descriptive metadata, _slices_ and _extensions_. To facilitate authoring that can easily reference this information, the tooling to construct ModelInfo from the base FHIR StructureDefinitions has been enhanced to support building ModelInfo that is specific to an implementation guide:
 
@@ -1234,7 +1275,8 @@ CQL can be used with a FHIR ModelInfo directly, as described above. However, FHI
 2. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section.
 3. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo. Specifically, ClassInfo structures are created with elements as defined by the slice or extension definitions.
     1. For slices, a new ClassInfo is created derived from the ClassInfo corresponding to the element being sliced, and named based on the `sliceName` element of the slice definition. An element of this type and named with the `sliceName` is then added to the containing ClassInfo.
-    2. For extensions, a new ClassInfo is created derived from the `Extension` ClassInfo and named based on the `name` of the extension definition. An element of this type and naamed with the extension `sliceName` is then added to the containing ClassInfo.
+    2. For extensions, a new ClassInfo is created derived from the `Extension` ClassInfo and named based on the `name` of the extension definition. An element of this type and named with the extension `sliceName` is then added to the containing ClassInfo.
+4. If a terminology-valued element has a `cqf-notDoneValueSet` extension defined, the element is typed as a Choice of the terminology-value (CodeableConcept, Coding, or Code) and ValueSet, allowing retrieves to be performed against the ValueSet referenced by the cqf-notDoneValueSet extension
 
 For example, consider the [US Core Blood Pressure Profile](https://hl7.org/fhir/us/core/StructureDefinition-us-core-blood-pressure.html). This profile has two slices of the `component` element, named `systolic` and `diastolic`. The resulting USCore ModelInfo has classes derived from the `USCore.Observation.Component` class:
 
@@ -1268,6 +1310,8 @@ And the `USCore.PatientProfile` class then has an element named `ethnicity` of t
 ```xml
   <element name="ethnicity" elementType="USCore.EthnicityExtension"/>
 ```
+
+> NOTE: Importantly, with profile-informed modelinfo, each element in the modelinfo includes a `target` mapping that specifies an expansion to be performed by the translator so that access in the ELM is performed directly against the base FHIR resources, rather than requiring engines (and by extension runtime environments) to deal with data in terms of the profile definitions. As a result, the ELM output of CQL libraries using profile-informed authoring is in terms of the base FHIR resources. Note that for implementations that support profile-informed CQL, this means that the result of retrieve expressions must respect the profile stated in the `templateId` element of the retrieve. This is not to say that the FHIR resource must declare profiles to which they conform, only that with profile-informed authoring, there is an expectation that the ELM expects that FHIR resources returned through a retrieve will conform to the stated profiles. How that conformance is guaranteed is left up to implementations.
 
 #### ModelInfo Settings
 

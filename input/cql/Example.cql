@@ -7,6 +7,9 @@ include FHIRHelpers version '4.0.1'
 codesystem LOINC: 'http://loinc.org'
 codesystem "CDC Race and Ethnicity Codes": 'urn:oid:2.16.840.1.113883.6.238'
 
+valueset "Antithrombotic Therapy": 'http://example.org/fhir/ValueSet/antithrombotic-therapy-example'
+valueset "Medical Reason": 'http://example.org/fhir/ValueSet/medical-reason-example'
+
 code "Blood Pressure": '85354-9' from LOINC
 code "Diastolic blood pressure": '8462-4' from "LOINC" display 'Diastolic blood pressure'
 code "Systolic blood pressure": '8480-6' from "LOINC" display 'Systolic blood pressure'
@@ -94,3 +97,27 @@ define "Patient With Race Category (refined)":
     where P.race().ombCategory contains "American Indian or Alaska Native"
       and P.race().detailed contains "Alaska Native"
 
+define "Antithrombotic Not Administered":
+  [MedicationAdministration: "Antithrombotic Therapy"] NotAdministered
+    where NotAdministered.status = 'not-done'
+      and NotAdministered.statusReason in "Medical Reason"
+
+define "Antithrombotic Class Not Administered":
+  [MedicationAdministration] NotAdministered
+    where NotAdministered.medication.notDoneValueSet() = "Antithrombotic Therapy".id
+      and NotAdministered.status = 'not-done'
+      and NotAdministered.statusReason in "Medical Reason"
+
+define fluent function notDoneValueSet(element Element):
+  (singleton from (element.extension E where E.url = 'http://hl7.org/fhir/StructureDefinition/cqf-notDoneValueSet')).value as uri
+
+define fluent function notDoneValueSet(element Choice<CodeableConcept, Reference>):
+  case
+    when element is CodeableConcept then (element as CodeableConcept).notDoneValueSet()
+    when element is Reference then (element as Reference).notDoneValueSet()
+    else null
+  end
+
+define "Antithrombotics Not Administered":
+  "Antithrombotic Not Administered"
+    union "Antithrombotic Class Not Administered"
