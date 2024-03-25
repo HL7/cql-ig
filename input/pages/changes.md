@@ -45,3 +45,4 @@ The following changes were made as a result of ballot comments received in the S
 - Finished sentence on 2.1.2 ([FHIR-43436](https://jira.hl7.org/browse/FHIR-43436))
 - Added -version to the CQL naming convention conformance requirement 2.18 ([FHIR-43582](https://jira.hl7.org/browse/FHIR-43582))
 - Clarify FHIR Type Mapping for List and Tuple types ([FHIR-43793](https://jira.hl7.org/browse/FHIR-43793))
+- Created new ModelInfoSettings profile as per the ticket ([FHIR-43901](https://jira.hl7.org/browse/FHIR-43901))
