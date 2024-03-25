@@ -408,17 +408,20 @@ In addition to codes, CQL supports a concept construct, which is defined as a se
 1. The CQL concept construct **MAY** be used.
 2. The CQL concept construct **SHALL NOT** be used as a surrogate for value set definition.
 
-As an example of an anti-pattern for Concept usage, consider the following:
+It is recommended that this type of grouping of codes from different systems be done through the use of a value set. The following example is just for illustrative purposes.
 
 ```cql
 codesystem "Condition Clinical Status Codes": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
+codesystem "Validation-status": 'http://terminology.hl7.org/ValueSet/verificationresult-validation-status'
 code "Active": 'active' from "Condition Clinical Status Codes" display 'Active'
 code "Recurrence": 'recurrence' from "Condition Clinical Status Codes" display 'Recurrence'
 code "Relapse": 'relapse' from "Condition Clinical Status Codes" display 'Relapse'
-concept "Active Condition Statuses": { "Active", "Recurrence", "Relapse" } display 'Active Condition Statuses'
+code "Unknown": 'unknown' from "Validation-status" display 'Unknown'
+concept "Active Condition Statuses": { "Active", "Recurrence", "Relapse", "Unknown" } display 'Active Condition Statuses'
 ```
 
-This usage of concept includes multiple concepts with different meanings from the same code system. A value set **SHOULD** be used for this purpose as it provides more flexibility and maintainability for this use case.
+This usage of concept includes multiple concepts with different meanings from the same code system as well as
+a code from another code system. A value set **SHOULD** be used for this purpose as it provides more flexibility and maintainability for this use case.
 
 ### Library-level Identifiers
 {: #library-level-identifiers}
