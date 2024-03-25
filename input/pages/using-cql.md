@@ -352,8 +352,7 @@ CQL supports both version-specific and version-independent specification of and 
 
 #### Representation in Narrative
 {: #code-representation-in-narrative}
-When direct-reference codes are used within knowledge artifacts, the narrative (Human-readable) SHALL display the local identifier, the code, the code system, and the display value as shown in the example below.
-When direct-reference codes are used within knowledge artifacts, if the artifact includes narrative (Human-readable), it **SHALL** include a representation of at least the following information for each codesystem:
+When direct-reference codes are used within knowledge artifacts, if the artifact includes narrative (Human-readable), it **SHALL** include a representation of at least the following information for each direct-reference code:
 
     The local identifier for the code within the codesystem.
     The external identifier for the codesystem.
