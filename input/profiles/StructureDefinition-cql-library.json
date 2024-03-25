@@ -63,10 +63,9 @@
       {
         "id": "Library",
         "path": "Library",
-        "min": 1,
-        "max": "*",
         "mustSupport": false
-      },      {
+      },
+      {
         "id": "Library.extension:cqlOptions",
         "path": "Library.extension",
         "sliceName": "cqlOptions",
@@ -99,6 +98,8 @@
           ],
           "rules": "open"
         },
+        "min": 1,
+        "max": "*",
         "mustSupport": true
       },
       {
