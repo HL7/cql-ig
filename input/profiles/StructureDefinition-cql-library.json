@@ -98,6 +98,8 @@
           ],
           "rules": "open"
         },
+        "min": 1,
+        "max": "*",
         "mustSupport": true
       },
       {
