@@ -100,6 +100,18 @@
           }
         ],
         "mustSupport": true
+      },
+      {
+        "id": "Parameters.parameter.value[x].extension:dataAbsentReason.valueCode",
+        "path": "Parameters.parameter.value[x].extension.valueCode",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "unknown"
       }
     ]
   }

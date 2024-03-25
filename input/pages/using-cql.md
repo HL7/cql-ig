@@ -2,7 +2,7 @@
 
 {: #using-cql}
 
-This topic specifies conformance requirements and guidance for the use of CQL with FHIR, whether that be as in-line expressions in expression-valued elements, or in CQL libraries contained in FHIR Library resources.
+This topic specifies conformance requirements and guidance for the use of Clinical Quality Language (CQL) with Fast Healthcare Interoperability Resources (FHIR), whether that be as in-line expressions in expression-valued elements, or in CQL libraries contained in FHIR Library resources.
 
 ### Libraries
 {: #libraries}
@@ -27,7 +27,7 @@ This declaration specifies the name of the library as `EXM146`. See the discussi
 #### Library Versioning
 {: #library-versioning}
 
-This IG recommends [Semantic Versioning](https://semver.org) be used to version libraries used within knowledge artifacts to help track and manage dependencies.
+This Implementation Guide (IG) recommends [Semantic Versioning](https://semver.org) be used to version libraries used within knowledge artifacts to help track and manage dependencies.
 
 **Conformance Requirement 2.2 (Library Versioning):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-2)
 {: #conformance-requirement-2-2}
@@ -103,7 +103,7 @@ contained within a single library.
 2. CQL libraries **SHALL** use a `called` clause for all included libraries
 3. The `called`-alias for an included library **SHOULD** be consistent for usages across libraries
 
-The recommendation that CQL libraries be structured such that all references to expressions from a FHIR artifact are to a single Library is a simplification to ensure that expression references from FHIR artifacts don’t require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references. However, when an artifact uses multiple libraries, all expressions within the artifact SHALL be qualified. 
+The recommendation that CQL libraries be structured such that all references to expressions from a FHIR artifact are to a single Library is a simplification to ensure that expression references from FHIR artifacts don’t require qualified expressions (as they would if multiple libraries were referenced). However, there are valid use cases for allowing multiple libraries to be referenced, such as modular questionnaires, and dependent library references. However, when an artifact uses multiple libraries, all expressions within the artifact SHALL be qualified.
 
 #### Library Namespaces
 {: #library-namespaces}
@@ -118,10 +118,10 @@ library CMS.Common version '2.0.0'
 ```
 
 This example declares a library named Common in the CMS namespace. Per the [CQL specification](https://cql.hl7.org/04-logicalspecification.html#versionedidentifier), the namespace for a
-library is included in the ELM in the `Library.identifier` element, along with a URI that provides a globally unique, stable identifier for the namespace.
+library is included in the ELM in the `Library.identifier` element, along with a Uniform Resource Identifier (URI) that provides a globally unique, stable identifier for the namespace.
 For example, the URI for the CMS namespace might be `https://ecqi.healthit.gov/ecqm/measures`.
 
-Note that this is a URI that may or may not correspond to a reachable web address (a URL). The important aspect is not
+Note that this is a URI that may or may not correspond to a reachable web address (a Uniform Resource Locater (URL)). The important aspect is not
 the addressability, but the uniqueness, ensuring that library name collisions cannot occur.
 
 **Conformance Requirement 2.4 (Library Namespaces):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-4)
@@ -173,7 +173,7 @@ codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct'
 Snippet 2-4: codesystem definition line from Terminology.cql.
 
 The canonical URL for a code system is a globally unique, stable, version-independent identifier for the code system.
-The [HL7 Terminology site (THO)](http://terminology.hl7.org) defines canonical URLs for most common code systems.
+The [HL7 Terminology (THO) site ](http://terminology.hl7.org) defines canonical URLs for most common code systems.
 
 The local identifier for the codesystem ("SNOMED CT:2017-09" in this case) should include the friendly name of the code system
 and optionally, an indication of the version, separated with a colon.
@@ -190,7 +190,7 @@ system version available on the server.
 
 ##### Value set spelling and case usage.
 
-        "Value set", with two words, regardless of case, is the human-readable spelling. 
+        "Value set", with two words, regardless of case, is the human-readable spelling.
         "ValueSet", with one word and in PascalCase, is the FHIR Type.
         "valueset", with one word and all lower case, is the proper spelling for use within cql statements and expressions, except when used within a URL.
 
@@ -292,13 +292,16 @@ For example, rather than combining multiple value sets using a `union`, separate
 #### Representation in Narrative
 {: #valueset-representation-in-narrative}
 
-When value sets are used within knowledge artifacts, they will be represented in the narrative (Human-readable) as:
+When value sets are used within knowledge artifacts, if the artifact includes narrative (Human-readable), it **SHALL** include a representation of at least the following information for each value set:
 
+    The local identifier for the value set.
+    The external identifier for the value set.
+    The version of the value set, if specified.
+
+For example:
 ```html
-"Encounter Inpatient" using "Encounter Inpatient SNOMEDCT Value Set" (http://example.org/fhir/ValueSet/encounter-inpatient, version 20160929)
+"Encounter Inpatient": "Encounter Inpatient SNOMEDCT Value Set" (http://example.org/fhir/ValueSet/encounter-inpatient, version 20160929)
 ```
-
-In other words, the local identifier for the value set, followed by the value set information from the value set declaration, including version if specified.
 
 #### String-based Membership Testing
 {: #string-based-membership-testing}
@@ -436,7 +439,7 @@ For example:
 
 ```cql
 define function
-   "Includes Or Starts During"(Condition "Condition", Encounter "Encounter"):
+   "Includes Or Starts During"(Condition Condition, Encounter Encounter):
       Interval[Condition.onset, Condition.abatement] includes Encounter.period
          or Condition.onset during Encounter.period
 ```
@@ -571,7 +574,7 @@ for not administering any of the anticoagulant and antiplatelet medications spec
 value set.
 
 To represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
-Therapy" value set using the ([cqf-notDoneValueSet]({{site.data.fhir.ver.hl7_fhir_uv_extensions}}/StructureDefinition-cqf-notDoneValueSet.html)) extension to indicate
+Therapy" value set using the ([cqf-notDoneValueSet]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-notDoneValueSet.html)) extension to indicate
 providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
 set URI to negate the entire value set rather than reporting a specific member code from the value set, clinicians are
 not forced to arbitrarily select a specific medication from the "Antithrombotic Therapy" value set that they
@@ -692,7 +695,30 @@ define "Non Elective Inpatient Encounter":
   ["Encounter": "Nonelective Inpatient Encounter"] NonElectiveEncounter
         where NonElectiveEncounter.period ends during day of "Measurement Period"
 ```
-
+Which might be represented as
+```
+{
+    "resourceType": "Parameters",
+    "id": "cql-list-example",
+    "meta": {
+      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
+    },
+    "parameter": [ {
+      "name": "Non Elective Inpatient Encounter",
+      "resource": {
+        "resourceType": "Encounter",
+        ...
+      }
+    }, {
+      "name": "Non Elective Inpatient Encounter",
+      "resource": {
+      "resourceType": "Encounter",
+      ...
+      }
+    }
+  ]
+}
+```
 * Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
 
 For example:
@@ -705,7 +731,29 @@ define "SDE Ethnicity":
       display: E.text
     }
 ```
-
+Which might be represented as
+```
+{
+    "resourceType": "Parameters",
+    "id": "cql-tuple-example",
+    "meta": {
+      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
+    },
+    "parameter": [ {
+      "name": "SDE Ethnicity",
+      "part": [
+        {
+          "name": "code",
+          "valueCode": "2135-2"
+        },
+        {
+          "name": "display",
+          "valueString": "Hispanic or Latino"
+        }
+      ]
+    }]
+}
+```
 #### Parameters and Data Requirements
 {: #parameters-and-data-requirements}
 
@@ -713,8 +761,8 @@ define "SDE Ethnicity":
 {: #conformance-requirement-2-20}
 
 1. Parameters to CQL libraries **SHALL** be either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations.
-2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations
-3. Tuple types are represented with Parameters that have `part` elements corresponding to the elements of the tuple. List types are represented with Parameters that have a cardinality of 0..*.
+2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types (as defined in 2.19), or FHIR resources types, optionally with profile designations
+3. Tuple types are represented in FHIR as a `parameter` that has parts corresponding to the elements of the tuple type. List types are represented in FHIR as a `parameter` that has a cardinality of 0..*.
 4. Libraries used in computable artifacts **SHALL** use the `parameter` element to identify input parameters as well as the type of all top-level expressions as output parameters.
 5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL:
 
@@ -933,10 +981,215 @@ Because certain translator options impact language features and functionality, t
     * EnableLocators
     * EnableResultTypes
 
+### Patterns
+
+The following sections provide patterns that facilitate authoring CQL directly with the FHIR data model, including support for primitives, choices, slices, and extensions.
+
+#### Primitives
+
+As an exchange specification, FHIR has a rich syntax for expressing the values of elements defined in FHIR
+resources. In particular, FHIR data types for representing basic values such as integers, strings, and dates and
+times allow for [extensions](http://hl7.org/fhir/extensibility.html#extension). This means that a FHIR
+`string` is not just a string value, but has elements (specifically, `id`, `extension`, and
+`value`, where the `value` element contains the actual string value). This means that to access
+the actual value of a FHIR `string` element in CQL, authors would need to reference the `value` element:
+
+```cql
+define "Patient is Female":
+  Patient.gender.value = 'female'
+```
+  
+To avoid this, the FHIRHelpers library defines implicit conversions for all the FHIR types, allowing authors to treat
+FHIR elements as integers, strings, etc. directly:
+
+```cql
+define "Patient is Female":
+  Patient.gender = 'female'
+```
+
+Note that these conversions are performed automatically by the [CQL-to-ELM translator](https://github.com/cqframework/clinical_quality_language/blob/master/Src/java/cql-to-elm/OVERVIEW.md) when they are used by CQL, resulting in a conversion error if the FHIRHelpers library is not included using
+  an [include declaration](https://cql.hl7.org/02-authorsguide.html#libraries):
+  
+```cql
+include FHIRHelpers version '4.0.1'
+```
+
+The version of the library is not required by CQL, but for the FHIRHelpers reference, because it is so closely tied to the
+FHIR ModelInfo, best-practice is to include the version of FHIRHelpers.
+
+#### Choices
+
+FHIR includes the notion of [_choice_](https://hl7.org/fhir/formats.html#choice) types, or elements that can be represented as any of a number of types. For example,
+the `Patient.deceased` element can be specified as a `boolean` or as a `dateTime`. CQL also supports [choice](https://cql.hl7.org/03-developersguide.html#choice-types) types, these elements are manifest directly as Choice Types within the Model Info.
+
+When authoring CQL using FHIR, logic must take into account the possible choice types of the elements involved. For example, the `Observation.effective` element may be represented as a `dateTime` or a `Period` (among other types):
+
+```cql
+define "Blood Pressure Observations Within 30 Days":
+  [Observation: "Blood Pressure"] O
+    where O.status = 'final'
+      and (
+        (O.effective as dateTime).value 30 days or less before Today()
+          or (O.effective as Period) starts 30 days or less before Today()
+      )
+```
+
+Rather than requiring different representations to be considered in the logic each time they are encountered, a function can be defined that accepts a choice type argument:
+
+```cql
+define fluent function toInterval(choice Choice<FHIR.dateTime, FHIR.Period>):
+  case
+    when choice is FHIR.dateTime then
+      Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]
+    when choice is FHIR.Period then
+      FHIRHelpers.ToInterval(choice as FHIR.Period)
+    else null as Interval<DateTime>
+  end
+```
+
+This can then be written as:
+
+```cql
+define "Blood Pressure Observations Within 30 Days (refined)":
+  [Observation: "Blood Pressure"] O
+    where O.status = 'final'
+      and O.effective.toInterval() starts 30 days or less before Today()
+```
+
+#### Slices
+
+Another common pattern in FHIR is the use of [_slices_](https://hl7.org/fhir/profiling.html#slicing) to constrain list-valued elements into sub-lists and elements. Consider the [Blood Pressure](http://hl7.org/fhir/bp.html) that defines "Systolic" and "Diastolic" elements:
+
+```cql
+define "Blood Pressure With Slices":
+  [Observation: "Blood Pressure"] BP
+    where (singleton from (BP.component C where C.code ~ "Systolic blood pressure")).value < 140 'mm[Hg]'
+      and (singleton from (BP.component C where C.code ~ "Diastolic blood pressure")).value < 90 'mm[Hg]'
+```
+
+To reuse slices, CQL fluent functions can be defined for each slice:
+
+```cql
+define fluent function systolic(observation Observation):
+  singleton from (observation.component C where C.code ~ "Systolic blood pressure")
+
+define fluent function diastolic(observation Observation):
+  singleton from (observation.component C where C.code ~ "Diastolic blood pressure")
+```
+
+These fluent functions can then be used to access the slices:
+
+```cql
+define "Blood Pressure With Slices (refined)":
+  [Observation: "Blood Pressure"] BP
+    where BP.systolic().value < 140 'mm[Hg]'
+      and BP.diastolic().value < 90 'mm[Hg]'
+```
+
+#### Extensions
+
+FHIR also supports defining [_extensions_](https://hl7.org/fhir/extensibility.html) to allow additional information beyond what is available in the base FHIR resources to be specified. Profiles then make use of these extensions to establish how this additional information is exchanged in specific use cases. As a simple example, consider the [birthsex](https://hl7.org/fhir/us/core/StructureDefinition-us-core-patient-definitions.html#Patient.extension:birthsex) extension in US Core:
+
+```cql
+define "Patient Birth Sex Is Male":
+  Patient P
+    let birthsex: singleton from (
+        P.extension E where E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+    ).value as FHIR.code
+    where birthsex = 'M'
+```
+
+In this example, a _let clause_ is used to build a `birthsex` element in the query that finds the birthsex extension value. As with slicing, fluent functions can be used to provide access to extensions:
+
+```cql
+define fluent function birthsex(patient Patient):
+  (singleton from (
+    patient.extension E where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+  )).value as FHIR.code
+```
+
+This function can then be used to easily access the birthsex extension:
+
+```cql
+define "Patient Birth Sex Is Male (refined)":
+  Patient P
+    where P.birthsex() = 'M'
+```
+
+As a more complex example, consider the [race](https://hl7.org/fhir/us/core/StructureDefinition-us-core-race.html) extension. This is a complex extension that define elements for `ombCategory`, `detailed`, and `text`:
+
+```cql
+define "Patient With Race Category":
+  Patient P
+    let
+      race: singleton from (
+        P.extension E where E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+      ),
+      ombCategory: race.extension E where E.url.value = 'ombCategory',
+      detailed: race.extension E where E.url.value = 'detailed'
+    where (ombCategory O return O.value as FHIR.Coding) contains "American Indian or Alaska Native"
+      and (detailed O return O.value as FHIR.Coding) contains "Alaska Native"
+```
+
+Again, these can be access directly using a let clause, or a fluent function can be defined to allow access:
+
+```cql
+define fluent function race(patient Patient):
+  (singleton from (patient.extension E where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race')) race
+    let 
+      ombCategory: race.extension E where E.url = 'ombCategory' return E.value as Coding,
+      detailed: race.extension E where E.url = 'detailed' return E.value as Coding,
+      text: singleton from (race.extension E where E.url = 'text' return E.value as string)
+    return { ombCategory: ombCategory, detailed: detailed, text: text }
+```
+
+```cql
+define "Patient With Race Category (refined)":
+  Patient P
+    where P.race().ombCategory contains "American Indian or Alaska Native"
+      and P.race().detailed contains "Alaska Native"
+```
+
+#### FHIRCommon
+
+For common use cases, the [CQF Common](http://fhir.org/guides/cqf/common) implementation guide provides a FHIRCommon library that defines many of these types of functions and declarations that are commonly used with CQL and FHIR. By including a reference to this implementation guide, content IGs can build CQL that refers to these common functions by including the FHIRCommon library:
+
+```cql
+include fhir.cqf.common.FHIRCommon
+```
+
+#### Profile-informed Authoring
+
+Note that rather than using FHIR directly, CQL also supports models derived from implementation guides specifically. For example:
+
+```cql
+using USCore version '6.1.0'
+```
+
+With this approach, the profiles defined in the USCore implementation guide are used to provide the model. This approach is referred to as "profile-informed authoring" and automates the patterns described above, so that rather than building fluent functions, the model contains elements for slices and extensions defined in the profiles of the implementation guide. For example:
+
+```cql
+define "Blood Pressure With Slices":
+  ["BloodPressureProfile"] BP
+    where BP.systolic.value < 140 'mm[Hg]'
+      and BP.diastolic.value < 90 'mm[Hg]'
+
+define "Patient With Birthsex":
+  Patient P
+    where P.birthsex = 'M'
+
+define "Patient With Race":
+  Patient P
+    where P.race.ombCategory contains "American Indian or Alaska Native"
+      and P.race.detailed contains "Alaska Native"
+```
+
+For detailed information on how model information is produced for an implementation guide, see the [Profile-informed ModelInfo](profile-informed-modelinfo) section.
+
 ### ModelInfo
 {: #modelinfo}
 
-When using CQL with FHIR, FHIR StructureDefinition resources are used to create the ModelInfo that describes the types for use in CQL, according to the following rules:
+To use CQL with FHIR, [model information (ModelInfo)](https://cql.hl7.org/07-physicalrepresentation.html#data-model-references) must be provided to the implementation environment. To create this ModelInfo FHIR StructureDefinition resources can be processed according to the following rules:
 
 1. For each StructureDefinition, if the kind is `primitive-type`, `complex-type` (except for types based on Extension), or `resource` (with no derivation or a derivation of `specialization`), a ClassInfo with the same name as the structure definition is created
     1. For each element:
@@ -949,7 +1202,13 @@ If this process is run against the StructureDefinitions from the base FHIR speci
 Patient.gender.value = 'female'
 ```
 
-To facilitate comparison by authors, these primitives can be implicitly converted to CQL primitive types, and the FHIRHelpers library (typically generated alongside the ModelInfo) defines these implicit conversions. See the [CQF Common](http://fhir.org/guides/cqf/common) implementation guide for a complete FHIR ModelInfo as well as FHIRHelpers library representing the FHIR specification.
+To facilitate comparison by authors, these primitives can be implicitly converted to CQL primitive types, and the FHIRHelpers library (generated alongside the ModelInfo) defines these implicit conversions. See the [CQF Common](http://fhir.org/guides/cqf/common) implementation guide for a complete FHIR ModelInfo as well as FHIRHelpers library representing the FHIR specification.
+
+To make use of these implicit conversions within a CQL library, include the FHIRHelpers library:
+
+```cql
+include FHIRHelpers version '4.0.1'
+```
 
 #### ModelInfo Libraries
 
@@ -962,18 +1221,60 @@ Similar to CQL content, ModelInfo can be included in FHIR Library resources to f
 
 #### Profile-informed ModelInfo
 
-The process for producing ModelInfo from FHIR StructureDefinitions can also be applied to FHIR profile definitions, allowing for ModelInfos that reflect profile definitions, using the following refinements:
+CQL can be used with a FHIR ModelInfo directly, as described above. However, FHIR profiles include a wealth of computable information about the intended structure of the clinical data involved in an exchange, including terminology bindings, constraints, descriptive metadata, _slices_ and _extensions_. To facilitate authoring that can easily reference this information, the tooling to construct ModelInfo from the base FHIR StructureDefinitions has been enhanced to support building ModelInfo that is specific to an implementation guide:
 
-1. Each profile results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
-1. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section
-2. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo
+1. Each profile (StructureDefinition with derivation set to `constraint`) results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
+    1. `namespace` is set to the `modelName`
+    2. `name` is set to the `name` element of the StructureDefinition
+    3. `baseType` is set to the qualified name of the class corresponding to the `baseDefinition`
+    4. `identifier` is set to the canonical `url` of the StructureDefinition
+    5. `label` is set to the `title` of the StructureDefinition (unless overridden by the cqf-modelInfo-label extension)
+    6. `retrievable` is set to `true` (unless overridden by the cqf-modelInfo-isRetrievable extension)
+    7. `primaryCodePath` is set based on the cqf-modelInfo-primaryCodePath extenssion
+2. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section.
+3. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo. Specifically, ClassInfo structures are created with elements as defined by the slice or extension definitions.
+    1. For slices, a new ClassInfo is created derived from the ClassInfo corresponding to the element being sliced, and named based on the `sliceName` element of the slice definition. An element of this type and named with the `sliceName` is then added to the containing ClassInfo.
+    2. For extensions, a new ClassInfo is created derived from the `Extension` ClassInfo and named based on the `name` of the extension definition. An element of this type and naamed with the extension `sliceName` is then added to the containing ClassInfo.
+
+For example, consider the [US Core Blood Pressure Profile](https://hl7.org/fhir/us/core/StructureDefinition-us-core-blood-pressure.html). This profile has two slices of the `component` element, named `systolic` and `diastolic`. The resulting USCore ModelInfo has classes derived from the `USCore.Observation.Component` class:
+
+```xml
+  <typeInfo xsi:type="ClassInfo" namespace="USCore" name="Observation.Component.systolic" retrievable="false" baseType="USCore.Observation.Component"/>
+  <typeInfo xsi:type="ClassInfo" namespace="USCore" name="Observation.Component.diastolic" retrievable="false" baseType="USCore.Observation.Component"/>
+```
+
+and then elements in the `USCore.BloodPressureProfile` class corresponding to these slices:
+
+```xml
+  <element name="systolic" elementType="USCore.Observation.Component.systolic"/>
+  <element name="diastolic" elementType="USCore.Observation.Component.diastolic"/>
+```
+
+For extensions, consider the [US Core Ethnicity Extension](https://hl7.org/fhir/us/core/StructureDefinition-us-core-ethnicity.html). This is a complex extension, and so the constructed ClassInfo has elements for each of the elements defined by the extension:
+
+```xml
+  <typeInfo xsi:type="ClassInfo" namespace="USCore" name="EthnicityExtension" identifier="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity" label="US Core Ethnicity Extension" retrievable="false" baseType="USCore.Extension">
+      <element name="ombCategory" elementType="System.Code"/>
+      <element name="detailed">
+          <elementTypeSpecifier xsi:type="ListTypeSpecifier" elementType="System.Code"/>
+      </element>
+      <element name="text" elementType="System.String"/>
+      <element name="url" elementType="System.String"/>
+  </typeInfo>
+```
+
+And the `USCore.PatientProfile` class then has an element named `ethnicity` of this type:
+
+```xml
+  <element name="ethnicity" elementType="USCore.EthnicityExtension"/>
+```
 
 #### ModelInfo Settings
 
 In addition, to support more fine-grained control over the process of producing ModelInfo from FHIR StructureDefinitions, this implementation guide defines several ModelInfo-related extensions:
 
-* cqf-modelInfo-isIncluded - Determines whether to create a ClassInfo for the profile or extension on which it appears
-* cqf-modelInfo-isRetrievable - Determines whether the ClassInfo for the profile on which it appears is marked retrievable (i.e. can appear as the target type of a Retrieve in CQL)
-* cqf-modelInfo-label - Specifies an author-friendly title for the ClassInfo (i.e. an alternate name by which the type can be referenced in CQL type specifiers)
-* cqf-modelInfo-primaryCodePath - Specifies the primary code path for the ClassInfo produced from the profile on which it appears (i.e. the default path for terminology-valued filters when the type is used in a Retrieve in CQL)
-* cqf-modelInfoSettings - Specifies additional settings used to produce the ModelInfo for profiles and extensions defined in the Implementation Guide on which it appears
+* [cqf-modelInfo-isIncluded]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-modelInfo-isIncluded.html) - Determines whether to create a ClassInfo for the profile or extension on which it appears
+* [cqf-modelInfo-isRetrievable]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-modelInfo-isRetrievable.html) - Determines whether the ClassInfo for the profile on which it appears is marked retrievable (i.e. can appear as the target type of a Retrieve in CQL)
+* [cqf-modelInfo-label]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-modelInfo-label.html) - Specifies an author-friendly title for the ClassInfo (i.e. an alternate name by which the type can be referenced in CQL type specifiers)
+* [cqf-modelInfo-primaryCodePath]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-modelInfo-primaryCodePath.html) - Specifies the primary code path for the ClassInfo produced from the profile on which it appears (i.e. the default path for terminology-valued filters when the type is used in a Retrieve in CQL)
+* [cqf-modelInfoSettings]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-modelInfo-modelInfoSettings.html) - Specifies additional settings used to produce the ModelInfo for profiles and extensions defined in the Implementation Guide on which it appears

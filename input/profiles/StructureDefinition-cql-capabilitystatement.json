@@ -76,8 +76,19 @@
         "mustSupport": false
       },
       {
-        "id": "CapabilityStatement.extension:supportedCqlVersion",
-        "path": "CapabilityStatement.extension",
+        "id": "CapabilityStatement.rest",
+        "path": "CapabilityStatement.rest",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "CapabilityStatement.rest.extension:supportedCqlVersion",
+        "path": "CapabilityStatement.rest.extension",
         "sliceName": "supportedCqlVersion",
         "min": 0,
         "max": "*",
@@ -90,6 +101,18 @@
           }
         ],
         "mustSupport": true
+      },
+      {
+        "id": "CapabilityStatement.rest.mode",
+        "path": "CapabilityStatement.rest.mode",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "server"
       }
     ]
   }
