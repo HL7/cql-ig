@@ -83,6 +83,14 @@ pages:
     title: Home
   using-cql.md:
     title: Using CQL
+  patterns.md:
+    title: Patterns
+  conformance.md:
+    title: Conformance
+  using-elm.md:
+    title: Using ELM
+  using-modelinfo.md:
+    title: Using ModelInfo
   profiles.md:
     title: Profiles
   extensions.md:
@@ -98,9 +106,7 @@ pages:
   downloads.md:
     title: Downloads
   changes.md:
-    title: Version History
-  acknowledgements.md:
-    title: Acknowledgements
+    title: Changes
 
 # The resources property corresponds to IG.definition.resource.
 # SUSHI can auto-generate all of the resource entries based on

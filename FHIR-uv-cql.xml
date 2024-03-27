@@ -6,7 +6,6 @@
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
 <artifact id="Library/ANCCohort" key="Library-ANCCohort" name="ANC Cohort"/>
-<artifact id="StructureDefinition/artifact-uriReference" key="StructureDefinition-artifact-uriReference" name="Artifact URI Reference"/>
 <artifact deprecated="true" id="StructureDefinition/cqf-cqlAccessLevel" key="StructureDefinition-cqf-cqlAccessLevel" name="CQL Access Level"/>
 <artifact id="StructureDefinition/cqf-cqlAccessModifier" key="StructureDefinition-cqf-cqlAccessModifier" name="CQL Access Modifier"/>
 <artifact id="OperationDefinition/cql-cql" key="OperationDefinition-cql-cql" name="CQL CQL"/>
@@ -44,23 +43,25 @@
 <artifact id="Library/CQLExample" key="Library-CQLExample" name="FHIR Common (Source CQL Example)"/>
 <artifact id="StructureDefinition/cqf-isEmptyList" key="StructureDefinition-cqf-isEmptyList" name="Is Empty List"/>
 <artifact id="CapabilityStatement/cql-evaluation-service-example" key="CapabilityStatement-cql-evaluation-service-example" name="Library Evaluation Service Capability Statement Example"/>
-<artifact id="StructureDefinition/cqf-shouldTraceDependency" key="StructureDefinition-cqf-shouldTraceDependency" name="Should Trace Dependency"/>
 <artifact id="StructureDefinition/cql-specifichealthconcerns-profile-example" key="StructureDefinition-cql-specifichealthconcerns-profile-example" name="Specific health concern(s)"/>
-<artifact id="StructureDefinition/cqf-testArtifact" key="StructureDefinition-cqf-testArtifact" name="Test Artifact"/>
 <artifact id="Library/modelinfo-example" key="Library-modelinfo-example" name="USCore Model Definition"/>
 <artifact id="Parameters/cql-options-example" key="Parameters-cql-options-example" name="cql-options-example"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
-<page key="acknowledgements" name="Acknowledgements"/>
+<page deprecated="true" key="acknowledgements" name="Acknowledgements"/>
 <page key="artifacts" name="Artifacts Summary"/>
 <page key="capabilities" name="Capabilities"/>
+<page key="changes" name="Changes"/>
+<page key="conformance" name="Conformance"/>
 <page key="downloads" name="Downloads"/>
 <page key="extensions" name="Extensions"/>
 <page key="index" name="Home"/>
 <page key="operations" name="Operations"/>
+<page key="patterns" name="Patterns"/>
 <page key="profiles" name="Profiles"/>
 <page key="toc" name="Table of Contents"/>
 <page key="terminology" name="Terminology"/>
 <page key="using-cql" name="Using CQL"/>
-<page key="changes" name="Version History"/>
+<page key="using-elm" name="Using ELM"/>
+<page key="using-modelinfo" name="Using ModelInfo"/>
 </specification>

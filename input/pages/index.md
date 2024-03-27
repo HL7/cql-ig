@@ -7,18 +7,6 @@ Where possible, new and updated content will be highlighted with green text and 
 {:.new-content}
 -->
 
-
-This is the first ballot of this implementation guide in this form, but the content has been balloted and published in multiple prior implementation guides, including:
-
-* [Clinical Guidelines](http://hl7.org/fhir/uv/cpg/libraries.html)
-* [Quality Measures](https://hl7.org/fhir/us/cqfmeasures/using-cql.html)
-* [Canonical Resource Management Infrastructure](http://hl7.org/fhir/uv/crmi/2023Sep/using-cql.html)
-
-The following changes were made as a result of ballot comments received in the September 2023 ballot of the Canonical Resource Management Infrastructure Implementation Guide (IG). One of those comments was the suggestion to break this CQL-specific content out into its own implementation guide; this IG is the result of that change.
-
-{{ site.data.package-list.list[0].desc }}
-
-
 {: #using-cql-with-fhir-implementation-guide}
 
 ### Summary
@@ -40,43 +28,70 @@ The intent of this implementation guide is to support the use of CQL with FHIR i
 ### How to read this Guide
 {: #how-to-read-this-guide}
 
+#### Target Audiences
+
+This implementation guide is targeted at two main audiences:
+
+1. **Authors**: Persons involved in the development of CQL-based FHIR Knowledge Artifacts that are authoring CQL, either directly or with tooling assistance
+2. **Integrators**: Persons involved in the development of systems that support authoring, publishing, distributing, and implementing CQL-based FHIR Knowledge Artifacts
+
 This Guide is divided into several pages which are listed at the top of each
 page in the menu bar:
--  **[Home](index.html)**: Summary and background information for the Canonical Resource Management Infrastructure Implementation Guide.
--  **[Using CQL](using-cql.html)**: Using Clinical Quality Language as part of knowledge artifacts.
--  **[Profiles](profiles.html)**: List of profiles defined for use by knowledge artifacts.
--  **[Extensions](extensions.html)**: List of extensions defined and used by knowledge artifacts.
--  **[Operations](operations.html)**: List of operations and operation pattern profiles.
--  **[Capabilities](capabilities.html)**: Definitions of services and operations in support of authoring, publishing, and distributing canonical resources and knowledge artifacts.
--  **[Terminology](terminology.html)**: List of CodeSystems and ValueSets.
--  **[Artifacts Summary](artifacts.html)**: List of the FHIR artifacts defined as part of this implementation guide.
--  **[Acknowledgements](acknowledgements.html)**: Acknowledgements of contributors/authors.
+-  **[Home](index.html)**: Summary and background information on Using CQL with FHIR.
+-  **Authoring**:
+    -  **[Using CQL](using-cql.html)**: Conformance requirements for using Clinical Quality Language as part of authoring FHIR Knowledge Artifacts.
+    -  **[Patterns](patterns.html)**: Patterns and guidance for using Clinical Quality Language as part of authoring FHIR Knowledge Artifacts.
+-  **Integrating**:
+    -  **[Conformance](conformance.html)**: Conformance requirements for integrating Clinical Quality Language as part of systems that support authoring, publishing, distribution, and implementing FHIR Knowledge Artifacts.
+    -  **[ELM](elm.html)**: Conformance requirements for the use of Expression Logical Model (ELM) artifacts.
+    -  **[ModelInfo](modelinfo.html)**: Conformance requirements for the use of Model Info.
+-  **Artifacts**: 
+    -  **[Profiles](profiles.html)**: List of profiles defined for use by knowledge artifacts.
+    -  **[Extensions](extensions.html)**: List of extensions defined and used by knowledge artifacts.
+    -  **[Operations](operations.html)**: List of operations and operation pattern profiles.
+    -  **[Capabilities](capabilities.html)**: Definitions of services and operations in support of authoring, publishing, and distributing canonical resources and knowledge artifacts.
+    -  **[Terminology](terminology.html)**: List of CodeSystems and ValueSets.
+    -  **[Artifacts Summary](artifacts.html)**: List of the FHIR artifacts defined as part of this implementation guide.
 -  **[Downloads](downloads.html)**: Links to downloadable artifacts for implementations.
 -  **[Version History](changes.html)**: Changes made in each version of the Using CQL with FHIR Implementation Guide.
 
-### Must Support
+### Acknowledgements
 
-Certain elements in the profiles defined in this implementation guide are marked as Must Support. This flag is used to indicate that the element plays a critical role in defining, sharing, and implementing artifacts, and implementations **SHALL** understand and process the element.
+This Implementation Guide was made possible by the thoughtful contributions of the following people and organizations:
 
-In addition, because artifact specifications typically make use of data implementation guides (e.g. International Patient Summary(IPS), US Core, QI-Core), the implications of the Must Support flag for profiles used from those implementation guides must be considered.
-
-For more information, see the definition of [Must Support](https://hl7.org/fhir/R4/profiling.html#mustsupport) in the base FHIR specification.
-
-**Conformance Requirement 1.1 (Must Support Elements):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-1-1)
-{: #conformance-requirement-1-1}
-
-For resource instances claiming to conform to profiles from this IG, Must Support on any profile data element **SHALL** be interpreted as follows:
-* Authoring systems and knowledge repositories **SHALL** be capable of populating all Must Support data elements.
-* Evaluating systems **SHALL** be capable of processing resource instances containing Must Support data elements without generating an error or causing the evaluation to fail.
-* In situations where information on a particular data element is not present and the reason for absence is unknown, authoring and repository systems **SHALL NOT** include the data elements in the resource instance. For example, for systems using ‘9999’ to indicate unknown data values, do not include ‘9999’ in the resource instance.
-* When consuming resource instances, evaluating systems **SHALL** interpret missing data elements within resource instances as data not present for the artifact.
-* Submitting and receiving systems using knowledge artifacts to perform data exchange or artifact evaluation operations **SHALL** respect the must support requirements of the profiles used by the artifact to describe the data involved in the operation.
+* Brian Kaney, Vermonster - Editor
+* Bryant Austin, Smile Digital Health - Contributor
+* Michael Holck, ICF - Contributor
+* Ewout Kramer, Firely - Contributor
+* Carl Leitner - Contributor
+* Rob McClure, Md Partners - Contributor
+* Evan Muchasak, NCQA - Contributor
+* Rob Reynolds, Smile Digital Health - Contributor
+* Brenin Rhodes, Smile Digital Health - Contributor
+* Bryn Rhodes, Smile Digital Health - Editor
+* Derek Ritz - Contributor
+* Chris Schuler, Smile Digital Health - Contributor
+* Jennifer Seeman, ICF - Contributor
+* Adam Stevenson, Smile Digital Health - Contributor
 
 ### References
 {: #references}
 
 Health Level Seven. Clinical Quality Framework - HL7 Clinical Decision Support Work Group Confluence Page. [Online]. Available from: [https://confluence.hl7.org/display/CQIWC/Clinical Quality Framework](https://confluence.hl7.org/display/CQIWC/Clinical%20Quality%20Framework) [Accessed 11 October 2019].
 
+Health Level Seven. Clinical Quality Language. [Online]. Available from: [http://cql.hl7.org](http://cql.hl7.org) [Accessed October 2023].
+
+Health Level Seven. FHIR Clinical Guidelines. [Online]. Available from: [http://hl7.org/fhir/uv/cpg](http://hl7.org/fhir/uv/cpg) [Accessed October 2023].
+
+Health Level Seven. Canonical Resource Management Infrastructure (Ballot). [Online]. Available from: [http://hl7.org/fhir/uv/crmi/2023Sep](http://hl7.org/fhir/uv/crmi/2023Sep) [Accessed October 2023].
+
+Health Level Seven. Quality Measure Implementation Guide. [Online]. Available from: [http://hl7.org/fhir/us/cqfmeasures](http://hl7.org/fhir/us/cqfmeasures) [Accessed October 2023].
+
+Health Level Seven. HL7 Cross-Paradigm Specification: Representing Negatives. [Online]. Available from: [https://www.hl7.org/implement/standards/product_brief.cfm?product_id=592](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=592) [Accessed March 2024].
+
+Health Level Seven. FHIR Quality Profile. [Online]. Available from: [http://hl7.org/fhir/us/qicore](http://hl7.org/fhir/us/qicore) [Accessed March 2024].
+
+Health Level Seven. US Core. [Online]. Available from: [http://hl7.org/fhir/us/core](http://hl7.org/fhir/us/core) [Accessed March 2024].
 
 ### Dependencies
 
