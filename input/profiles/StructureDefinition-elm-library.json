@@ -63,7 +63,15 @@
       {
         "id": "Library",
         "path": "Library",
-        "mustSupport": false
+        "mustSupport": false,
+        "constraint": [
+          {
+            "key": "library-content-format",
+            "severity": "error",
+            "human": "Library content must exist in XML or JSON format and contain data or a URL.",
+            "expression": "content.exists() and content.where(contentType = 'application/elm+xml' or contentType = 'application/elm+json').exists() and (content.data.exists() or content.url.exists())"
+          }
+        ]
       },
       {
         "id": "Library.extension:cqlOptions",
@@ -75,7 +83,7 @@
           {
             "code": "Extension",
             "profile": [
-              "http://hl7.org/fhir/StructureDefinition/cqf-cqlOptions"
+              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-cqlOptions"
             ]
           }
         ],

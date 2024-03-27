@@ -6,10 +6,9 @@
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
 <artifact id="Library/ANCCohort" key="Library-ANCCohort" name="ANC Cohort"/>
-<artifact id="CodeSystem/shareable-example" key="CodeSystem-shareable-example" name="ANCM Activity Codes"/>
-<artifact id="CodeSystem/publishable-example" key="CodeSystem-publishable-example" name="ANCM Concept Codes"/>
 <artifact id="StructureDefinition/cqf-cqlAccessLevel" key="StructureDefinition-cqf-cqlAccessLevel" name="CQL Access Level"/>
 <artifact id="OperationDefinition/cql-cql" key="OperationDefinition-cql-cql" name="CQL CQL"/>
+<artifact id="StructureDefinition/cql-cqlOptions" key="StructureDefinition-cql-cqlOptions" name="CQL CQL Options"/>
 <artifact id="StructureDefinition/cql-capabilitystatement" key="StructureDefinition-cql-capabilitystatement" name="CQL Capability Statement"/>
 <artifact id="StructureDefinition/cql-evaluationresult" key="StructureDefinition-cql-evaluationresult" name="CQL Evaluation Result"/>
 <artifact id="CapabilityStatement/cql-evaluation-service" key="CapabilityStatement-cql-evaluation-service" name="CQL Evaluation Service"/>
@@ -19,25 +18,28 @@
 <artifact id="OperationDefinition/cql-library-evaluate" key="OperationDefinition-cql-library-evaluate" name="CQL Library Evaluate"/>
 <artifact id="StructureDefinition/cql-modelinfo" key="StructureDefinition-cql-modelinfo" name="CQL Model Info"/>
 <artifact id="StructureDefinition/cql-module" key="StructureDefinition-cql-module" name="CQL Module"/>
+<artifact id="StructureDefinition/cql-options" key="StructureDefinition-cql-options" name="CQL Options"/>
 <artifact id="StructureDefinition/cql-structuredefinition" key="StructureDefinition-cql-structuredefinition" name="CQL StructureDefinition"/>
 <artifact id="StructureDefinition/cqf-cqlType" key="StructureDefinition-cqf-cqlType" name="CQL Type"/>
-<artifact id="ValueSet/anc-b5-de51" key="ValueSet-anc-b5-de51" name="Danger Signs - Central cyanosis Codes"/>
-<artifact id="ValueSet/anc-b5-de49" key="ValueSet-anc-b5-de49" name="Danger Signs - No danger signs Codes"/>
 <artifact id="StructureDefinition/cql-dangersigns-profile-example" key="StructureDefinition-cql-dangersigns-profile-example" name="Danger signs"/>
-<artifact id="ValueSet/anc-b5-de50" key="ValueSet-anc-b5-de50" name="Danger signs Codes"/>
-<artifact id="ValueSet/publishable-example" key="ValueSet-publishable-example" name="Danger signs Codes Grouper"/>
 <artifact id="StructureDefinition/elm-library" key="StructureDefinition-elm-library" name="ELM Library"/>
+<artifact id="CodeSystem/shareable-example" key="CodeSystem-shareable-example" name="Example ANCM Activity Codes"/>
+<artifact id="CodeSystem/publishable-example" key="CodeSystem-publishable-example" name="Example ANCM Concept Codes"/>
+<artifact id="ValueSet/anc-b5-de51" key="ValueSet-anc-b5-de51" name="Example Danger Signs - Central cyanosis Codes"/>
+<artifact id="ValueSet/anc-b5-de49" key="ValueSet-anc-b5-de49" name="Example Danger Signs - No danger signs Codes"/>
+<artifact id="ValueSet/anc-b5-de50" key="ValueSet-anc-b5-de50" name="Example Danger signs Codes"/>
+<artifact id="ValueSet/publishable-example" key="ValueSet-publishable-example" name="Example Danger signs Codes Grouper"/>
 <artifact id="Parameters/cql-evaluationresult-example" key="Parameters-cql-evaluationresult-example" name="Example Evaluation Result Parameters"/>
 <artifact id="Library/module-example" key="Library-module-example" name="Example Logic Library - Module Definition"/>
 <artifact id="Parameters/qicore-modelinfosettings" key="Parameters-qicore-modelinfosettings" name="Example ModelInfo Settings Parameters"/>
 <artifact id="Observation/negation-example" key="Observation-negation-example" name="Example Negation Observation"/>
 <artifact id="Patient/example" key="Patient-example" name="Example Patient"/>
+<artifact id="ValueSet/shareable-example" key="ValueSet-shareable-example" name="Example Specific health concern(s) Codes"/>
 <artifact id="Library/FHIRCommon" key="Library-FHIRCommon" name="FHIR Common"/>
 <artifact id="Library/ELMExample" key="Library-ELMExample" name="FHIR Common (Compiled CQL Example)"/>
 <artifact id="Library/CQLExample" key="Library-CQLExample" name="FHIR Common (Source CQL Example)"/>
 <artifact id="CapabilityStatement/cql-evaluation-service-example" key="CapabilityStatement-cql-evaluation-service-example" name="Library Evaluation Service Capability Statement Example"/>
 <artifact id="StructureDefinition/cql-specifichealthconcerns-profile-example" key="StructureDefinition-cql-specifichealthconcerns-profile-example" name="Specific health concern(s)"/>
-<artifact id="ValueSet/shareable-example" key="ValueSet-shareable-example" name="Specific health concern(s) Codes"/>
 <artifact id="Library/modelinfo-example" key="Library-modelinfo-example" name="USCore Model Definition"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>

@@ -75,7 +75,7 @@
           {
             "code": "Extension",
             "profile": [
-              "http://hl7.org/fhir/StructureDefinition/cqf-cqlOptions"
+              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-cqlOptions"
             ]
           }
         ],
@@ -98,6 +98,8 @@
           ],
           "rules": "open"
         },
+        "min": 1,
+        "max": "*",
         "mustSupport": true
       },
       {
