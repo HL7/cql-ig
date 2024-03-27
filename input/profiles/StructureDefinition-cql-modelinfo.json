@@ -63,6 +63,15 @@
       {
         "id": "Library",
         "path": "Library",
+        "constraint": [
+          {
+            "key": "mil-1",
+            "severity": "error",
+            "human": "ModelInfo libraries must have an XML or JSON content element (or both)",
+            "expression": "content.where(contentType = 'application/xml' or contentType = 'application/json').exists()",
+            "xpath": "exists(f:value)"
+          }
+        ],
         "mustSupport": false
       },
       {
@@ -97,6 +106,20 @@
           ],
           "rules": "open"
         },
+        "condition": [
+          "mil-1"
+        ],
+        "min": 1,
+        "max": "*",
+        "constraint": [
+          {
+            "key": "mil-2",
+            "severity": "error",
+            "human": "ModelInfo libraries must have a content element with data or a url (or both)",
+            "expression": "data.exists() or url.exists()",
+            "xpath": "exists(f:value)"
+          }
+        ],
         "mustSupport": true
       },
       {
@@ -124,6 +147,9 @@
       {
         "id": "Library.content:xml.data",
         "path": "Library.content.data",
+        "condition": [
+          "mil-2"
+        ],
         "min": 0,
         "max": "1",
         "mustSupport": true
@@ -131,6 +157,9 @@
       {
         "id": "Library.content:xml.url",
         "path": "Library.content.url",
+        "condition": [
+          "mil-2"
+        ],
         "min": 0,
         "max": "1",
         "mustSupport": true
@@ -160,6 +189,9 @@
       {
         "id": "Library.content:json.data",
         "path": "Library.content.data",
+        "condition": [
+          "mil-2"
+        ],
         "min": 0,
         "max": "1",
         "mustSupport": true
@@ -167,6 +199,9 @@
       {
         "id": "Library.content:json.url",
         "path": "Library.content.url",
+        "condition": [
+          "mil-2"
+        ],
         "min": 0,
         "max": "1",
         "mustSupport": true
