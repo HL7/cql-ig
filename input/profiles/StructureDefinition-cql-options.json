@@ -29,7 +29,7 @@
       ]
     }
   ],
-  "description": "CQL-to-ELM translator options that were used to build the CQL.",
+  "description": "A parameters profile that defines supported CQL-to-ELM translator options used to translate CQL. Complete documentation of these options can be found in the [Usage](https://github.com/cqframework/clinical_quality_language/blob/v3.9.0/Src/java/cql-to-elm/OVERVIEW.md#usage) topic of the CQL-to-ELM translator overview.",
   "fhirVersion": "4.0.1",
   "mapping": [
     {
@@ -57,7 +57,7 @@
           "discriminator": [
             {
               "type": "value",
-              "path": "url"
+              "path": "name"
             }
           ],
           "ordered": false,
@@ -68,7 +68,9 @@
         "id": "Parameters.parameter:enableAnnotations",
         "path": "Parameters.parameter",
         "sliceName": "enableAnnotations",
-        "short": "This instructs the translator to include the source CQL as an annotation within the ELM.",
+        "short": "Include annotations?",
+        "definition": "This parameter instructs the translator to include the source CQL as annotations within the ELM. (default is false)",
+        "comment": "Annotations allow implementations to reconstruct the source CQL from translated ELM to support applications such as debugging and code coverage highlighting.",
         "min": 0,
         "max": "1"
       },
@@ -91,7 +93,8 @@
         "id": "Parameters.parameter:enableLocators",
         "path": "Parameters.parameter",
         "sliceName": "enableLocators",
-        "short": "This instructs the translator to include line number and character information for each ELM node.",
+        "short": "Include locators?",
+        "definition": "This parameter instructs the translator to include source line number and character information for each ELM node. (default is false)",
         "min": 0,
         "max": "1"
       },
@@ -114,7 +117,9 @@
         "id": "Parameters.parameter:disableListDemotion",
         "path": "Parameters.parameter",
         "sliceName": "disableListDemotion",
-        "short": "This instructs the translator to disallow demotion of list-valued expressions to singletons. The list demotion feature of CQL is used to enable functionality related to use with FHIRPath.",
+        "short": "Implicitly convert lists to singletons when possible?",
+        "definition": "This parameter instructs the translator to disallow demotion of list-valued expressions to singletons. (default is false)",
+        "comment": "The list demotion feature of CQL is used to enable functionality related to use with FHIRPath by implicitly converting list-valued expressions to singletons when possible.",
         "min": 0,
         "max": "1"
       },
@@ -137,7 +142,9 @@
         "id": "Parameters.parameter:disableListPromotion",
         "path": "Parameters.parameter",
         "sliceName": "disableListPromotion",
-        "short": "This instructs the translator to disallow promotion of singletons to list-valued expressions. The list promotion feature of CQL is used to enable functionality related to use with FHIRPath.",
+        "short": "Implicitly convert singletons to lists when possible?",
+        "definition": "This parameter instructs the translator to disallow promotion of singletons to list-valued expressions. (default is false)",
+        "comment": "The list promotion feature of CQL is used to enable functionality related to use with FHIRPath by implicitly converting singleton expressions to list-valued expressions when possible.",
         "min": 0,
         "max": "1"
       },
@@ -160,7 +167,9 @@
         "id": "Parameters.parameter:disableMethodInvocation",
         "path": "Parameters.parameter",
         "sliceName": "disableMethodInvocation",
-        "short": "This instructs the translator to disallow method-style invocation. The method-style invocation feature of CQL is used to enable functionality related to use with FHIRPath.",
+        "short": "Disable method-style invocation?",
+        "definition": "This parameter instructs the translator to disallow method-style invocation. (default is false)",
+        "comment": "The method-style invocation feature of CQL is used to enable functionality related to use with FHIRPath.",
         "min": 0,
         "max": "1"
       },
@@ -183,7 +192,8 @@
         "id": "Parameters.parameter:enableDateRangeOptimization",
         "path": "Parameters.parameter",
         "sliceName": "enableDateRangeOptimization",
-        "short": "This instructs the translator to optimize date range filters by moving them inside retrieve expressions.",
+        "short": "Optimize date ranges when possible?",
+        "definition": "This parameter instructs the translator to optimize date range filters by moving them inside retrieve expressions. (default is false)",
         "min": 0,
         "max": "1"
       },
@@ -206,7 +216,8 @@
         "id": "Parameters.parameter:enableResultTypes",
         "path": "Parameters.parameter",
         "sliceName": "enableResultTypes",
-        "short": "This instructs the translator to include inferred result types in the output ELM.",
+        "short": "Include result types?",
+        "definition": "This parameter instructs the translator to include inferred result types in the output ELM. (default is false)",
         "min": 0,
         "max": "1"
       },
@@ -229,7 +240,8 @@
         "id": "Parameters.parameter:enableDetailedErrors",
         "path": "Parameters.parameter",
         "sliceName": "enableDetailedErrors",
-        "short": "This instructs the translator to include detailed error information. By default, the translator only reports root-cause errors.",
+        "short": "Include detailed errors?",
+        "definition": "This instructs the translator to include detailed error information. By default, the translator only reports root-cause errors.",
         "min": 0,
         "max": "1"
       },
@@ -252,7 +264,9 @@
         "id": "Parameters.parameter:disableListTraversal",
         "path": "Parameters.parameter",
         "sliceName": "disableListTraversal",
-        "short": "This instructs the translator to disallow traversal of list-valued expressions. With knowledge artifacts, disabling this feature would prevent a useful capability.",
+        "short": "Disallow list traversal?",
+        "definition": "This parameter instructs the translator to disallow traversal of list-valued expressions. (default is false)",
+        "comment": "With FHIR-based knowledge artifacts, disabling this feature is not recommended, since it would prevent the use of FHIRPath expressions involving multi-cardinality (i.e. list-valued) elements.",
         "min": 0,
         "max": "1"
       },
@@ -275,7 +289,18 @@
         "id": "Parameters.parameter:signatureLevel",
         "path": "Parameters.parameter",
         "sliceName": "signatureLevel",
-        "short": "This setting controls whether the signature element of a FunctionRef will be populated.",
+        "short": "Include signatures?",
+        "definition": "This parameter controls whether the signature element of a FunctionRef will be populated. None (default) | Differing | Overloads | All. Differing will include invocation signatures that differ from the declared signature. Overloads will include declaration signatures when the operator or function has more than one overload with the same number of arguments as the invocation.",
+        "comment": "Note that without this information included, ELM that makes use of function overloads may be ambiguous at runtime, so this parameter should be used with at least Overloads.",
+        "constraint": [
+          {
+            "key": "cop-1",
+            "severity": "error",
+            "human": "SignatureLevel parameter must be None, Differing, Overloads, or All",
+            "expression": "value in ( 'None' | 'Differing' | 'Overloads' | 'All' )",
+            "xpath": "exists(f:value)"
+          }
+        ],
         "min": 0,
         "max": "1"
       },
@@ -290,19 +315,20 @@
         "min": 1,
         "type": [
           {
-            "code": "CodeableConcept"
+            "code": "string"
           }        
         ],
-        "binding" : {
-          "strength" : "extensible",
-          "valueSet" : "http://hl7.org/fhir/us/using-cql/ValueSet/signature-level"
-        }        
+        "condition": [
+          "cop-1"
+        ]
       },
       {
         "id": "Parameters.parameter:translatorVersion",
         "path": "Parameters.parameter",
         "sliceName": "translatorVersion",
-        "short": "Version of the CQL-to-ELM translator.",
+        "short": "What version",
+        "definition": "This parameter indicates what version of the CQL-to-ELM translator used to perform the translation.",
+        "comment": "This parameter is not an input to the translator, it is included in the list of options that is stored with translated ELM as an indication of what version was used to perform the translation.",
         "min": 0,
         "max": "1"
       },
@@ -325,9 +351,19 @@
         "id": "Parameters.parameter:format",
         "path": "Parameters.parameter",
         "sliceName": "format",
-        "short": "Format in JSON or XML.",
+        "short": "What format (XML and/or JSON)",
+        "definition": "This parameter indicates what format the ELM should be output in.",
+        "constraint": [
+          {
+            "key": "cop-2",
+            "severity": "error",
+            "human": "Format parameter must be XML or JSON",
+            "expression": "value in ( 'XML' | 'JSON' )",
+            "xpath": "exists(f:value)"
+          }
+        ],
         "min": 0,
-        "max": "1"
+        "max": "2"
       },
       {
         "id": "Parameters.parameter:format.name",
@@ -342,13 +378,18 @@
           {
             "code": "string"
           }
+        ],
+        "condition": [
+          "cop-2"
         ]
       },  
       {
         "id": "Parameters.parameter:compatibilityLevel",
         "path": "Parameters.parameter",
         "sliceName": "compatibilityLevel",
-        "short": "This setting indicates the compatibility level.",
+        "short": "What compatibility level",
+        "definition": "This parameter indicates what compatibility level the translator should support.",
+        "comment": "By default, the translator will use capabilities from the latest version of CQL. This parameter allows CQL to be constructed that only makes use of capabilities in previous versions. Possible values are the major and minor versions of published versions of the CQL specification (e.g. 1.3, 1.4, 1.5)",
         "min": 0,
         "max": "1"
       },
@@ -371,7 +412,8 @@
         "id": "Parameters.parameter:enableCqlOnly",
         "path": "Parameters.parameter",
         "sliceName": "enableCqlOnly",
-        "short": "Enable CQL only.",
+        "short": "Include CQL only?",
+        "definition": "This parameter indicates that library packaging tooling should only include CQL, not ELM, in packaged Library resources.",
         "min": 0,
         "max": "1"
       },
@@ -394,7 +436,17 @@
         "id": "Parameters.parameter:errorLevel",
         "path": "Parameters.parameter",
         "sliceName": "errorLevel",
-        "short": "Error level",
+        "short": "What error level",
+        "definition": "This parameter indicates the minimum severity error message that will be reported. Info (default) | Warning | Error",
+        "constraint": [
+          {
+            "key": "cop-3",
+            "severity": "error",
+            "human": "ErrorLevel parameter must be Info, Warning, or Error",
+            "expression": "value in ( 'Info' | 'Warning' | 'Error' )",
+            "xpath": "exists(f:value)"
+          }
+        ],
         "min": 0,
         "max": "1"
       },
@@ -411,13 +463,17 @@
           {
             "code": "string"
           }
+        ],
+        "condition": [
+          "cop-3"
         ]
       },
       {
         "id": "Parameters.parameter:validateUnits",
         "path": "Parameters.parameter",
         "sliceName": "validateUnits",
-        "short": "Validate units",
+        "short": "Validate UCUM units?",
+        "definition": "This parameter instructs the translator to validate UCUM units in quantity literals.",
         "min": 0,
         "max": "1"
       },
@@ -441,6 +497,7 @@
         "path": "Parameters.parameter",
         "sliceName": "verifyOnly",
         "short": "Verify only",
+        "definition": "This parameter indicates that the translator should verify the input CQL only, not create ELM output.",
         "min": 0,
         "max": "1"
       },
@@ -451,6 +508,54 @@
       },
       {
         "id": "Parameters.parameter:verifyOnly.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:analyzeDataRequirements",
+        "path": "Parameters.parameter",
+        "sliceName": "analyzeDataRequirements",
+        "short": "Analyze data requirements?",
+        "definition": "This parameter indicates whether the packaging for CQL libraries should perform optimizations on data requirements where possible (such as optimizing where clauses into retrieves to improve selectivity of the resulting data requirements).",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:analyzeDataRequirements.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "analyzeDataRequirements"
+      },
+      {
+        "id": "Parameters.parameter:analyzeDataRequirements.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:collapseDataRequirements",
+        "path": "Parameters.parameter",
+        "sliceName": "collapseDataRequirements",
+        "short": "Collapse data requirements?",
+        "definition": "This parameter indicates whether the packaging for CQL libraries should collapse data requirements where possible (i.e. removing duplicate data requirements according to the process described in the [Artifact Data Requirements](https://cql.hl7.org/05-languagesemantics.html#artifact-data-requirements) section of the CQL specification).",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:collapseDataRequirements.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "collapseDataRequirements"
+      },
+      {
+        "id": "Parameters.parameter:collapseDataRequirements.value[x]",
         "path": "Parameters.parameter.value[x]",
         "min": 1,
         "type": [

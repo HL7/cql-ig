@@ -75,11 +75,25 @@
           {
             "code": "Extension",
             "profile": [
-              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-cqlOptions"
+              "http://hl7.org/fhir/StructureDefinition/cqf-cqlOptions"
             ]
           }
         ],
         "mustSupport": true
+      },
+      {
+        "id": "Library.extension:cqlOptions.value[x]",
+        "path": "Library.extension.value[x]",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-options"
+            ]
+          }
+        ]
       },
       {
         "id": "Library.content",

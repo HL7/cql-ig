@@ -17,17 +17,17 @@
         "name": "translatorVersion",
         "valueString": "2.9.0-SNAPSHOT"
       }, {
-        "name": "option",
-        "valueString": "EnableAnnotations"
+        "name": "enableAnnotations",
+        "valueBoolean": true
       }, {
-        "name": "option",
-        "valueString": "EnableLocators"
+        "name": "enableLocators",
+        "valueBoolean": true
       }, {
-        "name": "option",
-        "valueString": "DisableListDemotion"
+        "name": "disableListDemotion",
+        "valueBoolean": true
       }, {
-        "name": "option",
-        "valueString": "DisableListPromotion"
+        "name": "disableListPromotion",
+        "valueBoolean": true
       }, {
         "name": "format",
         "valueString": "XML"

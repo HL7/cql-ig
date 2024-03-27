@@ -1,0 +1,55 @@
+{
+    "resourceType": "Parameters",
+    "id": "cql-options-example",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-options"
+        ]
+    },
+    "parameter": [ {
+      "name": "translatorVersion",
+      "valueString": "2.9.0-SNAPSHOT"
+    }, {
+    "name": "enableAnnotations",
+    "valueBoolean": true
+    }, {
+    "name": "enableLocators",
+    "valueBoolean": true
+    }, {
+    "name": "disableListDemotion",
+    "valueBoolean": true
+    }, {
+    "name": "disableListPromotion",
+    "valueBoolean": true
+    }, {
+      "name": "format",
+      "valueString": "XML"
+    }, {
+      "name": "format",
+      "valueString": "JSON"
+    }, {
+      "name": "analyzeDataRequirements",
+      "valueBoolean": true
+    }, {
+      "name": "collapseDataRequirements",
+      "valueBoolean": true
+    }, {
+      "name": "compatibilityLevel",
+      "valueString": "1.5"
+    }, {
+      "name": "enableCqlOnly",
+      "valueBoolean": false
+    }, {
+      "name": "errorLevel",
+      "valueString": "Info"
+    }, {
+      "name": "signatureLevel",
+      "valueString": "Overloads"
+    }, {
+      "name": "validateUnits",
+      "valueBoolean": true
+    }, {
+      "name": "verifyOnly",
+      "valueBoolean": false
+    } ]
+  }
