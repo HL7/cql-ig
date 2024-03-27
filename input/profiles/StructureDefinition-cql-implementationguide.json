@@ -47,23 +47,37 @@
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/ImplementationGuide",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [{
-      "id" : "ImplementationGuide",
-      "path" : "ImplementationGuide",
-      "min" : 1,
-      "max" : "1"
-    },
-    {
-      "id" : "ImplementationGuide.extension:modelInfoSettings",
-      "path" : "ImplementationGuide.extension",
-      "sliceName" : "modelInfoSettings",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://hl7.org/fhir/StructureDefinition/cqf-modelinfoSettings"]
-      }],
-      "mustSupport" : true
-    }]
+    "element" : [
+      {
+        "id" : "ImplementationGuide",
+        "path" : "ImplementationGuide",
+        "min" : 1,
+        "max" : "1"
+      },
+      {
+        "id" : "ImplementationGuide.extension:modelInfoSettings",
+        "path" : "ImplementationGuide.extension",
+        "sliceName" : "modelInfoSettings",
+        "min" : 0,
+        "max" : "1",
+        "type" : [{
+          "code" : "Extension",
+          "profile" : [ "http://hl7.org/fhir/StructureDefinition/cqf-modelInfoSettings" ]
+        }],
+        "mustSupport" : true
+      },
+      {
+        "id": "ImplementationGuide.extension:modelInfoSettings.value[x]",
+        "path": "ImplementationGuide.extension.value[x]",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfosettings"
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

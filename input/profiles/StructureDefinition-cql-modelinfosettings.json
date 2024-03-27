@@ -51,12 +51,143 @@
   "differential": {
     "element": [
       {
-        "id": "Parameters.parameter.name",
-        "path": "Parameters.parameter.name",
-        "binding": {
-          "strength": "extensible",
-          "valueSet": "http://hl7.org/fhir/uv/cql/ValueSet/cql-modelinfosettingsparameters"
+        "id": "Parameters",
+        "path": "Parameters",
+        "mustSupport": false
+      },
+      {
+        "id": "Parameters.parameter",
+        "path": "Parameters.parameter",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "name"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
         }
+      },
+      {
+        "id": "Parameters.parameter:modelName",
+        "path": "Parameters.parameter",
+        "sliceName": "modelName",
+        "short": "What model",
+        "definition": "This parameter determines the unqualified name of the model as it will be referenced in CQL. By convention, it is typically a valid unquoted identifier in CQL (excluding underscores) and for IGs, is typically a Pascal-cased rendering of the end of the package id (i.e. the unqualified package id).",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:modelName.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "modelName"
+      },
+      {
+        "id": "Parameters.parameter:modelName.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:modelNamespace",
+        "path": "Parameters.parameter",
+        "sliceName": "modelNamespace",
+        "short": "What namespace",
+        "definition": "This parameter determines the namespace of the model as it will be referenced in CQL. By convention, it is typically a valid unquoted identifier qualifier in CQL (excluding underscores) and for IGs, is typically a Pascal-cased rendering of the package id without the end (i.e. the qualified package id without the last identifier).",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:modelNamespace.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "modelNamespace"
+      },
+      {
+        "id": "Parameters.parameter:modelNamespace.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:modelUrl",
+        "path": "Parameters.parameter",
+        "sliceName": "modelUrl",
+        "short": "What url",
+        "definition": "This parameter determines the url of the model as it will be referenced in ELM. By convention, it is typically the base canonical for the specification or IG the model is representing.",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:modelUrl.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "modelUrl"
+      },
+      {
+        "id": "Parameters.parameter:modelUrl.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:patientClassName",
+        "path": "Parameters.parameter",
+        "sliceName": "patientClassName",
+        "short": "Name of the patient class in the model",
+        "definition": "This parameter identifies the name of the Patient class in the model. This is used by the translator to support patient-specific capabilities of CQL (such as age calculation)",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:patientClassName.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "patientClassName"
+      },
+      {
+        "id": "Parameters.parameter:patientClassName.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:patientBirthDatePropertyName",
+        "path": "Parameters.parameter",
+        "sliceName": "patientBirthDatePropertyName",
+        "short": "Name of the birthdate property of the Patient class in the model",
+        "definition": "This parameter identifies the name of the BirthDate element in the Patient class in the model. This is used by the translator to support patient age calculation in CQL.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:patientBirthDatePropertyName.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "patientBirthDatePropertyName"
+      },
+      {
+        "id": "Parameters.parameter:patientBirthDatePropertyName.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
       }
     ]
   }

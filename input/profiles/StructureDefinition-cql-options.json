@@ -51,6 +51,11 @@
   "differential": {
     "element": [
       {
+        "id": "Parameters",
+        "path": "Parameters",
+        "mustSupport": false
+      },
+      {
         "id": "Parameters.parameter",
         "path": "Parameters.parameter",
         "slicing": {
