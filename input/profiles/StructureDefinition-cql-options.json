@@ -1,0 +1,464 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "cql-options",
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 1
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "cds"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  }],
+  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-options",
+  "name": "CQLOptions",
+  "title": "CQL Options",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Clinical Decision Support WG",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/dss/index.cfm"
+        }
+      ]
+    }
+  ],
+  "description": "CQL-to-ELM translator options that were used to build the CQL.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Parameters",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Parameters",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Parameters.parameter",
+        "path": "Parameters.parameter",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Parameters.parameter:enableAnnotations",
+        "path": "Parameters.parameter",
+        "sliceName": "enableAnnotations",
+        "short": "This instructs the translator to include the source CQL as an annotation within the ELM.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:enableAnnotations.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "enableAnnotations"
+      },
+      {
+        "id": "Parameters.parameter:enableAnnotations.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },    
+      {
+        "id": "Parameters.parameter:enableLocators",
+        "path": "Parameters.parameter",
+        "sliceName": "enableLocators",
+        "short": "This instructs the translator to include line number and character information for each ELM node.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:enableLocators.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "enableLocators"
+      },
+      {
+        "id": "Parameters.parameter:enableLocators.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:disableListDemotion",
+        "path": "Parameters.parameter",
+        "sliceName": "disableListDemotion",
+        "short": "This instructs the translator to disallow demotion of list-valued expressions to singletons. The list demotion feature of CQL is used to enable functionality related to use with FHIRPath.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:disableListDemotion.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "disableListDemotion"
+      },
+      {
+        "id": "Parameters.parameter:disableListDemotion.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:disableListPromotion",
+        "path": "Parameters.parameter",
+        "sliceName": "disableListPromotion",
+        "short": "This instructs the translator to disallow promotion of singletons to list-valued expressions. The list promotion feature of CQL is used to enable functionality related to use with FHIRPath.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:disableListPromotion.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "disableListPromotion"
+      },
+      {
+        "id": "Parameters.parameter:disableListPromotion.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:disableMethodInvocation",
+        "path": "Parameters.parameter",
+        "sliceName": "disableMethodInvocation",
+        "short": "This instructs the translator to disallow method-style invocation. The method-style invocation feature of CQL is used to enable functionality related to use with FHIRPath.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:disableMethodInvocation.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "disableMethodInvocation"
+      },
+      {
+        "id": "Parameters.parameter:disableMethodInvocation.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:enableDateRangeOptimization",
+        "path": "Parameters.parameter",
+        "sliceName": "enableDateRangeOptimization",
+        "short": "This instructs the translator to optimize date range filters by moving them inside retrieve expressions.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:enableDateRangeOptimization.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "enableDateRangeOptimization"
+      },
+      {
+        "id": "Parameters.parameter:enableDateRangeOptimization.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:enableResultTypes",
+        "path": "Parameters.parameter",
+        "sliceName": "enableResultTypes",
+        "short": "This instructs the translator to include inferred result types in the output ELM.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:enableResultTypes.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "enableResultTypes"
+      },
+      {
+        "id": "Parameters.parameter:enableResultTypes.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:enableDetailedErrors",
+        "path": "Parameters.parameter",
+        "sliceName": "enableDetailedErrors",
+        "short": "This instructs the translator to include detailed error information. By default, the translator only reports root-cause errors.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:enableDetailedErrors.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "enableDetailedErrors"
+      },
+      {
+        "id": "Parameters.parameter:enableDetailedErrors.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:disableListTraversal",
+        "path": "Parameters.parameter",
+        "sliceName": "disableListTraversal",
+        "short": "This instructs the translator to disallow traversal of list-valued expressions. With knowledge artifacts, disabling this feature would prevent a useful capability.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:disableListTraversal.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "disableListTraversal"
+      },
+      {
+        "id": "Parameters.parameter:disableListTraversal.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:signatureLevel",
+        "path": "Parameters.parameter",
+        "sliceName": "signatureLevel",
+        "short": "This setting controls whether the signature element of a FunctionRef will be populated.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:signatureLevel.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "signatureLevel"
+      },
+      {
+        "id": "Parameters.parameter:signatureLevel.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }        
+        ],
+        "binding" : {
+          "strength" : "extensible",
+          "valueSet" : "http://hl7.org/fhir/us/using-cql/ValueSet/signature-level"
+        }        
+      },
+      {
+        "id": "Parameters.parameter:translatorVersion",
+        "path": "Parameters.parameter",
+        "sliceName": "translatorVersion",
+        "short": "Version of the CQL-to-ELM translator.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:translatorVersion.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "translatorVersion"
+      },
+      {
+        "id": "Parameters.parameter:translatorVersion.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },        
+      {
+        "id": "Parameters.parameter:format",
+        "path": "Parameters.parameter",
+        "sliceName": "format",
+        "short": "Format in JSON or XML.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:format.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "format"
+      },
+      {
+        "id": "Parameters.parameter:format.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },  
+      {
+        "id": "Parameters.parameter:compatibilityLevel",
+        "path": "Parameters.parameter",
+        "sliceName": "compatibilityLevel",
+        "short": "This setting indicates the compatibility level.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:compatibilityLevel.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "compatibilityLevel"
+      },
+      {
+        "id": "Parameters.parameter:compatibilityLevel.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:enableCqlOnly",
+        "path": "Parameters.parameter",
+        "sliceName": "enableCqlOnly",
+        "short": "Enable CQL only.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:enableCqlOnly.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "enableCqlOnly"
+      },
+      {
+        "id": "Parameters.parameter:enableCqlOnly.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:errorLevel",
+        "path": "Parameters.parameter",
+        "sliceName": "errorLevel",
+        "short": "Error level",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:errorLevel.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "errorLevel"
+      },
+      {
+        "id": "Parameters.parameter:errorLevel.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:validateUnits",
+        "path": "Parameters.parameter",
+        "sliceName": "validateUnits",
+        "short": "Validate units",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:validateUnits.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "validateUnits"
+      },
+      {
+        "id": "Parameters.parameter:validateUnits.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },  
+      {
+        "id": "Parameters.parameter:verifyOnly",
+        "path": "Parameters.parameter",
+        "sliceName": "verifyOnly",
+        "short": "Verify only",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:verifyOnly.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "verifyOnly"
+      },
+      {
+        "id": "Parameters.parameter:verifyOnly.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      }                             
+    ]
+  }
+}
