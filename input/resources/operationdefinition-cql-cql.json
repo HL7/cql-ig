@@ -133,7 +133,7 @@
         "use" : "in",
         "min" : 0,
         "max" : "1",
-        "documentation" : "The prefetch data as a Bundle. If the prefetchData has no prefetchResult part, it indicates there is no data associated with this prefetch item.",
+        "documentation" : "The prefetch data as a Bundle. If this part is missing, it indicates there is no data associated with this prefetch item.",
         "type" : "Bundle"
       }]
     },
