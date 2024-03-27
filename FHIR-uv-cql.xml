@@ -6,7 +6,9 @@
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
 <artifact id="Library/ANCCohort" key="Library-ANCCohort" name="ANC Cohort"/>
-<artifact id="StructureDefinition/cqf-cqlAccessLevel" key="StructureDefinition-cqf-cqlAccessLevel" name="CQL Access Level"/>
+<artifact id="StructureDefinition/artifact-uriReference" key="StructureDefinition-artifact-uriReference" name="Artifact URI Reference"/>
+<artifact deprecated="true" id="StructureDefinition/cqf-cqlAccessLevel" key="StructureDefinition-cqf-cqlAccessLevel" name="CQL Access Level"/>
+<artifact id="StructureDefinition/cqf-cqlAccessModifier" key="StructureDefinition-cqf-cqlAccessModifier" name="CQL Access Modifier"/>
 <artifact id="OperationDefinition/cql-cql" key="OperationDefinition-cql-cql" name="CQL CQL"/>
 <artifact id="StructureDefinition/cql-capabilitystatement" key="StructureDefinition-cql-capabilitystatement" name="CQL Capability Statement"/>
 <artifact id="StructureDefinition/cql-evaluationresult" key="StructureDefinition-cql-evaluationresult" name="CQL Evaluation Result"/>
@@ -40,8 +42,11 @@
 <artifact id="Library/FHIRCommon" key="Library-FHIRCommon" name="FHIR Common"/>
 <artifact id="Library/ELMExample" key="Library-ELMExample" name="FHIR Common (Compiled CQL Example)"/>
 <artifact id="Library/CQLExample" key="Library-CQLExample" name="FHIR Common (Source CQL Example)"/>
+<artifact id="StructureDefinition/cqf-isEmptyList" key="StructureDefinition-cqf-isEmptyList" name="Is Empty List"/>
 <artifact id="CapabilityStatement/cql-evaluation-service-example" key="CapabilityStatement-cql-evaluation-service-example" name="Library Evaluation Service Capability Statement Example"/>
+<artifact id="StructureDefinition/cqf-shouldTraceDependency" key="StructureDefinition-cqf-shouldTraceDependency" name="Should Trace Dependency"/>
 <artifact id="StructureDefinition/cql-specifichealthconcerns-profile-example" key="StructureDefinition-cql-specifichealthconcerns-profile-example" name="Specific health concern(s)"/>
+<artifact id="StructureDefinition/cqf-testArtifact" key="StructureDefinition-cqf-testArtifact" name="Test Artifact"/>
 <artifact id="Library/modelinfo-example" key="Library-modelinfo-example" name="USCore Model Definition"/>
 <artifact id="Parameters/cql-options-example" key="Parameters-cql-options-example" name="cql-options-example"/>
 <page key="NA" name="(NA)"/>
