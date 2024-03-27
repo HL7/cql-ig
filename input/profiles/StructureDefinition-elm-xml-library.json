@@ -63,15 +63,7 @@
       {
         "id": "Library",
         "path": "Library",
-        "mustSupport": false,
-        "constraint": [
-          {
-            "key": "library-content-format",
-            "severity": "error",
-            "human": "Library content must exist in XML format and contain data or a URL.",
-            "expression": "content.exists() and content.where(contentType = 'application/elm+xml').exists() and (content.data.exists() or content.url.exists())"
-          }
-        ]
+        "mustSupport": false
       },
       {
         "id": "Library.extension:cqlOptions",
@@ -101,6 +93,8 @@
           ],
           "rules": "open"
         },
+        "min": 1,
+        "max": "*",
         "mustSupport": true
       },
       {
@@ -110,6 +104,15 @@
         "requirements": "An ELM Library must specify its content in an executable form.",
         "min": 0,
         "max": "1",
+        "constraint": [
+          {
+            "key": "exl-1",
+            "severity": "error",
+            "human": "ELM libraries must have a content element with data or a url (or both)",
+            "expression": "data.exists() or url.exists()",
+            "xpath": "exists(f:value)"
+          }
+        ],
         "mustSupport": true
       },
       {
@@ -122,12 +125,26 @@
             "code": "code"
           }
         ],
-        "fixedCode": "application/elm+xml",
+        "condition": [
+          "exl-2"
+        ],
+        "constraint": [
+          {
+            "key": "exl-2",
+            "severity": "error",
+            "human": "ELM XML libraries must have a content element with a media type for application/elm+xml",
+            "expression": "startsWith('application/elm+xml')",
+            "xpath": "exists(f:value)"
+          }
+        ],
         "mustSupport": true
       },
       {
         "id": "Library.content:elmXmlContent.data",
         "path": "Library.content.data",
+        "condition": [
+          "exl-1"
+        ],
         "min": 0,
         "max": "1",
         "mustSupport": true
@@ -135,6 +152,9 @@
       {
         "id": "Library.content:elmXmlContent.url",
         "path": "Library.content.url",
+        "condition": [
+          "exl-1"
+        ],
         "min": 0,
         "max": "1",
         "mustSupport": true
