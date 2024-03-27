@@ -19,7 +19,7 @@ list:
       * **Applied**:  CQL Library Evaluate: return parameter doesn't always return all expressions ([FHIR-43886](https://jira.hl7.org/browse/FHIR-43886)) ([Applied here](OperationDefinition-cql-library-evaluate.html))
       * **Applied**:  Repetitive IG ([FHIR-44059](https://jira.hl7.org/browse/FHIR-44059)) ([Applied here](index.html#summary))
       * **Applied**:  Clarify double-braces / context in FHIR Query Pattern extension ([FHIR-43915](https://jira.hl7.org/browse/FHIR-43195)) Applied ([here](extensions.html#cql-related-extensions))
-      * **Applied**: Typos: packgae, csn ([FHIR-43881](https://jira.hl7.org/browse/FHIR-43881)) Applied ([here](using-cql.html#conformance-requirement-2-24))
+      * **Applied**: Typos: package, csn ([FHIR-43881](https://jira.hl7.org/browse/FHIR-43881)) Applied ([here](using-cql.html#conformance-requirement-2-24))
       * **Applied**: Consider adding an acronyms page  ([FHIR-44063](https://jira.hl7.org/browse/FHIR-44063)) Applied ([here](using-cql.html)), ([here](index.html)), ([here](profiles.html)), and ([here](extensions.html))
       * **Applied**:  Typo: A library profiles ([FHIR-43733](https://jira.hl7.org/browse/FHIR-43733)) Applied ([here](profiles.html#profiles))
       * **Applied**: Incorrect reference to CRMI IG ([FHIR-43732](https://jira.hl7.org/browse/FHIR-43732)) Applied ([here](index.html#conformance-requirement-1-1))
@@ -50,3 +50,4 @@ list:
       * **Applied**: FHIR version of code structure does not include the term "using" ([FHIR-44099](https://jira.hl7.org/browse/FHIR-44099)) Applied ([here](using-cql.html#code-representation-in-narrative))
       * **Applied**: Consider tightening ELM Library profile requirements w/ invariants ([FHIR-43742](https://jira.hl7.org/browse/FHIR-43742)) Applied ([here](StructureDefinition-elm-library.html))
       * **Applied**: Clarify purpose of "Representation in Narrative" section  ([FHIR-43783](https://jira.hl7.org/browse/FHIR-43783)) Applied ([here](using-cql.html#valueset-representation-in-narrative))
+      * **Applied**: Conflict in Mime Type version guidance and Library profiles ([FHIR-43877](https://jira.hl7.org/browse/FHIR-43877)) Applied ([here](Library-ANCCohort.html)), ([here](Library-ELMExample.html)), ([here](Library-FHIRCommon.html)), ([here](StructureDefinition-elm-json-library.html)), ([here](StructureDefinition-elm-xml-library.html)), and ([here](capabilitystatement-cql-evaluation-service.html))

@@ -38,7 +38,8 @@
       <profile value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library"/>
       <supportedProfile value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfo"/>
       <supportedProfile value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-module"/>
-      <supportedProfile value="http://hl7.org/fhir/uv/cql/StructureDefinition/elm-library"/>
+      <supportedProfile value="http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library"/>
+      <supportedProfile value="http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library"/>
       <interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
           <valueCode value="SHALL"/>

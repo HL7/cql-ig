@@ -1,6 +1,6 @@
 {
   "resourceType": "StructureDefinition",
-  "id": "elm-library",
+  "id": "elm-json-library",
   "extension" : [{
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
     "valueInteger" : 3
@@ -13,9 +13,9 @@
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
     "valueCode" : "trial-use"
   }],
-  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-library",
-  "name": "ELMLibrary",
-  "title": "ELM Library",
+  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library",
+  "name": "ELMJSONLibrary",
+  "title": "ELM JSON Library",
   "status": "active",
   "experimental": false,
   "publisher": "Clinical Decision Support WG",
@@ -29,7 +29,7 @@
       ]
     }
   ],
-  "description": "The ELM Library supports distributing a Clinical Quality Language (CQL) library compiled to Expression Logical Model (ELM) in either JSON or XML format",
+  "description": "The ELM Library supports distributing a Clinical Quality Language (CQL) library compiled to Expression Logical Model (ELM) in JSON format",
   "fhirVersion": "4.0.1",
   "mapping": [
     {
@@ -69,7 +69,7 @@
             "key": "library-content-format",
             "severity": "error",
             "human": "Library content must exist in XML or JSON format and contain data or a URL.",
-            "expression": "content.exists() and content.where(contentType = 'application/elm+xml' or contentType = 'application/elm+json').exists() and (content.data.exists() or content.url.exists())"
+            "expression": "content.exists() and content.where(contentType = 'application/elm+json').exists() and (content.data.exists() or content.url.exists())"
           }
         ]
       },
@@ -101,42 +101,6 @@
           ],
           "rules": "open"
         },
-        "mustSupport": true
-      },
-      {
-        "id": "Library.content:elmXmlContent",
-        "path": "Library.content",
-        "sliceName": "elmXmlContent",
-        "requirements": "An ELM Library must specify its content in an executable form.",
-        "min": 0,
-        "max": "1",
-        "mustSupport": true
-      },
-      {
-        "id": "Library.content:elmXmlContent.contentType",
-        "path": "Library.content.contentType",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "code"
-          }
-        ],
-        "fixedCode": "application/elm+xml",
-        "mustSupport": true
-      },
-      {
-        "id": "Library.content:elmXmlContent.data",
-        "path": "Library.content.data",
-        "min": 0,
-        "max": "1",
-        "mustSupport": true
-      },
-      {
-        "id": "Library.content:elmXmlContent.url",
-        "path": "Library.content.url",
-        "min": 0,
-        "max": "1",
         "mustSupport": true
       },
       {
