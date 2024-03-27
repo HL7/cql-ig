@@ -117,7 +117,7 @@
         "use" : "in",
         "min" : 0,
         "max" : "1",
-        "documentation" : "The key of the prefetch item. This typically corresponds to the name of a parameter in a library, or the name of a prefetch item in a CDS Hooks discovery response",
+        "documentation" : "The key of the prefetch item. When using this operation as part of a CDS Hooks implementation, this SHALL be the name of a prefetch item in a CDS Hooks discovery response. Prefetch data SHALL be made available to retrieve statements in the CQL and SHOULD NOT be provided as the value of any CQL parameters in the library being evaluated to avoid confusion between context parameters and retrieve data.",
         "type" : "string"
       },
       {
