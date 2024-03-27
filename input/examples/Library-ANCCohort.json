@@ -2,9 +2,10 @@
     "resourceType": "Library",
     "id": "ANCCohort",
     "meta": {
-      "profile": [ 
+      "profile": [
         "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library",
-        "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-library",
+        "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library",
+        "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library",
         "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-module"
       ]
     },

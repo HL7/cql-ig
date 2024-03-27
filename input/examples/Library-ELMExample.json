@@ -2,7 +2,8 @@
     "resourceType": "Library",
     "id": "ELMExample",
     "meta": {
-      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-library" ]
+      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library",
+                    "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library"]
     },
     "language": "en",
     "contained": [ {

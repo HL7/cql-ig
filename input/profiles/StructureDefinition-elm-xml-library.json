@@ -1,0 +1,144 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "elm-xml-library",
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 3
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "cds"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  }],
+  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library",
+  "name": "ELMXMLLibrary",
+  "title": "ELM XML Library",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Clinical Decision Support WG",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/dss/index.cfm"
+        }
+      ]
+    }
+  ],
+  "description": "The ELM CQL Library supports distributing a Clinical Quality Language (CQL) library compiled to Expression Logical Model (ELM) in XML format",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "objimpl",
+      "uri": "http://hl7.org/fhir/object-implementation",
+      "name": "Object Implementation Information"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Library",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Library",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Library",
+        "path": "Library",
+        "mustSupport": false,
+        "constraint": [
+          {
+            "key": "library-content-format",
+            "severity": "error",
+            "human": "Library content must exist in XML format and contain data or a URL.",
+            "expression": "content.exists() and content.where(contentType = 'application/elm+xml').exists() and (content.data.exists() or content.url.exists())"
+          }
+        ]
+      },
+      {
+        "id": "Library.extension:cqlOptions",
+        "path": "Library.extension",
+        "sliceName": "cqlOptions",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/cqf-cqlOptions"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content",
+        "path": "Library.content",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "contentType"
+            }
+          ],
+          "rules": "open"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmXmlContent",
+        "path": "Library.content",
+        "sliceName": "elmXmlContent",
+        "requirements": "An ELM Library must specify its content in an executable form.",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmXmlContent.contentType",
+        "path": "Library.content.contentType",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "application/elm+xml",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmXmlContent.data",
+        "path": "Library.content.data",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Library.content:elmXmlContent.url",
+        "path": "Library.content.url",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      }
+    ]
+  }
+}
