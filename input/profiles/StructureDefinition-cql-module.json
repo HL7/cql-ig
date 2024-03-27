@@ -232,16 +232,16 @@
         ]
       },
       {
-        "id": "Library.parameter.extension:cqlAccessLevel",
+        "id": "Library.parameter.extension:cqlAccessModifier",
         "path": "Library.parameter.extension",
-        "sliceName": "cqlAccessLevel",
+        "sliceName": "cqlAccessModifier",
         "min": 0,
         "max": "1",
         "type": [
           {
             "code": "Extension",
             "profile": [
-              "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessLevel"
+              "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessModifier"
             ]
           }
         ]

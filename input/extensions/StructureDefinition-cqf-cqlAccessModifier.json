@@ -1,6 +1,6 @@
 {
   "resourceType": "StructureDefinition",
-  "id": "cqf-cqlAccessLevel",
+  "id": "cqf-cqlAccessModifier",
   "extension" : [{
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
     "valueInteger" : 1
@@ -13,9 +13,9 @@
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
     "valueCode" : "trial-use"
   }],
-  "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessLevel",
-  "name": "CqlAccessLevel",
-  "title": "CQL Access Level",
+  "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessModifier",
+  "name": "CqlAccessModifier",
+  "title": "CQL Access Modifier",
   "status": "active",
   "experimental": false,
   "date": "2019-02-13",
@@ -30,7 +30,7 @@
       ]
     }
   ],
-  "description": "Surfaces the CQL access level of the parameter definition on which it appears.",
+  "description": "Surfaces the CQL access modifier of the parameter definition on which it appears.",
   "fhirVersion": "4.0.1",
   "mapping": [
     {
@@ -55,8 +55,8 @@
       {
         "id": "Extension",
         "path": "Extension",
-        "short": "What CQL access level",
-        "definition": "Surfaces the CQL access level (i.e. public or private) of the parameter definition on which it appears. The value of this extension is a string that is the CQL access level for the declaration the parameter definition on which it appears is representing.",
+        "short": "What CQL access modifier",
+        "definition": "Surfaces the CQL access modifier (i.e. public or private) of the parameter definition on which it appears. The value of this extension is a string that is the CQL access modifier for the declaration the parameter definition on which it appears is representing.",
         "min": 0,
         "max": "1"
       },
@@ -68,16 +68,21 @@
             "code": "uri"
           }
         ],
-        "fixedUri": "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessLevel"
+        "fixedUri": "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessModifier"
       },
       {
         "id": "Extension.value[x]",
         "path": "Extension.value[x]",
         "type": [
           {
-            "code": "string"
+            "code": "code"
           }
-        ]
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "The access modifier of the element",
+          "valueSet": "http://terminology.hl7.org/ValueSet/cql-access-modifier"
+        }
       }
     ]
   }

@@ -44,7 +44,7 @@
         "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
         "valueString": "System.Boolean"
       }, {
-        "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessLevel",
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessModifier",
         "valueString": "public"
       }],
       "name": "Is pregnancy confirmed",
@@ -61,7 +61,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
           "valueString": "System.Boolean"
         }, {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessLevel",
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessModifier",
           "valueString": "public"
         }
       ],
