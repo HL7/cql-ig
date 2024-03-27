@@ -14,7 +14,7 @@ Declarations in CQL are packaged in containers called _libraries_ which provide 
   1. Any CQL library used by a FHIR artifact **SHALL** contain a [library declaration.](https://cql.hl7.org/02-authorsguide.html#library)
   2. The library identifier **SHALL** be a valid un-quoted identifier and **SHALL NOT** contain underscores. The library identifier **SHALL** only contain alphanumeric characters.
 
-**Note** The example in the Author's Guide from the above library declaration link is not following the "Using CQL With FHIR" convention of prohibiting underscores in library names.
+> The example in the Author's Guide from the above library declaration link is not following the "Using CQL With FHIR" convention of prohibiting underscores in library names.
 
 For example:
 
@@ -34,7 +34,7 @@ This Implementation Guide (IG) recommends [Semantic Versioning](https://semver.o
   1. The library declaration **SHOULD** specify a version.
   2. The library version **SHOULD** follow the convention:
        < major >.< minor >.< patch >
-3. For artifacts in draft status, the versioning scheme **SHALL NOT** apply, and there is no expectation that artifact contents are stable.
+3. For artifacts in draft status, the versioning scheme **NEED NOT** apply, and there is no expectation that artifact contents are stable.
   4. The versioning scheme **SHALL** apply when an artifact moves to active status.
 
 There are three main types of changes that can be made to a library:
@@ -186,16 +186,6 @@ If no version is specified, then the default behavior for a FHIR terminology ser
 system version available on the server.
 
 ### Value Sets
-{: #value-sets-notes}
-
-##### Value set spelling and case usage.
-
-        "Value set", with two words, regardless of case, is the human-readable spelling.
-        "ValueSet", with one word and in PascalCase, is the FHIR Type.
-        "valueset", with one word and all lower case, is the proper spelling for use within cql statements and expressions, except when used within a URL.
-
-
-
 {: #value-sets}
 
 Conformance Requirement 2.7 describes how to specify a value set within a CQL library.
@@ -241,6 +231,8 @@ case. This use of a canonical URL can be resolved as a search by the `url` eleme
 GET fhir/ValueSet?url=http://example.org/fhir/ValueSet/acute-pharyngitis-snomed
 ```
 
+> A note about usage of the term value set in this documentation: "Value set", with two words, regardless of case, is the human-readable spelling. "ValueSet", with one word and in PascalCase, is the FHIR Type. "valueset", with one word and all lower case, is the proper spelling for use within cql statements and expressions.
+
 #### Value Set Version
 {: #value-set-version}
 
@@ -248,19 +240,18 @@ Version information for value sets is not required to be included in knowledge a
 specified externally. However, if versioning information is included, it must be done in accordance with the terminology
 usage specified by FHIR.
 
-Conformance Requirement 2.8 describes how to retrieve an expansion of a value set by version.
+Conformance Requirement 2.8 describes how to specify a value set, including the definition version to be used.
 
-**Conformance Requirement 2.8 (Value Set Specification By Version):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-8)
+**Conformance Requirement 2.8 (Value Set Specification Including Version):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-8)
 {: #conformance-requirement-2-8}
 
-1. When retrieving the expansion of a value set by version, append the version identifier to the canonical URL of the
-value set, separated by a pipe (`|`)
+1. When specifying the definition version of a value set to be used in a CQL library, use the `version` clause of the value set declaration
 
 For example:
 
 ```cql
 valueset "Encounter Inpatient SNOMEDCT Value Set":
-   'http://example.org/fhir/ValueSet/encounter-inpatient|20160929'
+   'http://example.org/fhir/ValueSet/encounter-inpatient' version '20160929'
 ```
 
 Snippet 2-6: valueset definition from Terminology.cql.
@@ -294,9 +285,9 @@ For example, rather than combining multiple value sets using a `union`, separate
 
 When value sets are used within knowledge artifacts, if the artifact includes narrative (Human-readable), it **SHALL** include a representation of at least the following information for each value set:
 
-    The local identifier for the value set.
-    The external identifier for the value set.
-    The version of the value set, if specified.
+* The local identifier for the value set.
+* The external identifier for the value set.
+* The version of the value set, if specified.
 
 For example:
 ```html
@@ -336,8 +327,8 @@ the logical identifier **SHOULD** be the code from the code system.
 **Conformance Requirement 2.11 (Direct Referenced Codes):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-11)
 {: #conformance-requirement-2-11}
 
-1. When direct-reference codes are represented within CQL, the logical identifier:<br/>
-     a. **SHALL NOT** be a URI.<br/>
+1. When direct-reference codes are represented within CQL, the logical identifier:
+     a. **SHALL NOT** be a URI.
      b. **SHOULD** be a code from the code system.
 
 ```cql
@@ -355,12 +346,13 @@ CQL supports both version-specific and version-independent specification of and 
 
 #### Representation in Narrative
 {: #code-representation-in-narrative}
+
 When direct-reference codes are used within knowledge artifacts, if the artifact includes narrative (Human-readable), it **SHALL** include a representation of at least the following information for each direct-reference code:
 
-    The local identifier for the code within the codesystem.
-    The external identifier for the codesystem.
-    The version of the codesystem, if specified.
-    The display value from the code system.
+* The local identifier for the code within the codesystem.
+* The external identifier for the codesystem.
+* The version of the codesystem, if specified.
+* The display value from the code system.
 
 For example:
 ```html
@@ -372,9 +364,9 @@ code "Venous foot pump, device (physical object)":  '442023007' from "SNOMEDCT" 
 
 Although the Unified Code for Units of Measure (UCUM) is a code system, it requires specific handling for two reasons. First, it is a grammar-based code system with an effectively infinite number of codes, so membership tests must be performed computationally, rather than just by checking for existence of a code in a list; and second, because UCUM codes are so commonly used as part of quantity values, healthcare contexts typically provide direct mechanisms for using UCUM codes.
 
-For these reasons, within quality artifacts in general, and quality measures specifically, UCUM codes **SHOULD** make use of the direct mechanisms wherever possible. In CQL logic, this means using the Quantity literal, rather than declaring UCUM codes as direct-reference codes as is recommended when using codes from other code systems. For example, when accessing a Body Mass Index (BMI) observation in CQL:
+For these reasons, within quality artifacts in general, and quality measures specifically, UCUM codes **SHOULD** make use of the direct mechanisms wherever possible. In CQL logic, this means using the `Quantity` literal, rather than declaring UCUM codes as direct-reference codes as is recommended when using codes from other code systems. For example, when accessing a Body Mass Index (BMI) observation in CQL:
 
-```html
+```cql
 define "BMI in Measurement Period":
   [Observation: "BMI"] BMI
     where BMI.status in {'final', 'amended', 'corrected'}
@@ -385,7 +377,7 @@ define "BMI in Measurement Period":
 
 Notice the use of the UCUM code directly, as opposed to declaring a CQL code for the unit:
 
-```html
+```cql
 codesystem UCUM: 'http://unitsofmeasure.org'
 code "kg/m2": 'kg/m2' from UCUM
 
@@ -445,9 +437,9 @@ meaningful name (avoid abbreviations) and conform to Conformance Requirement 2.1
 **Conformance Requirement 2.13 (Library-level Identifiers):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-13)
 {: #conformance-requirement-2-13}
 
-1. Library-level identifiers referenced in the CQL:<br/>
-      a. **SHOULD** Use quoted identifiers<br/>
-      b. **SHOULD** Use Initial Case<br/>
+1. Library-level identifiers referenced in the CQL:
+      a. **SHOULD** Use quoted identifiers
+      b. **SHOULD** Use Initial Case
       c. **MAY** Include spaces
 
 > NOTE: **Initial Case** is defined as the first letter of every word is capitalized (e.g. "Observation With Status") (as opposed to Title Case, which traditionally does not capitalize conjunctions and prepositions, e.g. "Observation with Status")
@@ -471,15 +463,14 @@ The `"Includes Or Starts During"` is the library-level identifier in this exampl
 A "data type" in CQL refers to any named type used within CQL expressions. They may be primitive types, such as the
 system-defined "Integer" and "DateTime", or they may be model-defined types such as "Encounter" or "Medication". For
 FHIR-based knowledge artifacts using model information based on implementation guides (such as the QI-Core profiles),
-these will be the author-friendly identifiers for the profile. Data types referenced in CQL libraries to be included
-in a knowledge artifact must conform to Conformance Requirement 2.14.
+these will be the author-friendly identifiers for the profile.
 
 **Conformance Requirement 2.14 (Data Type Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-14)
 {: #conformance-requirement-2-14}
 
-1. Data type names referenced in CQL **SHALL**:<br/>
-       a. Use quoted identifiers only if necessary (i.e. the data type name includes spaces)<br/>
-       b. Use PascalCase plus appropriate spacing
+1. Data type names referenced in CQL:
+    a. **SHALL** use PascalCase (unless dictated by the name of the type in the model)
+    b. **SHALL NOT** use quoted identifiers (unless required because the name of the type in the model contains spaces or is otherwise not a valid identifier without quoting)
 
 For example:
 
@@ -633,15 +624,14 @@ This approach ensures that the logic will retrieve negated activities whether th
 ### Element Names
 {: #element-names}
 
-All elements referenced in the CQL follow Conformance Requirement 2.15.
 **Conformance Requirement 2.15 (Element Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-15)
 {: #conformance-requirement-2-15}
 
-1. Data model elements referenced in the CQL:<br/>
-      a. **SHOULD NOT** use quoted identifiers (unless required due to the element name in the model not being a valid identifier in CQL)<br/>
-      b. **SHOULD** use camelCase (unless dictated by the element naming in the model being used)
+1. Data model elements referenced in the CQL:
+    a. **SHALL NOT** use quoted identifiers (unless required due to the element name in the model not being a valid identifier in CQL)
+    b. **SHOULD** use camelCase (unless dictated by the element naming in the model being used)
 
-Examples of elements conforming to Conformance Requirement 2.15 are given below. For a full list of valid of elements, refer to an appropriate data model specification such as QI-Core.<br/><br/>
+Examples of elements conforming to Conformance Requirement 2.15 are given below. For a full list of valid of elements, refer to an appropriate data model specification such as QI-Core.
 
 Note: When FHIR and FHIR IGs are used as the data model, the term "element" is synonymous with "attribute". Some data models, such as QDM, use the term "attribute".
 
@@ -661,10 +651,11 @@ Conformance Requirement 2.16.
 **Conformance Requirement 2.16 (Aliases and Argument Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-16)
 {: #conformance-requirement-2-16}
 
-1. Aliases and argument names referenced in the CQL:<br/>
-      a. **SHALL NOT** Use quoted identifiers<br/>
-      b. **SHALL** Use PascalCase<br/>
-      c. **SHOULD** Use descriptive names (rather than abbreviations)
+1. Aliases and argument names referenced in the CQL:
+    a. **SHALL NOT** Use quoted identifiers
+    b. **SHOULD** Use PascalCase for alias names
+    c. **SHOULD** Use camelCase for argument names
+    d. **SHOULD** Use descriptive names (rather than abbreviations)
 
 For example:
 
@@ -867,15 +858,15 @@ Resource narratives for Libraries and knowledge artifacts that use CQL **SHOULD*
 
 FHIR supports various types of terminology-valued elements, including:
 
-* [code](http://hl7.org/fhir/datatypes.html#code)<br/>
-* [Coding](http://hl7.org/fhir/datatypes.html#Coding)<br/>
-* [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableConcept)<br/>
+* [code](http://hl7.org/fhir/datatypes.html#code)
+* [Coding](http://hl7.org/fhir/datatypes.html#Coding)
+* [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableConcept)
 
 These types map to the following CQL primitive types, respectively:
 
-* [String](https://cql.hl7.org/09-b-cqlreference.html#string-1)<br/>
-* [Code](https://cql.hl7.org/09-b-cqlreference.html#code-1)<br/>
-* [Concept](https://cql.hl7.org/09-b-cqlreference.html#concept-1)<br/>
+* [String](https://cql.hl7.org/09-b-cqlreference.html#string-1)
+* [Code](https://cql.hl7.org/09-b-cqlreference.html#code-1)
+* [Concept](https://cql.hl7.org/09-b-cqlreference.html#concept-1)
 
 In addition to the type of element, FHIR provides the ability to bind these elements to specific codes, in the form of a direct-reference code (fixed constraint to a specific code in a [CodeSystem](http://hl7.org/fhir/codesystem.html)), or a binding to a [ValueSet](http://hl7.org/fhir/valueset.html). These bindings can be different [binding strengths](http://hl7.org/fhir/codesystem-binding-strength.html)
 
@@ -883,9 +874,9 @@ Within CQL, references to terminology code systems, value sets, codes, and conce
 
 When referencing terminology-valued elements within CQL, the following comparison operations are supported:
 
-* [Equal (`=`)](https://cql.hl7.org/09-b-cqlreference.html#equal-3)<br/>
-* [Equivalent (`~`)](https://cql.hl7.org/09-b-cqlreference.html#equivalent-3)<br/>
-* [In (`in`)](https://cql.hl7.org/09-b-cqlreference.html#in-valueset)<br/>
+* [Equal (`=`)](https://cql.hl7.org/09-b-cqlreference.html#equal-3)
+* [Equivalent (`~`)](https://cql.hl7.org/09-b-cqlreference.html#equivalent-3)
+* [In (`in`)](https://cql.hl7.org/09-b-cqlreference.html#in-valueset)
 
 ### Time Valued Quantities
 {: #time-valued-quantities}
