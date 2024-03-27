@@ -57,6 +57,7 @@
       "id" : "StructureDefinition.extension:modelInfo-isIncluded",
       "path" : "StructureDefinition.extension",
       "sliceName" : "modelInfo-isIncluded",
+      "definition": "If this extension is not present, included is true by default for resources and profiles, but not data types (unless they are indirectly referenced by included resources or profiles).",
       "min" : 0,
       "max" : "1",
       "type" : [{
