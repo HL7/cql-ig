@@ -188,6 +188,54 @@
             "code": "string"
           }
         ]
+      },
+      {
+        "id": "Parameters.parameter:targetQualifier",
+        "path": "Parameters.parameter",
+        "sliceName": "targetQualifier",
+        "short": "Model target qualifier",
+        "definition": "This parameter identifies the target qualifier for the classes in the model. This typically corresponds to the model name",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:targetQualifier.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "targetQualifier"
+      },
+      {
+        "id": "Parameters.parameter:targetQualifier.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:targetUrl",
+        "path": "Parameters.parameter",
+        "sliceName": "targetUrl",
+        "short": "Model target url",
+        "definition": "This parameter identifies the target url for ELM output when using profile-informed authoring. This typically corresponds to the base FHIR URL (since profile-informed authoring maps profiled structures down to the base FHIR resources).",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:targetUrl.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "targetUrl"
+      },
+      {
+        "id": "Parameters.parameter:targetUrl.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
       }
     ]
   }

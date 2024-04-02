@@ -58,7 +58,7 @@
         "max": "1",
         "patternCodeableConcept": {
           "coding": [ {
-            "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+            "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
             "code": "ANC.B5.DE5",
             "display": "Specific health concern(s)"
           } ]

@@ -140,14 +140,14 @@
         <valueCode value="SHALL"/>
       </extension>
       <name value="cql"/>
-      <definition value="http://hl7.org/fhir/uv/cql/OperationDefinition/cql"/>
+      <definition value="http://hl7.org/fhir/uv/cql/OperationDefinition/cql-cql"/>
     </operation>
     <operation>
       <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
         <valueCode value="SHALL"/>
       </extension>
       <name value="evaluate"/>
-      <definition value="http://hl7.org/fhir/uv/cql/OperationDefinition/cql-evaluate"/>
+      <definition value="http://hl7.org/fhir/uv/cql/OperationDefinition/cql-library-evaluate"/>
     </operation>
   </rest>
 </CapabilityStatement>

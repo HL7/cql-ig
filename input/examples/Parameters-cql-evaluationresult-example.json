@@ -5,6 +5,10 @@
       "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
     },
     "parameter": [ {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+        "valueString": "System.Boolean"
+      }],
       "name": "Is pregnancy confirmed",
       "_valueBoolean": {
         "extension": [{

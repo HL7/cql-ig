@@ -1,0 +1,883 @@
+{
+  "resourceType": "Parameters",
+  "id": "cql-typemappingexampleresult",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
+  },
+  "parameter": [ {
+    "name": "Patient",
+    "resource": 
+      {
+        "resourceType": "Patient",
+        "id": "example",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>meta</b>: </p><p><b>identifier</b>: Medical record number = 12345 (USUAL)</p><p><b>active</b>: true</p><p><b>name</b>: Peter James Chalmers (OFFICIAL), Jim Chalmers , Peter James Windsor (MAIDEN)</p><p><b>telecom</b>: ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD)</p><p><b>gender</b>: male</p><p><b>birthDate</b>: 1974-12-25</p><p><b>deceased</b>: false</p><p><b>address</b>: 534 Erewhon St PeasantVille, Utah 84414(HOME)</p><h3>Contacts</h3><table class=\"grid\"><tr><td>-</td><td><b>Relationship</b></td><td><b>Name</b></td><td><b>Telecom</b></td><td><b>Address</b></td><td><b>Gender</b></td><td><b>Period</b></td></tr><tr><td>*</td><td>Next-of-Kin <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/v2-0131 code 'N' = 'Next-of-Kin)</span></td><td>Bénédicte du Marché </td><td>ph: +33 (237) 998327</td><td>534 Erewhon St PleasantVille VT 3999 (HOME)</td><td>female</td><td>Jan 1, 2012 12:00:00 AM --&gt; (ongoing)</td></tr></table><p><b>managingOrganization</b>: <a href=\"Organization-example.html\">Generated Summary: id: example; ??; active; <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/organization-type team}\">Organizational team</span>; name: Health Level Seven International; ph: (+1) 734-677-7777, fax: (+1) 734-677-6622, hq@HL7.org</a></p></div>"
+        },
+        "extension": [
+          {
+            "url" : "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension" : [
+              {
+                "url" : "ombCategory",
+                "valueCoding" : {
+                  "system" : "urn:oid:2.16.840.1.113883.6.238",
+                  "code" : "2106-3",
+                  "display" : "White"
+                }
+              },
+              {
+                "url" : "ombCategory",
+                "valueCoding" : {
+                  "system" : "urn:oid:2.16.840.1.113883.6.238",
+                  "code" : "1002-5",
+                  "display" : "American Indian or Alaska Native"
+                }
+              },
+              {
+                "url" : "ombCategory",
+                "valueCoding" : {
+                  "system" : "urn:oid:2.16.840.1.113883.6.238",
+                  "code" : "2028-9",
+                  "display" : "Asian"
+                }
+              },
+              {
+                "url" : "detailed",
+                "valueCoding" : {
+                  "system" : "urn:oid:2.16.840.1.113883.6.238",
+                  "code" : "1586-7",
+                  "display" : "Shoshone"
+                }
+              },
+              {
+                "url" : "detailed",
+                "valueCoding" : {
+                  "system" : "urn:oid:2.16.840.1.113883.6.238",
+                  "code" : "2036-2",
+                  "display" : "Filipino"
+                }
+              },
+              {
+                "url" : "detailed",
+                "valueCoding" : {
+                  "system" : "urn:oid:2.16.840.1.113883.6.238",
+                  "code" : "1735-0",
+                  "display" : "Alaska Native"
+                }
+              },
+              {
+                "url" : "text",
+                "valueString" : "Mixed"
+              }
+            ]
+          },
+          {
+            "url" : "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension" : [
+              {
+                "url" : "ombCategory",
+                "valueCoding" : {
+                  "system" : "urn:oid:2.16.840.1.113883.6.238",
+                  "code" : "2135-2",
+                  "display" : "Hispanic or Latino"
+                }
+              },
+              {
+                "url" : "detailed",
+                "valueCoding" : {
+                  "system" : "urn:oid:2.16.840.1.113883.6.238",
+                  "code" : "2184-0",
+                  "display" : "Dominican"
+                }
+              },
+              {
+                "url" : "detailed",
+                "valueCoding" : {
+                  "system" : "urn:oid:2.16.840.1.113883.6.238",
+                  "code" : "2148-5",
+                  "display" : "Mexican"
+                }
+              },
+              {
+                "url" : "text",
+                "valueString" : "Hispanic or Latino"
+              }
+            ]
+          },
+          {
+            "url" : "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+            "valueCode" : "M"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "12345",
+            "period": {
+              "start": "2001-05-06"
+            },
+            "assigner": {
+              "display": "Acme Healthcare"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Chalmers",
+            "given": [
+              "Peter",
+              "James"
+            ]
+          },
+          {
+            "use": "usual",
+            "family": "Chalmers",
+            "given": [
+              "Jim"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Windsor",
+            "given": [
+              "Peter",
+              "James"
+            ],
+            "period": {
+              "end": "2002"
+            }
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(03) 5555 6473",
+            "use": "work",
+            "rank": 1
+          },
+          {
+            "system": "phone",
+            "value": "(03) 3410 5613",
+            "use": "mobile",
+            "rank": 2
+          },
+          {
+            "system": "phone",
+            "value": "(03) 5555 8834",
+            "use": "old",
+            "period": {
+              "end": "2014"
+            }
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1974-12-25",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+              "valueDateTime": "1974-12-25T14:35:45-05:00"
+            }
+          ]
+        },
+        "deceasedBoolean": false,
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "text": "534 Erewhon St PeasantVille, Utah 84414",
+            "line": [
+              "534 Erewhon St"
+            ],
+            "city": "PleasantVille",
+            "district": "Rainbow",
+            "state": "UT",
+            "postalCode": "84414",
+            "period": {
+              "start": "1974-12-25"
+            }
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M"
+            }
+          ]
+        },
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "N"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": "du Marché",
+              "_family": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+                    "valueString": "VV"
+                  }
+                ]
+              },
+              "given": [
+                "Bénédicte"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+33 (237) 998327"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "534 Erewhon St"
+              ],
+              "city": "PleasantVille",
+              "district": "Rainbow",
+              "state": "VT",
+              "postalCode": "3999",
+              "period": {
+                "start": "1974-12-25"
+              }
+            },
+            "gender": "female",
+            "period": {
+              "start": "2012"
+            }
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/example"
+        }
+      }
+  }, {
+    "name": "CQLBooleanExample",
+    "valueBoolean": true
+  }, {
+    "name": "CQLCodeExample",
+    "valueCoding": {
+      "code": "example-code",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example"
+    }
+  }, {
+    "name": "CQLCodeSystemExample",
+    "valueCanonical": "http://hl7.org/fhir/uv/cql/CodeSystem/example"
+  }, {
+    "name": "CQLConceptExample",
+    "valueCodeableConcept": {
+      "coding": [{
+        "code": "example-code",
+        "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example"
+      }]
+    }
+  }, {
+    "name": "CQLDateExample",
+    "valueDate": "2024-01-01"
+  }, {
+    "name": "CQLDateTimeExample",
+    "valueDateTime": "2024-01-01T10:30:00Z"
+  }, {
+    "name": "CQLDecimalExample",
+    "valueDecimal": 10.0
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Long"
+    }],
+    "name": "CQLLongExample",
+    "valueInteger": 10
+  }, {
+    "name": "CQLIntegerExample",
+    "valueInteger": 10
+  }, {
+    "name": "CQLQuantityExample",
+    "valueQuantity": {
+      "value": 10,
+      "code": "mg",
+      "system": "http://unitsofmeasure.org"
+    }
+  }, {
+    "name": "CQLRatioExample",
+    "valueRatio": {
+      "numerator": {
+        "value": 5,
+        "code": "mg",
+        "system": "http://unitsofmeasure.org"
+      },
+      "denominator": {
+        "value": 10,
+        "code": "mg",
+        "system": "http://unitsofmeasure.org"
+      }
+    }
+  }, {
+    "name": "CQLStringExample",
+    "valueString": "John"
+  }, {
+    "name": "CQLTimeExample",
+    "valueTime": "10:30:00"
+  }, {
+    "name": "CQLValueSetExample",
+    "valueCanonical": "http://hl7.org/fhir/uv/cql/ValueSet/example"
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Vocabulary"
+    }],
+    "name": "CQLVocabularyExample",
+    "valueCanonical": "http://example.org/test/npe-preventer",
+    "_valueCanonical": {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "unknown"
+      }]
+    }
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "Interval<System.Date>"
+    }],
+  "name": "CQLDateIntervalExample",
+    "valuePeriod": {
+      "start": "2024-01-01",
+      "end": "2024-01-31"
+    }
+  }, {
+    "name": "CQLDateTimeIntervalExample",
+    "valuePeriod": {
+      "start": "2024-01-01T10:30:00Z",
+      "end": "2024-01-31T10:30:00Z"
+    }
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "Interval<System.Time>"
+    }],
+    "name": "CQLTimeIntervalExample",
+    "part": [{
+      "name": "low",
+      "valueTime": "10:30:00"
+    }, {
+      "name": "high",
+      "valueTime": "11:30:00"
+    }]
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "Interval<System.Integer>"
+    }],
+    "name": "CQLIntegerIntervalExample",
+    "valueRange": {
+      "low": {
+        "value": 5
+      },
+      "high": {
+        "value": 10
+      }
+    }
+  }, {
+    "name": "CQLQuantityIntervalExample",
+    "valueRange": {
+      "low": {
+        "value": 5,
+        "code": "mg",
+        "system": "http://unitsofmeasure.org"
+      },
+      "high": {
+        "value": 10,
+        "code": "mg",
+        "system": "http://unitsofmeasure.org"
+      }
+    }
+  }, {
+    "name": "CQLListExample",
+    "valueInteger": 1
+  }, {
+    "name": "CQLListExample",
+    "valueInteger": 2
+  }, {
+    "name": "CQLListExample",
+    "valueInteger": 3
+  }, {
+    "name": "CQLListExample",
+    "valueInteger": 4
+  }, {
+    "name": "CQLListExample",
+    "valueInteger": 5
+  }, {
+    "name": "CQLTupleExample",
+    "part": [{
+      "name": "X",
+      "valueInteger": 1
+    }, {
+      "name": "Y",
+      "valueInteger": 1
+    }]
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<Choice<System.Integer,System.Decimal>>"
+    }],
+    "name": "CQLChoiceListExample",
+    "valueInteger": 1
+  }, {
+    "name": "CQLChoiceListExample",
+    "valueDecimal": 1.0
+  }, {
+    "name": "CQLTupleListExample",
+    "part": [{
+      "name": "X",
+      "valueInteger": 1
+    }, {
+      "name": "Y",
+      "valueInteger": 1
+    }]
+  }, {
+    "name": "CQLTupleListExample",
+    "part": [{
+      "name": "X",
+      "valueInteger": 1
+    }, {
+      "name": "Y",
+      "valueInteger": 2
+    }]
+  }, {
+    "name": "CQLTupleListExample",
+    "part": [{
+      "name": "X",
+      "valueInteger": 1
+    }, {
+      "name": "Y",
+      "valueInteger": 3
+    }]
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "Tuple{id:System.Integer,name:System.String,address:List<Tuple{street:System.String,city:System.String,state:System.String}>}"
+    }],
+    "name": "CQLComplexTupleExample",
+    "part": [{
+      "name": "id",
+      "valueInteger": 1
+    }, {
+      "name": "name",
+      "valueString": "Patrick" 
+    }, {
+      "name": "address",
+      "part": [{
+        "name": "street",
+        "valueString": "123 Spinning Ave"
+      }, {
+        "name": "city",
+        "valueString": "Dayton"
+      }, {
+        "name": "state",
+        "valueString": "OH"
+      }]
+    }]
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<Tuple{id:System.Integer,name:System.String,address:List<Tuple{street:System.String,city:System.String,state:System.String}>}>"
+    }],
+    "name": "CQLComplexTupleListExample",
+    "part": [{
+      "name": "id",
+      "valueInteger": 1
+    }, {
+      "name": "name",
+      "valueString": "Patrick" 
+    }, {
+      "name": "address",
+      "part": [{
+        "name": "street",
+        "valueString": "123 Spinning Ave"
+      }, {
+        "name": "city",
+        "valueString": "Dayton"
+      }, {
+        "name": "state",
+        "valueString": "OH"
+      }]
+    }]
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<Tuple{id:System.Integer,name:System.String,address:List<Tuple{street:System.String,city:System.String,state:System.String}>}>"
+    }],
+    "name": "CQLEmptyListExample",
+    "_valueBoolean": {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-isEmptyList",
+        "valueBoolean": true
+      }]
+    }
+  }, {
+    "name": "FHIRBooleanExample",
+    "valueBoolean": true
+  }, {
+    "name": "FHIRStringExample",
+    "valueString": "Chalmers"
+  }, {
+    "name": "FHIRQuantityExample",
+    "valueQuantity": {
+      "value": 76.0,
+      "unit": "mg/dL",
+      "system": "http://unitsofmeasure.org"
+    }
+  }, {
+    "name": "FHIRPeriodExample",
+    "valuePeriod": {
+      "start": "1974-12-25"
+    }
+  }, {
+    "name": "FHIRRangeExample",
+    "valueRange": {
+      "low": {
+        "value": 40.0,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg/dL"
+      },
+      "high": {
+        "value": 109.0,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg/dL"
+      }
+    }
+  }, {
+    "name": "FHIRObservationExample",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "blood-glucose",
+      "meta": {
+        "versionId": "1165",
+        "lastUpdated": "2016-03-09T15:29:58.328+00:00",
+        "profile": [
+          "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab"
+        ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: blood-glucose</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Glucose Bld-mCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '2339-0' = 'Glucose [Mass/volume] in Blood', given as 'Glucose Bld-mCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 76.0 mg/dL</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>40.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>109.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+              "code": "laboratory",
+              "display": "Laboratory"
+            }
+          ],
+          "text": "Laboratory"
+        }
+      ],
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "2339-0",
+            "display": "Glucose Bld-mCnc"
+          }
+        ],
+        "text": "Glucose Bld-mCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 76.0,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [
+        {
+          "low": {
+            "value": 40.0,
+            "unit": "mg/dL",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg/dL"
+          },
+          "high": {
+            "value": 109.0,
+            "unit": "mg/dL",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg/dL"
+          },
+          "appliesTo": [
+            {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+                  "code": "normal",
+                  "display": "Normal Range"
+                }
+              ],
+              "text": "Normal Range"
+            }
+          ]
+        }
+      ]
+    }
+  }, {
+    "name": "FHIRObservationListExample",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "blood-glucose",
+      "meta": {
+        "versionId": "1165",
+        "lastUpdated": "2016-03-09T15:29:58.328+00:00",
+        "profile": [
+          "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab"
+        ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: blood-glucose</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Glucose Bld-mCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '2339-0' = 'Glucose [Mass/volume] in Blood', given as 'Glucose Bld-mCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 76.0 mg/dL</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>40.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>109.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+              "code": "laboratory",
+              "display": "Laboratory"
+            }
+          ],
+          "text": "Laboratory"
+        }
+      ],
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "2339-0",
+            "display": "Glucose Bld-mCnc"
+          }
+        ],
+        "text": "Glucose Bld-mCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 76.0,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [
+        {
+          "low": {
+            "value": 40.0,
+            "unit": "mg/dL",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg/dL"
+          },
+          "high": {
+            "value": 109.0,
+            "unit": "mg/dL",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg/dL"
+          },
+          "appliesTo": [
+            {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+                  "code": "normal",
+                  "display": "Normal Range"
+                }
+              ],
+              "text": "Normal Range"
+            }
+          ]
+        }
+      ]
+    }
+  }, {
+    "name": "FHIRObservationListExample",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "blood-pressure",
+      "meta": {
+        "profile": [
+          "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+        ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: blood-pressure</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Blood pressure systolic and diastolic <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '85354-9' = 'Blood pressure panel with all children optional', given as 'Blood pressure panel with all children optional'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><blockquote><p><b>component</b></p><p><b>code</b>: Systolic blood pressure <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8480-6' = 'Systolic blood pressure', given as 'Systolic blood pressure'})</span></p><p><b>value</b>: 109 mmHg<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mm[Hg] = 'mm[Hg]')</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: Diastolic blood pressure <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8462-4' = 'Diastolic blood pressure', given as 'Diastolic blood pressure'})</span></p><p><b>value</b>: 44 mmHg<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mm[Hg] = 'mm[Hg]')</span></p></blockquote></div>"
+      },
+      "status": "final",
+      "category": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+              "code": "vital-signs",
+              "display": "Vital Signs"
+            }
+          ],
+          "text": "Vital Signs"
+        }
+      ],
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "85354-9",
+            "display": "Blood pressure panel with all children optional"
+          }
+        ],
+        "text": "Blood pressure systolic and diastolic"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "component": [
+        {
+          "code": {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "8480-6",
+                "display": "Systolic blood pressure"
+              }
+            ],
+            "text": "Systolic blood pressure"
+          },
+          "valueQuantity": {
+            "value": 109,
+            "unit": "mmHg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mm[Hg]"
+          }
+        },
+        {
+          "code": {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "8462-4",
+                "display": "Diastolic blood pressure"
+              }
+            ],
+            "text": "Diastolic blood pressure"
+          },
+          "valueQuantity": {
+            "value": 44,
+            "unit": "mmHg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mm[Hg]"
+          }
+        }
+      ]
+    }
+  }, {
+    "name": "FHIRObservationListExample",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "bmi",
+      "meta": {
+        "profile": [
+          "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+        ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: bmi</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: BMI <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '39156-5' = 'Body mass index (BMI) [Ratio]', given as 'Body mass index (BMI) [Ratio]'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><p><b>value</b>: 16.2 kg/m2<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code kg/m2 = 'kg/m2')</span></p></div>"
+      },
+      "status": "final",
+      "category": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+              "code": "vital-signs",
+              "display": "Vital Signs"
+            }
+          ],
+          "text": "Vital Signs"
+        }
+      ],
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "39156-5",
+            "display": "Body mass index (BMI) [Ratio]"
+          }
+        ],
+        "text": "BMI"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "valueQuantity": {
+        "value": 16.2,
+        "unit": "kg/m2",
+        "system": "http://unitsofmeasure.org",
+        "code": "kg/m2"
+      }
+    }
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<FHIR.Observation>"
+    }],
+    "name": "FHIRObservationEmptyListExample",
+    "_valueBoolean": {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-isEmptyList",
+        "valueBoolean": true
+      }]
+    }
+  }]
+}

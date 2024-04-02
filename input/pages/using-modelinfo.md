@@ -36,6 +36,16 @@ Similar to CQL content, ModelInfo can be included in FHIR Library resources to f
 {: #conformance-requirement-6-1}
 
 1. Libraries used to package ModelInfo **SHALL** conform to the [CQLModelInfo](StructureDefinition-cql-modelinfo.html) profile
+1. The identifying elements of a modelinfo **SHALL** conform to the following requirements:
+* Library.url **SHALL** be `<CQL model namespace url>/Library/<CQL model name>-ModelInfo`
+* Library.name **SHALL** be `<CQL model name>`
+* Library.version **SHALL** be `<CQL model version>`
+2. For model info libraries included in FHIR implementation guides, the CQL model namespace is defined by the implementation guide as follows:
+* CQL model namespace name **SHALL** be IG.packageId
+* CQL model namespace url **SHALL** be IG.canonicalBase
+3. To avoid issues with characters between web ids and names, CQL model names **SHALL NOT** have underscores.
+
+The prohibition against underscores in CQL model names is required to ensure compliance with the canonical URL pattern (because URLs by convention should not use underscores). In addition, many publishing environments will use the canonical tail (i.e. the name of the library) as the logical id of the Library resource, which does not allow underscores per the FHIR specification.
 
 #### Profile-informed ModelInfo
 {: #profile-informed-modelinfo}

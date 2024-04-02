@@ -81,6 +81,27 @@
         "mustSupport": true
       },
       {
+        "id": "Parameters.parameter.extension:cqlType",
+        "path": "Parameters.parameter.extension",
+        "sliceName": "cqlType",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/cqf-cqlType"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Parameters.parameter.name",
+        "path": "Parameters.parameter.name",
+        "mustSupport": true
+      },
+      {
         "id": "Parameters.parameter.value[x]",
         "path": "Parameters.parameter.value[x]",
         "mustSupport": true
@@ -112,6 +133,22 @@
           }
         ],
         "fixedCode": "unknown"
+      },
+      {
+        "id": "Parameters.parameter.value[x].extension:isEmptyList",
+        "path": "Parameters.parameter.value[x].extension",
+        "sliceName": "isEmptyList",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/cqf-isEmptyList"
+            ]
+          }
+        ],
+        "mustSupport": true
       }
     ]
   }

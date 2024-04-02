@@ -1,13 +1,13 @@
 {
     "resourceType": "Library",
-    "id": "modelinfo-example",
+    "id": "USCore-ModelInfo",
     "meta": {
       "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfo" ]
     },
-    "url": "http://hl7.org/fhir/uv/cql/Library/modelinfo-example",
+    "url": "http://hl7.org/fhir/uv/cql/Library/USCore-ModelInfo",
     "identifier": [ {
       "use": "official",
-      "system": "http://example.org/fhir/cqi/ecqm/Library/Identifier",
+      "system": "http://example.org/fhir/cqf/modelinfo/us/Library/Identifier",
       "value": "USCore"
     } ],
     "version": "3.1.0",

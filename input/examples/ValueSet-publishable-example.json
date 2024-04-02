@@ -21,59 +21,59 @@
   "expansion": {
     "timestamp": "2023-07-11T09:29:40-06:00",
     "contains": [ {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE49",
       "display": "No danger signs"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE50",
       "display": "Bleeding vaginally"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE52",
       "display": "Convulsing"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE53",
       "display": "Fever"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE54",
       "display": "Imminent delivery"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE55",
       "display": "Labour"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE56",
       "display": "Looks very ill"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE57",
       "display": "Severe headache"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE58",
       "display": "Severe pain"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE59",
       "display": "Severe vomiting"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE60",
       "display": "Severe abdominal pain"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE61",
       "display": "Unconscious"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE62",
       "display": "Visual disturbance"
     }, {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "code": "ANC.B5.DE51",
       "display": "Central cyanosis"
     } ]

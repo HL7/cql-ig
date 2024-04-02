@@ -31,7 +31,7 @@
     },
     "valueCodeableConcept": {
       "coding": [ {
-        "system": "http://hl7.org/fhir/uv/cql/CodeSystem/shareable-example",
+        "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
         "code": "ANC.B5",
         "display": "Quick check"
       } ]
@@ -62,7 +62,7 @@
       "max": "1",
       "patternCodeableConcept": {
         "coding": [ {
-          "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+          "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
           "code": "ANC.B5.DE48",
           "display": "Danger signs"
         } ]

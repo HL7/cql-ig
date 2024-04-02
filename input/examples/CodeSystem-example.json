@@ -1,15 +1,33 @@
 {
   "resourceType": "CodeSystem",
-  "id": "publishable-example",
-  "url": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
-  "name": "ANCMConceptCodes",
-  "title": "Example ANCM Concept Codes",
+  "id": "example",
+  "url": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
+  "name": "CQLIGExampleCodeSystem",
+  "title": "CQL IG Example Code System",
   "status": "draft",
-  "experimental": false,
-  "description": "Set of codes representing all concepts used in the implementation guide",
+  "experimental": true,
+  "description": "This code system contains example content used to support examples in the Using CQL IG",
   "caseSensitive": true,
   "content": "complete",
   "concept": [ {
+    "code": "ANC.A",
+    "display": "Registration"
+  }, {
+    "code": "ANC.A4",
+    "display": "Gather client details"
+  }, {
+    "code": "ANC.A7",
+    "display": "Create client record?OR?ANC.A8. Validate client details"
+  }, {
+    "code": "ANC.B5",
+    "display": "Quick check"
+  }, {
+    "code": "ANC.B4",
+    "display": "Confirm pregnancy"
+  }, {
+    "code": "ANC.End",
+    "display": "End"
+  }, {
     "code": "ANC.A.DE1",
     "display": "Unique identification",
     "definition": "Unique identification"

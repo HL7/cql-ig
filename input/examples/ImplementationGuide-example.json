@@ -1,6 +1,6 @@
 {
     "resourceType" : "ImplementationGuide",
-    "id" : "publishable-example",
+    "id" : "example",
     "meta": {
       "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-implementationguide" ]
     },
@@ -33,7 +33,7 @@
         "reference": "#ancm-modelinfosettings"
       }
     } ],
-    "url" : "http://hl7.org/fhir/uv/crmi/ImplementationGuide/publishable-example",
+    "url" : "http://hl7.org/fhir/uv/crmi/ImplementationGuide/example",
     "version" : "0.1.0",
     "name" : "CQLImplementationGuideExample",
     "title" : "CQL ImplementationGuide Example",

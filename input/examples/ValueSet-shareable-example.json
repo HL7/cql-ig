@@ -10,7 +10,7 @@
   "immutable": true,
   "compose": {
     "include": [ {
-      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/publishable-example",
+      "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example",
       "concept": [ {
         "code": "ANC.B5.DE6",
         "display": "Abnormal vaginal discharge (physiological) (foul smelling) (curd like)"
