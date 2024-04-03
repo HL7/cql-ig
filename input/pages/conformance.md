@@ -155,7 +155,7 @@ For a complete example illustrating all possible type mappings, refer to the [Ty
 2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types (as defined in 2.19), or FHIR resource types, optionally with profile designations
 3. Tuple types are represented in FHIR as a `parameter` that has parts corresponding to the elements of the tuple type. List types are represented in FHIR as a `parameter` that has a cardinality of 0..*.
 4. Libraries used in computable artifacts **SHALL** use the `parameter` element to identify input parameters as well as the type of all top-level expressions as output parameters.
-5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL:
+5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL, according to the following mapping:
 
 |Retrieve Element|DataRequirement Element|
 |---|---|
@@ -170,6 +170,167 @@ For a complete example illustrating all possible type mappings, refer to the [Ty
 |dateLowProperty,dateHighProperty|dateFilter.path (resolved to an interval-valued property)|
 |dateRange|dateFilter.path or dateFilter.searchParam|
 {: .grid }
+
+For example, given the following CQL:
+
+```cql
+define Conditions: [Condition]
+```
+
+The corresponding data requirement is:
+
+```json
+{
+  "type": "Condition",
+  "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
+}
+```
+
+When the retrieve includes a terminology filter, the `codeFilter` element is used to communicate the filter:
+
+```cql
+valueset "Inpatient Encounters": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
+...
+define Encounters: [Encounter: "Inpatient Encounters"]
+```
+
+```json
+{
+  "type": "Encounter",
+  "codeFilter": [ {
+    "path": "type",
+    "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+  } ]
+}
+```
+
+The [`cqf-isSelective`]({{site.data.fhir.ver.ext}/StructureDefinition-cqf-isSelective.html) extension **MAY** be used to identify _selective_ data requirements (i.e. data requirements that are likely to be the most selective of the data of interest for the artifact:
+
+```json
+{
+  "extension": [ {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-isSelective",
+      "valueBoolean": true
+  } ],
+  "type": "Encounter",
+  "codeFilter": [ {
+    "path": "type",
+    "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+  } ]
+}
+```
+
+Although this extension may be used by artifact authors as a way to indicate expected selectivity of a data requirement, it will more typically be used by implementers and downstream packaging repositories to indicate selectivity of a data requirement given known data heuristics in particular datasets.
+
+The [`cqf-fhirQueryPattern`]({{site.data.fhir.ver.ext}/StructureDefinition-cqf-fhirQueryPattern.html) extension **MAY** be used to recommend a FHIR RESTful query that can be used to satisfy the data requirement:
+
+```json
+{
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+    "valueString": "Encounter?subject=Patient/{{context.patientId}}&type:in=http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+  } ],
+  "type": "Encounter",
+  "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+  "codeFilter": [ {
+    "path": "type",
+    "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+  } ]
+}
+```
+
+Systems that can infer more selective requirements from additional restrictions applied in the CQL after the retrieve **MAY** include those requirements to provide more selective data requirements. For example:
+
+```cql
+define "Completed Inpatient Encounters": 
+  [Encounter: "Inpatient Encounters"] E
+    where E.status = 'finished'
+```
+
+The `status` restriction is represented using the [`cqf-valueFilter`]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-valueFilter.html) extension:
+
+```json
+{
+  "extension": [ {
+    "extension" : [
+      {
+        "url" : "path",
+        "valueString" : "status"
+      },
+      {
+        "url" : "comparator",
+        "valueCode" : "eq"
+      },
+      {
+        "url" : "value",
+        "valueString" : "finished"
+      }
+    ],
+    "url" : "http://hl7.org/fhir/StructureDefinition/cqf-valueFilter"
+  } ],
+  "type": "Encounter",
+  "codeFilter": [ {
+    "path": "type",
+    "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+  } ]
+}
+```
+
+Elements that are referred to in the CQL **MAY** be communicated using the `mustSupport` element:
+
+```cql
+define "Inpatient Encounters During Measurement Period": 
+  [Encounter: "Inpatient Encounters"] E
+    where E.period during "Measurement Period"
+```
+
+```json
+{
+  "type": "Encounter",
+  "mustSupport": [ "period" ],
+  "codeFilter": [ {
+    "path": "type",
+    "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+  } ]
+}
+```
+
+When using profile-informed authoring, the retrieve will have a `templateId` corresponding to the profile:
+
+```json
+{
+  "type": "Encounter",
+  "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+  "codeFilter": [ {
+    "path": "type",
+    "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+  } ]
+}
+```
+
+When referencing extensions that are surfaced as elements in profile-informed authoring, the `mustSupport` uses the `.extension()` function in FHIRPath, and the [`rendered-value`]({{site.data.fhir.ver.ext}}/StructureDefinition-rendered-value.html) extension is used to provide a human-readable rendering, corresponding to the `sliceName` of the extension:
+
+```cql
+using QICore
+...
+define SDEEthnicity: Patient.ethnicity
+```
+
+```json
+{
+  "type": "Patient",
+  "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ],
+  "mustSupport": [ "extension('http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity')" ],
+  "_mustSupport": [
+    {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/rendered-value",
+        "valueString": "ethnicity"
+      }]
+    }
+  ]
+}
+```
 
 > In the case that dynamic CQL construction is required, implementers should take care to sanitize inputs from any parameters used in the construction of dynamic CQL to avoid [injection attacks](https://en.wikipedia.org/wiki/SQL_injection).
 
