@@ -59,6 +59,10 @@
   } ],
   "url": "http://hl7.org/fhir/uv/cql/Library/Example",
   "name": "Example",
+  "title": "Example",
+  "status": "active",
+  "experimental": true,
+  "description": "Example CQL Library used to demonstrate common patterns used in CQL with FHIR-based models",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",

@@ -59,6 +59,10 @@
   } ],
   "url": "http://hl7.org/fhir/uv/cql/Library/ParameterExample",
   "name": "ParameterExample",
+  "title": "Parameter Example",
+  "status": "active",
+  "experimental": true,
+  "description": "Example CQL library with a parameter defined, used to illustrate calling the $cql and Library/$evaluate operations with libraries that have parameters",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",

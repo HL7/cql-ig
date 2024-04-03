@@ -22,7 +22,7 @@ For example:
 library EXM146
 ```
 
-This declaration specifies the name of the library as `EXM146`. See the discussion on [Library Resources](#library-resources) for more information on library naming conventions.
+This declaration specifies the name of the library as `EXM146`. See the discussion on [Library Resources](conformance.html#library-resources) for more information on library naming conventions.
 
 #### Library Versioning
 {: #library-versioning}

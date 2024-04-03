@@ -144,6 +144,12 @@ resources:
   Parameters/cql-evaluationresult-example:
     name: Example Evaluation Result Parameters
     description: Example Parameters resource demonstrating the use of data-absent-reason extension to indicate a null evaluation result.
+  Parameters/cql-options-example:
+    name: Example CQL Operations Parameters
+    description: Example Parameters resource demonstrating the use of the CQLOptions profile to specify CQL translator options. This resource would typically be a contained resource in an implementation guide, artifact collection, or library.
+  Parameters/cql-typemappingexampleresult:
+    name: Example Type Mapping Evaluation Result Parameters
+    description: Example Parameters resource showing the result of evaluating the TypeMappingExample library, demonstrating all possible CQL-to-FHIR type mappings.
   Patient/example:
     name: Example Patient
     description: Example Patient resource used as part of the observation negation example.

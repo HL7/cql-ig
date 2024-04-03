@@ -62,6 +62,10 @@
   } ],
   "url": "http://hl7.org/fhir/uv/cql/Library/CQLExample",
   "name": "CQLExample",
+  "title": "CQL Example",
+  "status": "active",
+  "experimental": true,
+  "description": "Example CQL Library illustrating the CQL Profile (a Library with only text/cql content)",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",

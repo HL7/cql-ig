@@ -59,6 +59,10 @@
   } ],
   "url": "http://hl7.org/fhir/uv/cql/Library/ANCCohort",
   "name": "ANCCohort",
+  "title": "ANC Cohort",
+  "status": "active",
+  "experimental": true,
+  "description": "Example cohort definition for anteantal care",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",
