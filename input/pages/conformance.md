@@ -204,7 +204,7 @@ define Encounters: [Encounter: "Inpatient Encounters"]
 }
 ```
 
-The [`cqf-isSelective`]({{site.data.fhir.ver.ext}/StructureDefinition-cqf-isSelective.html) extension **MAY** be used to identify _selective_ data requirements (i.e. data requirements that are likely to be the most selective of the data of interest for the artifact:
+The [`cqf-isSelective`]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-isSelective.html) extension **MAY** be used to identify _selective_ data requirements (i.e. data requirements that are likely to be the most selective of the data of interest for the artifact:
 
 ```json
 {
@@ -222,7 +222,7 @@ The [`cqf-isSelective`]({{site.data.fhir.ver.ext}/StructureDefinition-cqf-isSele
 
 Although this extension may be used by artifact authors as a way to indicate expected selectivity of a data requirement, it will more typically be used by implementers and downstream packaging repositories to indicate selectivity of a data requirement given known data heuristics in particular datasets.
 
-The [`cqf-fhirQueryPattern`]({{site.data.fhir.ver.ext}/StructureDefinition-cqf-fhirQueryPattern.html) extension **MAY** be used to recommend a FHIR RESTful query that can be used to satisfy the data requirement:
+The [`cqf-fhirQueryPattern`]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-fhirQueryPattern.html) extension **MAY** be used to recommend a FHIR RESTful query that can be used to satisfy the data requirement:
 
 ```json
 {
