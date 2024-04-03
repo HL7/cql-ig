@@ -67,80 +67,83 @@ The prohibition against underscores in CQL library names is required to ensure c
 {: .grid }
 
 2. In addition:
+    * List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
+    * Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
 
-* List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
-
-For example:
+For example, the following CQL expression results in a `List<FHIR.Observation>`:
 
 ```cql
-define "Non Elective Inpatient Encounter":
-  ["Encounter": "Nonelective Inpatient Encounter"] NonElectiveEncounter
-        where NonElectiveEncounter.period ends during day of "Measurement Period"
 ```
 
-Which might be represented as
+In the Library resource, this is represented as a `parameter`:
 
-```
+```json
 {
-    "resourceType": "Parameters",
-    "id": "cql-list-example",
-    "meta": {
-      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
-    },
-    "parameter": [ {
-      "name": "Non Elective Inpatient Encounter",
-      "resource": {
-        "resourceType": "Encounter",
-        ...
-      }
-    }, {
-      "name": "Non Elective Inpatient Encounter",
-      "resource": {
-      "resourceType": "Encounter",
-      ...
-      }
-    }
-  ]
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<FHIR.Observation>"
+    }],
+    "name": "FHIRObservationListExample",
+    "use": "out",
+    "min": 0,
+    "max": "*",
+    "type": "Observation"
+  }
+  ```
+
+  Note the parameter is multi-cardinality to indicate this is a list-valued expression. Also note the use of the `cqf-cqlType` extension to relay the CQL type.
+
+  When invoked through an operation (such as `$cql` or `Library/$evaluate`), this would be represented as multiple entries in the resulting Parameters resource:
+
+  ```json
+{
+  "name": "FHIRObservationListExample",
+  "resource": {
+    "resourceType": "Observation",
+    "id": "blood-glucose",
+    "status": "final",
+    ...
+  }
+}, {
+  "name": "FHIRObservationListExample",
+  "resource": {
+    "resourceType": "Observation",
+    "id": "blood-pressure",
+    "status": "final",
+    ...
+  }
+}, {
+  "name": "FHIRObservationListExample",
+  "resource": {
+    "resourceType": "Observation",
+    "id": "bmi",
+    "status": "final",
+    ...
+  }
 }
 ```
 
-* Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
+Note that for an empty list, the `cqf-isEmptyList` extension is used:
 
-For example:
-
-```cql
-define "SDE Ethnicity":
-  Patient.ethnicity E
-    return Tuple {
-      codes: { E.ombCategory } union E.detailed,
-      display: E.text
-    }
-```
-
-Which might be represented as
-
-```
+```json
 {
-    "resourceType": "Parameters",
-    "id": "cql-tuple-example",
-    "meta": {
-      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
-    },
-    "parameter": [ {
-      "name": "SDE Ethnicity",
-      "part": [
-        {
-          "name": "code",
-          "valueCode": "2135-2"
-        },
-        {
-          "name": "display",
-          "valueString": "Hispanic or Latino"
-        }
-      ]
+  "extension": [{
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+    "valueString": "List<FHIR.Observation>"
+  }],
+  "name": "FHIRObservationEmptyListExample",
+  "_valueBoolean": {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-isEmptyList",
+      "valueBoolean": true
     }]
+  }
 }
 ```
+
+Note that the extension is provided on the `value` element, and an arbitrary choice of `boolean` is selected; there is no value to provide, the result is an empty list, so this is just a way to provide the cqf-isEmptyList extension (because parameters in a FHIR Parameters resource must have a value element).
+
+For a complete example illustrating all possible type mappings, refer to the [Type Mapping Example](Library-TypeMappingExample.html) and [Type Mapping Evaluation Result Example](Parameters-cql-typemappingexampleresult.html)
 
 #### Parameters and Data Requirements
 {: #parameters-and-data-requirements}
@@ -168,7 +171,7 @@ Which might be represented as
 |dateRange|dateFilter.path or dateFilter.searchParam|
 {: .grid }
 
-> Note that best-practice for CQL evaluation is to make use of and distribute compiled CQL (ELM). In the case that dynamic CQL construction is required, implementers should take care to sanitize inputs from any parameters used in the construction of dynamic CQL to avoid [injection attacks](https://en.wikipedia.org/wiki/SQL_injection).
+> In the case that dynamic CQL construction is required, implementers should take care to sanitize inputs from any parameters used in the construction of dynamic CQL to avoid [injection attacks](https://en.wikipedia.org/wiki/SQL_injection).
 
 #### RelatedArtifacts
 {: #relatedartifacts}
@@ -199,7 +202,6 @@ For example, the following media types indicate version 1.5 of the CQL specifica
 * `text/cql; version=1.5`
 * `application/elm+xml; version=1.5`
 * `application/elm+json; version=1.5`
-
 
 ### Must Support
 
