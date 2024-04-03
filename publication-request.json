@@ -7,9 +7,5 @@
   "sequence" : "STU1",
   "desc" : "STU1 Snapshot (v1.0.0-snapshot)",
   "descmd" : "This is a snapshot of the Using CQL IG to support ballot of the QM IG in the May 2024 cycle",
-  "first" : false,
-  "title" : "Using CQL with FHIR Implementation Guide",
-  "ci-build": "http://build.fhir.org/ig/HL7/cql-ig",
-  "category": "infrastructure",
-  "introduction": "The Using CQL with FHIR implementation guide defines profiles, operations and guidance for the use of CQL with FHIR, both as a mechanism for querying, as well as inline and integrated usage as part of knowledge artifacts."
+  "first" : false
 }
