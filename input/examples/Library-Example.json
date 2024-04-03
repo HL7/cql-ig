@@ -88,7 +88,7 @@
   }, {
     "type": "depends-on",
     "display": "Code system ICD-11",
-    "resource": "http://hl7.org/fhir/sid/icd-11"
+    "resource": "http://id.who.int/icd/release/11/mms"
   }, {
     "type": "depends-on",
     "display": "Value set Antithrombotic Therapy",

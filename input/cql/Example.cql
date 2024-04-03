@@ -17,7 +17,7 @@ code "American Indian or Alaska Native": '1002-5' from "CDC Race and Ethnicity C
 code "Alaska Native": '1735-0' from "CDC Race and Ethnicity Codes"
 
 codesystem "Antenatal Care Concepts": 'http://example.org/fhir/CodeSystem/anc-codes-example'
-codesystem "ICD-11": 'http://hl7.org/fhir/sid/icd-11'
+codesystem "ICD-11": 'http://id.who.int/icd/release/11/mms'
 
 code "Tiredness Code": 'ANC.B5.DE40' from "Antenatal Care Concepts" display 'Tiredness'
 code "MB22.7": 'MB22.7' from "ICD-11" display 'Tiredness'

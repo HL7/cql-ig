@@ -10,6 +10,9 @@
   "caseSensitive": true,
   "content": "complete",
   "concept": [ {
+    "code": "example",
+    "display": "Example"
+  }, {
     "code": "ANC.A",
     "display": "Registration"
   }, {

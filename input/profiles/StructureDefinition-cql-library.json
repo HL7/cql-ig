@@ -112,7 +112,6 @@
       {
         "id": "Library.content",
         "path": "Library.content",
-        "sliceName": "cqlContent",
         "requirements": "A CQL library must provide the contents of the library in a computable form.",
         "min": 1,
         "max": "*",

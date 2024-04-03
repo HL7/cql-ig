@@ -9,7 +9,7 @@ include FHIRHelpers version '4.0.1'
 
 codesystem ExampleCodeSystem: 'http://hl7.org/fhir/uv/cql/CodeSystem/example'
 codesystem LOINC: 'http://loinc.org'
-valueset ExampleValueSet: 'http://hl7.org/fhir/uv/cql/ValueSet/example'
+valueset ExampleValueSet: 'http://hl7.org/fhir/uv/cql/ValueSet/shareable-example'
 code ExampleCode: 'example-code' from ExampleCodeSystem
 code BloodGlucose: '2339-0' from LOINC display 'Glucose Bld-mCnc'
 concept ExampleConcept: { ExampleCode }
