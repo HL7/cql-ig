@@ -296,8 +296,8 @@ The [HL7 Cross-Paradigm Specification: Representing Negatives](https://www.hl7.o
 
 For an example of a set of profiles following these best practices to support the representation of negation in FHIR, see the [Negation](https://hl7.org/fhir/us/qicore/negation.html) profiles in QI-Core. In summary, negation statements typically cover two different _extents_:
 
-1) Documentation that a particular activity/event should not or did not occur
-2) Documentation that a class of activities/events should not or did not occur (typically represented with a value set)
+1. Documentation that a particular activity/event should not or did not occur
+2. Documentation that a class of activities/events should not or did not occur (typically represented with a value set)
 
 Given the representation of negative information in FHIR, two commonly used patterns for negation in clinical logic are:
 
