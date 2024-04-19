@@ -1,25 +1,9 @@
-* Profiles
-  * CQLLibrary X
-  * ELMLibrary X
-  * CQLModelInfo X
-  * CQLCapabilityStatement X
-  * CQLEvaluationResult X
-  * CQLModule X
-  * CQLStructureDefinition X
-  * CQLImplementationGuide X
-* Extensions
-  * cqlType X
-  * cqlAccessLevel X
-  * cqlOptions X
-  * cqlSupportedVersion X
-  * modelInfo-isIncluded X
-  * modelInfo-isRetrievable X
-  * modelInfo-label X
-  * modelInfo-primaryCodePath X
-  * modelInfoSettings X
-* Operations
-  * $cql X
-  * Library/$evaluate X
-* CapabilityStatements
-  * CQLEvaluationService X
-
+Publication Hitlist:
+* Apply narrative for parameter examples
+* Apply guidance for Using Expressions
+* Update example snippet references to use examples in the IG
+* Apply technical corrections from QA review
+* Technical correction on extensions to update value cardinality to 1..1 as appropriate (all extensions)
+* Apply https://jira.hl7.org/browse/FHIR-45313
+* Update change log
+* Final QA pass

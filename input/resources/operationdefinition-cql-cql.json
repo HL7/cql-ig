@@ -167,6 +167,6 @@
       "min" : 1,
       "max" : "*",
       "documentation" : "The result of evaluating the given expression, returned as a FHIR Type following the mapping from CQL to FHIR types (link to mapping). If the result is a list, the parameter will be repeated for each element in the list, with the special case that an empty list is represented with a parameter with no value but a cqlType extension indicating the type of the result (e.g. List<Integer>) and the cqf-isEmptyList extension (as defined in https://jira.hl7.org/browse/FHIR-43795)\n\nBecause the cardinality of the return parameter is 1..*, this means the result of the $cql evaluate will always be a Parameters resource.",
-      "type" : "Any"
+      "type" : "Base"
     }]
   }
