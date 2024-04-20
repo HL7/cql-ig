@@ -7,7 +7,7 @@ This topic specifies conformance requirements for systems that support authoring
 ### Library Resources
 {: #library-resources}
 
-In addition to the use of CQL directly in expression-valued elements, CQL content used within knowledge artifacts can be included through the use of a Library resource. These libraries can then be referenced from FHIR resources such as PlanDefinition and Measure using the `library` element (as well as the `cqf-library` extension for resources that do not declare a `library` element). The content of the CQL library is included using the `content` element of the Library.
+In addition to the use of CQL directly in [expression-valued elements](#using-expressions), CQL content used within knowledge artifacts can be included through the use of a Library resource. These libraries can then be referenced from FHIR resources such as PlanDefinition and Measure using the `library` element (as well as the `cqf-library` extension for resources that do not declare a `library` element). The content of the CQL library is included using the `content` element of the Library.
 
 **Conformance Requirement 4.1 (Library Resources):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-4-1)
 {: #conformance-requirement-4-1}
@@ -350,6 +350,7 @@ define SDEEthnicity: Patient.ethnicity
 {: .grid }
 
 #### CQL Version
+{: #cql-version}
 
 **Conformance Requirement 4.6 (Specifying CQL Version):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-4-6)
 {: #conformance-requirement-4-6}
@@ -364,7 +365,26 @@ For example, the following media types indicate version 1.5 of the CQL specifica
 * `application/elm+xml; version=1.5`
 * `application/elm+json; version=1.5`
 
+### Using Expressions
+{: #using-expressions}
+
+CQL can be used in [expression-valued elements]({{site.data.fhir.ver}}/metadatatypes.html#Expression) in the following ways:
+
+1. To specify an unqualified expression name in the "primary" library for an artifact
+2. To specify a qualified expression name in a library referenced by an artifact
+3. To directly specify an inline expression
+
+To distinguish these use cases, the `language` element of the expression value is used as specified in the [Using Expressions](https://hl7.org/fhir/R5/clinicalreasoning-topics-using-expressions.html) topic of the FHIR specification.
+
+The "primary library" for an artifact is determined as follows:
+
+1. If the resource type has a `library` element (e.g. PlanDefinition.library), and there is one and only one library specified, that is the primary library
+2. If the resource has one and only one `cqf-library` extension, that is the primary library
+
+If there is more than one library specified in the resource, then expression identifiers must be qualified with the name of the library (see [Conformance Requirement 2.3 (Nested Libraries)](using-cql.html#conformance-requirement-2-3)).
+
 ### Must Support
+{: #must-support}
 
 Certain elements in the profiles defined in this implementation guide are marked as Must Support. This flag is used to indicate that the element plays a critical role in defining, sharing, and implementing artifacts, and implementations **SHALL** understand and process the element.
 
