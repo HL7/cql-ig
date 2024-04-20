@@ -9,7 +9,6 @@
 <artifact deprecated="true" id="CodeSystem/shareable-example" key="CodeSystem-shareable-example" name="ANCM Activity Codes"/>
 <artifact deprecated="true" id="CodeSystem/publishable-example" key="CodeSystem-publishable-example" name="ANCM Concept Codes"/>
 <artifact deprecated="true" id="StructureDefinition/cqf-cqlAccessLevel" key="StructureDefinition-cqf-cqlAccessLevel" name="CQL Access Level"/>
-<artifact id="StructureDefinition/cqf-cqlAccessModifier" key="StructureDefinition-cqf-cqlAccessModifier" name="CQL Access Modifier"/>
 <artifact id="OperationDefinition/cql-cql" key="OperationDefinition-cql-cql" name="CQL CQL"/>
 <artifact id="StructureDefinition/cql-capabilitystatement" key="StructureDefinition-cql-capabilitystatement" name="CQL Capability Statement"/>
 <artifact id="StructureDefinition/cql-evaluationresult" key="StructureDefinition-cql-evaluationresult" name="CQL Evaluation Result"/>
@@ -25,7 +24,7 @@
 <artifact id="StructureDefinition/cql-module" key="StructureDefinition-cql-module" name="CQL Module"/>
 <artifact id="StructureDefinition/cql-options" key="StructureDefinition-cql-options" name="CQL Options"/>
 <artifact id="StructureDefinition/cql-structuredefinition" key="StructureDefinition-cql-structuredefinition" name="CQL StructureDefinition"/>
-<artifact id="StructureDefinition/cqf-cqlType" key="StructureDefinition-cqf-cqlType" name="CQL Type"/>
+<artifact deprecated="true" id="StructureDefinition/cqf-cqlType" key="StructureDefinition-cqf-cqlType" name="CQL Type"/>
 <artifact id="StructureDefinition/cql-dangersigns-profile-example" key="StructureDefinition-cql-dangersigns-profile-example" name="Danger signs"/>
 <artifact id="Library/ELMExample" key="Library-ELMExample" name="ELM Example"/>
 <artifact id="StructureDefinition/elm-json-library" key="StructureDefinition-elm-json-library" name="ELM JSON Library"/>
@@ -45,7 +44,6 @@
 <artifact id="ValueSet/shareable-example" key="ValueSet-shareable-example" name="Example Specific health concern(s) Codes"/>
 <artifact id="Parameters/cql-typemappingexampleresult" key="Parameters-cql-typemappingexampleresult" name="Example Type Mapping Evaluation Result Parameters"/>
 <artifact deprecated="true" id="Library/FHIRCommon" key="Library-FHIRCommon" name="FHIR Common"/>
-<artifact id="StructureDefinition/cqf-isEmptyList" key="StructureDefinition-cqf-isEmptyList" name="Is Empty List"/>
 <artifact id="CapabilityStatement/cql-evaluation-service-example" key="CapabilityStatement-cql-evaluation-service-example" name="Library Evaluation Service Capability Statement Example"/>
 <artifact id="Library/ParameterExample" key="Library-ParameterExample" name="Parameter Example"/>
 <artifact id="StructureDefinition/cql-specifichealthconcerns-profile-example" key="StructureDefinition-cql-specifichealthconcerns-profile-example" name="Specific health concern(s)"/>
