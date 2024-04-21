@@ -6,9 +6,14 @@ include FHIRHelpers version '4.0.1'
 
 codesystem LOINC: 'http://loinc.org'
 codesystem "CDC Race and Ethnicity Codes": 'urn:oid:2.16.840.1.113883.6.238'
+codesystem "SNOMED CT": 'http://snomed.info/sct'
+codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct' version 'http://snomed.info/sct/731000124108/version/201709'
 
 valueset "Antithrombotic Therapy": 'http://example.org/fhir/ValueSet/antithrombotic-therapy-example'
 valueset "Medical Reason": 'http://example.org/fhir/ValueSet/medical-reason-example'
+valueset "Absent or Unknown Allergies - IPS": 'http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-allergies-uv-ips'
+valueset "Encounter Inpatient SNOMEDCT Value Set": 'http://example.org/fhir/ValueSet/encounter-inpatient' version '20160929'
+valueset "Flexible Sigmoidoscopy": 'http://example.org/fhir/ValueSet/flexible-sigmoidoscopy'
 
 code "Blood Pressure": '85354-9' from LOINC
 code "Diastolic blood pressure": '8462-4' from "LOINC" display 'Diastolic blood pressure'
@@ -21,8 +26,11 @@ codesystem "ICD-11": 'http://id.who.int/icd/release/11/mms'
 
 code "Tiredness Code": 'ANC.B5.DE40' from "Antenatal Care Concepts" display 'Tiredness'
 code "MB22.7": 'MB22.7' from "ICD-11" display 'Tiredness'
+code "Venous foot pump, device (physical object)": '442023007' from "SNOMED CT"
 
 concept "Tiredness": { "Tiredness Code", "MB22.7" } display 'Tiredness'
+
+parameter "Measurement Period" Interval<DateTime>
 
 context Patient
 
@@ -129,3 +137,12 @@ define fluent function notDoneValueSet(element Choice<CodeableConcept, Reference
 define "Antithrombotics Not Administered":
   "Antithrombotic Not Administered"
     union "Antithrombotic Class Not Administered"
+
+define function "Includes Or Starts During"(Condition Condition, Encounter Encounter):
+      Interval[Condition.onset, Condition.abatement] includes Encounter.period
+         or Condition.onset during Encounter.period
+
+define "Flexible Sigmoidoscopy Performed":
+  [Procedure: "Flexible Sigmoidoscopy"] FlexibleSigmoidoscopy
+    where FlexibleSigmoidoscopy.status = 'completed'
+      and FlexibleSigmoidoscopy.performed.toInterval() ends 5 years or less on or before end of "Measurement Period"

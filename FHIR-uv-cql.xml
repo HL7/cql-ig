@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ciUrl="" defaultVersion="current" defaultWorkgroup="cds" gitUrl="https://github.com/HL7/cql-ig" url="http://hl7.org/fhir/uv/cql">
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ciUrl="" defaultVersion="1.0.0" defaultWorkgroup="cds" gitUrl="https://github.com/HL7/cql-ig" url="http://hl7.org/fhir/uv/cql">
 <version code="current" url=""/>
-<version code="1.0.0-snapshot" url="http://hl7.org/fhir/uv/cql/1.0.0-snapshot"/>
+<version code="1.0.0" url="http://hl7.org/fhir/uv/cql/STU1"/>
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>

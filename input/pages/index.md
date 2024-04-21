@@ -14,16 +14,18 @@ Where possible, new and updated content will be highlighted with green text and 
 
 [Clinical Quality Language (CQL)](http://cql.hl7.org) is a clinically-focused query language that can be used to express logic in a broad range of healthcare use cases, including clinical decision and cognitive support, public health and quality reporting, computable clinical guidelines, research trial eligibility, and many others. Several implementation guides have been published that include conformance criteria related to the use of CQL in these contexts. This implementation guide is the result of extracting common aspects of that support to a universal realm, broadly applicable implementation guide that supports the use of CQL with Fast Healthcare Interoperability Resources (FHIR). Future versions of those implementation guides should consider referencing the conformance and guidance established here.
 
+Note that although this is a first release of this implementation guide, the content has been balloted, published, reviewed, implemented, and refined over many years as part of the [Quality Measure Implementation Guide](https://hl7.org/fhir/us/cqfmeasures), [FHIR Clinical Guidelines](https://hl7.org/fhir/uv/cpg), [Quality Improvement Profile (QI-Core)](https://hl7.org/fhir/us/qicore), and the [Canonical Resource Management Infrastructure IG](https://hl7.org/fhir/uv/crmi).
+
 Some of the conformance language and requirements described in this implementation guide, particularly around the use of terminology, may be applicable more broadly. We propose the inclusion of appropriate conformance requirements and guidance in a future version of the CQL specification.
 
 ### Scope of Use
 
 The intent of this implementation guide is to support the use of CQL with FHIR in general. It is a universal realm specification and is intended to be broadly applicable to any use case that involves libraries or expressions of CQL evaluating against FHIR resources, including:
 
-* Library profiles to support packaging of CQL (and compiled CQL, or ELM) as FHIR Library resources
+* Library profiles to support packaging of CQL (and compiled CQL, or Expression Logical Model (ELM)) as FHIR Library resources
 * Evaluation support profiles to facilitate the representation of structured information about a logic library, as well as the result of evaluating a logic library
 * CQL Evaluation Service capability statement
-* ModelInfo-related profiles to facilitate configuration of ModelInfo for FHIR implementation guides
+* Model Information (ModelInfo)-related profiles to facilitate configuration of ModelInfo for FHIR implementation guides
 
 ### How to read this Guide
 {: #how-to-read-this-guide}
@@ -61,6 +63,7 @@ This Implementation Guide was made possible by the thoughtful contributions of t
 
 * Brian Kaney, Vermonster - Editor
 * Bryant Austin, Smile Digital Health - Contributor
+* Clinical Quality Information (CQI) Work Group
 * Michael Holck, ICF - Contributor
 * Ewout Kramer, Firely - Contributor
 * Carl Leitner - Contributor
@@ -73,6 +76,8 @@ This Implementation Guide was made possible by the thoughtful contributions of t
 * Chris Schuler, Smile Digital Health - Contributor
 * Jennifer Seeman, ICF - Contributor
 * Adam Stevenson, Smile Digital Health - Contributor
+
+In addition, the editors would like to thank the many reviewers that provided detailed and insightful comments as part of balloting and preparation of this content, including Chris Moesel, Lloyd McKenzie, Jonathan Percival, Yan Heras, Paul Denning, Juliet Rubini, Angela Flanagan, Isaac Vetter, and many others.
 
 ### References
 {: #references}

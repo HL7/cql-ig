@@ -78,7 +78,7 @@ library EXM146 version '2.0.0'
 
 Snippet 2-1: Library line from EXM146.cql, the second major version.
 
-Note that when CQL libraries are included as part of larger groupings of artifacts (such as quality measures or computable guidelines), the version of the library is specified along with all the other artifacts in the larger group. For more guidance on versioning these artifacts as a group, refer to the [Versioning](http://build.fhir.org/ig/HL7/crmi-ig/content-lifecycle.html#artifact-versioning) topic in the CRMI implementation guide.
+Note that when CQL libraries are included as part of larger groupings of artifacts (such as quality measures or computable guidelines), the version of the library is specified along with all the other artifacts in the larger group. For more guidance on versioning these artifacts as a group, refer to the [Versioning](http://build.fhir.org/ig/HL7/crmi-ig/artifact-lifecycle.html#artifact-versioning) topic in the Canonical Resource Management Infrastructure (CRMI) implementation guide.
 
 #### Nested Libraries
 {: #nested-libraries}
@@ -136,7 +136,7 @@ In addition, because the namespace of a library functions as part of the globall
 ### Data Model
 {: #data-model}
 
-CQL can be used with any data model(s). To be used with FHIR, CQL requires model information. To facilitate use with any FHIR content, a general-purpose FHIR information model is included in the [Common](https://fhir.org/guides/cqf/common) implementation guide. However, CQL may also be used with implementation-guide specific model information (i.e. structures based on the profile definitions in an IG).
+CQL can be used with any data model(s). To be used with FHIR, CQL requires model information. To facilitate use with any FHIR content, a general-purpose FHIR information model is included in the [Clinical Quality Framework Common FHIR Assets](https://fhir.org/guides/cqf/common) implementation guide. However, CQL may also be used with implementation-guide specific model information (i.e. structures based on the profile definitions in an IG).
 
 **Conformance Requirement 2.5 (CQL Using FHIR-based Data Models):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-5)
 {: #conformance-requirement-2-5}
@@ -150,7 +150,7 @@ For example:
 using FHIR version '4.0.1'
 ```
 
-Snippet 2-3: Data Model line from EXM146.cql
+Snippet 2-3: Data Model line from [Example.cql](Library-Example.html#contents)
 
 ### Code Systems
 {: #code-systems}
@@ -170,7 +170,7 @@ codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct'
   version 'http://snomed.info/sct/731000124108/version/201709'
 ```
 
-Snippet 2-4: codesystem definition line from Terminology.cql.
+Snippet 2-4: codesystem definition line from [Example.cql](Library-Example.html#contents).
 
 The canonical URL for a code system is a globally unique, stable, version-independent identifier for the code system.
 The [HL7 Terminology (THO) site ](http://terminology.hl7.org) defines canonical URLs for most common code systems.
@@ -203,7 +203,7 @@ For example:
 valueset "Absent or Unknown Allergies - IPS": 'http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-allergies-uv-ips'
 ```
 
-Snippet 2-5: Valueset reference from EXM146.cql
+Snippet 2-5: Valueset reference from [Example.cql](Library-Example.html#contents).
 
 The canonical URL for a value set is typically defined by the value set author, though it may be provided by the
 publisher as well. For example, value sets defined in the International Patient Summary have a base URL of `http://hl7.org/fhir/uv/ips/`.
@@ -231,7 +231,7 @@ case. This use of a canonical URL can be resolved as a search by the `url` eleme
 GET fhir/ValueSet?url=http://example.org/fhir/ValueSet/acute-pharyngitis-snomed
 ```
 
-> A note about usage of the term value set in this documentation: "Value set", with two words, regardless of case, is the human-readable spelling. "ValueSet", with one word and in PascalCase, is the FHIR Type. "valueset", with one word and all lower case, is the proper spelling for use within cql statements and expressions.
+> A note about usage of the term value set in this documentation: "Value set", with two words, regardless of case, is the human-readable spelling. "ValueSet", with one word and in PascalCase, is the FHIR Type. "valueset", with one word and all lower case, is the proper spelling for use within CQL statements and expressions.
 
 #### Value Set Version
 {: #value-set-version}
@@ -254,7 +254,7 @@ valueset "Encounter Inpatient SNOMEDCT Value Set":
    'http://example.org/fhir/ValueSet/encounter-inpatient' version '20160929'
 ```
 
-Snippet 2-6: valueset definition from Terminology.cql.
+Snippet 2-6: valueset definition from [Example.cql](Library-Example.html#contents).
 
 This is a _version specific value set reference_, and can be resolved as a search by the `url` and `version` elements:
 
@@ -297,7 +297,7 @@ For example:
 #### String-based Membership Testing
 {: #string-based-membership-testing}
 
-Although CQL allows the use of strings as input to membership testing in value sets, this capability **SHALL NOT** be used with FHIR-based models as it can lead to incorrect matching if the code system is not considered.
+Although CQL allows the use of strings as input to membership testing in value sets, this capability should not be used with FHIR-based models as it can lead to incorrect matching if the code system is not considered.
 
 **Conformance Requirement 2.10 (String-based Membership Testing):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-10)
 {: #conformance-requirement-2-10}
@@ -316,7 +316,7 @@ This is because there is no code system associated with the string `'female'` so
 First(Patient.address).state in "New England States"
 ```
 
-In this case, because the `state` element is string-valued, there is no straightforward way to associate a system, and the string-based membership testing is simpler than requiring the construction of a `Code` value. However, care should be taken with this usage to ensure the string values do not match codes from an unexpected system. Furthermore, if the element being tested is terminology-valued, terminology membership testing SHOULD be used.
+In this case, because the `state` element is string-valued, there is no straightforward way to associate a system, and the string-based membership testing is simpler than requiring the construction of a `Code` value. However, care should be taken with this usage to ensure the string values do not match codes from an unexpected system. Furthermore, if the element being tested is terminology-valued, terminology membership testing **SHOULD** be used.
 
 ### Codes
 {: #codes}
@@ -328,14 +328,14 @@ the logical identifier **SHOULD** be the code from the code system.
 {: #conformance-requirement-2-11}
 
 1. When direct-reference codes are represented within CQL, the logical identifier:
-     a. **SHALL NOT** be a URI.
-     b. **SHOULD** be a code from the code system.
+    1. **SHALL NOT** be a URI.
+    2. **SHOULD** be a code from the code system.
 
 ```cql
 code "Venous foot pump, device (physical object)": '442023007' from "SNOMED CT"
 ```
 
-Snippet 2-7: code definition from Terminology.cql.
+Snippet 2-7: code definition from [Example.cql](Library-Example.html#contents).
 
 Note that for direct-reference code usage, the local identifier (in Snippet 2-7 the local identifier is "Venous foot pump,
 device (physical object)") **SHOULD** be the same as the description of the code within the terminology in order to avoid
@@ -378,6 +378,7 @@ define "BMI in Measurement Period":
 Notice the use of the UCUM code directly, as opposed to declaring a CQL code for the unit:
 
 ```cql
+// Anti-pattern illustrating inappropriate use of code system and code declarations for UCUM
 codesystem UCUM: 'http://unitsofmeasure.org'
 code "kg/m2": 'kg/m2' from UCUM
 
@@ -387,6 +388,7 @@ define "BMI in Measurement Period":
       and BMI.effective during "Measurement Period"
       and BMI.value is not null
       and BMI.value.code = "kg/m2"
+// Anti-pattern illustrating inappropriate use of code system and code declarations for UCUM
 ```
 
 ### Concepts
@@ -424,7 +426,7 @@ concept "Active Condition Statuses": { "Active", "Recurrence", "Relapse" } displ
 // Anti-pattern illustrating inappropriate use of the Concept construct
 ```
 
-This usage of concept includes multiple concepts with different meanings from the same code system. A value set **SHOULD** be used for this purpose as it provides more flexibility and maintainability for this use case.
+This usage of concept includes multiple concepts with different meanings from the same code system. Instead, a value set **SHOULD** be used for this purpose as it provides more flexibility and maintainability for this use case.
 
 ### Library-level Identifiers
 {: #library-level-identifiers}
@@ -437,12 +439,14 @@ meaningful name (avoid abbreviations) and conform to Conformance Requirement 2.1
 **Conformance Requirement 2.13 (Library-level Identifiers):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-13)
 {: #conformance-requirement-2-13}
 
-1. Library-level identifiers referenced in the CQL:
-      a. **SHOULD** Use quoted identifiers
-      b. **SHOULD** Use Initial Case
-      c. **MAY** Include spaces
+1. Library-level identifiers in CQL:
+    1. **SHOULD** Have descriptive, meaningful names
+    2. **SHOULD** Avoid abbreviations
+    3. **SHOULD** Use quoted identifiers if necessary
+    4. **SHOULD** Use Initial Case
+    5. **MAY** Include spaces
 
-> NOTE: **Initial Case** is defined as the first letter of every word is capitalized (e.g. "Observation With Status") (as opposed to Title Case, which traditionally does not capitalize conjunctions and prepositions, e.g. "Observation with Status")
+> NOTE: **Initial Case** is defined as the first letter of every word is capitalized (e.g. "Includes Or Starts During") (as opposed to Title Case, which traditionally does not capitalize conjunctions and prepositions, e.g. "Includes or Starts During")
 
 For example:
 
@@ -453,7 +457,7 @@ define function
          or Condition.onset during Encounter.period
 ```
 
-Snippet 2-8: Function definition from Common.cql
+Snippet 2-8: Function definition from [Example.cql](Library-Example.html#contents).
 
 The `"Includes Or Starts During"` is the library-level identifier in this example.
 
@@ -469,8 +473,8 @@ these will be the author-friendly identifiers for the profile.
 {: #conformance-requirement-2-14}
 
 1. Data type names referenced in CQL:
-    a. **SHALL** use PascalCase (unless dictated by the name of the type in the model)
-    b. **SHALL NOT** use quoted identifiers (unless required because the name of the type in the model contains spaces or is otherwise not a valid identifier without quoting)
+    1. **SHALL** use PascalCase (unless dictated by the name of the type in the model)
+    2. **SHALL NOT** use quoted identifiers (unless required because the name of the type in the model contains spaces or is otherwise not a valid identifier without quoting)
 
 For example:
 
@@ -481,7 +485,7 @@ define "Flexible Sigmoidoscopy Performed":
       and FlexibleSigmoidoscopy.performed ends 5 years or less on or before end of "Measurement Period"
 ```
 
-Snippet 2-9: Expression definition from EXM130.cql
+Snippet 2-9: Expression definition from [Example.cql](Library-Example.html#contents).
 
 The `Procedure` is the name of the model data type (FHIR resource type) in this example.
 
@@ -492,8 +496,8 @@ The `Procedure` is the name of the model data type (FHIR resource type) in this 
 {: #conformance-requirement-2-15}
 
 1. Data model elements referenced in the CQL:
-    a. **SHALL NOT** use quoted identifiers (unless required due to the element name in the model not being a valid identifier in CQL)
-    b. **SHOULD** use camelCase (unless dictated by the element naming in the model being used)
+    1. **SHALL NOT** use quoted identifiers (unless required due to the element name in the model not being a valid identifier in CQL)
+    2. **SHOULD** use camelCase (unless dictated by the element naming in the model being used)
 
 Examples of elements conforming to Conformance Requirement 2.15 are given below. For a full list of valid of elements, refer to an appropriate data model specification such as QI-Core.
 
@@ -516,10 +520,10 @@ Conformance Requirement 2.16.
 {: #conformance-requirement-2-16}
 
 1. Aliases and argument names referenced in the CQL:
-    a. **SHALL NOT** Use quoted identifiers
-    b. **SHOULD** Use PascalCase for alias names
-    c. **SHOULD** Use camelCase for argument names
-    d. **SHOULD** Use descriptive names (rather than abbreviations)
+    1. **SHALL NOT** Use quoted identifiers
+    2. **SHOULD** Use PascalCase for alias names
+    3. **SHOULD** Use camelCase for argument names
+    4. **SHOULD** Use descriptive names (rather than abbreviations)
 
 For example:
 

@@ -20,7 +20,7 @@ define "Patient is Female":
   Patient.gender.value = 'female'
 ```
   
-To avoid this, the FHIRHelpers library defines implicit conversions for all the FHIR types, allowing authors to treat
+To avoid this, a [FHIRHelpers](http://fhir.org/guides/cqf/common/Library-FHIRHelpers.html) library defines implicit conversions for all the FHIR types, allowing authors to treat
 FHIR elements as integers, strings, etc. directly:
 
 ```cql
@@ -28,20 +28,18 @@ define "Patient is Female":
   Patient.gender = 'female'
 ```
 
-Note that these conversions are performed automatically by the [CQL-to-ELM translator](https://github.com/cqframework/clinical_quality_language/blob/master/Src/java/cql-to-elm/OVERVIEW.md) when they are used by CQL, resulting in a conversion error if the FHIRHelpers library is not included using
-  an [include declaration](https://cql.hl7.org/02-authorsguide.html#libraries):
+Note that these conversions are performed automatically by the [CQL-to-ELM translator](https://github.com/cqframework/clinical_quality_language/blob/master/Src/java/cql-to-elm/OVERVIEW.md) when they are used by CQL, resulting in a conversion error if the FHIRHelpers library is not included using an [include declaration](https://cql.hl7.org/02-authorsguide.html#libraries):
   
 ```cql
 include FHIRHelpers version '4.0.1'
 ```
 
-The version of the library is not required by CQL, but for the FHIRHelpers reference, because it is so closely tied to the
-FHIR ModelInfo, best-practice is to include the version of FHIRHelpers.
+The version of the library is not required by CQL, but for the FHIRHelpers reference, because it is so closely tied to the FHIR ModelInfo, best-practice is to include the version of FHIRHelpers.
 
 #### Choices
 
 FHIR includes the notion of [_choice_](https://hl7.org/fhir/formats.html#choice) types, or elements that can be represented as any of a number of types. For example,
-the `Patient.deceased` element can be specified as a `boolean` or as a `dateTime`. CQL also supports [choice](https://cql.hl7.org/03-developersguide.html#choice-types) types, these elements are manifest directly as Choice Types within the Model Info.
+the `Patient.deceased` element can be specified as a `boolean` or as a `dateTime`. CQL also supports [choice](https://cql.hl7.org/03-developersguide.html#choice-types) types, so these elements are represented directly as Choice Types within the Model Info.
 
 When authoring CQL using FHIR, logic must take into account the possible choice types of the elements involved. For example, the `Observation.effective` element may be represented as a `dateTime` or a `Period` (among other types):
 
@@ -55,7 +53,7 @@ define "Blood Pressure Observations Within 30 Days":
       )
 ```
 
-Rather than requiring different representations to be considered in the logic each time they are encountered, a function can be defined that accepts a choice type argument:
+Rather than requiring different representations to be considered in the logic each time they are encountered, a [fluent function](https://cql.hl7.org/03-developersguide.html#fluent-functions) can be defined that accepts a choice type argument:
 
 ```cql
 define fluent function toInterval(choice Choice<FHIR.dateTime, FHIR.Period>):
@@ -152,7 +150,7 @@ define "Patient With Race Category":
       and (detailed O return O.value as FHIR.Coding) contains "Alaska Native"
 ```
 
-Again, these can be access directly using a let clause, or a fluent function can be defined to allow access:
+Again, these can be accessed directly using a let clause, or a fluent function can be defined to allow access:
 
 ```cql
 define fluent function race(patient Patient):
@@ -362,11 +360,11 @@ value set.
 To represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
 Therapy" value set using the ([cqf-notDoneValueSet]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-notDoneValueSet.html)) extension to indicate
 providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
-set URI to negate the entire value set rather than reporting a specific member code from the value set, clinicians are
+set URI to negate the entire value set rather than a specific member code from the value set, clinicians are
 not forced to arbitrarily select a specific medication from the "Antithrombotic Therapy" value set that they
 did not administer in order to negate.
 
-When this pattern is used in FHIR resources, the CQL needs to take this into account by looking for the `notDoneValueSet` extension:
+When this pattern is used in FHIR resources, the CQL needs to take this into account by looking for the `cqf-notDoneValueSet` extension:
 
 ```cql
 define "Antithrombotic Class Not Administered":
@@ -375,6 +373,8 @@ define "Antithrombotic Class Not Administered":
       and NotAdministered.status = 'not-done'
       and NotAdministered.statusReason in "Medical Reason"
 ```
+
+NOTE: See the [Example.cql](Library-Example.html#contents) for the definition of the `notDoneValueSet()` fluent function.
 
 To ensure both cases are accounted for, these two expressions would then be used together:
 
