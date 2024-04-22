@@ -15,7 +15,7 @@ The following changes were made as reconciliation of issues raised in the 1.0.0-
 
 #### Compatible, Substanive Changes
 
-* [FHIR-43885](https://jira.hl7.org/browse/FHIR-43885): A Conformance Requirement that SHOULD be followed is confusing Applied ([here](using-cql.html#elm-suitability))
+* [FHIR-43885](https://jira.hl7.org/browse/FHIR-43885): A Conformance Requirement that SHOULD be followed is confusing Applied ([here](using-elm.html#elm-suitability))
 * [FHIR-43780](https://jira.hl7.org/browse/FHIR-43780): Relax prohibition against string-based membership testing Applied ([here](using-cql.html#conformance-requirement-2-10))
 * [FHIR-43698](https://jira.hl7.org/browse/FHIR-43698): Conformance requirement 2.10 - provide example Applied ([here](using-cql.html#conformance-requirement-2-10))
 
@@ -24,14 +24,14 @@ The following changes were made as reconciliation of issues raised in the 1.0.0-
 * [FHIR-45296](https://jira.hl7.org/browse/FHIR-45296): QA review fixes
 * [FHIR-44666](https://jira.hl7.org/browse/FHIR-44666): Documented ModelInfo usage
 * [FHIR-44551](https://jira.hl7.org/browse/FHIR-44551): Added examples of using CQL parameters (Applied [here](operations.html#examples))
-* [FHIR-44548](https://jira.hl7.org/browse/FHIR-44548): Large number of technical corrections Applied ([here](using-cql.html#conformance-requirement-2-2)), ([here](using-cql.html#attribute-names)), ([here](using-cql.html#conformance-requirement-2-20)), ([here](profiles.html)), and ([here](extensions.html))
+* [FHIR-44548](https://jira.hl7.org/browse/FHIR-44548): Large number of technical corrections Applied ([here](using-cql.html#conformance-requirement-2-2)), ([here](using-cql.html#element-names)), ([here](conformance.html#conformance-requirement-4-4)), ([here](profiles.html)), and ([here](extensions.html))
 * [FHIR-44541](https://jira.hl7.org/browse/FHIR-44541): Attributes versus Elements ([Applied here](using-cql.html#conformance-requirement-2-15))
-* [FHIR-44512](https://jira.hl7.org/browse/FHIR-44512): add link to cqf-notDoneValueSet ([Applied here](using-cql.html#negation-rationale))
-* [FHIR-44113](https://jira.hl7.org/browse/FHIR-44113): Consider updating examples to align with Conformance Requirement 2.14 Applied ([here](using-cql.html#presence)), ([here](using-cql.html#absence)), and ([here](using-cql.html#negation-rationale))
+* [FHIR-44512](https://jira.hl7.org/browse/FHIR-44512): add link to cqf-notDoneValueSet ([Applied here](patterns.html#negation-rationale))
+* [FHIR-44113](https://jira.hl7.org/browse/FHIR-44113): Consider updating examples to align with Conformance Requirement 2.14 Applied ([here](patterns.html#presence)), ([here](patterns.html#absence)), and ([here](patterns.html#negation-rationale))
 * [FHIR-44099](https://jira.hl7.org/browse/FHIR-44099): FHIR version of code structure does not include the term "using" Applied ([here](using-cql.html#code-representation-in-narrative))
 * [FHIR-44091](https://jira.hl7.org/browse/FHIR-44091): Missing period ([Applied here](using-cql.html#conformance-requirement-2-10))
 * [FHIR-44090](https://jira.hl7.org/browse/FHIR-44090): Consider including the terminology operators link ([Applied here](using-cql.html#conformance-requirement-2-9))
-* [FHIR-44089](https://jira.hl7.org/browse/FHIR-44089): Value set is written 5 different ways Changes applied in the whole section ([here](using-cql.html#value-sets-notes))
+* [FHIR-44089](https://jira.hl7.org/browse/FHIR-44089): Value set is written 5 different ways Changes applied in the whole section ([here](using-cql.html#value-sets))
 * [FHIR-44087](https://jira.hl7.org/browse/FHIR-44087): Missing periods ([Applied here](using-cql.html#conformance-requirement-2-6))
 * [FHIR-44086](https://jira.hl7.org/browse/FHIR-44086): Confusing Terminology Applied ([here](using-cql.html#data-model))
 * [FHIR-44082](https://jira.hl7.org/browse/FHIR-44082): Incomplete Sentence Applied ([here](using-cql.html#conformance-requirement-2-3))
@@ -52,8 +52,8 @@ The following changes were made as reconciliation of issues raised in the 1.0.0-
 * [FHIR-43901](https://jira.hl7.org/browse/FHIR-43901): Created new ModelInfoSettings profile (Applied [here](StructureDefinition-cql-modelinfosettings.html))
 * [FHIR-43886](https://jira.hl7.org/browse/FHIR-43886): CQL Library Evaluate: return parameter doesn't always return all expressions ([Applied here](OperationDefinition-cql-library-evaluate.html))
 * [FHIR-43882](https://jira.hl7.org/browse/FHIR-43882): Added additional details to 2.18.2 to note profiles are StructureDefinitions with derivation set to constraint
-* [FHIR-43881](https://jira.hl7.org/browse/FHIR-43881): Typos: package, csn Applied ([here](using-cql.html#conformance-requirement-2-24))
-* [FHIR-43877](https://jira.hl7.org/browse/FHIR-43877): Conflict in Mime Type version guidance and Library profiles Applied ([here](Library-ANCCohort.html)), ([here](Library-ELMExample.html)), ([here](Library-FHIRCommon.html)), ([here](StructureDefinition-elm-json-library.html)), ([here](StructureDefinition-elm-xml-library.html)), and ([here](capabilitystatement-cql-evaluation-service.html))
+* [FHIR-43881](https://jira.hl7.org/browse/FHIR-43881): Typos: package, csn Applied ([here](using-elm.html#conformance-requirement-5-1))
+* [FHIR-43877](https://jira.hl7.org/browse/FHIR-43877): Conflict in Mime Type version guidance and Library profiles Applied ([here](Library-ANCCohort.html)), ([here](Library-ELMExample.html)), ([here](StructureDefinition-elm-json-library.html)), ([here](StructureDefinition-elm-xml-library.html)), and ([here](CapabilityStatement-cql-evaluation-service.html))
 * [FHIR-43795](https://jira.hl7.org/browse/FHIR-43795): Clarified Tuple and List type representation (Applied [here](conformance.html#fhir-type-mapping))
 * [FHIR-43794](https://jira.hl7.org/browse/FHIR-43794): Clarified top-level expressions can return tuples and lists (Applied [here](conformance.html#fhir-type-mapping))
 * [FHIR-43793](https://jira.hl7.org/browse/FHIR-43793): Clarify FHIR Type Mapping for List and Tuple types (Applied [here](conformance.html#fhir-type-mapping))
@@ -82,11 +82,11 @@ The following changes were made as reconciliation of issues raised in the 1.0.0-
 * [FHIR-43737](https://jira.hl7.org/browse/FHIR-43737): Clarify use of data absent reason codes in CQL Evaluation Result Applied ([here](StructureDefinition-cql-evaluationresult.html))
 * [FHIR-43734](https://jira.hl7.org/browse/FHIR-43734): Mismatch between CQL Capability Statement profile and example Applied ([here](StructureDefinition-cql-capabilitystatement.html))
 * [FHIR-43733](https://jira.hl7.org/browse/FHIR-43733): Typo: A library profiles Applied ([here](profiles.html#profiles))
-* [FHIR-43732](https://jira.hl7.org/browse/FHIR-43732): Incorrect reference to CRMI IG Applied ([here](index.html#conformance-requirement-1-1))
+* [FHIR-43732](https://jira.hl7.org/browse/FHIR-43732): Incorrect reference to CRMI IG Applied ([here](conformance.html#conformance-requirement-4-7))
 * [FHIR-43731](https://jira.hl7.org/browse/FHIR-43731): Page listing does not match menu Applied ([here](index.html#how-to-read-this-guide)) and in menu.xml
 * [FHIR-43703](https://jira.hl7.org/browse/FHIR-43703): Updated example in Concepts to include a code from another system
 * [FHIR-43666](https://jira.hl7.org/browse/FHIR-43666): Fixed incomplete sentence
-* [FHIR-43665](https://jira.hl7.org/browse/FHIR-43665): Clarified conformance requirement 1.1
+* [FHIR-43665](https://jira.hl7.org/browse/FHIR-43665): Clarified conformance requirement 1.1 (Applied [here](conformance.html#conformance-requirement-4-7))
 * [FHIR-43582](https://jira.hl7.org/browse/FHIR-43582): Added -version to the CQL naming convention conformance requirement 2.18
 * [FHIR-43581](https://jira.hl7.org/browse/FHIR-43581): Clarified negation guidance
 * [FHIR-43480](https://jira.hl7.org/browse/FHIR-43480): Typo in Conformance Requirement 2.17
