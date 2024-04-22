@@ -368,7 +368,7 @@ For example, the following media types indicate version 1.5 of the CQL specifica
 ### Using Expressions
 {: #using-expressions}
 
-CQL can be used in [expression-valued elements]({{site.data.fhir.ver}}/metadatatypes.html#Expression) in the following ways:
+CQL can be used in [expression-valued elements](http://hl7.org/fhir/R4/metadatatypes.html#Expression) in the following ways:
 
 1. To specify an unqualified expression name in the "primary" library for an artifact
 2. To specify a qualified expression name in a library referenced by an artifact

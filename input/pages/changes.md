@@ -22,6 +22,7 @@ The following changes were made as reconciliation of issues raised in the 1.0.0-
 #### Non-Substantive Changes
 
 * [FHIR-45296](https://jira.hl7.org/browse/FHIR-45296): QA review fixes
+* [FHIR-45273](https://jira.hl7.org/browse/FHIR-45273): Added guidance on using expressions in artifacts (Applied [here](conformance.html#using-expressions))
 * [FHIR-44666](https://jira.hl7.org/browse/FHIR-44666): Documented ModelInfo usage
 * [FHIR-44551](https://jira.hl7.org/browse/FHIR-44551): Added examples of using CQL parameters (Applied [here](operations.html#examples))
 * [FHIR-44548](https://jira.hl7.org/browse/FHIR-44548): Large number of technical corrections Applied ([here](using-cql.html#conformance-requirement-2-2)), ([here](using-cql.html#element-names)), ([here](conformance.html#conformance-requirement-4-4)), ([here](profiles.html)), and ([here](extensions.html))
