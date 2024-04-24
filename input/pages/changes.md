@@ -129,4 +129,3 @@ The following changes were made as a result of ballot comments received in the S
 * [FHIR-42559](https://jira.hl7.org/browse/FHIR-42559): Clarify language around CQL artifacts
 * [FHIR-41869](https://jira.hl7.org/browse/FHIR-41869): No content in this ModelInfo section of Using CQL
 * [FHIR-41868](https://jira.hl7.org/browse/FHIR-41868): Provide more context in examples
-
