@@ -4,7 +4,7 @@
 ERROR: ImplementationGuide/hl7.fhir.uv.cql: ImplementationGuide.definition.extension[13].extension[0].value.ofType(string): The value provided ('auto-oid-root') was not found in the value set 'ig-parameters Codes ValueSet' (http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0), and a code is required from this value set  (error message = The System URI could not be determined for the code 'auto-oid-root' in the ValueSet 'http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0'; The provided code '#auto-oid-root' was not found in the value set 'http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0')
 ERROR: ImplementationGuide/hl7.fhir.uv.cql: ImplementationGuide.definition.extension[43].extension[0].value.ofType(code): The value provided ('auto-oid-root') was not found in the value set 'ig-parameters Codes ValueSet' (http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0), and a code is required from this value set  (error message = The System URI could not be determined for the code 'auto-oid-root' in the ValueSet 'http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0'; The provided code '#auto-oid-root' was not found in the value set 'http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0')
 
-# This is an example CodeSystem, will request an exemption from THO for this content
+# This is an example CodeSystem and labeled according to TSMG guidance, so does not require an exemption
 INFORMATION: CodeSystem/example: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
 # Accepted references to draft published content
@@ -32,28 +32,6 @@ ERROR: Library/module-example: Library.relatedArtifact[0].resource: Canonical UR
 ERROR: Library/module-example: Library.dataRequirement[0].profile[0]: Canonical URL 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient' does not resolve
 ERROR: Library/module-example: Library.dataRequirement[1].profile[0]: Canonical URL 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter' does not resolve
 ERROR: Library/module-example: Library.dataRequirement[3].profile[0]: Canonical URL 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage' does not resolve
-
-# Context for this extension is expanded in this PR: https://github.com/HL7/fhir-extensions/pull/91
-ERROR: Parameters/cql-evaluationresult-example: Parameters.parameter[0]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[8]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[15]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[16]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[18]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[19]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[27]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[32]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[33]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[34]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[44]: The extension http://hl7.org/fhir/StructureDefinition/cqf-cqlType is not allowed to be used at this point (allowed = e:ParameterDefinition; this element is [BackboneElement, Parameters.parameter])
-
-# Error in the cqf-isEmptyList extension, corrected in this PR: https://github.com/HL7/fhir-extensions/pull/101
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[34].value.ofType(boolean).extension[0].url: Value is 'http://hl7.org/fhir/StructureDefinition/cqf-isEmptyList' but must be 'http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessModifier'
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[44].value.ofType(boolean).extension[0].url: Value is 'http://hl7.org/fhir/StructureDefinition/cqf-isEmptyList' but must be 'http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessModifier'
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[34].value.ofType(boolean).extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[44].value.ofType(boolean).extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-
-# Error in the cqf-cqlAccessModifier extension, corrected in this PR: https://github.com/HL7/fhir-extensions/pull/101
-ERROR: StructureDefinition.text.div: Hyperlink 'http://hl7.org/fhir/R4/https://build.fhir.org/ig/HL7/fhir-extensions/StructureDefinition-cqf-cqlAccessModifier.html' at 'div/table/tr/td/a' for 'http://hl7.org/fhir/StructureDefinition/cqf-cqlAccessModifier' does not resolve
 
 # This structure definition is not a conformance artifact in this ig, it is an example
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/cql/StructureDefinition/cql-dangersigns-profile-example'): The Implementation Guide contains no examples for this profile

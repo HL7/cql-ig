@@ -43,7 +43,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-##### Epression With Parameters
+##### Expression With Parameters
 
 This examples evaluates the expression `2 + X` where `X` is a parameter passed in the `parameters` parameter with the value of 2:
 
