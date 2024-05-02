@@ -3,9 +3,11 @@
 {: #changes}
 
 This page details changes made in each version of the Using CQL with FHIR Implementation Guide.
-### STU1 Reconciliation Changes (version 1.0.0)
+### STU1 Publication (version 1.0.0)
 
-The following changes were made as reconciliation of issues raised in the 1.0.0-ballot
+The following changes were made as a result of comments received in the 1.0.0-ballot
+
+> NOTE: This changelist is inclusive of changes published in the 1.0.0-snapshot version
 
 #### Non-Compatible Changes
 
