@@ -42,14 +42,14 @@ WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/cql/StructureDe
 # This is inherited from the base definition
 WARNING: StructureDefinition/cql-capabilitystatement: StructureDefinition.snapshot.element[0].constraint[6].xpath: value should not start or finish with whitespace ' not(f:kind/@value='instance') or (not(exists(f:implementation)) and exists(f:software))'
 
-# The performer element is not relevant to this example
+# These examples are illustrating how to return resources generally, so the performer element is not relevant to this example
 WARNING: Observation/negation-example: Observation: Best Practice Recommendation: In general, all observations should have a performer
 WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[40].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
 WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[41].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
 WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[42].resource/*Observation/blood-pressure*/: Best Practice Recommendation: In general, all observations should have a performer
 WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[43].resource/*Observation/bmi*/: Best Practice Recommendation: In general, all observations should have a performer
 
-# Narrative is not relevant for this example
+# These examples are illustrating how to return resources generally, narrative is not relevant for this example
 WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[0].resource/*Patient/example*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[40].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[41].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
