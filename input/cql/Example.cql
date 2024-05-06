@@ -11,7 +11,7 @@ codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct' version 'http://snomed.
 
 valueset "Antithrombotic Therapy": 'http://example.org/fhir/ValueSet/antithrombotic-therapy-example'
 valueset "Medical Reason": 'http://example.org/fhir/ValueSet/medical-reason-example'
-valueset "Absent or Unknown Allergies - IPS": 'http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-allergies-uv-ips'
+valueset "Absent or Unknown Allergies - IPS": 'http://example.org/fhir/uv/ips/ValueSet/absent-or-unknown-allergies-uv-ips'
 valueset "Encounter Inpatient SNOMEDCT Value Set": 'http://example.org/fhir/ValueSet/encounter-inpatient' version '20160929'
 valueset "Flexible Sigmoidoscopy": 'http://example.org/fhir/ValueSet/flexible-sigmoidoscopy'
 

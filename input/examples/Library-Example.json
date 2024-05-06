@@ -106,7 +106,7 @@
   }, {
     "type": "depends-on",
     "display": "Value set Absent or Unknown Allergies - IPS",
-    "resource": "http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-allergies-uv-ips"
+    "resource": "http://example.org/fhir/uv/ips/ValueSet/absent-or-unknown-allergies-uv-ips"
   }, {
     "type": "depends-on",
     "display": "Value set Encounter Inpatient SNOMEDCT Value Set",

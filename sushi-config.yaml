@@ -76,7 +76,6 @@ parameters:
   excludettl: true
   jira-code: uv-cql
   path-history: http://hl7.org/fhir/uv/cql/history.html
-  special-url-base: http://hl7.org/fhir
   auto-oid-root: 2.16.840.1.113883.4.642.40.37
 
 pages:
