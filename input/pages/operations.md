@@ -195,38 +195,32 @@ HTTP/1.1 200 OK
 {
   "resourceType": "Parameters",
   "parameter": [{
-    "name": "return",
+    "name": "Blood Glucose Observations",
     "resource": {
-      "resourceType": "Parameters",
-      "parameter": [{
-        "name": "Blood Glucose Observations",
-        "resource": {
-          "resourceType": "Observation",
-          "id": "observation-1",
-          ...
-        }
-      }, {
-        "name": "Blood Glucose Observations",
-        "resource": {
-          "resourceType": "Observation",
-          "id": "observation-2",
-          ...
-        }
-      }, {
-        "name": "Blood Glucose Observations",
-        "resource": {
-          "resourceType": "Observation",
-          "id": "observation-3",
-          ...
-        }
-      }, {
-        "name": "Blood Glucose Observations",
-        "resource": {
-          "resourceType": "Observation",
-          "id": "observation-4",
-          ...
-        }
-      }]
+      "resourceType": "Observation",
+      "id": "observation-1",
+      ...
+    }
+  }, {
+    "name": "Blood Glucose Observations",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "observation-2",
+      ...
+    }
+  }, {
+    "name": "Blood Glucose Observations",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "observation-3",
+      ...
+    }
+  }, {
+    "name": "Blood Glucose Observations",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "observation-4",
+      ...
     }
   }]
 }
