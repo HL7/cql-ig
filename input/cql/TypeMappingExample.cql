@@ -75,6 +75,8 @@ define CQLComplexTupleExample: { id: 1, name: 'Patrick', address: { { street: '1
 define CQLComplexTupleListExample: { CQLComplexTupleExample }
 // EmptyList
 define CQLEmptyListExample: CQLComplexTupleListExample E where false
+// ListList
+define CQLListListExample: { CQLListExample, CQLListExample }
 
 // FHIR Values
 define private FHIRObservations: [Observation]

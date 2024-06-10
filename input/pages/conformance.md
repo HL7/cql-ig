@@ -73,6 +73,8 @@ The prohibition against underscores in CQL library names is required to ensure c
 For example, the following CQL expression results in a `List<FHIR.Observation>`:
 
 ```cql
+define "FHIRObservationListExample":
+  [Observation]
 ```
 
 In the Library resource, this is represented as a `parameter`:
@@ -142,6 +144,51 @@ Note that for an empty list, the `cqf-isEmptyList` extension is used:
 ```
 
 Note that the extension is provided on the `value` element, and an arbitrary choice of `boolean` is selected; there is no value to provide, the result is an empty list, so this is just a way to provide the cqf-isEmptyList extension (because parameters in a FHIR Parameters resource must have a value element).
+
+For the special case of nested lists, where a parameter name is not available, the name `element` **SHALL** be used. For example:
+
+```cql
+define CQLListListExample:
+  { { 1, 2, 3 }, { 4, 5, 6 } }
+```
+
+The result of this expression is represented in the resulting Parameters resource as:
+
+```json
+  {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<List<System.Integer>>"
+    }],
+    "name": "CQLListListExample",
+    "part": [{
+      "name": "element",
+      "valueInteger": 1
+    }, {
+      "name": "element",
+      "valueInteger": 2
+    }, {
+      "name": "element",
+      "valueInteger": 3
+    }]
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<List<System.Integer>>"
+    }],
+    "name": "CQLListListExample",
+    "part": [{
+      "name": "element",
+      "valueInteger": 4
+    }, {
+      "name": "element",
+      "valueInteger": 5
+    }, {
+      "name": "element",
+      "valueInteger": 6
+    }]
+  }
+```
 
 For a complete example illustrating all possible type mappings, refer to the [Type Mapping Example](Library-TypeMappingExample.html) and [Type Mapping Evaluation Result Example](Parameters-cql-typemappingexampleresult.html)
 

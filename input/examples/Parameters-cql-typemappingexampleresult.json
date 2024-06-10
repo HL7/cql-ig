@@ -434,6 +434,50 @@
       }]
     }
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<List<System.Integer>>"
+    }],
+    "name": "CQLListListExample",
+    "part": [{
+      "name": "element",
+      "valueInteger": 1
+    }, {
+      "name": "element",
+      "valueInteger": 2
+    }, {
+      "name": "element",
+      "valueInteger": 3
+    }, {
+      "name": "element",
+      "valueInteger": 4
+    }, {
+      "name": "element",
+      "valueInteger": 5
+    }]
+  }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<List<System.Integer>>"
+    }],
+    "name": "CQLListListExample",
+    "part": [{
+      "name": "element",
+      "valueInteger": 1
+    }, {
+      "name": "element",
+      "valueInteger": 2
+    }, {
+      "name": "element",
+      "valueInteger": 3
+    }, {
+      "name": "element",
+      "valueInteger": 4
+    }, {
+      "name": "element",
+      "valueInteger": 5
+    }]
+  }, {
     "name": "FHIRBooleanExample",
     "valueBoolean": true
   }, {
