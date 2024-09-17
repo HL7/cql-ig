@@ -383,14 +383,14 @@ Both CQL and ELM representations may be included in the Library resource dependi
 
 **Conformance Requirement 3.2 (Referencing ELM Documents):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-3-2)
 {: #conformance-requirement-3-2}
-1. CRMILibraries SHOULD include a content element with the ELM in either XML or JSON format
-2. CRMILibraries SHALL specify ELM content as a base-64-encoded string in the content sub-element as content.data
+1. CRMILibraries SHOULD include a content element with the ELM in either XML or JSON format.
+2. CRMILibraries SHALL specify ELM content as a base-64-encoded string in the content sub-element as content.data.
 3. An ELM translation SHOULD be provided, in either XML or JSON format.
 4. For executable environments, an ELM translation SHALL be provided, in either XML or JSON format.
 5. The XML representation of the ELM SHALL have a mediaType attribute
-value of `application/elm+xml`
+value of `application/elm+xml`.
 6. The JSON representation of the ELM SHALL have a mediaType attribute
-value of `application/elm+json`
+value of `application/elm+json`.
 7. Any translation-referenced ELM documents SHALL be semantically
 equivalent to the corresponding parent CQL expression document.
 
@@ -444,8 +444,8 @@ Snippet 3-7: Example of [effectivePeriodAnchor extension](StructureDefinition-cr
 
 **Conformance Requirement 3.3 (Measurement Period):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-3-3)
 {: #conformance-requirement-3-3}
-1. FHIR-based eCQMs SHALL provide either an `effectivePeriod` element, or an `crmi-effectivePeriodAnchor` and `crmi-effectivePeriodDuration` extension
-2. Measurement Period SHALL be either the `effectivePeriod` as specified, or an appropriate interval of length duration, starting at the specified anchor
+1. FHIR-based eCQMs SHALL provide either an `effectivePeriod` element, or an `crmi-effectivePeriodAnchor` and `crmi-effectivePeriodDuration` extension.
+2. Measurement Period SHALL be either the `effectivePeriod` as specified, or an appropriate interval of length duration, starting at the specified anchor.
 
 
 ### Terminology
@@ -508,7 +508,7 @@ Snippet 3-9: Example Library terminology definitions (from [library-Terminology.
 
 Measures using valueset and/or direct-reference codes must conform to the requirements of Conformance Requirement 3.4.
 1. All valuesets and codes referenced in the CQL SHALL be included in the Library using dataRequirement elements.
-2. If a valueset or code is referenced outside the context of a retrieve, the dataRequirement SHALL have the type 'CodeableConcept'
+2. If a valueset or code is referenced outside the context of a retrieve, the dataRequirement SHALL have the type 'CodeableConcept'.
 
 For example, in the following CQL, the reference to the code `"Venous foot pump, device (physical object)"` occurs in the `"DeviceUseStatement"` retrieve, while the reference to the code `"Right foot"` occurs outside the context of the retrieve:
 
@@ -542,7 +542,7 @@ Snippet 3-10: Example data criteria (from [library-Terminology.json](Library-Ter
 
 **Conformance Requirement 3.5 (Data Criteria Inclusion):**[<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-3-5)
 {: #conformance-requirement-3-5}
-1. `dataRequirement` entries SHALL be included in the Library for each retrieve appearing in the CQL library
+1. `dataRequirement` entries SHALL be included in the Library for each retrieve appearing in the CQL library.
 
 Note that CQL defines its own method for referencing data and that there is no direct link between the data criteria included in the measure and the data used by the CQL expressions. The Library data criteria are surfaced by this implementation guide to promote structured review of the data criteria for a Library (and by examining Libraries referenced by a Measure, for a Measure or set of Measures) for the following use cases:
 
@@ -558,11 +558,11 @@ The canonical representation of ELM makes it straightforward to derive data requ
 
 **Conformance Requirement 3.6** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-3-6)
 {: #conformance-requirement-3-6}
-1. ELM elements with type "Retrieve" are represented using the DataRequirement type defined in FHIR
-2. The Retrieve ELM element's "dataType" value is represented by the DataRequirement's "type" attribute
-3. The Retrieve ELM element's "codes" value referencing a value set or direct-reference code is represented by the DataRequirement's "codeFilter.valueSet" attribute
+1. ELM elements with type "Retrieve" are represented using the DataRequirement type defined in FHIR.
+2. The Retrieve ELM element's "dataType" value is represented by the DataRequirement's "type" attribute.
+3. The Retrieve ELM element's "codes" value referencing a value set or direct-reference code is represented by the DataRequirement's "codeFilter.valueSet" attribute.
 4. The Retrieve ELM element's " templateId" value can be represented by the DataRequirement's "profile" attribute.
-5. For each ELM element identified in item (1) above, a dataRequirement should be included using the profile identified in item (4) that references the value set identified in item (3)
+5. For each ELM element identified in item (1) above, a dataRequirement should be included using the profile identified in item (4) that references the value set identified in item (3).
 
 Note that if the data model does not specify profile identifiers, the ELM retrieves will not have a templateId specified. In this case, the name of the type in the data model is used.
 
@@ -580,23 +580,23 @@ XML:
 
 JSON:
 ```json
-"def" : [
+"def": [
   {
-    "name" : "Acute Pharyngitis",
-    "id" : "2.16.840.1.113883.3.464.1003.102.12.1011",
-    "accessLevel" : "Public"
+    "name": "Acute Pharyngitis",
+    "id": "2.16.840.1.113883.3.464.1003.102.12.1011",
+    "accessLevel": "Public"
   }
 ]
 ```
 ```json
-"operand" : [
+"operand": [
   {
-    "dataType" : "{http://hl7.org/fhir}Condition",
-    "codeProperty" : "code",
-    "type" : "Retrieve",
-    "codes" : {
-       "name" : "Acute Pharyngitis",
-       "type" : "ValueSetRef"
+    "dataType": "{http://hl7.org/fhir}Condition",
+    "codeProperty": "code",
+    "type": "Retrieve",
+    "codes": {
+       "name": "Acute Pharyngitis",
+       "type": "ValueSetRef"
     }
   }
 ]
@@ -721,7 +721,7 @@ The codes within the [MeasurePopulationType]({{site.data.fhir.path}}codesystem-m
 
 **Conformance Requirement 3.8 (Criteria Names):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-3-8)
 {: #conformance-requirement-3-8}
-The name of an expression specifying a population criteria within a measure SHOULD always be the name of the criteria type†† :
+The name of an expression specifying a population criteria within a measure SHOULD always be the name of the criteria type††:
 * "Initial Population"
 * "Denominator"
 * "Denominator Exclusion"
@@ -759,8 +759,8 @@ In addition to the measure type, measures generally fall into two categories, pa
 
 **Conformance Requirement 3.9 (Population Basis):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-3-9)
 {: #conformance-requirement-3-9}
-1. CQL expressions SHALL be written to return an appropriate value for each population depending on the measure type
-2. The [`crmi-populationBasis`](StructureDefinition-crmi-populationBasis.html) extension SHALL be used to identify the result type of population criteria expressions in the measure
+1. CQL expressions SHALL be written to return an appropriate value for each population depending on the measure type.
+2. The [`crmi-populationBasis`](StructureDefinition-crmi-populationBasis.html) extension SHALL be used to identify the result type of population criteria expressions in the measure.
 
 The following example illustrates the use of the populationBasis extension for a patient-based measure:
 
@@ -888,12 +888,12 @@ The population types for a Proportion measure are "Initial Population", "Denomin
 | Denominator Exception | Denominator exceptions are conditions that should remove a patient, subject, or event from the denominator of a measure only if the numerator criteria are not met. Denominator exception allows for adjustment of the calculated score for those providers with higher risk populations. Denominator exception criteria are only used in proportion measures. |
 {: .grid}
 
-* Initial population : Identify those cases that meet the Initial Population criteria. <br/>
-* Denominator : Identify that subset of the Initial Population that meet the Denominator criteria.<br/>
-* Denominator Exclusion : Identify that subset of the Denominator that meet the Denominator Exclusion criteria. There are cases that should be removed from the Denominator as exclusion. Once these cases are removed, the subset remaining would reflect the Denominator per criteria.
-* Numerator : Identify those cases in the Denominator and NOT in the Denominator Exclusion that meet the Numerator criteria. In proportion measures, the Numerator criteria are the processes or outcomes expected for each patient, procedure, or other unit of measurement defined in the Denominator.
-* Numerator Exclusion : Identify that subset of the Numerator that meet the Numerator Exclusion criteria. Numerator Exclusion is used only in ratio measures to define instances that should not be included in the Numerator data.
-* Denominator Exception : Identify those in the Denominator and NOT in the Denominator Exclusion and NOT in the Numerator Exclusion that meet the Denominator Exception criteria.
+* Initial population: Identify those cases that meet the Initial Population criteria. <br/>
+* Denominator: Identify that subset of the Initial Population that meet the Denominator criteria.<br/>
+* Denominator Exclusion: Identify that subset of the Denominator that meet the Denominator Exclusion criteria. There are cases that should be removed from the Denominator as exclusion. Once these cases are removed, the subset remaining would reflect the Denominator per criteria.
+* Numerator: Identify those cases in the Denominator and NOT in the Denominator Exclusion that meet the Numerator criteria. In proportion measures, the Numerator criteria are the processes or outcomes expected for each patient, procedure, or other unit of measurement defined in the Denominator.
+* Numerator Exclusion: Identify that subset of the Numerator that meet the Numerator Exclusion criteria. Numerator Exclusion is used only in ratio measures to define instances that should not be included in the Numerator data.
+* Denominator Exception: Identify those in the Denominator and NOT in the Denominator Exclusion and NOT in the Numerator Exclusion that meet the Denominator Exception criteria.
 
 The “performance rate” is a ratio of patients meeting Numerator criteria, divided by patients in the Denominator (accounting for exclusion and exception). Performance rate can be calculated using this formula:
 
@@ -901,11 +901,11 @@ Performance rate = (Numerator - Numerator Exclusion) / (Denominator – Denomina
 
 Here is an example of using population types to select data on diabetes patients for a Proportion measure:
 
-* Initial Population : Patient is between the age of 16 and 74
-* Denominator : Patient has Diabetes Type II
-* Denominator Exclusion : Patient is in Hospice Care
-* Numerator : Patient is between the age of 16 and 74, has Diabetes Type II, and the most recent laboratory result has hbA1C value > 9%
-* Denominator Exception : Patient meets the Denominator criteria and does NOT meet the Numerator criteria, and is designated as having "Steroid Induced Diabetes" or "Gestational Diabetes"
+* Initial Population: Patient is between the age of 16 and 74
+* Denominator: Patient has Diabetes Type II
+* Denominator Exclusion: Patient is in Hospice Care
+* Numerator: Patient is between the age of 16 and 74, has Diabetes Type II, and the most recent laboratory result has hbA1C value > 9%
+* Denominator Exception: Patient meets the Denominator criteria and does NOT meet the Numerator criteria, and is designated as having "Steroid Induced Diabetes" or "Gestational Diabetes"
 
 
 ##### Patient-based Calculation
@@ -1007,19 +1007,19 @@ The population types for a Ratio measure are "Initial Population", "Denominator"
 | Numerator Exclusion | Entities that should be removed from the eCQM's Numerator before determining if Numerator criteria are met. Numerator Exclusions are used in Proportion and Ratio measures to help narrow the Numerator. |
 {: .grid}
 
-* Initial population : Identify those cases that meet the Initial Population criteria. (Some ratio measures will require multiple initial populations, one for the numerator, and one for the denominator.)
-* Denominator : Identify that subset of the Initial Population that meet the Denominator criteria.
-* Denominator Exclusion : Identify that subset of the Denominator that meet the Denominator Exclusion criteria.
-* Numerator : Identify that subset of the Initial Population that meet the Numerator criteria.
-* Numerator Exclusion : Identify that subset of the Numerator that meet the Numerator Exclusion criteria.
+* Initial population: Identify those cases that meet the Initial Population criteria. (Some ratio measures will require multiple initial populations, one for the numerator, and one for the denominator.)
+* Denominator: Identify that subset of the Initial Population that meet the Denominator criteria.
+* Denominator Exclusion: Identify that subset of the Denominator that meet the Denominator Exclusion criteria.
+* Numerator: Identify that subset of the Initial Population that meet the Numerator criteria.
+* Numerator Exclusion: Identify that subset of the Numerator that meet the Numerator Exclusion criteria.
 
 Here is an example of using the population types to select data on patients with central line catheters for a ratio measure:
 
-* Initial Population : Patient is aged 65 years or older and admitted to hospital
-* Denominator : Patient has a central line
-* Denominator Exclusion : Patient is immunosuppressed
-* Numerator : Patient has a central line blood stream infection
-* Numerator Exclusion : Patient's central line blood stream infection is deemed to be a contaminant
+* Initial Population: Patient is aged 65 years or older and admitted to hospital
+* Denominator: Patient has a central line
+* Denominator Exclusion: Patient is immunosuppressed
+* Numerator: Patient has a central line blood stream infection
+* Numerator Exclusion: Patient's central line blood stream infection is deemed to be a contaminant
 
 
 ##### Individual Observations
@@ -1134,22 +1134,22 @@ The criteria referenced from the measure-observation component refers to a CQL e
 Snippet 3-17: Sample measure observation section from [measure-exm55-FHIR.json](Measure-measure-exm55-FHIR.json.html)
 
 ```cql
-define "Measure Population" :
+define "Measure Population":
   "Initial Population"
 
-define "Inpatient Encounter" :
+define "Inpatient Encounter":
   ["Encounter"] Encounter
     where LengthInDays(Encounter.period) <= 120
       and Encounter.period ends during "Measurement Period"
 
 //Measure Observation
-define function "Related ED Visit" (encounter Encounter) :
-  Last(["Encounter" : "Emergency Department Visit"] ED
+define function "Related ED Visit" (encounter Encounter):
+  Last(["Encounter": "Emergency Department Visit"] ED
     where ED.status = 'finished'
       and ED.period ends 1 hour or less before start of encounter.period
     sort by start of period )
 
-define function "Measure Observation" (encounter Encounter) :
+define function "Measure Observation" (encounter Encounter):
   duration in minutes of "Related ED Visit"(encounter).period
 ```
 
@@ -1172,7 +1172,7 @@ In the example shown in Snippet 3-17 and Snippet 3-18: the measure reports the a
 Snippet 3-20: "Measure Observation" function in Snippet 3-17 (Sample measure observation section from [measure-exm55-FHIR.json](Measure-measure-exm55-FHIR.json.html))
 
 ```cql
-define function "Measure Observation" (encounter Encounter) :
+define function "Measure Observation" (encounter Encounter):
 ```
 Snippet 3-21: "Measure Observation" function in Snippet 3-18 (Sample CQL (from [EXM55.cql](Library-EXM55.html#cql-content)) for a continuous-variable measure)
 
@@ -1185,7 +1185,7 @@ Snippet 3-21: "Measure Observation" function in Snippet 3-18 (Sample CQL (from [
 Snippet 3-22: Identifier referenced in Snippet 3-17 (Sample measure observation section from [measure-exm55-FHIR.json](Measure-measure-exm55-FHIR.json.html))
 
 ```cql
-define "Measure Population" :
+define "Measure Population":
 ```
 Snippet 3-23: Definition from Snippet 3-18 (Sample CQL (from [EXM55.cql](Library-EXM55.html#cql-content)) for a continuous-variable measure)
 
@@ -1229,15 +1229,15 @@ The population types for a Continuous Variable measure are "Initial Population",
 | Measure Population Exclusion | Patients who should be removed from the eCQM's Initial Population and Measure Population before determining the outcome of one or more continuous variables defined within a Measure Observation. Measure Population Exclusions are used in Continuous Variable measures to help narrow the Measure Population. |
 {: .grid}
 
-* Initial Population : Identify those cases that meet the Initial Population criteria.
-* Measure Population : Identify that subset of the Initial Population that meet the Measure Population criteria.
-* Measure Population Exclusion : Identify that subset of the Measure Population that meet the Measure Population Exclusion criteria.
+* Initial Population: Identify those cases that meet the Initial Population criteria.
+* Measure Population: Identify that subset of the Initial Population that meet the Measure Population criteria.
+* Measure Population Exclusion: Identify that subset of the Measure Population that meet the Measure Population Exclusion criteria.
 
 Here is an example of using the population types to select data on emergency department patients for a Continuous Variable measure:
 
-* Initial Population : Patient had an emergency department (ED) encounter
-* Measure Population : Same as Initial Population
-* Measure Population Exclusion : Patient had an inpatient encounter that was within 6 hours of the ED encounter or expired in the ED
+* Initial Population: Patient had an emergency department (ED) encounter
+* Measure Population: Same as Initial Population
+* Measure Population Exclusion: Patient had an inpatient encounter that was within 6 hours of the ED encounter or expired in the ED
 
 
 ##### Individual Observations
@@ -1288,11 +1288,11 @@ In a cohort measure, a population is identified from the population of all items
 | Initial Population | All entities to be evaluated by an eCQM which may but are not required to share a common set of specified characteristics within a named measurement set to which the eCQM belongs. (Also known as a Cohort Population) |
 {: .grid}
 
-* Initial population : Identify those cases that meet the Initial Population criteria.
+* Initial population: Identify those cases that meet the Initial Population criteria.
 
 Here is an example of using the population types to select data on patients who have received immunizations for a Cohort measure:
 
-* Initial Population : All patients who had an immunization
+* Initial Population: All patients who had an immunization
 
 
 
@@ -1306,7 +1306,7 @@ For multiple population ratio measures that specify 2 initial populations, the p
 **Conformance Requirement 3.14 (Multiple Population Indexing):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-3-14)
 {: #conformance-requirement-3-14}
 1. When specifying multiple populations and/or multiple population groups the following naming scheme
-SHOULD be used<br/>
+SHOULD be used:<br/>
 (Criteria Name) (population group number)( population number)
 
 Note when a measure has a single population group but multiple populations (such as a ratio measure), the underscore ("\_") is dropped. For example, "Initial Population 1", "Initial Population 2" refers to the populations NOT population groups.
@@ -1341,7 +1341,7 @@ Stratification is represented using the stratifier element. The semantics of thi
 Snippet 3-24: Example Stratifier from [measure-exm55-FHIR.json](Measure-measure-exm55-FHIR.json.html)
 
 ```cql
-define "Stratification 1" :
+define "Stratification 1":
   "Inpatient Encounter" Encounter
     where not (PrincipalDiagnosis(Encounter).code in "Psychiatric/Mental Health Patient")
  ```
@@ -1397,8 +1397,8 @@ By convention, the name of each supplemental data element expression would start
 
 **Conformance Requirement 3.17 (Risk Adjustment Criteria):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-3-17)
 {: #conformance-requirement-3-17}
-1. Risk Adjustment Variables SHALL be included within the supplementalData element using a usage element of risk-adjustment-variable
-2. Risk Adjustment Variables SHOULD reference a single CQL expression definition, with a name beginning with RAF
+1. Risk Adjustment Variables SHALL be included within the supplementalData element using a usage element of risk-adjustment-variable.
+2. Risk Adjustment Variables SHOULD reference a single CQL expression definition, with a name beginning with RAF.
 
 Some measures may define variables used to adjust scores based on a measure of “risk” observed in the population. Such variables are referred to as risk adjustment variables. Risk adjustment variables are included in the supplementalData section and defined using CQL; such inclusions must adhere to Conformance Requirement 3.17.
 
