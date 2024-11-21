@@ -8,22 +8,45 @@ QICore and CPG have patterns for representing negation
 
 Feedback from workflow
 
-Rejected proposals need to be represented with a Task, the core issue being that the Request resources do not have a status that indicates "rejected", and that typically, the author of the proposal is the only one that can update the proposal, so a user rejecting a proposal from another clinician, or a decision support service, cannot be represented with an update to the proposal itself.
+Rejected proposals need to be represented with a Task, the core issue being that the Request resources do not have a status that indicates "rejected", and that typically, the author of the proposal is the only one that can update the proposal, so a user rejecting a proposal from another clinician, or a decision support service, cannot be represented with an update to the proposal itself. Note also that because of the nature of proposals and decisions about what to do with proposals, different decisions might be made by different participants for a single proposal.
 
 Need to support negation of specific activities as well as classes of activities
 
-* I didn’t do X (code)
+* I didn’t do X (code) - Event w/ status of not-done
+* I didn't request X (code) - Task w/ status rejected referencing the activity
 * I didn’t do any of Y (valueset)
+* I didn't follow Z (protocol)
+
+* I prohibited X (code)
+* I prohibited any of Y (valueset)
+
+1. Specify a particular code
+2. Specify a higher-level code that includes all the concepts by subsumption
+3. Specify a protocol
+4. Specify the items with a value set (via code-options)
+5. RequestOrchestration
+6. Potential to use events that specify basedOn rather than code
 
 Adding to the profiles for the positive statements, a cqf-valueSet extension that will allow us to specify orders for classes of things using a value set reference.
 
 Extensions pack to add the cqf-valueSet extension
+
+codeOptions extension: Used to convey a higher level concept that encompasses a list of candidate specializations when there is no formal code defined for that purpose. For example, COVID Preventative Medications, there is no code, this is expressed as a value set
+Usable on CodeableConcept - canonical(ValueSet)
+Should bring to FHIR-I and TI to discuss implications for bindings
+https://jira.hl7.org/browse/FHIR-48852
+
+Comments: This extension SHALL NOT be used when an appropriate higher level concept code exists
+
+Define an extension to support "followed with deviation"
+Define an extension to specify the deviation (what was done instead)
 
 Using CQL to describe querying using these negation patterns
 
 CPG-on-FHIR to describe requesting and rejecting proposals using this approach
 
 QICore to add the extension and update the patterns
+QICore to add the RequestGroup/Orchestration profile and discussion of rejecting a proposal with optionality
 
 ## Implications:
 
@@ -38,6 +61,11 @@ Patterns right now are 1-to-1 with the profiles
 * Use case 1 is covered by the _event_ negation profiles, e.g. ProcedureNotDone and MedicationNotAdministered
 * Use case 2 is covered by the _request_ negation profiles, e.g. ServiceNotRequested and MedicationNotRequested
 * Use case 3 is currently not really covered by any documentation, though you could express, but it would require talking about both the positive proposal and the task rejection
+
+ServiceRequest - proposal/plan/order
+
+Title: Request Not To Perform
+
 
 ## Options
 
@@ -67,7 +95,7 @@ define "Aspirin Rejected For Reason":
 In addition, we search for documentation that the medication was not ordered for a reason:
 
 ```cql
-define "Aspirin Not Requested For Reason":
+define "Aspirin Prohibited For Reason":
   [MedicationNotRequested: Aspirin] MR
     where MR.status in { 'active', 'completed' }
       and MR.statusReason in "Negation Reason Codes"
@@ -86,7 +114,7 @@ The exclusion criteria can then be expressed as the union of these:
 ```cql
 define "Exclusion Criteria":
   exists "Aspirin Rejected For Reason"
-    or exists "Aspirin Not Requested For Reason"
+    or exists "Aspirin Prohibited For Reason"
     or exists "Aspirin Not Administered For Reason"
 ```
 
@@ -96,6 +124,8 @@ define "Exclusion Criteria":
 [MedicationRequest: code in "Aspirin"]
   union [MedicationRequest: code ~ "Aspirin"]
 ```
+
+MedicationRequest.code[x] (CodeableConcept | ValueSet)
 
 ### Collapse to a Single Profile per Activity Type
 
@@ -113,7 +143,7 @@ define "Aspirin Rejected For Reason":
     where MR.status = 'active'
       and MR.doNotPerform is not true
 
-define "Aspirin Not Requested For Reason":
+define "Aspirin Prohibited For Reason":
   [MedicationRequest: Aspirin] MR
     where MR.status in { 'active', 'completed' }
       and MR.statusReason in "Negation Reason Codes"
@@ -125,13 +155,29 @@ define "Aspirin Not Administered For Reason":
       and MA.statusReason in "Negation Reason Codes"
 ```
 
+Note that this approach would also require that all positive statements would need to include a filter to ensure that they have not been rejected:
+
+```cql
+define "Aspirin Requested":
+  [MedicationRequest: Aspirin] MR
+    without [Task: Fulfill] T
+      such that T.focus.references(MR)
+        and T.status = 'rejected'
+    where MR.status = 'active'
+      and MR.doNotPerform is not true
+```
+
 ### Expand to Positive and Negative Profiles
 
 The next option to consider is defining a base profile as well as positive and negative profiles, so:
 
-MedicationRequest
-  |- MedicationRequested - positive profile, doNotPerform fixed to true but not required, status in 'active', 'completed'
-  |- MedicationNotRequested - negative profile, doNotPerform fixed to false, status in 'active', 'completed'
+MedicationRequest - codeOptions extension introduced
+  |- MedicationRequested - positive profile, doNotPerform fixed to false but not required, status in 'active', 'completed'
+  |- MedicationProhibited - negative profile, doNotPerform fixed to true, status in 'active', 'completed'
+
+MedicationAdministration
+  |- MedicationAdministered
+  |- MedicationNotAdministered
 
 Using this approach, the example would look like:
 
@@ -142,11 +188,20 @@ define "Aspirin Rejected For Reason":
       such that T.focus.references(MR)
         and T.statusReason in "Negation Reason Codes"
 
-define "Aspirin Not Requested For Reason":
-  [MedicationNotRequested: Aspirin] MR
+define "Aspirin Prohibited For Reason":
+  [MedicationProhibited: Aspirin] MR
     where MR.statusReason in "Negation Reason Codes"
 
 define "Aspirin Not Administered For Reason":
   [MedicationNotAdministered: Aspirin] MA
     where MA.statusReason in "Negation Reason Codes"
 ```
+Note that this approach would also require that all positive statements would need to include a filter to ensure that they have not been rejected:
+
+```cql
+define "Aspirin Requested":
+  [MedicationRequested: Aspirin] MR
+    without [TaskRejected: Fulfill] T
+      such that T.focus.references(MR)
+```
+
