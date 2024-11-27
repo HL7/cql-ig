@@ -176,8 +176,8 @@ MedicationRequest - codeOptions extension introduced
   |- MedicationProhibited - negative profile, doNotPerform fixed to true, status in 'active', 'completed'
 
 MedicationAdministration
-  |- MedicationAdministered
-  |- MedicationNotAdministered
+  |- MedicationAdministrationDone
+  |- MedicationAdministrationNotDone
 
 Using this approach, the example would look like:
 
