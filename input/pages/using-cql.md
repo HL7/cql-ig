@@ -432,7 +432,7 @@ This usage of concept includes multiple concepts with different meanings from th
 {: #library-level-identifiers}
 
 A "library-level identifier" is any named expression, function, parameter, code system, value set, concept, or code
-defined in the CQL. The library name referenced in the library-line, the data model, and any referenced external library
+defined in the CQL. The library name referenced in the library-line, the data model, any referenced external library
 should not be considered "library-level identifiers". Library-level identifiers ought to be given a descriptive
 meaningful name (avoid abbreviations) and conform to Conformance Requirement 2.13.
 
@@ -452,14 +452,25 @@ For example:
 
 ```cql
 define function
-   "Includes Or Starts During"(Condition Condition, Encounter Encounter):
-      Interval[Condition.onset, Condition.abatement] includes Encounter.period
-         or Condition.onset during Encounter.period
+   "Includes Or Starts During"(condition Condition, encounter Encounter):
+      Interval[condition.onset, condition.abatement] includes encounter.period
+         or condition.onset during encounter.period
 ```
 
 Snippet 2-8: Function definition from [Example.cql](Library-Example.html#contents).
 
 The `"Includes Or Starts During"` is the library-level identifier in this example.
+
+#### Fluent Functions
+{: #fluent-functions}
+
+Because fluent functions are invoked using _dot-invocation_, they should follow the naming convention for elements, rather than library-level identifiers. For example:
+
+```cql
+define fluent function includesOrStartsDuring(condition Condition, encounter Encounter):
+  Interval[condition.onset, condition.abatement] includes encounter.period
+    or condition.onset during encounter.period
+```
 
 ### Data Type Names
 {: #data-type-names}

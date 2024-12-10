@@ -14,3 +14,23 @@ context Patient
 define "Blood Glucose Observations":
   [Observation: "Blood Glucose"] BG
     where BG.value > GlucoseThreshold
+
+define fluent function birthsex(patient Patient):
+  (singleton from (
+    patient.extension E where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+  )).value as FHIR.code
+
+define "Patient Birth Sex Is Male (refined)":
+  Patient P
+    where P.birthsex() = 'M'
+
+
+define accessor birthsex(patient Patient):
+  (singleton from (
+    patient.extension E where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+  )).value as FHIR.code
+
+define "Patient Birth Sex Is Male (accessors)":
+  Patient P
+    where P.birthsex = 'M'
+
