@@ -190,6 +190,26 @@ The result of this expression is represented in the resulting Parameters resourc
   }
 ```
 
+For an empty tuple, the `cqf-isEmptyTuple` extension is used:
+
+```json
+{
+  "extension": [{
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+    "valueString": "Tuple{}"
+  }],
+  "name": "CQLEmptyTupleExample",
+  "_valueBoolean": {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-isEmptyTuple",
+      "valueBoolean": true
+    }]
+  }
+}
+```
+
+As with empty lists, the extension is provided on the `value` element, and an arbitrary choice of `boolean` is selected; there is no value to provide, the result is an empty tuple, so this is just a way to provide the cqf-isEmptyTuple extension (because parameters in a FHIR Parameters resource must have a value element).
+
 For a complete example illustrating all possible type mappings, refer to the [Type Mapping Example](Library-TypeMappingExample.html) and [Type Mapping Evaluation Result Example](Parameters-cql-typemappingexampleresult.html)
 
 #### Parameters and Data Requirements
