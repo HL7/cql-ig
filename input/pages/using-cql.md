@@ -532,7 +532,7 @@ define "Encounters During Measurement Period":
     "Valid Encounters" QualifyingEncounter
         where QualifyingEncounter.period during "Measurement Period"
 
-define function "ED Stay Time"(Encounter "Encounter"):
-    duration in minutes of Encounter.period
+define function "ED Stay Time"(encounter "Encounter"):
+    duration in minutes of encounter.period
 ```
 
