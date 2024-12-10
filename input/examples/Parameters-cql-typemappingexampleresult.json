@@ -478,6 +478,18 @@
       "valueInteger": 5
     }]
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "Tuple{}"
+    }],
+    "name": "CQLEmptyTupleExample",
+    "_valueBoolean": {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-isEmptyTuple",
+        "valueBoolean": true
+      }]
+    }
+  }, {
     "name": "FHIRBooleanExample",
     "valueBoolean": true
   }, {

@@ -77,6 +77,8 @@ define CQLComplexTupleListExample: { CQLComplexTupleExample }
 define CQLEmptyListExample: CQLComplexTupleListExample E where false
 // ListList
 define CQLListListExample: { CQLListExample, CQLListExample }
+// EmptyTuple
+define CQLEmptyTupleExample: { : }
 
 // FHIR Values
 define private FHIRObservations: [Observation]
