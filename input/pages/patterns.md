@@ -287,20 +287,136 @@ if MedicationRequest.status is null or MedicationRequest.status ~ 'unknown'
 
 For more information about dealing with Missing Information in CQL in general, see the [Missing Information](https://cql.hl7.org/02-authorsguide.html#missing-information) topic in the CQL Author's Guide.
 
+### Activity Extent
+{: #activity-extent}
+
+<div class="new-content" markdown="1">
+FHIR offers several possibilities for describing _what_ activity (i.e. request or event) is being performed (e.g. the `code` element of a Procedure, or the `medication` element of a MedicationRequest):
+
+1. Specify a particular code
+2. Specify a higher-level code that includes all the concepts by subsumption
+3. Specify the items with a value set (via the `codeOptions` extension)
+4. Specify a protocol
+5. Use a RequestOrchestration to group items
+6. Use the basedOn element rather than coding the activity
+
+These approaches allow for the _extent_ of an activity to be defined:
+
+#### Specific Code
+
+The first two approaches make use of terminology to define the extent of an activity, and is the most common approach. The code in a terminology may identify a single, precise concept, or it may identify a class of concepts, such as a type of procedure, or a class of medications.
+
+For example, the following MedicationAdministration indicates a specific drug:
+
+```json
+{
+  "resourceType" : "MedicationAdministration",
+  ...,
+  "medicationCodeableConcept" : {
+      "coding" : [{
+          "system" : "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "code" : "1116635",
+          "display" : "ticagrelor 90 MG Oral Tablet"
+      }]
+  },
+  ...
+}
+```
+
+As opposed to specifying only a concept code:
+
+```json
+{
+  "resourceType" : "MedicationAdministration",
+  ...,
+  "medicationCodeableConcept" : {
+      "coding" : [{
+          "system" : "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "code" : "11289",
+          "display" : "warfarin"
+      }]
+  },
+  ...
+}
+```
+
+Retrieving resources with codes specified using these approaches can be accomplished with a simple [Retrieve](https://cql.hl7.org/02-authorsguide.html#filtering-with-terminology):
+
+```cql
+define "Antithrombotic Therapy Administered":
+  [MedicationAdministration: "Antithrombotic Therapy"] AntithromboticTherapy
+    where AntithromboticTherapy.status = 'completed'
+      and AntithromboticTherapy.category ~ "Inpatient Setting"
+```
+
+This example retrieves `MedicationAdministration` resources that have a code in the `Antithrombotic Therapy` value set, a status of `completed`, and a category of `Inpatient Setting`.
+
+#### Code Options
+
+The third approach (specifying the items with a value set) is enabled through the use of the [codeOptions](https://build.fhir.org/ig/HL7/fhir-extensions/branches/br-48852-codeOptions-extension/StructureDefinition-codeOptions.html) extension. Rather than specifying a code, this extension is used to indicate that the activity may be any one of the codes in the value set:
+
+```json
+{
+  "resourceType" : "MedicationAdministration",
+  ...,
+  "medicationCodeableConcept" : {
+      "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/codeOptions",
+          "valueCanonical" : "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.62"
+      }],
+      "text" : "Value Set: Antithrombotic Therapy for Ischemic Stroke"
+  },
+  ...
+}
+```
+
+#### Structural Options
+
+The other three approaches make use of structures such as PlanDefinition, RequestOrchestration, and the relationships between events and requests to establish the extent of an activity. See the [Clinical Guidelines](http://hl7.org/fhir/uv/cpg) implementation guide for more information on using these approaches to characterize and manage the extent of activities.
+
+When this pattern is used in FHIR resources, the CQL needs to take this into account by looking for the `codeOptions` extension:
+
+```cql
+define "Antithrombotic Therapy Class Administered":
+  [MedicationAdministration] Administered
+    where Administered.medication.codeOptions() = "Antithrombotic Therapy".id
+      and Administered.status = 'completed'
+      and AntithromboticTherapy.category ~ "Inpatient Setting"
+```
+
+This example retrieves `MedicationAdministration` resources that use the `codeOptions` extension to specify a candidate medication in the `Antithrombotic Therapy` value set, a status of `completed`, and a category of `Inpatient Setting`.
+
+NOTE: See the [FHIRCommon.cql](Library-FHIRCommon.html#contents) for the definition of the `codeOptions()` fluent function.
+
+To ensure both approaches are accounted for, these two expressions would then be used together:
+
+```cql
+define "Antithrombotics Administered":
+  "Antithrombotic Therapy Administered"
+    union "Antithrombotic Therapy Class Administered"
+```
+
+> NOTE: Profile-informed authoring exposes elements that have a `codeOptions` extension using a Choice of `CodeableConcept` and `ValueSet`, which is then translated as a union, accounting for both cases as part of profile-informed authoring.
+
+</div>
+
 ### Negation in FHIR
 {: #negation-in-fhir}
 
 The [HL7 Cross-Paradigm Specification: Representing Negatives](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=592) provides guidance and best practices for the representation of pertinent negatives and other negative semantics in clinical information. The following sections describe how these best practices may be represented in FHIR resources and profiles, as well as guidance for accessing negated information in CQL.
 
-For an example of a set of profiles following these best practices to support the representation of negation in FHIR, see the [Negation](https://hl7.org/fhir/us/qicore/negation.html) profiles in QI-Core. In summary, negation statements typically cover two different _extents_:
+For an example of a set of profiles following these best practices to support the representation of negation in FHIR, see the [Negation](https://hl7.org/fhir/us/qicore/negation.html) profiles in QI-Core. 
 
-1. Documentation that a particular activity/event should not or did not occur
-2. Documentation that a class of activities/events should not or did not occur (typically represented with a value set)
+In summary, negation statements typically cover three different use cases:
+
+1. Documentation that an event did not occur
+2. Documentation that an activity should not be performed (i.e. is prohibited)
+3. Documentation that a requested activity was not performed
 
 Given the representation of negative information in FHIR, two commonly used patterns for negation in clinical logic are:
 
 * Absence of evidence for a particular event
-* Documentation of an event not occurring, together with a reason
+* Documentation of an event not occurring (represented as one of the above 3 use cases), together with a reason
 
 For the purposes of clinical reasoning, when looking for documentation that a particular event did not occur, it must
 be documented with a reason in order to meet the intent. If a reason is not part of the intent, then the absence of
@@ -357,24 +473,22 @@ In this example for negation rationale, the logic looks for a member of the valu
 for not administering any of the anticoagulant and antiplatelet medications specified in the "Antithrombotic Therapy"
 value set.
 
-To represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
-Therapy" value set using the ([cqf-notDoneValueSet]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-notDoneValueSet.html)) extension to indicate
+As discussed in the [Activity Extent](#activity-extent) section, to represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
+Therapy" value set using the ([codeOptions](https://build.fhir.org/ig/HL7/fhir-extensions/branches/br-48852-codeOptions-extension/StructureDefinition-codeOptions.html)) extension to indicate
 providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
 set URI to negate the entire value set rather than a specific member code from the value set, clinicians are
 not forced to arbitrarily select a specific medication from the "Antithrombotic Therapy" value set that they
 did not administer in order to negate.
 
-When this pattern is used in FHIR resources, the CQL needs to take this into account by looking for the `cqf-notDoneValueSet` extension:
+When this pattern is used in FHIR resources, the CQL needs to take this into account by looking for the `codeOptions` extension:
 
 ```cql
 define "Antithrombotic Class Not Administered":
   [MedicationAdministration] NotAdministered
-    where NotAdministered.medication.notDoneValueSet() = "Antithrombotic Therapy".id
+    where NotAdministered.medication.codeOptions() = "Antithrombotic Therapy".id
       and NotAdministered.status = 'not-done'
       and NotAdministered.statusReason in "Medical Reason"
 ```
-
-NOTE: See the [Example.cql](Library-Example.html#contents) for the definition of the `notDoneValueSet()` fluent function.
 
 To ensure both cases are accounted for, these two expressions would then be used together:
 
@@ -388,3 +502,40 @@ This approach ensures that the logic will retrieve negated activities whether th
 
 > NOTE: Profile-informed authoring exposes elements that have a `notDoneValueSet` extension using a Choice of CodeableConcept and ValueSet, which is then translated as a union, accounting for both cases as part of profile-informed authoring.
 
+#### Prohibited Activities
+
+Evidence that "Antithrombotic Therapy" medication was prohibited for an acceptable medical reason makes use of the appropriate `Request` resource:
+
+```cql
+define "Antithrombotic Therapy Prohibited":
+  [MedicationRequest: "Antithrombotic Therapy"] Prohibited
+    where Prohibited.status = 'active'
+      and Prohibited.doNotPerform is true
+      and Prohibited.statusReason in "Medical Reason"
+```
+
+This example retrieves `MedicationRequest` resources with a code in the `Antithrombotic Therapy` value set that have a status of `active`, a doNotPerform of `true`, and a statusReason in the `Medical Reason` value set.
+
+As with negation of events, the extent of the activity can be accounted for by searching for instances that make use of the `codeOptions` extension.
+
+#### Rejected Requests
+
+Evidence that a proposal to administer "Antithrombotic Therapy" was rejected for an acceptable medical reason makes use of the `Task` resource:
+
+```cql
+define "Antithrombotic Therapy Requested":
+  [MedicationRequest: "Antithrombotic Therapy"] MR
+    where MR.status = 'active'
+      and MR.doNotPerform is not true
+
+define "Antithrombotic Therapy Rejected":
+  "Antithrombotic Therapy Requested" MR
+    with [Task: Fulfill] T
+      such that T.focus.references(MR)
+        and T.status = 'rejected'
+        and T.statusReason in "Medical Reason"
+```
+
+This example retrieves "Antithrombotic Therapy Requested" resources that have a fulfillment Task focused on the request, a status of `rejected`, and a statusReason in the `Medical Reason` value set.
+
+As with negation of events, the extent of the activity can be accounted for by searching for request instances that make use of the `codeOptions` extension.
