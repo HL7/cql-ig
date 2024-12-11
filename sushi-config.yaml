@@ -16,7 +16,7 @@ description: >-
 status: active
 license: CC0-1.0
 date: 2024-06-10
-version: 1.1.0-cibuild
+version: 2.0.0-ballot
 
 # Although fhirVersions is 0..* in the ImplementationGuide resource
 # it can be a single item OR and array here (but so far SUSHI only
@@ -30,7 +30,7 @@ fhirVersion: 4.0.1
 # will recognize them as well. In either case, they'll be copied
 # to the IG JSON using the formal names.
 copyrightYear: 2023+
-releaseLabel: CIBuild
+releaseLabel: STU2Ballot
 
 # The publisher can be a single item or a list, each with a name and
 # optional url and/or email. The first publisher's name will be used
@@ -60,7 +60,7 @@ jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 # use cases, the value can be an object with keys for `uri` and `version`.
 # For R5 ImplementationGuides, the object can also have a key for `reason`.
 dependencies:
-  hl7.terminology: 5.5.0
+  hl7.terminology: 6.1.0
   hl7.fhir.uv.extensions.r4: 
     id: ext
     version: 5.1.0

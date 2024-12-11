@@ -370,10 +370,6 @@ The third approach (specifying the items with a value set) is enabled through th
 }
 ```
 
-#### Structural Options
-
-The other three approaches make use of structures such as PlanDefinition, RequestOrchestration, and the relationships between events and requests to establish the extent of an activity. See the [Clinical Guidelines](http://hl7.org/fhir/uv/cpg) implementation guide for more information on using these approaches to characterize and manage the extent of activities.
-
 When this pattern is used in FHIR resources, the CQL needs to take this into account by looking for the `codeOptions` extension:
 
 ```cql
@@ -398,6 +394,10 @@ define "Antithrombotics Administered":
 
 > NOTE: Profile-informed authoring exposes elements that have a `codeOptions` extension using a Choice of `CodeableConcept` and `ValueSet`, which is then translated as a union, accounting for both cases as part of profile-informed authoring.
 
+#### Structural Options
+
+The other three approaches make use of structures such as PlanDefinition, RequestOrchestration, and the relationships between events and requests to establish the extent of an activity. See the [Clinical Guidelines](http://hl7.org/fhir/uv/cpg) implementation guide for more information on using these approaches to characterize and manage the extent of activities.
+
 </div>
 
 ### Negation in FHIR
@@ -407,11 +407,15 @@ The [HL7 Cross-Paradigm Specification: Representing Negatives](https://www.hl7.o
 
 For an example of a set of profiles following these best practices to support the representation of negation in FHIR, see the [Negation](https://hl7.org/fhir/us/qicore/negation.html) profiles in QI-Core. 
 
+<div class="new-content" markdown="1">
+
 In summary, negation statements typically cover three different use cases:
 
 1. Documentation that an event did not occur
 2. Documentation that an activity should not be performed (i.e. is prohibited)
 3. Documentation that a requested activity was not performed
+
+</div>
 
 Given the representation of negative information in FHIR, two commonly used patterns for negation in clinical logic are:
 
@@ -473,6 +477,8 @@ In this example for negation rationale, the logic looks for a member of the valu
 for not administering any of the anticoagulant and antiplatelet medications specified in the "Antithrombotic Therapy"
 value set.
 
+<div class="new-content" markdown="1">
+
 As discussed in the [Activity Extent](#activity-extent) section, to represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
 Therapy" value set using the ([codeOptions](https://build.fhir.org/ig/HL7/fhir-extensions/branches/br-48852-codeOptions-extension/StructureDefinition-codeOptions.html)) extension to indicate
 providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
@@ -500,9 +506,13 @@ define "Antithrombotics Not Administered":
 
 This approach ensures that the logic will retrieve negated activities whether they are recorded as singular activities (i.e. with a code from the value set) or as indications that none of the activities were performed (i.e. with a reference to a value set).
 
-> NOTE: Profile-informed authoring exposes elements that have a `notDoneValueSet` extension using a Choice of CodeableConcept and ValueSet, which is then translated as a union, accounting for both cases as part of profile-informed authoring.
+> NOTE: Profile-informed authoring exposes elements that have a `codeOptions` extension using a Choice of CodeableConcept and ValueSet, which is then translated as a union, accounting for both cases as part of profile-informed authoring.
+
+</div>
 
 #### Prohibited Activities
+
+<div class="new-content" markdown="1">
 
 Evidence that "Antithrombotic Therapy" medication was prohibited for an acceptable medical reason makes use of the appropriate `Request` resource:
 
@@ -518,7 +528,11 @@ This example retrieves `MedicationRequest` resources with a code in the `Antithr
 
 As with negation of events, the extent of the activity can be accounted for by searching for instances that make use of the `codeOptions` extension.
 
+</div>
+
 #### Rejected Requests
+
+<div class="new-content" markdown="1">
 
 Evidence that a proposal to administer "Antithrombotic Therapy" was rejected for an acceptable medical reason makes use of the `Task` resource:
 
@@ -539,3 +553,5 @@ define "Antithrombotic Therapy Rejected":
 This example retrieves "Antithrombotic Therapy Requested" resources that have a fulfillment Task focused on the request, a status of `rejected`, and a statusReason in the `Medical Reason` value set.
 
 As with negation of events, the extent of the activity can be accounted for by searching for request instances that make use of the `codeOptions` extension.
+
+</div>
