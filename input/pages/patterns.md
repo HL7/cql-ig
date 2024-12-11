@@ -382,7 +382,7 @@ define "Antithrombotic Therapy Class Administered":
 
 This example retrieves `MedicationAdministration` resources that use the `codeOptions` extension to specify a candidate medication in the `Antithrombotic Therapy` value set, a status of `completed`, and a category of `Inpatient Setting`.
 
-NOTE: See the [FHIRCommon.cql](Library-FHIRCommon.html#contents) for the definition of the `codeOptions()` fluent function.
+NOTE: See the FHIRCommon library for the definition of the `codeOptions()` fluent function.
 
 To ensure both approaches are accounted for, these two expressions would then be used together:
 
