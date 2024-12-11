@@ -1,9 +1,5 @@
 == Suppressed Messages ==
 
-# This code is in the CIBuild and functioning correctly, just not in the validator chain yet?
-ERROR: ImplementationGuide/hl7.fhir.uv.cql: ImplementationGuide.definition.extension[12].extension[0].value.ofType(string): The value provided ('auto-oid-root') was not found in the value set 'ig-parameters Codes ValueSet' (http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0), and a code is required from this value set  (error message = The System URI could not be determined for the code 'auto-oid-root' in the ValueSet 'http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0'; The provided code '#auto-oid-root' was not found in the value set 'http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0')
-ERROR: ImplementationGuide/hl7.fhir.uv.cql: ImplementationGuide.definition.extension[41].extension[0].value.ofType(code): The value provided ('auto-oid-root') was not found in the value set 'ig-parameters Codes ValueSet' (http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0), and a code is required from this value set  (error message = The System URI could not be determined for the code 'auto-oid-root' in the ValueSet 'http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0'; The provided code '#auto-oid-root' was not found in the value set 'http://hl7.org/fhir/tools/ValueSet/ig-parameters|0.1.0')
-
 # This is an example CodeSystem and labeled according to TSMG guidance, so does not require an exemption
 INFORMATION: CodeSystem/example: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
@@ -11,18 +7,16 @@ INFORMATION: CodeSystem/example: CodeSystem: Most code systems defined in HL7 IG
 INFORMATION: Library/module-example: Library.dataRequirement[1].extension[2].extension[1].value.ofType(code): Reference to draft CodeSystem http://hl7.org/fhir/search-comparator|4.0.1
 INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[40].resource/*Observation/blood-glucose*/.referenceRange[0].appliesTo[0]: Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/referencerange-meaning|1.0.0
 INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[41].resource/*Observation/blood-glucose*/.referenceRange[0].appliesTo[0]: Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/referencerange-meaning|1.0.0
-INFORMATION: StructureDefinition/cql-modelinfo: StructureDefinition.snapshot.element[17].pattern.ofType(CodeableConcept): Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/library-type|1.0.0
-INFORMATION: StructureDefinition/cql-modelinfo: StructureDefinition.differential.element[1].pattern.ofType(CodeableConcept): Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/library-type|1.0.0
 
 # Accepted references to experimental content, these are examples, so intentionally marked experimental
-INFORMATION: Library/ANCCohort: Library.dataRequirement[0].codeFilter[0].code[0]: Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|1.0.0
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[2].value.ofType(Coding): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|1.0.0
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[4].value.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|1.0.0
-INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.useContext[0].value.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|1.0.0
-INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.snapshot.element[14].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|1.0.0
-INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.differential.element[1].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|1.0.0
-INFORMATION: StructureDefinition/cql-specifichealthconcerns-profile-example: StructureDefinition.snapshot.element[14].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|1.0.0
-INFORMATION: StructureDefinition/cql-specifichealthconcerns-profile-example: StructureDefinition.differential.element[1].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|1.0.0
+INFORMATION: Library/ANCCohort: Library.dataRequirement[0].codeFilter[0].code[0]: Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[2].value.ofType(Coding): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[4].value.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
+INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.useContext[0].value.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
+INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.snapshot.element[14].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
+INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.differential.element[1].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
+INFORMATION: StructureDefinition/cql-specifichealthconcerns-profile-example: StructureDefinition.snapshot.element[14].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
+INFORMATION: StructureDefinition/cql-specifichealthconcerns-profile-example: StructureDefinition.differential.element[1].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
 
 # This structure definition is not a conformance artifact in this ig, it is an example
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/cql/StructureDefinition/cql-dangersigns-profile-example'): The Implementation Guide contains no examples for this profile
@@ -34,13 +28,10 @@ WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/cql/StructureDe
 WARNING: StructureDefinition/cql-capabilitystatement: StructureDefinition.snapshot.element[0].constraint[6].xpath: value should not start or finish with whitespace ' not(f:kind/@value='instance') or (not(exists(f:implementation)) and exists(f:software))'
 
 # These examples are illustrating how to return resources generally, so the performer element is not relevant to this example
-WARNING: Observation/negation-example: Observation: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[40].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[41].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[42].resource/*Observation/blood-pressure*/: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[43].resource/*Observation/bmi*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[42].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[42].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[43].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[43].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[44].resource/*Observation/blood-pressure*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[45].resource/*Observation/bmi*/: Best Practice Recommendation: In general, all observations should have a performer
 
-# These examples are illustrating how to return resources generally, narrative is not relevant for this example
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[0].resource/*Patient/example*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[40].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[41].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
