@@ -145,6 +145,7 @@ Note that for an empty list, the `cqf-isEmptyList` extension is used:
 
 Note that the extension is provided on the `value` element, and an arbitrary choice of `boolean` is selected; there is no value to provide, the result is an empty list, so this is just a way to provide the cqf-isEmptyList extension (because parameters in a FHIR Parameters resource must have a value element).
 
+<div class="new-content" markdown="1">
 For the special case of nested lists, where a parameter name is not available, the name `element` **SHALL** be used. For example:
 
 ```cql
@@ -189,6 +190,8 @@ The result of this expression is represented in the resulting Parameters resourc
     }]
   }
 ```
+
+</div>
 
 For a complete example illustrating all possible type mappings, refer to the [Type Mapping Example](Library-TypeMappingExample.html) and [Type Mapping Evaluation Result Example](Parameters-cql-typemappingexampleresult.html)
 
