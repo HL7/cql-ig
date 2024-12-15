@@ -313,10 +313,10 @@ See the definition of the [Quantity](https://cql.hl7.org/2020May/02-authorsguide
 Because clinical information is often incomplete, CQL provides constructs and support for representing and dealing with _unknown_ or missing information. In FHIR, when the value of an element is not present, accessing that element will result in a `null`:
 
 ```cql
-Observation.interpretation
+MedicationRequest.doNotPerform
 ```
 
-Given an instance of an Observation resource that does not have an interpretation element, the above expression will return `null`. In general, `null` results will _propagate_ through operations. For example:
+Given an instance of a MedicationRequest resource that does not have a `doNotPerform` element specified, the above expression will return `null`. In general, `null` results will _propagate_ through operations. For example:
 
 ```cql
 MedicationRequest.doNotPerform = false
@@ -334,10 +334,10 @@ This pattern ensures that whether the instance does not have a doNotPerform elem
 Another common case encountered in FHIR is the use of an `unknown` code in terminology-valued elements:
 
 ```cql
-MedicationRequeest.status = 'unknown'
+MedicationRequest.status = 'unknown'
 ```
 
-This is a special-case of characterizing missing information within FHIR resources. To treat this status value as a null, the following pattern can be used:
+This is a special-case of characterizing missing information within FHIR resources. To treat this `status` value as a null, the following pattern can be used:
 
 ```cql
 if MedicationRequest.status is null or MedicationRequest.status ~ 'unknown'
