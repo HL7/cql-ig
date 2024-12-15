@@ -72,56 +72,7 @@
       "code": "logic-library"
     } ]
   },
-  "relatedArtifact": [ {
-    "type": "depends-on",
-    "display": "FHIR model information",
-    "resource": "http://fhir.org/guides/cqf/common/Library/FHIR-ModelInfo|4.0.1"
-  }, {
-    "type": "depends-on",
-    "display": "Library FHIRHelpers",
-    "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
-  }, {
-    "type": "depends-on",
-    "display": "Code system LOINC",
-    "resource": "http://loinc.org"
-  } ],
-  "parameter": [ {
-    "name": "GlucoseThreshold",
-    "use": "in",
-    "min": 0,
-    "max": "1",
-    "type": "Quantity"
-  }, {
-    "name": "Patient",
-    "use": "out",
-    "min": 0,
-    "max": "1",
-    "type": "Patient"
-  }, {
-    "name": "Blood Glucose Observations",
-    "use": "out",
-    "min": 0,
-    "max": "*",
-    "type": "Observation"
-  } ],
-  "dataRequirement": [ {
-    "type": "Patient",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
-  }, {
-    "type": "Observation",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],
-    "mustSupport": [ "code", "value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "code": [ {
-        "system": "http://loinc.org",
-        "code": "2339-0",
-        "display": "Glucose Bld-mCnc"
-      } ]
-    } ]
-  } ],
-  "content": [ {
-    "contentType": "text/cql",
-    "data": "bGlicmFyeSBDUUxFeGFtcGxlDQoNCnVzaW5nIEZISVIgdmVyc2lvbiAnNC4wLjEnDQoNCmluY2x1ZGUgRkhJUkhlbHBlcnMgdmVyc2lvbiAnNC4wLjEnDQoNCmNvZGVzeXN0ZW0gTE9JTkM6ICdodHRwOi8vbG9pbmMub3JnJw0KY29kZSAiQmxvb2QgR2x1Y29zZSI6ICcyMzM5LTAnIGZyb20gTE9JTkMgZGlzcGxheSAnR2x1Y29zZSBCbGQtbUNuYycNCg0KcGFyYW1ldGVyIEdsdWNvc2VUaHJlc2hvbGQgUXVhbnRpdHkNCg0KY29udGV4dCBQYXRpZW50DQoNCmRlZmluZSAiQmxvb2QgR2x1Y29zZSBPYnNlcnZhdGlvbnMiOg0KICBbT2JzZXJ2YXRpb246ICJCbG9vZCBHbHVjb3NlIl0gQkcNCiAgICB3aGVyZSBCRy52YWx1ZSA+IEdsdWNvc2VUaHJlc2hvbGQNCg=="
-  } ]
+  "content": [{
+    "id": "ig-loader-CQLExample.cql"
+  }]
 }

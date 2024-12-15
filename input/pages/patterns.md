@@ -377,7 +377,7 @@ define "Antithrombotic Therapy Class Administered":
   [MedicationAdministration] Administered
     where Administered.medication.codeOptions() = "Antithrombotic Therapy".id
       and Administered.status = 'completed'
-      and AntithromboticTherapy.category ~ "Inpatient Setting"
+      and Administered.category ~ "Inpatient Setting"
 ```
 
 This example retrieves `MedicationAdministration` resources that use the `codeOptions` extension to specify a candidate medication in the `Antithrombotic Therapy` value set, a status of `completed`, and a category of `Inpatient Setting`.

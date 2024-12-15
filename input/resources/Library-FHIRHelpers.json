@@ -1,18 +1,27 @@
 {
   "resourceType": "Library",
-  "id": "Example",
+  "id": "FHIRHelpers",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library" ]
+  },
   "contained": [ {
     "resourceType": "Parameters",
     "id": "options",
     "parameter": [ {
       "name": "translatorVersion",
-      "valueString": "3.9.0"
+      "valueString": "3.10.0"
     }, {
-      "name": "enableAnnotations",
-      "valueBoolean": true
+      "name": "option",
+      "valueString": "EnableAnnotations"
     }, {
-      "name": "enableLocators",
-      "valueBoolean": true
+      "name": "option",
+      "valueString": "EnableLocators"
+    }, {
+      "name": "option",
+      "valueString": "DisableListDemotion"
+    }, {
+      "name": "option",
+      "valueString": "DisableListPromotion"
     }, {
       "name": "format",
       "valueString": "XML"
@@ -24,7 +33,7 @@
       "valueBoolean": false
     }, {
       "name": "collapseDataRequirements",
-      "valueBoolean": true
+      "valueBoolean": false
     }, {
       "name": "compatibilityLevel",
       "valueString": "1.5"
@@ -51,19 +60,27 @@
       "reference": "#options"
     }
   } ],
-  "url": "http://hl7.org/fhir/uv/cql/Library/Example",
-  "name": "Example",
-  "title": "Example",
+  "url": "http://hl7.org/fhir/uv/cql/Library/FHIRHelpers",
+  "name": "FHIRHelpers",
+  "title": "FHIR Helpers",
   "status": "active",
-  "experimental": true,
-  "description": "Example CQL Library used to demonstrate common patterns used in CQL with FHIR-based models",
+  "experimental": false,
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",
       "code": "logic-library"
     } ]
   },
+  "date": "2020-11-29T15:54:22-07:00",
+  "description": "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers",
+  "approvalDate": "2021-03-12",
+  "lastReviewDate": "2021-03-12",
+  "topic": [ {
+    "text": "FHIR"
+  }, {
+    "text": "CQL"
+  } ],
   "content": [{
-    "id": "ig-loader-Example.cql"
+    "id": "ig-loader-FHIRHelpers.cql"
   }]
 }

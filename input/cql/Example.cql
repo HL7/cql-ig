@@ -2,7 +2,7 @@ library Example
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '4.0.1'
+include FHIRHelpers version '2.0.0-ballot'
 
 codesystem LOINC: 'http://loinc.org'
 codesystem "CDC Race and Ethnicity Codes": 'urn:oid:2.16.840.1.113883.6.238'

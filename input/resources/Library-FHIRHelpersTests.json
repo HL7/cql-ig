@@ -1,36 +1,39 @@
 {
   "resourceType": "Library",
-  "id": "ANCCohort",
+  "id": "FHIRHelpersTests",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library" ]
+  },
   "contained": [ {
     "resourceType": "Parameters",
     "id": "options",
     "parameter": [ {
       "name": "translatorVersion",
-      "valueString": "3.9.0"
+      "valueString": "3.10.0"
     }, {
-      "name": "enableAnnotations",
-      "valueBoolean": true
+      "name": "option",
+      "valueString": "EnableAnnotations"
     }, {
-      "name": "enableLocators",
-      "valueBoolean": true
+      "name": "option",
+      "valueString": "EnableLocators"
     }, {
-      "name": "disableListDemotion",
-      "valueBoolean": true
+      "name": "option",
+      "valueString": "DisableListDemotion"
     }, {
-      "name": "disableListPromotion",
-      "valueBoolean": true
-    }, {
-      "name": "format",
-      "valueString": "JSON"
+      "name": "option",
+      "valueString": "DisableListPromotion"
     }, {
       "name": "format",
       "valueString": "XML"
+    }, {
+      "name": "format",
+      "valueString": "JSON"
     }, {
       "name": "analyzeDataRequirements",
       "valueBoolean": false
     }, {
       "name": "collapseDataRequirements",
-      "valueBoolean": true
+      "valueBoolean": false
     }, {
       "name": "compatibilityLevel",
       "valueString": "1.5"
@@ -57,19 +60,27 @@
       "reference": "#options"
     }
   } ],
-  "url": "http://hl7.org/fhir/uv/cql/Library/ANCCohort",
-  "name": "ANCCohort",
-  "title": "ANC Cohort",
+  "url": "http://hl7.org/fhir/uv/cql/Library/FHIRHelpersTests",
+  "name": "FHIRHelpersTests",
+  "title": "FHIR HelpersTests",
   "status": "active",
   "experimental": true,
-  "description": "Example cohort definition for anteantal care",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",
       "code": "logic-library"
     } ]
   },
+  "date": "2020-11-29T15:54:22-07:00",
+  "description": "This library defines test cases for FHIRHelpers functionality",
+  "approvalDate": "2021-03-12",
+  "lastReviewDate": "2021-03-12",
+  "topic": [ {
+    "text": "FHIR"
+  }, {
+    "text": "CQL"
+  } ],
   "content": [{
-    "id": "ig-loader-ANCCohort.cql"
+    "id": "ig-loader-FHIRHelpersTests.cql"
   }]
 }
