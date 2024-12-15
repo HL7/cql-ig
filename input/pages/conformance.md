@@ -26,7 +26,7 @@ In addition to the use of CQL directly in [expression-valued elements](#using-ex
 
 1. The identifying elements of a library **SHALL** conform to the following requirements:
 * Library.url **SHALL** be `<CQL namespace url>/Library/<CQL library name>`
-* Library.name **SHALL** be `<CQL library name>`
+* Library.name **SHALL** be `<CQL library name>`, **SHALL** be 64 characters or less, and **SHOULD** be 30 characters or less
 * Library.version **SHALL** be `<CQL library version>`
 
 2. For libraries included in FHIR implementation guides, the CQL namespace is defined by the implementation guide as follows:

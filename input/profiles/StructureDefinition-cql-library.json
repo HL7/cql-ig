@@ -70,6 +70,20 @@
             "human": "CQL libraries must one (and only one) content element that starts with 'text/cql'",
             "expression": "content.where(contentType.startsWith('text/cql')).count() = 1",
             "xpath": "exists(f:value)"
+          },
+          {
+            "key": "clb-3",
+            "severity": "error",
+            "human": "CQL library names SHALL be 64 characters or less",
+            "expression": "name.length() <= 64",
+            "xpath": "exists(f:name)"
+          },
+          {
+            "key": "clb-4",
+            "severity": "warning",
+            "human": "CQL library names SHOULD be 30 characters or less",
+            "expression": "name.length() <= 30",
+            "xpath": "exists(f:name)"
           }
         ],
         "mustSupport": false
@@ -102,6 +116,16 @@
               "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-options"
             ]
           }
+        ]
+      },
+      {
+        "id": "Library.name",
+        "path": "Library.name",
+        "min": 1,
+        "max": "1",
+        "condition": [
+          "clb-3",
+          "clb-4"
         ]
       },
       {
