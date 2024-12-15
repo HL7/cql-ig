@@ -53,7 +53,7 @@ The prohibition against underscores in CQL library names is required to ensure c
 |`System.Decimal`|`FHIR.decimal`|
 |`System.Date`|`FHIR.date`|
 |`System.DateTime`|`FHIR.dateTime`|
-|`System.Long`|`FHIR.integer64`|
+|`System.Long`|`FHIR.string` in R4, `FHIR.integer64` in R5 and above|
 |`System.Time`|`FHIR.time`|
 |`System.String`|`FHIR.string`|
 |`System.Quantity`|`FHIR.Quantity`|
