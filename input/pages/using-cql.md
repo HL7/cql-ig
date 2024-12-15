@@ -464,6 +464,7 @@ The `"Includes Or Starts During"` is the library-level identifier in this exampl
 #### Fluent Functions
 {: #fluent-functions}
 
+<div class="new-content" markdown="1">
 Because fluent functions are invoked using _dot-invocation_, they should follow the naming convention for elements, rather than library-level identifiers. For example:
 
 ```cql
@@ -471,6 +472,8 @@ define fluent function includesOrStartsDuring(condition Condition, encounter Enc
   Interval[condition.onset, condition.abatement] includes encounter.period
     or condition.onset during encounter.period
 ```
+
+</div>
 
 ### Data Type Names
 {: #data-type-names}

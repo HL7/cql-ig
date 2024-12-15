@@ -231,6 +231,64 @@ When referencing terminology-valued elements within CQL, the following compariso
 * [Equivalent (`~`)](https://cql.hl7.org/09-b-cqlreference.html#equivalent-3)
 * [In (`in`)](https://cql.hl7.org/09-b-cqlreference.html#in-valueset)
 
+<div class="new-content" markdown="1">
+As a general rule, the equivalent (`~`) operator should be used whenever the terminology being compared is a direct-reference code, and the `in` operator should be used whenever the terminology being compared is a value set. The equal (`=`) operator should _only_ be used with code-valued elements that have a required binding.
+</div>
+
+#### code
+
+<div class="new-content" markdown="1">
+In FHIR, code-valued elements are most often used with required bindings, meaning that the only values that can appear are established by the specification. Because of this, basic string comparison can be used, for example:
+
+```cql
+  where Encounter.status = 'finished'
+```
+> NOTE: The comparison here is to the _code_ value, not the _display_
+
+> NOTE: Note also that there are edge-cases where the string-valued elements may contain terminology values. For more detail on this case, refer to the [Using CQL IG](https://build.fhir.org/ig/HL7/cql-ig/using-cql.html#string-based-membership-testing)
+
+</div>
+
+#### CodeableConcept
+
+<div class="new-content" markdown="1">
+Most terminology-valued elements in FHIR are CodeableConcepts. If the terminology being compared is a value set (e.g. `valueset "Inpatient Encounter"`), use the `in` operator:
+
+```cql
+  where Encounter.type in "Inpatient Encounter"
+```
+
+Note that the `in` operator works whether the element is single cardinality or multi-cardinality.
+
+If the terminology being compared is a direct-reference code (e.g. `code "Blood Pressure"`), use the `~` operator:
+
+```cql
+  where Observation.code ~ "Blood Pressure"
+```
+
+Note that this comparison only works if the element is single-cardinality. For multi-cardinality elements with direct-reference code comparison (e.g. `code "Right Breast"`), each CodeableConcept must be tested using the ~ operator, so an exists is used:
+
+```cql
+  where exists (Condition.bodySite S where S ~ "Right Breast")
+```
+</div>
+
+#### Coding
+
+<div class="new-content" markdown="1">
+Some terminology-valued elements in FHIR use the Coding type specifically. The same comparison patterns are used for elements of this type. For value sets (e.g. `valueset "Inpatient Class"`), use `in`:
+
+```cql
+  where Encounter.class in "Inpatient Class"
+```
+
+And for direct-reference codes (e.g. `code "Inpatient"`), use `~`:
+
+```cql
+  where Encounter.class ~ "Inpatient"
+```
+</div>
+
 ### Time Valued Quantities
 {: #time-valued-quantities}
 
