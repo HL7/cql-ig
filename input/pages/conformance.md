@@ -26,7 +26,7 @@ In addition to the use of CQL directly in [expression-valued elements](#using-ex
 
 1. The identifying elements of a library **SHALL** conform to the following requirements:
 * Library.url **SHALL** be `<CQL namespace url>/Library/<CQL library name>`
-* Library.name **SHALL** be `<CQL library name>`
+* Library.name **SHALL** be `<CQL library name>`, **SHALL** be 64 characters or less, and **SHOULD** be 30 characters or less
 * Library.version **SHALL** be `<CQL library version>`
 
 2. For libraries included in FHIR implementation guides, the CQL namespace is defined by the implementation guide as follows:
@@ -52,9 +52,9 @@ The prohibition against underscores in CQL library names is required to ensure c
 |`System.Integer`|`FHIR.integer`|
 |`System.Decimal`|`FHIR.decimal`|
 |`System.Date`|`FHIR.date`|
-|`System.DateTime`|`FHIR.dateTime`|
-|`System.Long`|`FHIR.integer64`|
-|`System.Time`|`FHIR.time`|
+|`System.DateTime`|`FHIR.dateTime`, with the exception that seconds must be provided|
+|`System.Long`|`FHIR.string` in R4, `FHIR.integer64` in R5 and above|
+|`System.Time`|`FHIR.time`, with the exception that seconds must be provided|
 |`System.String`|`FHIR.string`|
 |`System.Quantity`|`FHIR.Quantity`|
 |`System.Ratio`|`FHIR.Ratio`|
@@ -145,6 +145,7 @@ Note that for an empty list, the `cqf-isEmptyList` extension is used:
 
 Note that the extension is provided on the `value` element, and an arbitrary choice of `boolean` is selected; there is no value to provide, the result is an empty list, so this is just a way to provide the cqf-isEmptyList extension (because parameters in a FHIR Parameters resource must have a value element).
 
+<div class="new-content" markdown="1">
 For the special case of nested lists, where a parameter name is not available, the name `element` **SHALL** be used. For example:
 
 ```cql
@@ -209,6 +210,7 @@ For an empty tuple, the `cqf-isEmptyTuple` extension is used:
 ```
 
 As with empty lists, the extension is provided on the `value` element, and an arbitrary choice of `boolean` is selected; there is no value to provide, the result is an empty tuple, so this is just a way to provide the cqf-isEmptyTuple extension (because parameters in a FHIR Parameters resource must have a value element).
+</div>
 
 For a complete example illustrating all possible type mappings, refer to the [Type Mapping Example](Library-TypeMappingExample.html) and [Type Mapping Evaluation Result Example](Parameters-cql-typemappingexampleresult.html)
 

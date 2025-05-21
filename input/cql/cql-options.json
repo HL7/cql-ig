@@ -1,10 +1,7 @@
 {
    "options":[
-      "EnableAnnotations",
-      "EnableLocators"
    ],
    "formats":[
-     "XML",
      "JSON"
    ],
    "validateUnits":true,

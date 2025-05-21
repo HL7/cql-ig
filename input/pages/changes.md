@@ -3,6 +3,20 @@
 {: #changes}
 
 This page details changes made in each version of the Using CQL with FHIR Implementation Guide.
+
+### STU2 Ballot (version 2.0.0-ballot)
+
+* [FHIR-48919](https://jira.hl7.org/browse/FHIR-48919): Updated discussion of negation to address rejected proposals use case and added activity extent discussion. Applied ([here](patterns.html#negation-in-fhir))
+* [FHIR-48819](https://jira.hl7.org/browse/FHIR-48819): Documented fluent function naming convention. Applied ([here](using-cql.html#fluent-functions))
+* [FHIR-48814](https://jira.hl7.org/browse/FHIR-48814): Updated examples that did not follow naming conventions. Applied ([here](using-cql.html))
+* [FHIR-48641](https://jira.hl7.org/browse/FHIR-48641): Added FHIRHelpers and FHIRCommon libraries. Applied ([here](artifacts.html#knowledge-artifacts-libraries))
+* [FHIR-48529](https://jira.hl7.org/browse/FHIR-48529): Noted difference in precision between CQL and FHIR date/time types. Applied ([here](conformance.html#fhir-type-mapping))
+* [FHIR-48332](https://jira.hl7.org/browse/FHIR-48332): Noted Long mapping to integer64 is only available in R5 and above. Applied ([here](conformance.html#fhir-type-mapping))
+* [FHIR-46423](https://jira.hl7.org/browse/FHIR-46423): Added guidance on library name length. Applied ([here](conformance.html#library-name-and-url))
+* [FHIR-46112](https://jira.hl7.org/browse/FHIR-46112): Clarified mapping for lists of lists. Applied ([here](conformance.html#fhir-type-mapping))
+* [FHIR-45580](https://jira.hl7.org/browse/FHIR-45580): Expanded guidance on use of terminologies. Applied ([here](patterns.html#use-of-terminologies))
+* [FHIR-45579](https://jira.hl7.org/browse/FHIR-45579): Updated missing information example to improve flow. Applied ([here](patterns.html#missing-information))
+
 ### STU1 Publication (version 1.0.0)
 
 The following changes were made as a result of comments received in the 1.0.0-ballot

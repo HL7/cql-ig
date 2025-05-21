@@ -231,6 +231,64 @@ When referencing terminology-valued elements within CQL, the following compariso
 * [Equivalent (`~`)](https://cql.hl7.org/09-b-cqlreference.html#equivalent-3)
 * [In (`in`)](https://cql.hl7.org/09-b-cqlreference.html#in-valueset)
 
+<div class="new-content" markdown="1">
+As a general rule, the equivalent (`~`) operator should be used whenever the terminology being compared is a direct-reference code, and the `in` operator should be used whenever the terminology being compared is a value set. The equal (`=`) operator should _only_ be used with code-valued elements that have a required binding.
+</div>
+
+#### code
+
+<div class="new-content" markdown="1">
+In FHIR, code-valued elements are most often used with required bindings, meaning that the only values that can appear are established by the specification. Because of this, basic string comparison can be used, for example:
+
+```cql
+  where Encounter.status = 'finished'
+```
+> NOTE: The comparison here is to the _code_ value, not the _display_
+
+> NOTE: Note also that there are edge-cases where the string-valued elements may contain terminology values. For more detail on this case, refer to the [Using CQL IG](https://build.fhir.org/ig/HL7/cql-ig/using-cql.html#string-based-membership-testing)
+
+</div>
+
+#### CodeableConcept
+
+<div class="new-content" markdown="1">
+Most terminology-valued elements in FHIR are CodeableConcepts. If the terminology being compared is a value set (e.g. `valueset "Inpatient Encounter"`), use the `in` operator:
+
+```cql
+  where Encounter.type in "Inpatient Encounter"
+```
+
+Note that the `in` operator works whether the element is single cardinality or multi-cardinality.
+
+If the terminology being compared is a direct-reference code (e.g. `code "Blood Pressure"`), use the `~` operator:
+
+```cql
+  where Observation.code ~ "Blood Pressure"
+```
+
+Note that this comparison only works if the element is single-cardinality. For multi-cardinality elements with direct-reference code comparison (e.g. `code "Right Breast"`), each CodeableConcept must be tested using the ~ operator, so an exists is used:
+
+```cql
+  where exists (Condition.bodySite S where S ~ "Right Breast")
+```
+</div>
+
+#### Coding
+
+<div class="new-content" markdown="1">
+Some terminology-valued elements in FHIR use the Coding type specifically. The same comparison patterns are used for elements of this type. For value sets (e.g. `valueset "Inpatient Class"`), use `in`:
+
+```cql
+  where Encounter.class in "Inpatient Class"
+```
+
+And for direct-reference codes (e.g. `code "Inpatient"`), use `~`:
+
+```cql
+  where Encounter.class ~ "Inpatient"
+```
+</div>
+
 ### Time Valued Quantities
 {: #time-valued-quantities}
 
@@ -255,10 +313,10 @@ See the definition of the [Quantity](https://cql.hl7.org/2020May/02-authorsguide
 Because clinical information is often incomplete, CQL provides constructs and support for representing and dealing with _unknown_ or missing information. In FHIR, when the value of an element is not present, accessing that element will result in a `null`:
 
 ```cql
-Observation.interpretation
+MedicationRequest.doNotPerform
 ```
 
-Given an instance of an Observation resource that does not have an interpretation element, the above expression will return `null`. In general, `null` results will _propagate_ through operations. For example:
+Given an instance of a MedicationRequest resource that does not have a `doNotPerform` element specified, the above expression will return `null`. In general, `null` results will _propagate_ through operations. For example:
 
 ```cql
 MedicationRequest.doNotPerform = false
@@ -276,10 +334,10 @@ This pattern ensures that whether the instance does not have a doNotPerform elem
 Another common case encountered in FHIR is the use of an `unknown` code in terminology-valued elements:
 
 ```cql
-MedicationRequeest.status = 'unknown'
+MedicationRequest.status = 'unknown'
 ```
 
-This is a special-case of characterizing missing information within FHIR resources. To treat this status value as a null, the following pattern can be used:
+This is a special-case of characterizing missing information within FHIR resources. To treat this `status` value as a null, the following pattern can be used:
 
 ```cql
 if MedicationRequest.status is null or MedicationRequest.status ~ 'unknown'
@@ -370,10 +428,6 @@ The third approach (specifying the items with a value set) is enabled through th
 }
 ```
 
-#### Structural Options
-
-The other three approaches make use of structures such as PlanDefinition, RequestOrchestration, and the relationships between events and requests to establish the extent of an activity. See the [Clinical Guidelines](http://hl7.org/fhir/uv/cpg) implementation guide for more information on using these approaches to characterize and manage the extent of activities.
-
 When this pattern is used in FHIR resources, the CQL needs to take this into account by looking for the `codeOptions` extension:
 
 ```cql
@@ -381,12 +435,12 @@ define "Antithrombotic Therapy Class Administered":
   [MedicationAdministration] Administered
     where Administered.medication.codeOptions() = "Antithrombotic Therapy".id
       and Administered.status = 'completed'
-      and AntithromboticTherapy.category ~ "Inpatient Setting"
+      and Administered.category ~ "Inpatient Setting"
 ```
 
 This example retrieves `MedicationAdministration` resources that use the `codeOptions` extension to specify a candidate medication in the `Antithrombotic Therapy` value set, a status of `completed`, and a category of `Inpatient Setting`.
 
-NOTE: See the [FHIRCommon.cql](Library-FHIRCommon.html#contents) for the definition of the `codeOptions()` fluent function.
+NOTE: See the FHIRCommon library for the definition of the `codeOptions()` fluent function.
 
 To ensure both approaches are accounted for, these two expressions would then be used together:
 
@@ -398,6 +452,10 @@ define "Antithrombotics Administered":
 
 > NOTE: Profile-informed authoring exposes elements that have a `codeOptions` extension using a Choice of `CodeableConcept` and `ValueSet`, which is then translated as a union, accounting for both cases as part of profile-informed authoring.
 
+#### Structural Options
+
+The other three approaches make use of structures such as PlanDefinition, RequestOrchestration, and the relationships between events and requests to establish the extent of an activity. See the [Clinical Guidelines](http://hl7.org/fhir/uv/cpg) implementation guide for more information on using these approaches to characterize and manage the extent of activities.
+
 </div>
 
 ### Negation in FHIR
@@ -407,11 +465,15 @@ The [HL7 Cross-Paradigm Specification: Representing Negatives](https://www.hl7.o
 
 For an example of a set of profiles following these best practices to support the representation of negation in FHIR, see the [Negation](https://hl7.org/fhir/us/qicore/negation.html) profiles in QI-Core. 
 
+<div class="new-content" markdown="1">
+
 In summary, negation statements typically cover three different use cases:
 
 1. Documentation that an event did not occur
 2. Documentation that an activity should not be performed (i.e. is prohibited)
 3. Documentation that a requested activity was not performed
+
+</div>
 
 Given the representation of negative information in FHIR, two commonly used patterns for negation in clinical logic are:
 
@@ -473,6 +535,8 @@ In this example for negation rationale, the logic looks for a member of the valu
 for not administering any of the anticoagulant and antiplatelet medications specified in the "Antithrombotic Therapy"
 value set.
 
+<div class="new-content" markdown="1">
+
 As discussed in the [Activity Extent](#activity-extent) section, to represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
 Therapy" value set using the ([codeOptions](https://build.fhir.org/ig/HL7/fhir-extensions/branches/br-48852-codeOptions-extension/StructureDefinition-codeOptions.html)) extension to indicate
 providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
@@ -500,9 +564,13 @@ define "Antithrombotics Not Administered":
 
 This approach ensures that the logic will retrieve negated activities whether they are recorded as singular activities (i.e. with a code from the value set) or as indications that none of the activities were performed (i.e. with a reference to a value set).
 
-> NOTE: Profile-informed authoring exposes elements that have a `notDoneValueSet` extension using a Choice of CodeableConcept and ValueSet, which is then translated as a union, accounting for both cases as part of profile-informed authoring.
+> NOTE: Profile-informed authoring exposes elements that have a `codeOptions` extension using a Choice of CodeableConcept and ValueSet, which is then translated as a union, accounting for both cases as part of profile-informed authoring.
+
+</div>
 
 #### Prohibited Activities
+
+<div class="new-content" markdown="1">
 
 Evidence that "Antithrombotic Therapy" medication was prohibited for an acceptable medical reason makes use of the appropriate `Request` resource:
 
@@ -518,7 +586,11 @@ This example retrieves `MedicationRequest` resources with a code in the `Antithr
 
 As with negation of events, the extent of the activity can be accounted for by searching for instances that make use of the `codeOptions` extension.
 
+</div>
+
 #### Rejected Requests
+
+<div class="new-content" markdown="1">
 
 Evidence that a proposal to administer "Antithrombotic Therapy" was rejected for an acceptable medical reason makes use of the `Task` resource:
 
@@ -539,3 +611,5 @@ define "Antithrombotic Therapy Rejected":
 This example retrieves "Antithrombotic Therapy Requested" resources that have a fulfillment Task focused on the request, a status of `rejected`, and a statusReason in the `Medical Reason` value set.
 
 As with negation of events, the extent of the activity can be accounted for by searching for request instances that make use of the `codeOptions` extension.
+
+</div>

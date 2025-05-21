@@ -2,7 +2,7 @@ library Example
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '4.0.1'
+include FHIRHelpers version '2.0.0-ballot'
 
 codesystem LOINC: 'http://loinc.org'
 codesystem "CDC Race and Ethnicity Codes": 'urn:oid:2.16.840.1.113883.6.238'
@@ -138,9 +138,9 @@ define "Antithrombotics Not Administered":
   "Antithrombotic Not Administered"
     union "Antithrombotic Class Not Administered"
 
-define function "Includes Or Starts During"(Condition Condition, Encounter Encounter):
-      Interval[Condition.onset, Condition.abatement] includes Encounter.period
-         or Condition.onset during Encounter.period
+define function "Includes Or Starts During"(condition Condition, encounter Encounter):
+      Interval[condition.onset, condition.abatement] includes encounter.period
+         or condition.onset during encounter.period
 
 define "Flexible Sigmoidoscopy Performed":
   [Procedure: "Flexible Sigmoidoscopy"] FlexibleSigmoidoscopy

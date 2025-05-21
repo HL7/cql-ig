@@ -150,7 +150,7 @@ For example:
 using FHIR version '4.0.1'
 ```
 
-Snippet 2-3: Data Model line from [Example.cql](Library-Example.html#contents)
+Snippet 2-3: Data Model line from [Example.cql](Library-Example.html#cql-content)
 
 ### Code Systems
 {: #code-systems}
@@ -170,7 +170,7 @@ codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct'
   version 'http://snomed.info/sct/731000124108/version/201709'
 ```
 
-Snippet 2-4: codesystem definition line from [Example.cql](Library-Example.html#contents).
+Snippet 2-4: codesystem definition line from [Example.cql](Library-Example.html#cql-content).
 
 The canonical URL for a code system is a globally unique, stable, version-independent identifier for the code system.
 The [HL7 Terminology (THO) site ](http://terminology.hl7.org) defines canonical URLs for most common code systems.
@@ -203,7 +203,7 @@ For example:
 valueset "Absent or Unknown Allergies - IPS": 'http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-allergies-uv-ips'
 ```
 
-Snippet 2-5: Valueset reference from [Example.cql](Library-Example.html#contents).
+Snippet 2-5: Valueset reference from [Example.cql](Library-Example.html#cql-content).
 
 The canonical URL for a value set is typically defined by the value set author, though it may be provided by the
 publisher as well. For example, value sets defined in the International Patient Summary have a base URL of `http://hl7.org/fhir/uv/ips/`.
@@ -254,7 +254,7 @@ valueset "Encounter Inpatient SNOMEDCT Value Set":
    'http://example.org/fhir/ValueSet/encounter-inpatient' version '20160929'
 ```
 
-Snippet 2-6: valueset definition from [Example.cql](Library-Example.html#contents).
+Snippet 2-6: valueset definition from [Example.cql](Library-Example.html#cql-content).
 
 This is a _version specific value set reference_, and can be resolved as a search by the `url` and `version` elements:
 
@@ -335,7 +335,7 @@ the logical identifier **SHOULD** be the code from the code system.
 code "Venous foot pump, device (physical object)": '442023007' from "SNOMED CT"
 ```
 
-Snippet 2-7: code definition from [Example.cql](Library-Example.html#contents).
+Snippet 2-7: code definition from [Example.cql](Library-Example.html#cql-content).
 
 Note that for direct-reference code usage, the local identifier (in Snippet 2-7 the local identifier is "Venous foot pump,
 device (physical object)") **SHOULD** be the same as the description of the code within the terminology in order to avoid
@@ -432,7 +432,7 @@ This usage of concept includes multiple concepts with different meanings from th
 {: #library-level-identifiers}
 
 A "library-level identifier" is any named expression, function, parameter, code system, value set, concept, or code
-defined in the CQL. The library name referenced in the library-line, the data model, and any referenced external library
+defined in the CQL. The library name referenced in the library-line, the data model, any referenced external library
 should not be considered "library-level identifiers". Library-level identifiers ought to be given a descriptive
 meaningful name (avoid abbreviations) and conform to Conformance Requirement 2.13.
 
@@ -452,14 +452,28 @@ For example:
 
 ```cql
 define function
-   "Includes Or Starts During"(Condition Condition, Encounter Encounter):
-      Interval[Condition.onset, Condition.abatement] includes Encounter.period
-         or Condition.onset during Encounter.period
+   "Includes Or Starts During"(condition Condition, encounter Encounter):
+      Interval[condition.onset, condition.abatement] includes encounter.period
+         or condition.onset during encounter.period
 ```
 
-Snippet 2-8: Function definition from [Example.cql](Library-Example.html#contents).
+Snippet 2-8: Function definition from [Example.cql](Library-Example.html#cql-content).
 
 The `"Includes Or Starts During"` is the library-level identifier in this example.
+
+#### Fluent Functions
+{: #fluent-functions}
+
+<div class="new-content" markdown="1">
+Because fluent functions are invoked using _dot-invocation_, they should follow the naming convention for elements, rather than library-level identifiers. For example:
+
+```cql
+define fluent function includesOrStartsDuring(condition Condition, encounter Encounter):
+  Interval[condition.onset, condition.abatement] includes encounter.period
+    or condition.onset during encounter.period
+```
+
+</div>
 
 ### Data Type Names
 {: #data-type-names}
@@ -485,7 +499,7 @@ define "Flexible Sigmoidoscopy Performed":
       and FlexibleSigmoidoscopy.performed ends 5 years or less on or before end of "Measurement Period"
 ```
 
-Snippet 2-9: Expression definition from [Example.cql](Library-Example.html#contents).
+Snippet 2-9: Expression definition from [Example.cql](Library-Example.html#cql-content).
 
 The `Procedure` is the name of the model data type (FHIR resource type) in this example.
 
@@ -532,7 +546,7 @@ define "Encounters During Measurement Period":
     "Valid Encounters" QualifyingEncounter
         where QualifyingEncounter.period during "Measurement Period"
 
-define function "ED Stay Time"(Encounter "Encounter"):
-    duration in minutes of Encounter.period
+define function "ED Stay Time"(encounter "Encounter"):
+    duration in minutes of encounter.period
 ```
 
