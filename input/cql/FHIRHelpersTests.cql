@@ -2,7 +2,7 @@ library FHIRHelpersTests
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '2.0.0-ballot'
+include FHIRHelpers version '2.0.0'
 
 // Primitives
 // instant

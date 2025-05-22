@@ -43,7 +43,7 @@
     }, {
       "type": "depends-on",
       "display": "Library FHIRHelpers",
-      "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
+      "resource": "http://hl7.org/fhir/uv/cql/Library/FHIRHelpers|2.0.0"
     }, {
       "type": "depends-on",
       "display": "Code system Diagnosis Role",

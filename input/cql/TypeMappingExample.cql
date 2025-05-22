@@ -5,7 +5,7 @@ library TypeMappingExample
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '2.0.0-ballot'
+include FHIRHelpers version '2.0.0'
 
 codesystem ExampleCodeSystem: 'http://hl7.org/fhir/uv/cql/CodeSystem/example'
 codesystem LOINC: 'http://loinc.org'

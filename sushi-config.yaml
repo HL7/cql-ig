@@ -16,7 +16,7 @@ description: >-
 status: active
 license: CC0-1.0
 date: 2024-06-10
-version: 2.0.0-ballot
+version: 2.0.0
 
 # Although fhirVersions is 0..* in the ImplementationGuide resource
 # it can be a single item OR and array here (but so far SUSHI only
@@ -30,7 +30,7 @@ fhirVersion: 4.0.1
 # will recognize them as well. In either case, they'll be copied
 # to the IG JSON using the formal names.
 copyrightYear: 2023+
-releaseLabel: STU2Ballot
+releaseLabel: STU 2
 
 # The publisher can be a single item or a list, each with a name and
 # optional url and/or email. The first publisher's name will be used
@@ -63,7 +63,7 @@ dependencies:
 #  hl7.terminology: 6.1.0
   hl7.fhir.uv.extensions.r4: 
     id: ext
-    version: 5.1.0
+    version: 5.2.0
 
 parameters:
   apply-contact: true
@@ -139,7 +139,7 @@ pages:
 #   Patient/bad-example: omit
 
 resources:
-  Parameters/qicore-modelinfosettings:
+  Parameters/qicore-modelinfo-settings:
     name: Example ModelInfo Settings Parameters
     description: Example Parameters resource demonstrating the use of ModelInfo configuration parameters. This resource would typically be a contained resource in an implementation guide or artifact collection.
   Parameters/cql-evaluationresult-example:
