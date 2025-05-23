@@ -33,8 +33,11 @@ define CQLConceptExample: ExampleConcept
 define CQLDateExample: @2024-01-01
 // DateTime
 define CQLDateTimeExample: @2024-01-01T10:30:00Z
+define CQLPartialDateTimeExample: @2024-01-01TZ
+define CQLPartialDateTimeMinutesExample: @2024-01-01T10:30Z
 // Decimal
 define CQLDecimalExample: 10.0
+define CQLDecimalPrecisionExample: 10.0000
 // Long
 define CQLLongExample: 10L
 // Integer
@@ -47,6 +50,7 @@ define CQLRatioExample: 5 'mg' : 10 'mg'
 define CQLStringExample: 'John'
 // Time
 define CQLTimeExample: @T10:30:00
+define CQLPartialTimeExample: @T10:30
 // ValueSet
 define CQLValueSetExample: ExampleValueSet
 // Vocabulary
