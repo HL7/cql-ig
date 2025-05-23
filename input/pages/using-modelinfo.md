@@ -20,13 +20,15 @@ If this process is run against the StructureDefinitions from the base FHIR speci
 Patient.gender.value = 'female'
 ```
 
-To facilitate comparison by authors, these primitives can be implicitly converted to CQL primitive types, and the FHIRHelpers library (generated alongside the ModelInfo) defines these implicit conversions. See the [CQF Common](http://fhir.org/guides/cqf/common) implementation guide for a complete FHIR ModelInfo as well as FHIRHelpers library representing the FHIR specification.
+To facilitate comparison by authors, these primitives can be implicitly converted to CQL primitive types, and the [FHIRHelpers](Library-FHIRHelpers.html) library (generated alongside the [FHIR-ModelInfo](Library-FHIR-ModelInfo.html)) defines these implicit conversions.
 
 To make use of these implicit conversions within a CQL library, include the FHIRHelpers library:
 
 ```cql
-include FHIRHelpers version '4.0.1'
+include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1'
 ```
+
+> NOTE: Previous versions of the FHIRHelpers library were included A) as embedded resources in the CQL-to-ELM translator (referenced without a namespace and the version `4.0.1`), as well as B) in the CQFramework Common implementation guide (referenced with the namespace `fhir.cqf.common` and the version `4.0.1`). In both these cases, the content is the same as what is now published in this implementation guide, with the namespace `hl7.fhir.uv.cql` and the version `4.0.1`. Note that the version here is explicitly aligned with the FHIR specification version, because the FHIRHelpers library is generated as part of the process of constructing the model information and so is cohesively tied to the FHIR specification version.
 
 #### ModelInfo Libraries
 
@@ -41,11 +43,15 @@ Similar to CQL content, ModelInfo can be included in FHIR Library resources to f
 * Library.name **SHALL** be `<CQL model name>`
 * Library.version **SHALL** be `<CQL model version>`
 2. For model info libraries included in FHIR implementation guides, the CQL model namespace is defined by the implementation guide as follows:
-* CQL model namespace name **SHALL** be IG.packageId
-* CQL model namespace url **SHALL** be IG.canonicalBase
+* CQL model namespace name **SHALL** be IG.packageId of the implementation guide being described by the model info
+* CQL model namespace url **SHALL** be IG.canonicalBase of the implementation guide being described by the model info
 3. To avoid issues with characters between web ids and names, CQL model names **SHALL NOT** have underscores.
 
 The prohibition against underscores in CQL model names is required to ensure compliance with the canonical URL pattern (because URLs by convention should not use underscores). In addition, many publishing environments will use the canonical tail (i.e. the name of the library) as the logical id of the Library resource, which does not allow underscores per the FHIR specification.
+
+This implementation guide includes [FHIR-ModelInfo](Library-FHIR-ModelInfo.html), a model info file for FHIR version 4.0.1.
+
+> NOTE: Previous versions of the FHIR-ModelInfo library were included A) as embedded resources in the CQL-to-ELM translator (referenced without a namespace and the semantic version of the FHIR specification being modeled), as well as B) in the CQFramework Common implementation guide (referenced with the canonical reference `http://fhir.org/guides/cqf/common/Library/FHIR-ModelInfo|4.0.1`). The content of the 4.0.1 versions of these Model Info files is the same as what is now published in this implementation guide, with the canonical reference `http://hl7.org/fhir/uv/cql/Library/FHIR-ModelInfo|4.0.1`. Note the model info version here is explicitly aligned with the FHIR specification version being modeled, not the version of this implementation guide. This is to avoid any confusion about what version of the FHIR model is being used in a given CQL library.
 
 #### Profile-informed ModelInfo
 {: #profile-informed-modelinfo}

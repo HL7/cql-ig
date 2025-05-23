@@ -1,18 +1,18 @@
 {
     "resourceType": "Library",
-    "id": "USCore-ModelInfo",
+    "id": "USCoreExample-ModelInfo",
     "meta": {
       "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfo" ]
     },
-    "url": "http://hl7.org/fhir/uv/cql/Library/USCore-ModelInfo",
+    "url": "http://hl7.org/fhir/uv/cql/Library/USCoreExample-ModelInfo",
     "identifier": [ {
       "use": "official",
       "system": "http://example.org/fhir/cqf/modelinfo/us/Library/Identifier",
-      "value": "USCore"
+      "value": "USCoreExample"
     } ],
     "version": "3.1.0",
-    "name": "USCore",
-    "title": "USCore Model Definition",
+    "name": "USCoreExample",
+    "title": "USCore Example Model Definition",
     "status": "active",
     "experimental": true,
     "type": {
@@ -29,13 +29,14 @@
         "value": "http://www.hl7.org/Special/committees/cqi/index.cfm"
       } ]
     } ],
-    "description": "Model definition for USCore (v3.1.0) Model",
+    "description": "Example Model definition for USCore (v3.1.0) Model. This is an experimental resource only used as an example in this implementation guide. Official model information files for the latest versions of USCore are being balloted and published as part of USCore (version 8.0.0+). Prior versions of model information files for US Core are being published in the Common CQL Assets for FHIR (US-based) implementation guide.",
     "jurisdiction": [ {
       "coding": [ {
         "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
         "code": "001"
       } ]
     } ],
+    "purpose": "This Library is defined to provide an example of how ModelInfo files can be packaged in FHIR Library resources for maintenance, distribution, and implementation purposes.",
     "lastReviewDate": "2021-03-07",
     "topic": [ {
       "text": "USCore"

@@ -31,7 +31,7 @@ define "Patient is Female":
 Note that these conversions are performed automatically by the [CQL-to-ELM translator](https://github.com/cqframework/clinical_quality_language/blob/master/Src/java/cql-to-elm/OVERVIEW.md) when they are used by CQL, resulting in a conversion error if the FHIRHelpers library is not included using an [include declaration](https://cql.hl7.org/02-authorsguide.html#libraries):
   
 ```cql
-include FHIRHelpers version '4.0.1'
+include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1'
 ```
 
 The version of the library is not required by CQL, but for the FHIRHelpers reference, because it is so closely tied to the FHIR ModelInfo, best-practice is to include the version of FHIRHelpers.
@@ -171,10 +171,10 @@ define "Patient With Race Category (refined)":
 
 #### FHIRCommon
 
-For common use cases, the [CQF Common](http://fhir.org/guides/cqf/common) implementation guide provides a FHIRCommon library that defines many of these types of functions and declarations that are commonly used with CQL and FHIR. By including a reference to this implementation guide, content IGs can build CQL that refers to these common functions by including the FHIRCommon library:
+For common use cases, this implementation guide provides a [FHIRCommon](Library-FHIRCommon.html) library that defines many of these types of functions and declarations that are commonly used with CQL and FHIR. By including a reference to this implementation guide, content IGs can build CQL that refers to these common functions by including the FHIRCommon library:
 
 ```cql
-include fhir.cqf.common.FHIRCommon
+include hl7.fhir.uv.cql.FHIRCommon
 ```
 
 ### Profile-informed Authoring
@@ -482,7 +482,7 @@ Given the representation of negative information in FHIR, two commonly used patt
 
 For the purposes of clinical reasoning, when looking for documentation that a particular event did not occur, it must
 be documented with a reason in order to meet the intent. If a reason is not part of the intent, then the absence of
-evidence pattern **SHOULD** be used, rather than documentation of an event not occurring.
+evidence pattern should be used, rather than documentation of an event not occurring.
 
 To address the reason an action did not occur (negation rationale), clinical logic must define the event it expects to occur
 using appropriate terminology to identify the kind of event (using a value set or direct-reference code), and then use
