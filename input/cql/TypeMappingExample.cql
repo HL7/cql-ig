@@ -100,3 +100,9 @@ define FHIRObservationExample: FHIRBloodGlucoseObservation
 define FHIRObservationListExample: FHIRObservations
 // EmptyList<Observation>
 define FHIREmptyObservationListExample: FHIRObservations O where false
+// BackboneElement
+define FHIRBackboneElementExample: Patient.contact.first()
+// Extension (simple)
+define FHIRSimpleExtensionExample: Patient.birthDate.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/patient-birthTime').first()
+// Extension (complex)
+define FHIRComplexExtensionExample: Patient.extension.where(url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity').first()

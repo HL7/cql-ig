@@ -66,9 +66,9 @@ The prohibition against underscores in CQL library names is required to ensure c
 |`Interval<System.Quantity>`|`FHIR.Range`|
 {: .grid }
 
-2. In addition:
-    * List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
-    * Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
+2. List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
+
+3. Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
 
 For example, the following CQL expression results in a `List<FHIR.Observation>`:
 
@@ -220,8 +220,18 @@ For a complete example illustrating all possible type mappings, refer to the [Ty
 **Conformance Requirement 4.4 (Parameters and Data Requirements):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-4-4)
 {: #conformance-requirement-4-4}
 
-1. Parameters to CQL libraries **SHALL** be either CQL-defined types that map to FHIR types, or FHIR resource types, optionally with profile designations.
-2. Top level expressions in CQL libraries **SHALL** return either CQL-defined types that map to FHIR types (as defined in 2.19), or FHIR resource types, optionally with profile designations
+1. Parameters to CQL libraries **SHALL** be either
+    1. CQL-defined types that map to FHIR types, or 
+    2. FHIR resource types, optionally with profile designations, or
+    3. One of the types specified in [Open Types (*)](https://hl7.org/fhir/R4/datatypes.html#open)
+    4. A BackboneElement, in which case the elements of the BackboneElement are represented as parts, or
+    5. An Extension, in which case the elements of the Extension are represented as parts
+2. Top level expressions in CQL libraries **SHALL** return either
+    1. CQL-defined types that map to FHIR types, or 
+    2. FHIR resource types, optionally with profile designations, or
+    3. One of the types specified in [Open Types (*)](https://hl7.org/fhir/R4/datatypes.html#open)
+    4. A BackboneElement, in which case the elements of the value are represented as parts, or
+    5. An Extension, in which case the elements of the Extension are represented as parts
 3. Tuple types are represented in FHIR as a `parameter` that has parts corresponding to the elements of the tuple type. List types are represented in FHIR as a `parameter` that has a cardinality of 0..*.
 4. Libraries used in computable artifacts **SHALL** use the `parameter` element to identify input parameters as well as the type of all top-level expressions as output parameters.
 5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL, according to the following mapping:
