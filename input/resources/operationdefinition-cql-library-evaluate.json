@@ -28,7 +28,7 @@
         "value" : "http://www.hl7.org/Special/committees/dss"
       }]
     }],
-    "description" : "Evaluates the contents of a library and returns the results as a Parameters resource.",
+    "description" : "Evaluates the contents of a library and returns the results as a Parameters resource. Results are returned as described in the FHIR Type Mapping section of the conformance page of this implementation guide. Unless specific expressions are named, the operation will provide the results for all public top-level expression declarations in the library. Use the includePrivate parameter to indicate that private expressions should be included as well.",
     "jurisdiction" : [{
       "coding" : [{
         "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
@@ -65,8 +65,16 @@
       "use" : "in",
       "min" : 0,
       "max" : "*",
-      "documentation" : "Expression(s) to be evaluated. If no expression names are provided, the operation evaluates all public expression definitions in the library.",
+      "documentation" : "The identifier of the expression(s) to be evaluated, regardless of whether the declaration is private. If no expression names are provided, the operation evaluates all public expression definitions in the library (or all expressions if includePrivate is true).",
       "type" : "string"
+    },
+    {
+      "name" : "includePrivate",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "documentation" : "Indicates whether to include private expression declarations in the result. Note that if expressions are named, this parameter is ignored. If this parameter is not provided, the default behavior is that only public expression declarations will be included.",
+      "type" : "boolean"
     },
     {
       "name" : "parameters",
@@ -152,7 +160,7 @@
       "use" : "out",
       "min" : 1,
       "max" : "1",
-      "documentation" : "The results of the library evaluation, returned as a Parameters resource with a parameter for each named expression requested by the expression input parameter (or all public expressions defined in the library if no expression input parameter was specified). Note that explicit request for evaluation of an expression does not respect the access modifier (i.e. even private expressions can be evaluated by directly requesting evaluation of the expression by name).",
+      "documentation" : "The results of the library evaluation, returned as a Parameters resource with a parameter for each named expression requested by the expression input parameter (or all public (or all, if includePrivate is true) top-level expressions defined in the library if no expression input parameter was specified). Note that explicit request for evaluation of an expression does not respect the access modifier (i.e. even private expressions can be evaluated by directly requesting evaluation of the expression by name).",
       "type" : "Parameters"
     }]
   }
