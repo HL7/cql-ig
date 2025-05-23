@@ -145,7 +145,6 @@ Note that for an empty list, the `cqf-isEmptyList` extension is used:
 
 Note that the extension is provided on the `value` element, and an arbitrary choice of `boolean` is selected; there is no value to provide, the result is an empty list, so this is just a way to provide the cqf-isEmptyList extension (because parameters in a FHIR Parameters resource must have a value element).
 
-<div class="new-content" markdown="1">
 For the special case of nested lists, where a parameter name is not available, the name `element` **SHALL** be used. For example:
 
 ```cql
@@ -210,7 +209,92 @@ For an empty tuple, the `cqf-isEmptyTuple` extension is used:
 ```
 
 As with empty lists, the extension is provided on the `value` element, and an arbitrary choice of `boolean` is selected; there is no value to provide, the result is an empty tuple, so this is just a way to provide the cqf-isEmptyTuple extension (because parameters in a FHIR Parameters resource must have a value element).
-</div>
+
+For expressions that result in a BackboneElement, the value is represented in the same way that a Tuple is represented:
+
+```json
+{
+    "name": "FHIRBackboneElementExample",
+    "part": [{
+      "name": "relationship",
+      "valueCodeableConcept": {
+        "coding": [{
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+          "code": "N"
+        }]
+      }
+    }, {
+      "name": "name",
+      "valueHumanName": {
+        "family": "du Marché",
+        "_family": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+              "valueString": "VV"
+            }
+          ]
+        },
+        "given": [
+          "Bénédicte"
+        ]
+      }
+    }, 
+    ...
+    ]
+  }
+  ```
+
+For expressions that result in Extension values, the elements of the extension are mapped using parts, `url` and `value` for simple extensions:
+
+```json
+{
+  "name": "FHIRSimpleExtensionExample",
+  "part": [{
+    "name": "url",
+    "valueUri": "http://hl7.org/fhir/StructureDefinition/patient-birthTime"
+  }, {
+    "name": "value",
+    "valueDateTime": "1974-12-25T14:35:45-05:00"
+  }]
+}
+```
+
+Parts `url` and `extension` for complex extensions:
+
+```json
+{
+  "name": "FHIRComplexExtensionExample",
+  "part": [{
+    "name": "url",
+    "valueUri": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+  }, {
+    "name": "extension",
+    "part": [{
+      "name": "url",
+      "valueUri": "ombCategory"
+    }, {
+      "name": "value",
+      "valueCoding": {
+        "system" : "urn:oid:2.16.840.1.113883.6.238",
+        "code" : "2135-2",
+        "display" : "Hispanic or Latino"
+      }
+    }]
+  },
+  ...
+  {
+    "name": "extension",
+    "part": [{
+      "name": "url",
+      "valueUri": "text"
+    }, {
+      "name": "value",
+      "valueString": "Hispanic or Latino"
+    }]
+  }]
+}
+```
 
 For a complete example illustrating all possible type mappings, refer to the [Type Mapping Example](Library-TypeMappingExample.html) and [Type Mapping Evaluation Result Example](Parameters-cql-typemappingexampleresult.html)
 
