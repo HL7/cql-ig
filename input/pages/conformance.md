@@ -546,6 +546,18 @@ The "primary library" for an artifact is determined as follows:
 
 If there is more than one library specified in the resource, then expression identifiers must be qualified with the name of the library (see [Conformance Requirement 2.3 (Nested Libraries)](using-cql.html#conformance-requirement-2-3)), or with the library alias as specified by the [cqf-libraryAlias]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-libraryAlias.html) extension.
 
+When CQL expressions are identified (i.e. using an Expression element with a language type of `text/cql-identifier`), if the expression element has a `reference`, the identifier **SHALL** be to an expression in the referenced library.
+
+#### In-line CQL Expressions
+
+When CQL expressions are included in-line (i.e. with a language specifier of `text/cql-expression`), then that expression **SHALL** have access to any libraries referenced by the resource (with either a `library` element or the `cqf-library` extension). This means that in-line expressions may reference declarations in those libraries by using the name of the library as a qualifier (or the `alias` as defined by the `cqf-libraryAlias` extension).
+
+For example, given a PlanDefinition with a library element referencing the Example library in this implementation guide, the following CQL in-line expression is valid:
+
+```cql
+exists (Example."Flexible Sigmoidoscopy Performed")
+```
+
 ### Must Support
 {: #must-support}
 
