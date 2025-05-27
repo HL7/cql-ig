@@ -163,7 +163,8 @@ Conformance Requirement 2.6 describes how to specify a code system within a CQL 
 1. Within CQL, the identifier of any code system reference **SHALL** be specified using a URI for the code system.
 2. The URI **SHALL** be the canonical URL for the code system.
 3. The Code System declaration **MAY** include a version, consistent with the URI specification for FHIR and the code system.
-For example:
+
+For example, the following CQL `codesystem` declaration establishes `"SNOMED CT:2017-09"` as the local identifier for the code system with url `http://snomed.info/sct` and version `http://snomed.info/sct/731000124108/version/201709`:
 
 ```cql
 codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct'
@@ -185,6 +186,21 @@ usage specified by FHIR.
 If no version is specified, then the default behavior for a FHIR terminology server is to use the most recent code
 system version available on the server.
 
+#### Representation in Narrative
+{: #codesystem-representation-in-narrative}
+
+When code systems are used within knowledge artifacts, if the artifact includes narrative (Human-readable, such as the narrative in the `text` element of a resource), it **SHALL** include a representation of at least the following information for each code system:
+
+* The local identifier for the code system.
+* The external identifier for the code system.
+* The version of the code system, if specified.
+
+For example, the code system declaration from Snippet 2-4 `"SNOMED CT:2017-09"` could be represented in the narrative HTML of the library resource as:
+
+```html
+"SNOMED CT:2017-09": "SNOMED CT" (http://snomed.info/sct, version http://snomed.info/sct/731000124108/version/201709)
+```
+
 ### Value Sets
 {: #value-sets}
 
@@ -197,7 +213,7 @@ Conformance Requirement 2.7 describes how to specify a value set within a CQL li
 2. The URI **SHALL** be the canonical URL for the value set
 3. The URI **MAY** include a version, consistent with versioned canonical URL references in FHIR
 
-For example:
+For example, the following `valueset` declaration establishes the local identifier `"Absent or Unknown Allergies - IPS"` for the value set with url `http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-allergies-uv-ips`:
 
 ```cql
 valueset "Absent or Unknown Allergies - IPS": 'http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-allergies-uv-ips'
@@ -289,7 +305,8 @@ When value sets are used within knowledge artifacts, if the artifact includes na
 * The external identifier for the value set.
 * The version of the value set, if specified.
 
-For example:
+For example, the `"Encounter Inpatient"` value set could be represented in the narrative HTML for a library resource as:
+
 ```html
 "Encounter Inpatient": "Encounter Inpatient SNOMEDCT Value Set" (http://example.org/fhir/ValueSet/encounter-inpatient, version 20160929)
 ```
@@ -354,7 +371,8 @@ When direct-reference codes are used within knowledge artifacts, if the artifact
 * The version of the codesystem, if specified.
 * The display value from the code system.
 
-For example:
+For example, the `"Venous foot pump, device (physical object)"` code declaration could be represented in the narrative HTML for a library resource as:
+
 ```html
 code "Venous foot pump, device (physical object)":  '442023007' from "SNOMEDCT" display Venous foot pump, device (physical object)"
 ```
