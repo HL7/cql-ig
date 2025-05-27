@@ -209,7 +209,7 @@ For detailed information on how ModelInfo is produced for an implementation guid
 ### Use of Terminologies
 {: #use-of-terminologies}
 
-FHIR supports various types of terminology-valued elements, including:
+FHIR supports various types of terminology values, including:
 
 * [code](http://hl7.org/fhir/datatypes.html#code)
 * [Coding](http://hl7.org/fhir/datatypes.html#Coding)
@@ -221,7 +221,7 @@ These types map to the following CQL primitive types, respectively:
 * [Code](https://cql.hl7.org/09-b-cqlreference.html#code-1)
 * [Concept](https://cql.hl7.org/09-b-cqlreference.html#concept-1)
 
-In addition to the type of element, FHIR provides the ability to bind these elements to specific codes, in the form of a direct-reference code (fixed constraint to a specific code in a [CodeSystem](http://hl7.org/fhir/codesystem.html)), or a binding to a [ValueSet](http://hl7.org/fhir/valueset.html). These bindings can be different [binding strengths](http://hl7.org/fhir/codesystem-binding-strength.html)
+These types are used extensively throughout FHIR to define terminology-valued elements. In addition to the type of element, FHIR provides the ability to fix the value of these elements to specific codes, in the form of a direct-reference code (fixed constraint to a specific code in a [CodeSystem](http://hl7.org/fhir/codesystem.html)), or to bind these elements to a [ValueSet](http://hl7.org/fhir/valueset.html) (i.e. establish the set of possible values for the element). These bindings can be different [binding strengths](http://hl7.org/fhir/codesystem-binding-strength.html)
 
 Within CQL, references to terminology code systems, value sets, codes, and concepts are directly supported, and all such usages are declared within CQL libraries, as described in the  [Terminology](https://cql.hl7.org/02-authorsguide.html#terminology) section of the CQL Author's Guide.
 
