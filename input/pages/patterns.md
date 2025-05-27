@@ -248,6 +248,8 @@ When referencing terminology-valued elements within CQL, the following compariso
 As a general rule, the equivalent (`~`) operator should be used whenever the terminology being compared is a direct-reference code, and the `in` operator should be used whenever the terminology being compared is a value set. The equal (`=`) operator should _only_ be used with code-valued elements that have a required binding.
 </div>
 
+> Note that although the `contains` operator is also concerned with the concept of membership, the current version of the CQL specification does not include a terminological overload of the `contains` operator. A terminological contains operation is being considered for inclusion in the next version of CQL, but until the specification supports it, the `contains` operator should not be used with terminology-valued elements in FHIR. As a workaround, the `FHIRCommon` library defines an `includesCode` function that can be used to provide a terminological contains operation.
+
 #### code
 
 <div class="new-content" markdown="1">
@@ -555,7 +557,7 @@ value set.
 <div class="new-content" markdown="1">
 
 As discussed in the [Activity Extent](#activity-extent) section, to represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
-Therapy" value set using the ([codeOptions](https://build.fhir.org/ig/HL7/fhir-extensions/branches/br-48852-codeOptions-extension/StructureDefinition-codeOptions.html)) extension to indicate
+Therapy" value set using the ([codeOptions]({{site.data.fhir.ver.ext}}/StructureDefinition-codeOptions.html)) extension to indicate
 providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
 set URI to negate the entire value set rather than a specific member code from the value set, clinicians are
 not forced to arbitrarily select a specific medication from the "Antithrombotic Therapy" value set that they

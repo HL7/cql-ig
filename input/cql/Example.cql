@@ -7,7 +7,7 @@ include FHIRHelpers version '4.0.1'
 codesystem LOINC: 'http://loinc.org'
 codesystem "CDC Race and Ethnicity Codes": 'urn:oid:2.16.840.1.113883.6.238'
 codesystem "SNOMED CT": 'http://snomed.info/sct'
-codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct' version 'http://snomed.info/sct/731000124108/version/201709'
+codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct' version 'http://snomed.info/sct/731000124108/version/20250301'
 
 valueset "Antithrombotic Therapy": 'http://example.org/fhir/ValueSet/antithrombotic-therapy-example'
 valueset "Medical Reason": 'http://example.org/fhir/ValueSet/medical-reason-example'
