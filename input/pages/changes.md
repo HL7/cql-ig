@@ -29,7 +29,7 @@ The following changes were made as a result of comments received in the 1.0.0-ba
 * [FHIR-43908](https://jira.hl7.org/browse/FHIR-43908): Created CQL Options profile Applied ([here](StructureDefinition-cql-options.html))
 * [FHIR-43762](https://jira.hl7.org/browse/FHIR-43762): CQL CQL Operation: Clarify return ([Applied here](OperationDefinition-cql-cql.html))
 
-#### Compatible, Substanive Changes
+#### Compatible, Substantive Changes
 
 * [FHIR-43885](https://jira.hl7.org/browse/FHIR-43885): A Conformance Requirement that SHOULD be followed is confusing Applied ([here](using-elm.html#elm-suitability))
 * [FHIR-43780](https://jira.hl7.org/browse/FHIR-43780): Relax prohibition against string-based membership testing Applied ([here](using-cql.html#conformance-requirement-2-10))

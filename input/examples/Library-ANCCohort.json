@@ -62,7 +62,7 @@
   "title": "ANC Cohort",
   "status": "active",
   "experimental": true,
-  "description": "Example cohort definition for anteantal care",
+  "description": "Example cohort definition for antenatal care",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",

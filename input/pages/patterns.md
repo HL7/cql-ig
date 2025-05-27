@@ -39,7 +39,7 @@ The version of the library is not required by CQL, but for the FHIRHelpers refer
 #### Choices
 
 FHIR includes the notion of [_choice_](https://hl7.org/fhir/formats.html#choice) types, or elements that can be represented as any of a number of types. For example,
-the `Patient.deceased` element can be specified as a `boolean` or as a `dateTime`. CQL also supports [choice](https://cql.hl7.org/03-developersguide.html#choice-types) types, so these elements are represented directly as Choice Types within the Model Info.
+the `Patient.deceased` element can be specified as a `boolean` or as a `dateTime`. CQL also supports [choice](https://cql.hl7.org/03-developersguide.html#choice-types) types, so these elements are represented directly as Choice Types within the ModelInfo.
 
 When authoring CQL using FHIR, logic must take into account the possible choice types of the elements involved. For example, the `Observation.effective` element may be represented as a `dateTime` or a `Period` (among other types):
 
@@ -204,7 +204,7 @@ define "Patient With Race":
       and P.race.detailed contains "Alaska Native"
 ```
 
-For detailed information on how model information is produced for an implementation guide, see the [Profile-informed ModelInfo](using-modelinfo.html#profile-informed-modelinfo) section.
+For detailed information on how ModelInfo is produced for an implementation guide, see the [Profile-informed ModelInfo](using-modelinfo.html#profile-informed-modelinfo) section.
 
 ### Use of Terminologies
 {: #use-of-terminologies}
@@ -294,17 +294,21 @@ And for direct-reference codes (e.g. `code "Inpatient"`), use `~`:
 
 For time-valued quantities, in addition to the definite duration UCUM units, CQL defines calendar duration keywords to support calendar-based durations and arithmetic. For example, UCUM defines an annum ('a') as 365.25 days, whereas the year ('year') duration in CQL is specifically a calendar year. This difference is important, especially when performing calendar arithmetic.
 
-For example if we take a datetime and subtract a calendar year
+For example, if we take a DateTime and subtract a calendar year
+
 ```cql
 @2019-01-01T05:00:00 - 1 year
 ```
-This would resolve to 2018-01-01T05:00:00
 
-However, if we take the same datetime and subtract a UCUM annum
+This results in 2018-01-01T05:00:00
+
+However, if we take the same DateTime and subtract a UCUM annum
+
 ```cql
 @2019-01-01T05:00:00 - 1 'a'
 ```
-This would resolve to 2017-12-31T23:00:00
+
+This results in 2017-12-31T23:00:00
 
 See the definition of the [Quantity](https://cql.hl7.org/2020May/02-authorsguide.html#quantities) type in the CQL Author's Guide, as well as the [Date/Time Arithmetic](https://cql.hl7.org/2020May/02-authorsguide.html#datetime-arithmetic) discussion for more information.
 

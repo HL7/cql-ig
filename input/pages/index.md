@@ -110,6 +110,6 @@ Health Level Seven. US Core. [Online]. Available from: [http://hl7.org/fhir/us/c
 
 {% include globals-table.xhtml %}
 
-### IP Statements
+### Intellectual Property Statements
 
 {% include ip-statements.xhtml %}

@@ -14,7 +14,7 @@ In addition to the use of CQL directly in [expression-valued elements](#using-ex
 
 1. Content conforming to this implementation guide **SHALL** use FHIR Library resources to represent CQL libraries in FHIR.
 2. For distribution to environments that support CQL compilation directly, FHIR Library resources **SHOULD** include CQL content.
-3. FHIR Library resources that include CQL content **SHALL** conform to the [CQLLibrary](StructureDefinition-cql-library.html) profile
+3. FHIR Library resources that include CQL content **SHALL** conform to the [CQLLibrary](StructureDefinition-cql-library.html) profile.
 
 > For distribution to environments that support ELM execution directly, FHIR Library resources **MAY** include ELM content in XML or JSON format. See the [Using ELM](using-elm.html) topic for conformance requirements related to the use of ELM for distribution and implementation of CQL logic.
 
@@ -33,7 +33,7 @@ In addition to the use of CQL directly in [expression-valued elements](#using-ex
 * CQL namespace name **SHALL** be IG.packageId
 * CQL namespace url **SHALL** be IG.canonicalBase
 
-3. CQL library source files **SHOULD** be named `<CQLLibraryName>-<version>.cql`
+3. CQL library source files **SHOULD** be named `<CQLLibraryName>-<version>.cql`.
 4. To avoid issues with characters between web ids and names, library names **SHALL NOT** have underscores.
 
 The prohibition against underscores in CQL library names is required to ensure compliance with the canonical URL pattern (because URLs by convention should not use underscores). In addition, many publishing environments will use the canonical tail (i.e. the name of the library) as the logical id of the Library resource, which does not allow underscores per the FHIR specification.
@@ -68,7 +68,7 @@ The prohibition against underscores in CQL library names is required to ensure c
 
 2. List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
 
-3. Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping
+3. Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
 
 For example, the following CQL expression results in a `List<FHIR.Observation>`:
 
@@ -307,16 +307,16 @@ For a complete example illustrating all possible type mappings, refer to the [Ty
 1. Parameters to CQL libraries **SHALL** be either
     1. CQL-defined types that map to FHIR types, or 
     2. FHIR resource types, optionally with profile designations, or
-    3. One of the types specified in [Open Types (*)](https://hl7.org/fhir/R4/datatypes.html#open)
+    3. One of the types specified in [Open Types (*)](https://hl7.org/fhir/R4/datatypes.html#open), or
     4. A BackboneElement, in which case the elements of the BackboneElement are represented as parts, or
-    5. An Extension, in which case the elements of the Extension are represented as parts
+    5. An Extension, in which case the elements of the Extension are represented as parts.
 2. Top level expressions in CQL libraries **SHALL** return either
     1. CQL-defined types that map to FHIR types, or 
     2. FHIR resource types, optionally with profile designations, or
-    3. One of the types specified in [Open Types (*)](https://hl7.org/fhir/R4/datatypes.html#open)
+    3. One of the types specified in [Open Types (*)](https://hl7.org/fhir/R4/datatypes.html#open), or
     4. A BackboneElement, in which case the elements of the value are represented as parts, or
-    5. An Extension, in which case the elements of the Extension are represented as parts
-3. Tuple types are represented in FHIR as a `parameter` that has parts corresponding to the elements of the tuple type. List types are represented in FHIR as a `parameter` that has a cardinality of 0..*.
+    5. An Extension, in which case the elements of the Extension are represented as parts.
+3. Tuple types are represented in FHIR as a `parameter` that has parts corresponding to the elements of the tuple type. List types are represented in FHIR as a `parameter` that has a cardinality of `0..*`.
 4. Libraries used in computable artifacts **SHALL** use the `parameter` element to identify input parameters as well as the type of all top-level expressions as output parameters.
 5. Libraries used in computable artifacts **SHALL** use the `dataRequirement` element to identify any retrieves present in the CQL, according to the following mapping:
 
@@ -519,8 +519,8 @@ define SDEEthnicity: Patient.ethnicity
 {: #conformance-requirement-4-6}
 
 1. The version of CQL/ELM used for content in a library **SHOULD** be specified using the version parameter of the text/cql and application/elm+xml, application/elm+json media types.
-    a. If specified, the value of the version parameter **SHALL** correspond to the _major_ and _minor_ version of a published release of the CQL specification (https://cql.hl7.org/history.html)
-2. Resource narratives for Libraries and knowledge artifacts that use CQL **SHOULD** include the CQL/ELM version if it is specified in the media type.
+2. If specified, the value of the version parameter **SHALL** correspond to the _major_ and _minor_ version of a published release of the CQL specification (https://cql.hl7.org/history.html).
+3. Resource narratives for Libraries and knowledge artifacts that use CQL **SHOULD** include the CQL/ELM version if it is specified in the media type.
 
 For example, the following media types indicate version 1.5 of the CQL specification.
 
@@ -563,7 +563,7 @@ exists (Example."Flexible Sigmoidoscopy Performed")
 
 Certain elements in the profiles defined in this implementation guide are marked as Must Support. This flag is used to indicate that the element plays a critical role in defining, sharing, and implementing artifacts, and implementations **SHALL** understand and process the element.
 
-In addition, because artifact specifications typically make use of data implementation guides (e.g. International Patient Summary(IPS), US Core, QI-Core), the implications of the Must Support flag for profiles used from those implementation guides must be considered.
+In addition, because artifact specifications typically make use of data implementation guides (e.g. International Patient Summary (IPS), US Core, QI-Core), the implications of the Must Support flag for profiles used from those implementation guides must be considered.
 
 For more information, see the definition of [Must Support](https://hl7.org/fhir/R4/profiling.html#mustsupport) in the base FHIR specification.
 
