@@ -306,13 +306,13 @@ For a complete example illustrating all possible type mappings, refer to the [Ty
 {: #conformance-requirement-4-4}
 
 1. Parameters to CQL libraries **SHALL** be either
-    1. CQL-defined types that map to FHIR types, or 
+    1. CQL-defined types that map to FHIR types (as defined in [4.3](#conformance-requirement-4-3)), or 
     2. FHIR resource types, optionally with profile designations, or
     3. One of the types specified in [Open Types (*)](https://hl7.org/fhir/R4/datatypes.html#open), or
     4. A BackboneElement, in which case the elements of the BackboneElement are represented as parts, or
     5. An Extension, in which case the elements of the Extension are represented as parts.
-2. Top level expressions in CQL libraries **SHALL** return either
-    1. CQL-defined types that map to FHIR types, or 
+2. Top level expressions in CQL libraries, regardless of access level, **SHALL** return either
+    1. CQL-defined types that map to FHIR types (as defined in [4.3](#conformance-requirement-4-3)), or 
     2. FHIR resource types, optionally with profile designations, or
     3. One of the types specified in [Open Types (*)](https://hl7.org/fhir/R4/datatypes.html#open), or
     4. A BackboneElement, in which case the elements of the value are represented as parts, or
