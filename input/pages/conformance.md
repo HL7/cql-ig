@@ -1,4 +1,5 @@
 {:toc}
+{::options toc_levels="1..4"/}
 
 {: #conformance}
 
@@ -496,6 +497,138 @@ define SDEEthnicity: Patient.ethnicity
 ```
 
 > In the case that dynamic CQL construction is required, implementers should take care to sanitize inputs from any parameters used in the construction of dynamic CQL to avoid [injection attacks](https://en.wikipedia.org/wiki/SQL_injection).
+
+##### Parameter Constraints
+{: #parameter-constraints}
+
+In some cases, it is useful to describe constraints on the allowed values for parameters in CQL libraries. CQL currently does not support stating these requirements beyond the type and optional default for the parameter. Parameter constraints are being considered in a future version of CQL, but in anticipation of that feature being available, this guide provides a mechanism for declaring a parameter constraint in the CQLLibrary profile by allowing the [targetConstraint]({{site.data.fhir.ver.ext}}/StructureDefinition-targetConstraint.html) extension to be used. For example, given a CQL library with the following parameter declaration:
+
+```cql
+// NOTE: The measurement period provided must describe a full calendar year to meet measure intent
+parameter "Measurement Period" Interval<DateTime>
+```
+
+In this case, to indicate to consuming systems the requirement that the measurement period must be a full calendar year, the following extension can be used on the parameter definition in the Library:
+
+```json
+  "parameter": [
+    {
+      "extension" : [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/targetConstraint",
+          "extension": [
+            {
+              "url" : "key",
+              "valueString": "mp-valid"
+            },
+            {
+              "url" : "severity",
+              "code" : "error"
+            },
+            {
+              "url" : "expression",
+              "valueExpression" : {
+                "language" : "text/cql-expression",
+                "expression" : "duration in years of \"Measurement Period\" = 1"
+              }
+            },
+            {
+              "url" : "human",
+              "valueString" : "The measurement period must be a full calendar year in order to meet measure intent"
+            }
+          ]
+        }
+      ],
+      "name" : "Measurement Period",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "type" : "Period"
+    }
+  ]
+```
+
+As another example, consider a co-occurrence constraint on parameters:
+
+```cql
+// A value for X must be supplied if NeedsX is true
+parameter NeedsX Boolean
+parameter X Integer
+```
+
+And the associated targetConstraint:
+
+```json
+  "parameter": [
+    {
+      "name" : "NeedsX",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "type" : "boolean"
+    },
+    {
+      "extension" : [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/targetConstraint",
+          "extension": [
+            {
+              "url" : "key",
+              "valueString": "x-valid"
+            },
+            {
+              "url" : "severity",
+              "code" : "error"
+            },
+            {
+              "url" : "expression",
+              "valueExpression" : {
+                "language" : "text/cql-expression",
+                "expression" : "NeedsX implies X is not null"
+              }
+            },
+            {
+              "url" : "human",
+              "valueString" : "A value for X must be supplied if NeedsX is true"
+            }
+          ]
+        }
+      ],
+      "name" : "X",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "type" : "Integer"
+    }
+  ]
+```
+
+> NOTE: This capability can be provided in the declaring CQL library using the Error function to provide run-time enforcement as illustrated in the snippet below. The use of the `targetConstraint` extension as described here allows this information to be communicated structurally, allowing consumers of the library to understand the constraints. For example to provide a user-interface that guides user to providing correct values for the parameters, rather than waiting for the run-time error to occur.
+
+```cql
+library ParameterConstraintsExample
+
+using FHIR version '4.0.1'
+
+parameter "Measurement Period" Interval<DateTime>
+parameter NeedsX Boolean
+parameter X Integer
+
+context Patient
+
+define private function ValidateMeasurementPeriod()
+  Message(true, duration in years of "Measurement Period" = 1, 'mp-valid', 'Error', 'Measurement Period must describe a full calendar year to meet measure intent')
+
+define private function ValidateX()
+  Message(true, NeedsX implies X is not null, 'x-valid', 'Error', 'A value for X must be supplied if NeedsX is true')
+
+define "Initial Population":
+  ValidateMeasurementPeriod()
+    and ValidateX()
+    and ...
+```
+
+<!--NOTE: Added extension tracker to enable this use case: https://jira.hl7.org/browse/FHIR-50991 -->
 
 #### RelatedArtifacts
 {: #relatedartifacts}

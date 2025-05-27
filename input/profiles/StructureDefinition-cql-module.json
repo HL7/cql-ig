@@ -264,6 +264,23 @@
         ]
       },
       {
+        "id": "Library.parameter.extension:targetConstraint",
+        "path": "Library.parameter.extension",
+        "sliceName": "targetConstraint",
+        "short": "Allowed values for the parameter",
+        "definition": "A targetConstraint defining the allowed values for the parameter. The constraint expression is expected to be evaluated in the context of the library.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/targetConstraint"
+            ]
+          }
+        ]
+      },
+      {
         "id": "Library.dataRequirement",
         "path": "Library.dataRequirement",
         "requirements": "A module definition library must declare any data requirements.",
