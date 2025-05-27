@@ -14,7 +14,7 @@ In addition to the use of CQL directly in [expression-valued elements](#using-ex
 
 1. Content conforming to this implementation guide **SHALL** use FHIR Library resources to represent CQL libraries in FHIR.
 2. For distribution to environments that support CQL compilation directly, FHIR Library resources **SHOULD** include CQL content.
-    a. FHIR Library resources that include CQL content **SHALL** conform to the [CQLLibrary](StructureDefinition-cql-library.html) profile
+3. FHIR Library resources that include CQL content **SHALL** conform to the [CQLLibrary](StructureDefinition-cql-library.html) profile
 
 > For distribution to environments that support ELM execution directly, FHIR Library resources **MAY** include ELM content in XML or JSON format. See the [Using ELM](using-elm.html) topic for conformance requirements related to the use of ELM for distribution and implementation of CQL logic.
 
