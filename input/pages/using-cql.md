@@ -164,11 +164,11 @@ Conformance Requirement 2.6 describes how to specify a code system within a CQL 
 2. The URI **SHALL** be the canonical URL for the code system.
 3. The Code System declaration **MAY** include a version, consistent with the URI specification for FHIR and the code system.
 
-For example, the following CQL `codesystem` declaration establishes `"SNOMED CT:2017-09"` as the local identifier for the code system with url `http://snomed.info/sct` and version `http://snomed.info/sct/731000124108/version/201709`:
+For example, the following CQL `codesystem` declaration establishes `"SNOMED CT:20250301"` as the local identifier for the code system with url `http://snomed.info/sct` and version `http://snomed.info/sct/731000124108/version/20250301`:
 
 ```cql
-codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct'
-  version 'http://snomed.info/sct/731000124108/version/201709'
+codesystem "SNOMED CT:20250301": 'http://snomed.info/sct'
+  version 'http://snomed.info/sct/731000124108/version/20250301'
 ```
 
 Snippet 2-4: codesystem definition line from [Example.cql](Library-Example.html#cql-content).
@@ -176,7 +176,7 @@ Snippet 2-4: codesystem definition line from [Example.cql](Library-Example.html#
 The canonical URL for a code system is a globally unique, stable, version-independent identifier for the code system.
 The [HL7 Terminology (THO) site ](http://terminology.hl7.org) defines canonical URLs for most common code systems.
 
-The local identifier for the codesystem ("SNOMED CT:2017-09" in this case) should include the friendly name of the code system
+The local identifier for the codesystem ("SNOMED CT:20250301" in this case) should include the friendly name of the code system
 and optionally, an indication of the version, separated with a colon.
 
 Version information for code systems is not required to be included in knowledge artifacts; terminology versioning information may be
@@ -195,10 +195,10 @@ When code systems are used within knowledge artifacts, if the artifact includes 
 * The external identifier for the code system.
 * The version of the code system, if specified.
 
-For example, the code system declaration from Snippet 2-4 `"SNOMED CT:2017-09"` could be represented in the narrative HTML of the library resource as:
+For example, the code system declaration from Snippet 2-4 `"SNOMED CT:20250301"` could be represented in the narrative HTML of the library resource as:
 
 ```html
-"SNOMED CT:2017-09": "SNOMED CT" (http://snomed.info/sct, version http://snomed.info/sct/731000124108/version/201709)
+"SNOMED CT:20250301": "SNOMED CT" (http://snomed.info/sct, version http://snomed.info/sct/731000124108/version/20250301)
 ```
 
 ### Value Sets
