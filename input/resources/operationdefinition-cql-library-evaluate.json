@@ -65,7 +65,7 @@
       "use" : "in",
       "min" : 0,
       "max" : "*",
-      "documentation" : "The identifier of the expression(s) to be evaluated, regardless of whether the declaration is private. If no expression names are provided, the operation evaluates all public expression definitions in the library (or all expressions if includePrivate is true).",
+      "documentation" : "The identifier (optionally qualified) of the expression(s) to be evaluated, regardless of whether the declaration is private. If no expression names are provided, the operation evaluates all public expression definitions in the library (or all expressions if includePrivate is true). If an expression name is unqualified, it refers to the name of an expression defined in the library being evaluated. If the expression name is qualified, the name refers to an the identifier of an expression defined in the library with the qualifier name, and the qualifier name must be the name of a library included by the library being evaluated (or an included library, recursively). Note that this may result in expression results being included multiple times, as expressions in included libraries may be invoked multiple times from the library being evaluated.",
       "type" : "string"
     },
     {
@@ -81,7 +81,7 @@
       "use" : "in",
       "min" : 0,
       "max" : "1",
-      "documentation" : "Any input parameters for the library. Parameters defined in this input will be bound by name to parameters defined in the CQL library (or referenced libraries). Parameter types are mapped to CQL as specified in the Using CQL section of this implementation guide. If a parameter appears more than once in the input Parameters resource, it is represented with a List in the input CQL. If a parameter has parts, it is represented as a Tuple in the input CQL.",
+      "documentation" : "Any input parameters for the library. Parameters defined in this input will be bound by name to parameters defined in the CQL library (or included libraries, recursively). Parameter types are mapped to CQL as specified in the Using CQL section of this implementation guide. If a parameter appears more than once in the input Parameters resource, it is represented with a List in the input CQL. If a parameter has parts, it is represented as a Tuple in the input CQL. If parameter names are qualified, the parameter will be bound only to parameters in the library with the qualifier name, and the qualifier name must be the name of a library included by the library being evaluated (or an included library, recursively).",
       "type" : "Parameters"
     },
     {
