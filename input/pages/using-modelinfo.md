@@ -53,24 +53,57 @@ This implementation guide includes [FHIR-ModelInfo](Library-FHIR-ModelInfo.html)
 
 > NOTE: Previous versions of the FHIR-ModelInfo library were included A) as embedded resources in the CQL-to-ELM translator (referenced without a namespace and the semantic version of the FHIR specification being modeled), as well as B) in the CQFramework Common implementation guide (referenced with the canonical reference `http://fhir.org/guides/cqf/common/Library/FHIR-ModelInfo|4.0.1`). The content of the 4.0.1 versions of these Model Info files is the same as what is now published in this implementation guide, with the canonical reference `http://hl7.org/fhir/uv/cql/Library/FHIR-ModelInfo|4.0.1`. Note the model info version here is explicitly aligned with the FHIR specification version being modeled, not the version of this implementation guide. This is to avoid any confusion about what version of the FHIR model is being used in a given CQL library.
 
-#### Profile-informed ModelInfo
-{: #profile-informed-modelinfo}
+#### Derived ModelInfo
+{: #derived-modelinfo}
 
-CQL can be used with a FHIR ModelInfo directly, as described above. However, FHIR profiles include a wealth of computable information about the intended structure of the clinical data involved in an exchange, including terminology bindings, constraints, descriptive metadata, _slices_ and _extensions_. To facilitate authoring that can easily reference this information, the tooling to construct ModelInfo from the base FHIR StructureDefinitions has been enhanced to support building ModelInfo that is specific to an implementation guide:
+CQL can be used with a FHIR ModelInfo directly, as described above. However, FHIR profiles include a wealth of computable information about the intended structure of the clinical data involved in an exchange, including terminology bindings, constraints, descriptive metadata, _slices_, and _extensions_. To facilitate authoring that can easily reference this information, the tooling to construct ModelInfo from the base FHIR StructureDefinitions has been enhanced to support building ModelInfo that is specific to an implementation guide.
+
+There are multiple approaches to generating ModelInfo based on the profiles in an implementation guide. The first of these is _Derived ModelInfo_, which performs the following step for each profile:
 
 1. Each profile (StructureDefinition with derivation set to `constraint`) results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
     1. `namespace` is set to the `modelName`
-    2. `name` is set to the `name` element of the StructureDefinition
+    2. `name` is set to the `name` element of the StructureDefinition (without the prefix if the name is prefixed with the modelName)
     3. `baseType` is set to the qualified name of the class corresponding to the `baseDefinition`
     4. `identifier` is set to the canonical `url` of the StructureDefinition
     5. `label` is set to the `title` of the StructureDefinition (unless overridden by the cqf-modelInfo-label extension)
     6. `retrievable` is set to `true` (unless overridden by the cqf-modelInfo-isRetrievable extension)
     7. `primaryCodePath` is set based on the cqf-modelInfo-primaryCodePath extenssion
-2. FHIR Primitive types are mapped to CQL types according to the above FHIR Type Mapping section.
+
+For example, processing the US Core 7.0.0 implementation guide produces a ModelInfo with a ClassInfo for the EncounterProfile:
+
+```cql
+using USCore version '7.0.0'
+
+...
+
+define "Encounters":
+  ["EncounterProfile"]
+```
+
+Conceptually, this expression results in any Encounter resource that conforms to the US Core Encounter Profile.
+
+> NOTE: How systems implement the requirement that retrieve expressions only result in resource instances that conform to the requested profile is not prescribed, because there are many different ways this requirement can be achieved. Because profile conformance testing can be expensive, there are performance tradeoffs associated with how this is done in any particular environment.
+
+#### Profile-informed ModelInfo
+{: #profile-informed-modelinfo}
+
+The second widely used approach to generating ModelInfo based on the profiles in an implementation guide is called _Profile-informed Authoring_, and takes greater advantage of the information defined in profiles, including slices and extensions. However, it also "flattens" the types produced in the ModelInfo, so that authors are presented with a complete picture of FHIR from the perspective of the particular implementation guide. This approach has some advantages, but it also has the primary disadvantage of preventing reuse of logic across implementation guides, because profiles in each implementation guide result in entirely separate classes in CQL. 
+
+This approach has been used for artifacts authored with USCore and QICore versions 6 and below, and is constructed by performing the following steps for each profile:
+
+1. Each profile (StructureDefinition with derivation set to `constraint`) results in a new ClassInfo in the ModelInfo, derived from the ClassInfo for the baseDefinition of the profile
+    1. `namespace` is set to the `modelName`
+    2. `name` is set to the `name` element of the StructureDefinition
+    3. `baseType` is set to the qualified name of the class corresponding to the `type` (as opposed to the `baseDefinition` used for Derived ModelInfo)
+    4. `identifier` is set to the canonical `url` of the StructureDefinition
+    5. `label` is set to the `title` of the StructureDefinition (unless overridden by the cqf-modelInfo-label extension)
+    6. `retrievable` is set to `true` (unless overridden by the cqf-modelInfo-isRetrievable extension)
+    7. `primaryCodePath` is set based on the cqf-modelInfo-primaryCodePath extenssion
+2. FHIR Primitive types are mapped to CQL types according to the [FHIR Type Mapping](conformance.html#fhir-type-mapping) section.
 3. Extensions and slices defined in profiles are represented as first-class elements in the ClassInfo. Specifically, ClassInfo structures are created with elements as defined by the slice or extension definitions.
     1. For slices, a new ClassInfo is created derived from the ClassInfo corresponding to the element being sliced, and named based on the `sliceName` element of the slice definition. An element of this type and named with the `sliceName` is then added to the containing ClassInfo.
     2. For extensions, a new ClassInfo is created derived from the `Extension` ClassInfo and named based on the `name` of the extension definition. An element of this type and named with the extension `sliceName` is then added to the containing ClassInfo.
-4. If a terminology-valued element has a `cqf-notDoneValueSet` extension defined, the element is typed as a Choice of the terminology-value (CodeableConcept, Coding, or Code) and ValueSet, allowing retrieves to be performed against the ValueSet referenced by the cqf-notDoneValueSet extension
+4. If a terminology-valued element has a `cqf-notDoneValueSet` or `codeOptions` extension defined, the element is typed as a Choice of the terminology-value (CodeableConcept, Coding, or Code) and ValueSet, allowing retrieves to be performed against the ValueSet referenced by the cqf-notDoneValueSet or codeOptions extension
 
 For example, consider the [US Core Blood Pressure Profile](https://hl7.org/fhir/us/core/StructureDefinition-us-core-blood-pressure.html). This profile has two slices of the `component` element, named `systolic` and `diastolic`. The resulting USCore ModelInfo has classes derived from the `USCore.Observation.Component` class:
 

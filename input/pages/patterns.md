@@ -177,16 +177,29 @@ For common use cases, this implementation guide provides a [FHIRCommon](Library-
 include hl7.fhir.uv.cql.FHIRCommon
 ```
 
+### Derived ModelInfo
+
+Note that in addition to using FHIR directly, CQL also supports models derived from implementation guides specifically. For example:
+
+```cql
+using USCore version '7.0.0'
+```
+
+With this approach, the profiles defined in the USCore implementation guide are represented directly as types in the model, with types _derived_ from base definition of the profile. For example, the US Core Encounter Profile is derived from the FHIR Encounter resource. The _Computable Name_ of the profile is used to define the identifier of the type in CQL, with the exception that if the computable name is prefixed with the name of the model, the prefix is dropped. For example:
+
+```cql
+define "Encounters":
+  ["EncounterProfile"]
+```
+
+Conceptually, this results in any Encounter resource that conforms to the US Core Encounter Profile.
+
+For detailed information on how Derived ModelInfo is produced for an implementation guide, see the [Derived ModelInfo](using-modelinfo.html#derived-modelinfo) section.
+
 ### Profile-informed Authoring
 {: #profile-informed-authoring}
 
-Note that rather than using FHIR directly, CQL also supports models derived from implementation guides specifically. For example:
-
-```cql
-using USCore version '6.1.0'
-```
-
-With this approach, the profiles defined in the USCore implementation guide are used to provide the model. This approach is referred to as "profile-informed authoring" and automates the patterns described above, so that rather than building fluent functions, the model contains elements for slices and extensions defined in the profiles of the implementation guide. For example:
+As an alternative to Derived ModelInfo, Profile-informed Authoring can be used. This approach was used specifically for QICore and USCore versions 6 and below as a way to simplify the model presented to CQL authors. Similar to derived model info, this approach creates types based on the profiles defined in the implementation guide, however, it automates the patterns described above, and "flattens" the hierarchy so that authors are presented with as simple a view of the profile as possible. For example:
 
 ```cql
 define "Blood Pressure With Slices":
