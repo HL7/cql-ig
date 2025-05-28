@@ -139,21 +139,35 @@ pages:
 #   Patient/bad-example: omit
 
 resources:
-  Parameters/qicore-modelinfo-settings:
-    name: Example ModelInfo Settings Parameters
+  Parameters/fhir-modelinfo-settings:
+    name: FHIR ModelInfo Settings
+    description: Settings used to construct the FHIR ModelInfo version 4.0.1
+    exampleBoolean: false
+  Parameters/uscore-modelinfo-settings:
+    name: Example ModelInfo Settings Parameters for the USCore Implementation Guide
     description: Example Parameters resource demonstrating the use of ModelInfo configuration parameters. This resource would typically be a contained resource in an implementation guide or artifact collection.
+    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfosettings
+  Parameters/qicore-modelinfo-settings:
+    name: Example ModelInfo Settings Parameters for the QICore Implementation Guide
+    description: Example Parameters resource demonstrating the use of ModelInfo configuration parameters. This resource would typically be a contained resource in an implementation guide or artifact collection.
+    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfosettings
   Parameters/cql-evaluationresult-example:
     name: Example Evaluation Result Parameters
     description: Example Parameters resource demonstrating the use of data-absent-reason extension to indicate a null evaluation result.
+    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult
   Parameters/cql-options-example:
     name: Example CQL Operations Parameters
     description: Example Parameters resource demonstrating the use of the CQLOptions profile to specify CQL translator options. This resource would typically be a contained resource in an implementation guide, artifact collection, or library.
+    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-options
   Parameters/cql-typemappingexampleresult:
     name: Example Type Mapping Evaluation Result Parameters
     description: Example Parameters resource showing the result of evaluating the TypeMappingExample library, demonstrating all possible CQL-to-FHIR type mappings.
+    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult
   Patient/example:
     name: Example Patient
     description: Example Patient resource used as part of the observation negation example.
+    exampleBoolean: true
   Observation/negation-example:
     name: Example Negation Observation
     description: Example Observation resource illustrating negation and the use of the `notDoneValueSet` extension.
+    exampleBoolean: true

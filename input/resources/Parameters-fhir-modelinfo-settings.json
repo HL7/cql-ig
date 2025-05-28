@@ -1,0 +1,1705 @@
+{
+    "resourceType": "Parameters",
+    "id": "fhir-modelinfo-settings",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfosettings"
+        ]
+    },
+    "parameter": [
+        {
+            "name": "modelName",
+            "valueString": "FHIR"
+        },
+        {
+            "name": "modelVersion",
+            "valueString": "4.0.1"
+        },
+        {
+            "name": "modelNamespace",
+            "valueString": "hl7.fhir"
+        },
+        {
+            "name": "modelUrl",
+            "valueString": "http://hl7.org/fhir"
+        },
+        {
+            "name": "patientClassName",
+            "valueString": "Patient"
+        },
+        {
+            "name": "patientBirthDatePropertyName",
+            "valueString": "birthDate"
+        },
+        {
+            "name": "targetQualifier",
+            "valueString": "FHIR"
+        },
+        {
+            "name": "targetUrl",
+            "valueString": "http://hl7.org/fhir"
+        },
+        {
+            "name": "useCqlPrimitives",
+            "valueBoolean": false
+        },
+        {
+            "name": "createSliceElements",
+            "valueBoolean": false
+        },
+        {
+            "name": "includeMetadata",
+            "valueBoolean": false
+        },
+        {
+            "name": "flatten",
+            "valueBoolean": false
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Account"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Account"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/ActivityDefinition"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ActivityDefinition"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "topic"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/AdverseEvent"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "AdverseEvent"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "event"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "AllergyIntolerance"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Appointment"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Appointment"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "serviceType"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Basic"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Basic"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/BodyStructure"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "BodyStructure"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "location"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/CarePlan"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "CarePlan"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/CareTeam"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "CareTeam"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Claim"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Claim"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/ClaimResponse"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ClaimResponse"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/ClinicalImpression"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ClinicalImpression"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Communication"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Communication"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/CommunicationRequest"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "AllergyIntolerance"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Composition"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Composition"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Condition"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Condition"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Consent"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Consent"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Coverage"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Coverage"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/DetectedIssue"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "DetectedIssue"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Device"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Device"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/DeviceMetric"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "DeviceMetric"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/DeviceRequest"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "DeviceRequest"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/DeviceUseStatement"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "DeviceUseStatement"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "device.code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/DiagnosticReport"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "DiagnosticReport"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Encounter"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Encounter"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/EpisodeOfCare"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "EpisodeOfCare"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ExplanationOfBenefit"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "FamilyMemberHistory"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Flag"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Flag"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Goal"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Goal"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/GuidanceResponse"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "GuidanceResponse"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "module"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/HealthcareService"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "HealthcareService"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/ImagingStudy"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ImagingStudy"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Immunization"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Immunization"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "vaccineCode"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/ImmunizationEvaluation"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ImmunizationEvaluation"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ImmunizationRecommendation"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Library"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Library"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "topic"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Location"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Location"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Measure"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Measure"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/MeasureReport"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Measure"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "measure"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Medication"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Medication"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/MedicationAdministration"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationAdministration"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/MedicationDispense"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationDispense"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/MedicationRequest"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationRequest"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/MedicationStatement"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationStatement"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/MessageDefinition"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MessageDefinition"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "event"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/NutritionOrder"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "NutritionOrder"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Observation"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/OperationOutcome"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "OperationOutcome"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "issue.code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Organization"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Organization"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Patient"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Practitioner"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Practitioner"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/PractitionerRole"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "PractitionerRole"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Procedure"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Procedure"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Questionnaire"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Library"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "name"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "QuestionnaireResponse"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/RelatedPerson"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "RelatedPerson"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "relationship"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/RiskAssessment"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "RiskAssessment"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/SearchParameter"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "SearchParameter"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "topic"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Sequence"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Sequence"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/ServiceRequest"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ServiceRequest"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Specimen"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Specimen"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Substance"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Substance"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/SupplyDelivery"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "SupplyDelivery"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/SupplyRequest"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "SupplyRequest"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Task"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Task"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        }
+    ]
+}
