@@ -630,6 +630,49 @@ define "Initial Population":
 
 <!--NOTE: Added extension tracker to enable this use case: https://jira.hl7.org/browse/FHIR-50991 -->
 
+##### Related Data Requirements
+
+To establish relationships between data requirements, the [cqf-relatedRequirement]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-relatedRequirement.html) extension can be used. For example, consider the following expression that retrieves both MedicationRequest and Medication resources:
+
+```cql
+define "Medication Request With Aspirin":
+  [MedicationRequest] MR
+    with [Medication] M
+      such that MR.medication.references(M)
+        and M.code in "Aspirin"
+```
+
+And the resulting data requirements:
+
+```json
+  "dataRequirement": [
+    {
+      "id": "G10001",
+      "type": "MedicationRequest"
+    },
+    {
+      "id": "G10002",
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-relatedRequirement",
+        "extension": [{
+          "url": "targetId",
+          "valueString": "G10001"
+        }, {
+          "url": "targetPath",
+          "valueString": "medication"
+        }]
+      }],
+      "type": "Medication",
+      "codeFilter": [{
+        "path": "code",
+        "valueset": "http://example.org/ValueSet/Aspirin"
+      }]
+    }
+  ]
+```
+
+<!-- NOTE: FHIR-44779 PR on the extensions pack needs to be merged before this can be committed -->
+
 #### RelatedArtifacts
 {: #relatedartifacts}
 
