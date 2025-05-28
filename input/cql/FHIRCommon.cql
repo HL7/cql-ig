@@ -171,7 +171,7 @@ define fluent function hasEnd(period Interval<DateTime>):
 @description: Given an interval, returns the ending point if the interval has an ending boundary specified,
 otherwise, returns the starting point
 */
-define fluent function latest(choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Age, FHIR.Range> ):
+define fluent function latest(choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Age, FHIR.Range>):
   (choice.toInterval()) period
     return
       if (period.hasEnd()) then end of period
@@ -181,7 +181,7 @@ define fluent function latest(choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Age
 @description: Given an interval, return the starting point if the interval has a starting boundary specified,
 otherwise, return the ending point
 */
-define fluent function earliest(choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Age, FHIR.Range> ):
+define fluent function earliest(choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Age, FHIR.Range>):
   (choice.toInterval()) period
     return
       if (period.hasStart()) then start of period
@@ -227,7 +227,34 @@ define fluent function includesCode(codeList List<CodeableConcept>, code Concept
   exists (codeList C where C ~ code)
 
 /*
-@description: Returns any extensions defined on the given resource with the specified url.
+@description: Returns the canonical reference to the ValueSet referred to by the codeOptions extension, if present
+@comment: This function is usable on any CodeableConcept, and looks for the [codeOptions](https://hl7.org/fhir/extensions/StructureDefinition-codeOptions.html)
+extension, returning the canonical reference to the ValueSet identifying the set of possible codes for the activity.
+@seealso: [Activity Extent](https://build.fhir.org/ig/HL7/cql-ig/patterns.html#activity-extent)
+*/
+define fluent function codeOptions(code CodeableConcept):
+  (code.ext('http://hl7.org/fhir/StructureDefinition/codeOptions').value as canonical)
+
+/*
+@description: Returns the url portion of the given canonical reference (as a string)
+@comment: This function returns the url portion of the given canonical reference (i.e. everything up to but not including the version pipe (`|`) and version).
+If the canonical reference does not have a version, this function returns the canonical reference.
+For example, given the canonical reference `http://example.org/ValueSet/ABC|123`, this function returns `http://example.org/ValueSet/ABC`.
+*/
+define fluent function url(canonical FHIR.canonical):
+  Split(canonical, '|').first()
+
+/*
+@description: Returns the version portion of the given canonical reference (as a string)
+@comment: This function returns the version portion of the given canonical reference (i.e. everything after the version pipe (`|`), if present).
+If the canonical reference does not have a version, this function returns `null`.
+For example, given the canonical reference `http://example.org/ValueSet/ABC|123`, this function returns `123`.
+*/
+define fluent function version(canonical FHIR.canonical):
+  Split(canonical, '|').skip(1).first()
+
+/*
+@description: Returns any extensions defined on the given resource with the specified url
 */
 define fluent function exts(domainResource DomainResource, url String):
   domainResource.extension E
@@ -253,7 +280,7 @@ define fluent function exts(element Element, url String):
 /*
 @description: Returns the single extension (if present) on the given element with the specified url.
 @comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
+is more than one extension on the given element with the specified url.
 */
 define fluent function ext(element Element, url String):
   singleton from element.exts(url)
@@ -285,10 +312,24 @@ define fluent function modifierExts(element BackboneElement, url String):
 /*
 @description: Returns the single modifier extension (if present) on the given element with the specified url.
 @comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
+is more than one extension on the given element with the specified url.
 */
 define fluent function modifierExt(element BackboneElement, url String):
   singleton from element.modifierExts(url)
+
+/*
+@description: Returns the birthTime of the patient, if present
+@comment: This function returns the value of the birthTime extension, if present, null otherwise.
+*/
+define fluent function birthTime(patient Patient):
+  patient.birthDate.ext('http://hl7.org/fhir/StructureDefinition/patient-birthTime').value as dateTime
+
+/*
+@description: Returns the birth date (and time if present) (as a DateTime)
+@comment: This function returns the birthTime of the patient, if present, else the birthDate of the patient as a DateTime
+*/
+define fluent function birthDateTime(patient Patient):
+  Coalesce(patient.birthTime().value, patient.birthDate.toDateTime())
 
 /*
 @description: Returns true if the given condition has the given category
@@ -446,80 +487,150 @@ define fluent function refuted(conditions List<FHIR.Condition>):
     where C.verificationStatus ~ "refuted"
 
 /*
+@description: Returns the abatement of the given AllergyIntolerance, if present
+*/
+define fluent function abatement(allergyIntolerance AllergyIntolerance):
+  allergyIntolerance.ext('http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement').value
+    as Choice<dateTime, Age, Period, Range, string>
+
+/*
+@description: Returns the resolutionAge of the given AllergyIntolerance, if present
+*/
+define fluent function resolutionAge(allergyIntolerance AllergyIntolerance):
+  allergyIntolerance.ext('http://hl7.org/fhir/StructureDefinition/allergyintolerance-resolutionAge').value
+    as Age
+
+/*
+@description: Returns an interval representing the normalized abatement of a given AllergyIntolerance resource.
+@comment: This function uses the abatement extension, if present, otherwise the resolutionAge.
+If the abatement of the AllergyIntolerance is a DateTime, the result is an interval beginning and ending on that DateTime.
+If the abatement is a Period, the result is the Period converted to an Interval of DateTime.
+If the abatement is an Age, the result is an interval from the date the patient turned that age to immediately before one year later.
+If the abatement is a Range, the quantities are expected to be calendar-durations and are interpreted as an age range during
+which the abatement occurred. The result is an interval from the date the patient turned the starting age of the quantity interval, and ending immediately
+before one year later than the date the patient turned the ending age of the quantity interval.
+If the resolutionAge is present, the result is an interval from the date the patient turned that age to immediately before one year later.
+
+NOTE: Due to the complexity of determining an interval from a String, this function will throw
+a run-time exception if used with a Condition instance that has a String as the abatement value.
+*/
+define fluent function abatementInterval(allergyIntolerance AllergyIntolerance):
+  allergyIntolerance A
+    let 
+      abatement: A.abatement(),
+      resolutionAge: A.resolutionAge()
+    return
+      if abatement is FHIR.dateTime then
+        Interval[FHIRHelpers.ToDateTime(abatement as FHIR.dateTime), FHIRHelpers.ToDateTime(abatement as FHIR.dateTime)]
+      else if abatement is FHIR.Period then
+        FHIRHelpers.ToInterval(abatement as FHIR.Period)
+      else if abatement is FHIR.string then
+        Message(null as Interval<DateTime>, true, 'NOT_IMPLEMENTED', 'Error', 'Calculation of an interval from a String value is not supported')
+      else if abatement is FHIR.Age then
+        Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(abatement as FHIR.Age),
+          FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(abatement as FHIR.Age) + 1 year)
+      else if abatement is FHIR.Range then
+        Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((abatement as FHIR.Range).low),
+          FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((abatement as FHIR.Range).high) + 1 year)
+      else if abatement is FHIR.boolean then
+        Interval[end of A.onset.toInterval(), A.recordedDate)
+      else if resolutionAge is not null then
+        Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(resolutionAge),
+          FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(resolutionAge) + 1 year)
+      else 
+        null
+
+/*
+@description: Returns an interval representing the normalized prevalence period of a given Condition resource.
+@comment: Uses the toInterval and toAbatementInterval functions to determine the widest potential interval from
+onset to abatement as specified in the given Condition.
+*/
+define fluent function prevalenceInterval(allergyIntolerance AllergyIntolerance):
+if allergyIntolerance.clinicalStatus ~ "allergy-active" then
+  Interval[start of allergyIntolerance.onset.toInterval(), end of allergyIntolerance.abatementInterval()]
+else
+  (end of allergyIntolerance.abatementInterval()) abatementDate
+    return 
+      if abatementDate is null then
+        Interval[start of allergyIntolerance.onset.toInterval(), abatementDate)
+      else
+        Interval[start of allergyIntolerance.onset.toInterval(), abatementDate]
+
+/*
 @description: Returns true if the given allergy has a clinical status of active
 */
-define fluent function isAllergyActive(allergyIntolerance FHIR.AllergyIntolerance):
+define fluent function isActive(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.clinicalStatus ~ "allergy-active"
 
 /*
 @description: Returns allergies in the given list that have a clinical status of active
 */
-define fluent function allergyActive(allergyIntolerances List<FHIR.AllergyIntolerance>):
+define fluent function active(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
     where A.clinicalStatus ~ "allergy-active"
 
 /*
 @description: Returns true if the given condition has a clinical status of inactive
 */
-define fluent function isAllergyInactive(allergyIntolerance FHIR.AllergyIntolerance):
+define fluent function isInactive(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.clinicalStatus ~ "allergy-inactive"
 
 /*
 @description: Returns allergies in the given list that have a clinical status of inactive
 */
-define fluent function allergyInactive(allergyIntolerances List<FHIR.AllergyIntolerance>):
+define fluent function inactive(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
     where A.clinicalStatus ~ "allergy-inactive"
 
 /*
 @description: Returns true if the given condition has a clinical status of resolved
 */
-define fluent function isAllergyResolved(allergyIntolerance FHIR.AllergyIntolerance):
+define fluent function isResolved(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.clinicalStatus ~ "allergy-resolved"
 
 /*
 @description: Returns allergies in the given list that have a clinical status of resolved
 */
-define fluent function allergyResolved(allergyIntolerances List<FHIR.AllergyIntolerance>):
+define fluent function resolved(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
     where A.clinicalStatus ~ "allergy-resolved"
 
 /*
 @description: Returns true if the given condition has a verification status of confirmed
 */
-define fluent function isAllergyConfirmed(allergyIntolerance FHIR.AllergyIntolerance):
+define fluent function isConfirmed(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.verificationStatus ~ "allergy-confirmed"
 
 /*
 @description: Returns allergies in the given list that have a verification status of confirmed
 */
-define fluent function allergyConfirmed(allergyIntolerances List<FHIR.AllergyIntolerance>):
+define fluent function confirmed(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
     where A.verificationStatus ~ "allergy-confirmed"
 
 /*
 @description: Returns true if the given condition has a verification status of unconfirmed
 */
-define fluent function isAllergyUnconfirmed(allergyIntolerance FHIR.AllergyIntolerance):
+define fluent function isUnconfirmed(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.verificationStatus ~ "allergy-unconfirmed"
 
 /*
 @description: Returns allergies in the given list that have a verification status of unconfirmed
 */
-define fluent function allergyUnconfirmed(allergyIntolerances FHIR.AllergyIntolerance):
+define fluent function unconfirmed(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
     where A.verificationStatus ~ "allergy-unconfirmed"
 
 /*
 @description: Returns true if the given condition has a verification status of refuted
 */
-define fluent function isAllergyRefuted(allergyIntolerance FHIR.AllergyIntolerance):
+define fluent function isRefuted(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.verificationStatus ~ "allergy-refuted"
 
 /*
 @description: Returns allergies in the given list that have a verification status of refuted
 */
-define fluent function allergyRefuted(allergyIntolerances FHIR.AllergyIntolerance):
+define fluent function refuted(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
     where A.verificationStatus ~ "allergy-refuted"
 
@@ -689,7 +800,7 @@ define fluent function hasCategory(medicationRequest MedicationRequest, category
 define fluent function mostRecent(conditions List<Condition>):
   Last(
     conditions C
-      sort by recordedDate
+      sort by recordedDate.value
   )
 
 /*
@@ -698,7 +809,7 @@ define fluent function mostRecent(conditions List<Condition>):
 define fluent function mostRecent(observations List<FHIR.Observation>):
   Last(
     observations O
-      sort by case when issued is DateTime then issued else issued.value end
+      sort by issued.value
   )
 
 /*
@@ -707,7 +818,7 @@ define fluent function mostRecent(observations List<FHIR.Observation>):
 define fluent function mostRecent(medicationRequests List<"MedicationRequest">):
   Last(
     medicationRequests MR
-      sort by authoredOn
+      sort by authoredOn.value
   )
 
 /*

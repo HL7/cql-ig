@@ -507,7 +507,7 @@ To address the reason an action did not occur (negation rationale), clinical log
 using appropriate terminology to identify the kind of event (using a value set or direct-reference code), and then use
 additional criteria to indicate that the event did not occur, as well as identifying a reason.
 
-The following examples differentiate methods to indicate (a) presence of evidence of an action, (b) absence of evidence
+The following examples illustrate methods to indicate (a) presence of evidence of an action, (b) absence of evidence
 of an action, and (c) negation rationale for not performing an action. In each case, the "action" is an administration
 of medication included within a value set for "Antithrombotic Therapy".
 
@@ -556,12 +556,7 @@ value set.
 
 <div class="new-content" markdown="1">
 
-As discussed in the [Activity Extent](#activity-extent) section, to represent Antithrombotic Therapy Not Administered, implementing systems reference the canonical of the "Antithrombotic
-Therapy" value set using the ([codeOptions]({{site.data.fhir.ver.ext}}/StructureDefinition-codeOptions.html)) extension to indicate
-providers did not administer any of the medications in the "Antithrombotic Therapy" value set. By referencing the value
-set URI to negate the entire value set rather than a specific member code from the value set, clinicians are
-not forced to arbitrarily select a specific medication from the "Antithrombotic Therapy" value set that they
-did not administer in order to negate.
+As discussed in the [Activity Extent](#activity-extent) section, to represent "Antithrombotic Therapy Not Administered", implementing systems can use the [`codeOptions`]({{site.data.fhir.ver.ext}}/StructureDefinition-codeOptions.html) extension on the `MedicationRequest.medication` element to reference the "Antithrombotic Therapy" value set, and set the status to `not-done`. This MedicationRequest then represents the statement that a provider did not administer any of the medications in the "Antithrombotic Therapy" value set.
 
 When this pattern is used in FHIR resources, the CQL needs to take this into account by looking for the `codeOptions` extension:
 

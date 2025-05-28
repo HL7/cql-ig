@@ -73,8 +73,8 @@
   },
   "date": "2020-11-29T15:54:22-07:00",
   "description": "This library defines test cases for FHIRHelpers functionality",
-  "approvalDate": "2021-03-12",
-  "lastReviewDate": "2021-03-12",
+  "approvalDate": "2025-05-27",
+  "lastReviewDate": "2025-05-27",
   "topic": [ {
     "text": "FHIR"
   }, {
