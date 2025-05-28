@@ -318,7 +318,7 @@
         "short": "Required model information",
         "definition": "Describes required model information used by the structures in this model information.",
         "min": 0,
-        "max": "1"
+        "max": "*"
       },
       {
         "id": "Parameters.parameter:dependency.name",
@@ -337,7 +337,9 @@
           ],
           "ordered": false,
           "rules": "open"
-        }
+        },
+        "min": 4,
+        "max": 4
       },
       {
         "id": "Parameters.parameter:dependency.part:modelNamespace",
@@ -442,7 +444,7 @@
         "short": "Profile configuration",
         "definition": "Describes profile configuration information for the structures in this model information.",
         "min": 0,
-        "max": "1"
+        "max": "*"
       },
       {
         "id": "Parameters.parameter:profile.name",
@@ -461,7 +463,9 @@
           ],
           "ordered": false,
           "rules": "open"
-        }
+        },
+        "min": 1,
+        "max": 5
       },
       {
         "id": "Parameters.parameter:profile.part:url",
