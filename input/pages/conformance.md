@@ -653,7 +653,7 @@ define "Initial Population":
 
 1. The version of CQL/ELM used for content in a library **SHOULD** be specified using the version parameter of the text/cql and application/elm+xml, application/elm+json media types.
 2. If specified, the value of the version parameter **SHALL** correspond to the _major_ and _minor_ version of a published release of the CQL specification (https://cql.hl7.org/history.html).
-3. Resource narratives for Libraries and knowledge artifacts that use CQL **SHOULD** include the CQL/ELM version if it is specified in the media type.
+3. Resource narratives for Libraries and knowledge artifacts that use CQL **SHALL** include the CQL/ELM version if it is specified in the media type.
 
 For example, the following media types indicate version 1.5 of the CQL specification.
 
