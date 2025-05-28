@@ -44,12 +44,20 @@
     "type" : true,
     "instance" : true,
     "parameter" : [{
+      "name" : "url",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "documentation" : "The canonical url (with optional version) of the library to be evaluated. This parameter is only used when the operation is invoked at the type level, and is exclusive with the library parameter.",
+      "type" : "canonical"
+    },
+    {
       "name" : "library",
       "use" : "in",
       "min" : 0,
       "max" : "1",
-      "documentation" : "The canonical url (with optional version) of the library to be evaluated. This parameter is only used when the operation is invoked at the type level.",
-      "type" : "canonical"
+      "documentation" : "The library to be evaluated, provided as an input. This parameter is only used when the operation is invoked at the type level, and is exclusive with the url parameter.",
+      "type" : "Library"
     },
     {
       "name" : "subject",
