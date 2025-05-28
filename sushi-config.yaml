@@ -86,6 +86,8 @@ pages:
     title: Using CQL
   patterns.md:
     title: Patterns
+  fhir-modelinfo.md:
+    title: FHIR ModelInfo
   conformance.md:
     title: Conformance
   using-elm.md:
