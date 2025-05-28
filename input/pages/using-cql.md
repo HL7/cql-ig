@@ -31,11 +31,11 @@ This Implementation Guide (IG) recommends [Semantic Versioning](https://semver.o
 
 **Conformance Requirement 2.2 (Library Versioning):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-2)
 {: #conformance-requirement-2-2}
-  1. The library declaration **SHOULD** specify a version.
+  1. The library declaration in the CQL source **NEED NOT** specify a version, since version can be provided as part of the translation and publishing process.
   2. The library version **SHOULD** follow the convention:
        < major >.< minor >.< patch >
-3. For artifacts in draft status, the versioning scheme **NEED NOT** apply, and there is no expectation that artifact contents are stable.
-  4. The versioning scheme **SHALL** apply when an artifact moves to active status.
+  3. For artifacts in draft status, a version is not required, the versioning scheme **NEED NOT** apply, and there is no expectation that artifact contents are stable.
+  4. When an artifact moves to active status, a version is required in either the CQL source, the translated ELM (if included), or the containing FHIR Library resources.
 
 There are three main types of changes that can be made to a library:
 
