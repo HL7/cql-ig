@@ -17,7 +17,7 @@
     } ]
   },
   "date": "2021-03-12",
-  "description": "Model definition for the FHIR R4 (v4.0.1) Model",
+  "description": "Model definition for the FHIR R4 (v4.0.1) Model. For a detailed description of the contents of this model information, refer to the [FHIR ModelInfo](http://hl7.org/fhir/uv/cql/fhir-modelinfo.html) page in the Using CQL With FHIR implementation guide.",
   "approvalDate": "2021-03-12",
   "lastReviewDate": "2021-03-12",
   "topic": [ {

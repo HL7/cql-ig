@@ -5,6 +5,7 @@
     <ul class="dropdown-menu">
       <li><a href="using-cql.html" class="item">Using CQL</a></li>
       <li><a href="patterns.html" class="item">Patterns</a></li>
+      <li><a href="fhir-modelinfo.html" class="item">FHIR ModelInfo</a></li>
     </ul>
   </li>
   <li class="dropdown">

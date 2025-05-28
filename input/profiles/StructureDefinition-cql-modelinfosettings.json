@@ -236,6 +236,352 @@
             "code": "string"
           }
         ]
+      },
+      {
+        "id": "Parameters.parameter:useCqlPrimitives",
+        "path": "Parameters.parameter",
+        "sliceName": "useCqlPrimitives",
+        "short": "Map to CQL primitives?",
+        "definition": "Indicates whether or not data types should be mapped to CQL types according to the [FHIR Type Mapping](conformance.html#fhir-type-mapping) section of the Using CQL With FHIR implementation guide.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:useCqlPrimitives.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "useCqlPrimitives"
+      },
+      {
+        "id": "Parameters.parameter:useCqlPrimitives.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:createSliceElements",
+        "path": "Parameters.parameter",
+        "sliceName": "createSliceElements",
+        "short": "Create slice and extension elements?",
+        "definition": "Indicates whether or not slices and elements in profiles should be represented as first-class elements in the resulting classes.",
+        "comment": "This is a feature of Profile-informed authoring, and requires the use of _target mapping_, a feature of the CQL-to-ELM translator that is not widely implemented. Care should be taken when using profile-informed authoring to ensure that the target environment can correctly support profile-informed model information.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:createSliceElements.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "createSliceElements"
+      },
+      {
+        "id": "Parameters.parameter:createSliceElements.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:flatten",
+        "path": "Parameters.parameter",
+        "sliceName": "flatten",
+        "short": "Create flattened classes?",
+        "definition": "Indicates whether or not to create flattened classes (true), or to derive classes (e.g. a USCore.Encounter is a FHIR.Encounter).",
+        "comment": "This is a feature of Profile-informed authoring, and requires the use of _target mapping_, a feature of the CQL-to-ELM translator that is not widely implemented. Care should be taken when using profile-informed authoring to ensure that the target environment can correctly support profile-informed model information.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:flatten.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "flatten"
+      },
+      {
+        "id": "Parameters.parameter:flatten.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:dependency",
+        "path": "Parameters.parameter",
+        "sliceName": "dependency",
+        "short": "Required model information",
+        "definition": "Describes required model information used by the structures in this model information.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:dependency.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "dependency"
+      },
+      {
+        "id": "Parameters.parameter:dependency.part",
+        "path": "Parameters.parameter.part",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "name"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelNamespace",
+        "path": "Parameters.parameter.part",
+        "sliceName": "modelNamespace",
+        "short": "Namespace of the required model (i.e. packageId)",
+        "definition": "The namespace of the required model (e.g. hl7.fhir)",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelNamespace.name",
+        "path": "Parameters.parameter.part.name",
+        "fixedString": "modelNamespace"
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelNamespace.value[x]",
+        "path": "Parameters.parameter.part.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelName",
+        "path": "Parameters.parameter.part",
+        "sliceName": "modelName",
+        "short": "Name of the required model",
+        "definition": "The unqualified name of the required model (e.g. FHIR)",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelName.name",
+        "path": "Parameters.parameter.part.name",
+        "fixedString": "modelName"
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelName.value[x]",
+        "path": "Parameters.parameter.part.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelVersion",
+        "path": "Parameters.parameter.part",
+        "sliceName": "modelVersion",
+        "short": "Version of the required model",
+        "definition": "The version of the required model (e.g. 4.0.1)",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelVersion.name",
+        "path": "Parameters.parameter.part.name",
+        "fixedString": "modelVersion"
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelVersion.value[x]",
+        "path": "Parameters.parameter.part.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelUrl",
+        "path": "Parameters.parameter.part",
+        "sliceName": "modelUrl",
+        "short": "Url of the required model",
+        "definition": "The url (i.e. base canonical) of the required model (e.g. http://hl7.org/fhir)",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelUrl.name",
+        "path": "Parameters.parameter.part.name",
+        "fixedString": "modelUrl"
+      },
+      {
+        "id": "Parameters.parameter:dependency.part:modelUrl.value[x]",
+        "path": "Parameters.parameter.part.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:profile",
+        "path": "Parameters.parameter",
+        "sliceName": "profile",
+        "short": "Profile configuration",
+        "definition": "Describes profile configuration information for the structures in this model information.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:profile.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "profile"
+      },
+      {
+        "id": "Parameters.parameter:profile.part",
+        "path": "Parameters.parameter.part",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "name"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Parameters.parameter:profile.part:url",
+        "path": "Parameters.parameter.part",
+        "sliceName": "url",
+        "short": "Url of the profile",
+        "definition": "The canonical url of the profile being configured (e.g. http://hl7.org/fhir/StructureDefinition/Patient)",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:profile.part:url.name",
+        "path": "Parameters.parameter.part.name",
+        "fixedString": "url"
+      },
+      {
+        "id": "Parameters.parameter:profile.part:url.value[x]",
+        "path": "Parameters.parameter.part.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:profile.part:isIncluded",
+        "path": "Parameters.parameter.part",
+        "sliceName": "isIncluded",
+        "short": "Included in the model?",
+        "definition": "Indicates whether the profile should result in a class declaration in the model information. By default, all profiles defined in an implementation guide are included in the model information.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:profile.part:isIncluded.name",
+        "path": "Parameters.parameter.part.name",
+        "fixedString": "isIncluded"
+      },
+      {
+        "id": "Parameters.parameter:profile.part:isIncluded.value[x]",
+        "path": "Parameters.parameter.part.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:profile.part:isRetrievable",
+        "path": "Parameters.parameter.part",
+        "sliceName": "isRetrievable",
+        "short": "Can be the target of a retrieve expression?",
+        "definition": "Indicates whether the resulting class declaration can be the target of a retrieve expression in CQL. By default, for FHIR-based models, this is all non-abstract resource and profile definitions (not data types or extension definitions)",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:profile.part:isRetrievable.name",
+        "path": "Parameters.parameter.part.name",
+        "fixedString": "isRetrievable"
+      },
+      {
+        "id": "Parameters.parameter:profile.part:isRetrievable.value[x]",
+        "path": "Parameters.parameter.part.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:profile.part:label",
+        "path": "Parameters.parameter.part",
+        "sliceName": "label",
+        "short": "Label for the class",
+        "definition": "The friendly name of the class; an alternate identifier by which the class can be referenced as a type (e.g. Blood Pressure vs BloodPressure). By default, the title of the StructureDefinition, if present, will be used as the label for the class declaration.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:profile.part:label.name",
+        "path": "Parameters.parameter.part.name",
+        "fixedString": "label"
+      },
+      {
+        "id": "Parameters.parameter:profile.part:label.value[x]",
+        "path": "Parameters.parameter.part.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "Parameters.parameter:profile.part:primaryCodePath",
+        "path": "Parameters.parameter.part",
+        "sliceName": "primaryCodePath",
+        "short": "Primary code path for the class",
+        "definition": "The primary code path used as the default terminology filter if no terminology filter is specified in a retrieve (e.g. code for FHIR.Observation). If no primary code path is specified, retrieve expression must specify a code filter explicitly.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:profile.part:primaryCodePath.name",
+        "path": "Parameters.parameter.part.name",
+        "fixedString": "primaryCodePath"
+      },
+      {
+        "id": "Parameters.parameter:profile.part:primaryCodePath.value[x]",
+        "path": "Parameters.parameter.part.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
       }
     ]
   }

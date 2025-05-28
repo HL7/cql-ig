@@ -43,6 +43,7 @@ page in the menu bar:
 -  **Authoring**:
     -  **[Using CQL](using-cql.html)**: Conformance requirements for using Clinical Quality Language as part of authoring FHIR Knowledge Artifacts.
     -  **[Patterns](patterns.html)**: Patterns and guidance for using Clinical Quality Language as part of authoring FHIR Knowledge Artifacts.
+    -  **[FHIR ModelInfo](fhir-modelinfo.html)**: Description of the contents of the base FHIR ModelInfo
 -  **Integrating**:
     -  **[Conformance](conformance.html)**: Conformance requirements for integrating Clinical Quality Language as part of systems that support authoring, publishing, distribution, and implementing FHIR Knowledge Artifacts.
     -  **[Using ELM](using-elm.html)**: Conformance requirements for the use of Expression Logical Model (ELM) artifacts.
