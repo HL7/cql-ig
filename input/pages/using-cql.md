@@ -449,10 +449,20 @@ This usage of concept includes multiple concepts with different meanings from th
 ### Library-level Identifiers
 {: #library-level-identifiers}
 
-A "library-level identifier" is any named expression, function, parameter, code system, value set, concept, or code
-defined in the CQL. The library name referenced in the library-line, the data model, any referenced external library
-should not be considered "library-level identifiers". Library-level identifiers ought to be given a descriptive
-meaningful name (avoid abbreviations) and conform to Conformance Requirement 2.13.
+A "library-level identifier" is the identifier used to name any expression, function, parameter, code system, 
+value set, concept, or code defined in the CQL library. The library name specified in the library declaration, 
+the data model names, and any referenced external library names are not considered "library-level identifiers" 
+for the purposes of this conformance requirement. 
+
+It is critical that library-level identifiers have descriptive and meaningful names, avoid the use of abbreviations,
+and as much as possible, clearly and concisely communicate the intent of the declaration. These best-practices help 
+ensure that:
+* Common logic can be effectively shared, reducing the overall development effort
+* Logic can be quickly and easily understood, facilitating accurate communication of intent and reducing maintenance and review effort
+
+As an example of a library that makes use of these best-practices, consider the [USCoreElements](https://hl7.org/fhir/us/cql/2025May/Library-USCoreElements.html) library.
+
+Conformance Requirement 2.13 captures these best-practices for Library-level identifiers in a CQL library. Note that this conformance requirement is characterized as a best-practice (i.e. a **SHOULD**) only because it is not possible to computably enforce it as a **SHALL**.
 
 **Conformance Requirement 2.13 (Library-level Identifiers):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-13)
 {: #conformance-requirement-2-13}
