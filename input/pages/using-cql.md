@@ -492,7 +492,6 @@ Snippet 2-8: Expression definition from [CQLExample.cql](Library-CQLExample.html
 #### Fluent Functions
 {: #fluent-functions}
 
-<div class="new-content" markdown="1">
 Because fluent functions are invoked using _dot-invocation_, they follow the naming convention for elements, rather than library-level identifiers. For example:
 
 ```cql
@@ -500,8 +499,6 @@ define fluent function includesOrStartsDuring(condition Condition, encounter Enc
   Interval[condition.onset, condition.abatement] includes encounter.period
     or condition.onset during encounter.period
 ```
-
-</div>
 
 ### Data Type Names
 {: #data-type-names}
@@ -570,11 +567,11 @@ Conformance Requirement 2.16.
 For example:
 
 ```cql
-define "Encounters During Measurement Period":
+define "Valid Encounters During Measurement Period":
     "Valid Encounters" QualifyingEncounter
         where QualifyingEncounter.period during "Measurement Period"
 
-define function "ED Stay Time"(encounter "Encounter"):
+define fluent function stayTimeInMinutes(encounter "Encounter"):
     duration in minutes of encounter.period
 ```
 
