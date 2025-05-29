@@ -33,7 +33,7 @@ This Implementation Guide (IG) recommends [Semantic Versioning](https://semver.o
 {: #conformance-requirement-2-2}
   1. The library declaration in the CQL source **NEED NOT** specify a version, since version can be provided as part of the translation and publishing process.
   2. The library version **SHOULD** follow the convention:
-       < major >.< minor >.< patch >
+       `<major>.<minor>.<patch>`
   3. For artifacts in draft status, a version is not required, the versioning scheme **NEED NOT** apply, and there is no expectation that artifact contents are stable.
   4. When an artifact moves to active status, a version is required in either the CQL source, the translated ELM (if included), or the containing FHIR Library resources.
 
@@ -474,26 +474,26 @@ Conformance Requirement 2.13 captures these best-practices for Library-level ide
     4. **SHOULD** Use Initial Case
     5. **MAY** Include spaces
 
-> NOTE: **Initial Case** is defined as the first letter of every word is capitalized (e.g. "Includes Or Starts During") (as opposed to Title Case, which traditionally does not capitalize conjunctions and prepositions, e.g. "Includes or Starts During")
+> NOTE: **Initial Case** is defined as the first letter of every word is capitalized (e.g. "Blood Pressure Observations Within 30 Days") (as opposed to Title Case, which traditionally does not capitalize conjunctions and prepositions, e.g. "Blood Pressure Observations within 30 Days")
 
 For example:
 
 ```cql
-define function
-   "Includes Or Starts During"(condition Condition, encounter Encounter):
-      Interval[condition.onset, condition.abatement] includes encounter.period
-         or condition.onset during encounter.period
+define "Blood Pressure Observations Within 30 Days":
+  [Observation: "Blood Pressure"] O
+    where O.status = 'final'
+      and O.toInterval() starts 30 days or less before Today()
 ```
 
-Snippet 2-8: Function definition from [Example.cql](Library-Example.html#cql-content).
+Snippet 2-8: Expression definition from [CQLExample.cql](Library-CQLExample.html#cql-content).
 
-The `"Includes Or Starts During"` is the library-level identifier in this example.
+`"Blood Glucose Observations"` is the library-level identifier in this example.
 
 #### Fluent Functions
 {: #fluent-functions}
 
 <div class="new-content" markdown="1">
-Because fluent functions are invoked using _dot-invocation_, they should follow the naming convention for elements, rather than library-level identifiers. For example:
+Because fluent functions are invoked using _dot-invocation_, they follow the naming convention for elements, rather than library-level identifiers. For example:
 
 ```cql
 define fluent function includesOrStartsDuring(condition Condition, encounter Encounter):

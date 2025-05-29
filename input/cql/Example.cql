@@ -120,17 +120,17 @@ define "Antithrombotic Not Administered":
 
 define "Antithrombotic Class Not Administered":
   [MedicationAdministration] NotAdministered
-    where NotAdministered.medication.notDoneValueSet() = "Antithrombotic Therapy".id
+    where NotAdministered.medication.codeOptions() = "Antithrombotic Therapy".id
       and NotAdministered.status = 'not-done'
       and NotAdministered.statusReason in "Medical Reason"
 
-define fluent function notDoneValueSet(element Element):
-  (singleton from (element.extension E where E.url = 'http://hl7.org/fhir/StructureDefinition/cqf-notDoneValueSet')).value as uri
+define fluent function codeOptions(element Element):
+  (singleton from (element.extension E where E.url = 'http://hl7.org/fhir/StructureDefinition/codeOptions')).value as canonical
 
-define fluent function notDoneValueSet(element Choice<CodeableConcept, Reference>):
+define fluent function codeOptions(element Choice<CodeableConcept, Reference>):
   case
-    when element is CodeableConcept then (element as CodeableConcept).notDoneValueSet()
-    when element is Reference then (element as Reference).notDoneValueSet()
+    when element is CodeableConcept then (element as CodeableConcept).codeOptions()
+    when element is Reference then (element as Reference).codeOptions()
     else null
   end
 
@@ -138,9 +138,9 @@ define "Antithrombotics Not Administered":
   "Antithrombotic Not Administered"
     union "Antithrombotic Class Not Administered"
 
-define function "Includes Or Starts During"(condition Condition, encounter Encounter):
-      Interval[condition.onset, condition.abatement] includes encounter.period
-         or condition.onset during encounter.period
+define fluent function includesOrStartsDuring(condition Condition, encounter Encounter):
+  Interval[condition.onset, condition.abatement] includes encounter.period
+    or condition.onset during encounter.period
 
 define "Flexible Sigmoidoscopy Performed":
   [Procedure: "Flexible Sigmoidoscopy"] FlexibleSigmoidoscopy

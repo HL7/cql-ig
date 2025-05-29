@@ -6,21 +6,21 @@ include FHIRHelpers version '4.0.1'
 
 codesystem "ANCM Concept Codes": 'http://hl7.org/fhir/uv/cql/CodeSystem/example'
 
-code "Pregnancy confirmed": 'ANC.B4.DE1' from "ANCM Concept Codes" display 'Pregnancy confirmed'
+code "Pregnancy Confirmed": 'ANC.B4.DE1' from "ANCM Concept Codes" display 'Pregnancy Confirmed'
 
 define "Is Antenatal Care Applicable":
-  "Is pregnancy confirmed" is true
+  "Is Pregnancy Confirmed" is true
 
 
 /* Copied from ANCMContactDataElements */
 /*
-  @dataElement: ANC.B4.DE1 Pregnancy confirmed
+  @dataElement: ANC.B4.DE1 Pregnancy Confirmed
   @activity: ANC.B4 Confirm pregnancy
   @description: Pregnancy has been confirmed
 */
-define "Is pregnancy confirmed":
+define "Is Pregnancy Confirmed":
   MostRecent(
-    Final([Observation: "Pregnancy confirmed"])
+    Final([Observation: "Pregnancy Confirmed"])
   ).value as boolean
 
 /* Copied from WHOCommon */
