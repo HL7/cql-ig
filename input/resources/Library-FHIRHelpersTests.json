@@ -1,9 +1,6 @@
 {
   "resourceType": "Library",
   "id": "FHIRHelpersTests",
-  "meta": {
-    "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library" ]
-  },
   "contained": [ {
     "resourceType": "Parameters",
     "id": "options",
