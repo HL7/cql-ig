@@ -4,6 +4,49 @@
 
 This page details changes made in each version of the Using CQL with FHIR Implementation Guide.
 
+### STU2 Publication (version 2.0.0)
+
+#### Non-Compatible Changes
+
+* [FHIR-50821](https://jira.hl7.org/browse/FHIR-50821): Added support for inline libraries in Library/$evaluate
+* [FHIR-49606](https://jira.hl7.org/browse/FHIR-49606): Required version in narrative if present in the CQL/ELM media type
+* [FHIR-49603](https://jira.hl7.org/browse/FHIR-49603): Clarified library verrsioning conformance requirement
+
+#### Compatible, Substantive Changes
+
+* [FHIR-50721](https://jira.hl7.org/browse/FHIR-50721): Incorporated USCoreCommon functions that are not USCore specific
+* [FHIR-50473](https://jira.hl7.org/browse/FHIR-50473): Added mapping for BackboneElement and Extension and documented with examples
+* [FHIR-50215](https://jira.hl7.org/browse/FHIR-50215): Added guidance on the use of the cqf-libraryAlias extension
+* [FHIR-50172](https://jira.hl7.org/browse/FHIR-50172): Added precision to the mapping of quantity, decimal, and date/time values
+* [FHIR-50050](https://jira.hl7.org/browse/FHIR-50050): Added includePrivate to the Library/$evaluate operation
+* [FHIR-48683](https://jira.hl7.org/browse/FHIR-48683): Added support for parameter constraints
+* [FHIR-48618](https://jira.hl7.org/browse/FHIR-48618): Added support empty tuple
+* [FHIR-48365](https://jira.hl7.org/browse/FHIR-48365): Added ModelInfo settings outside the context of a StructureDefinition
+* [FHIR-46559](https://jira.hl7.org/browse/FHIR-46559): Include child library expression results in Library/$evaluate
+
+#### Non-Substantive Changes
+
+* [FHIR-49740](https://jira.hl7.org/browse/FHIR-49740): Clarified ability for in-line expressions to reference declarations in libraries in context
+* [FHIR-49626](https://jira.hl7.org/browse/FHIR-49626): Corrected label of changes page
+* [FHIR-49625](https://jira.hl7.org/browse/FHIR-49625): Submitted "Plain Language Summary about this Guide"
+* [FHIR-49605](https://jira.hl7.org/browse/FHIR-49605): Provided rationale for best-practice, rather than requirement, for version declaration in media types
+* [FHIR-49604](https://jira.hl7.org/browse/FHIR-49604): Added rationale and language to library-level identifiers conformance requirement
+* [FHIR-49475](https://jira.hl7.org/browse/FHIR-49475): Explain USCore-ModelInfo
+* [FHIR-49379](https://jira.hl7.org/browse/FHIR-49379): Clarified representation in narrative sections for code systems, values sets, and codes
+* [FHIR-49378](https://jira.hl7.org/browse/FHIR-49378): Corrected mistaken lettering in conformance requirements
+* [FHIR-49317](https://jira.hl7.org/browse/FHIR-49317): Punctuation, Spelling, Spacing corrections
+* [FHIR-49316](https://jira.hl7.org/browse/FHIR-49316): Clarified release language
+* [FHIR-49315](https://jira.hl7.org/browse/FHIR-49315): Clarified terminology-valued types and elements
+* [FHIR-49314](https://jira.hl7.org/browse/FHIR-49314): Corrected label of changes page
+* [FHIR-49195](https://jira.hl7.org/browse/FHIR-49195): Clarified how profile names are constructed in ModelInfo
+* [FHIR-49150](https://jira.hl7.org/browse/FHIR-49150): Updated examples and conventions for fluent function use
+* [FHIR-49138](https://jira.hl7.org/browse/FHIR-49138): Updated SNOMED CT version in example
+* [FHIR-49103](https://jira.hl7.org/browse/FHIR-49103): Added guidance regarding contains as a terminological operator
+* [FHIR-49076](https://jira.hl7.org/browse/FHIR-49076): Corrected links to historical IGs that include previously released material
+* [FHIR-48647](https://jira.hl7.org/browse/FHIR-48647): Clarified top-level expression mapping for parameters and data requirements
+* [FHIR-45598](https://jira.hl7.org/browse/FHIR-45598): Clarified activity extent description and examples
+
+
 ### STU2 Ballot (version 2.0.0-ballot)
 
 * [FHIR-48919](https://jira.hl7.org/browse/FHIR-48919): Updated discussion of negation to address rejected proposals use case and added activity extent discussion. Applied ([here](patterns.html#negation-in-fhir))
