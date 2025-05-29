@@ -68,7 +68,7 @@ This implementation guide includes the model information for the base FHIR speci
 |[SupplyDelivery]({{site.data.fhir.path}}/SupplyDelivery.html)|type|
 |[SupplyRequest]({{site.data.fhir.path}}/SupplyRequest.html)|category|
 |[Task]({{site.data.fhir.path}}/Task.html)|code|
-{:grid}
+{: .grid}
 
 
 For previous versions of FHIR ModelInfo, refer to the [FHIR ModelInfo](https://github.com/cqframework/clinical_quality_language/wiki/FHIRModelInfo) CQFramework wiki page.

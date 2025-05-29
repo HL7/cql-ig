@@ -69,6 +69,7 @@
 <page key="conformance" name="Conformance"/>
 <page key="downloads" name="Downloads"/>
 <page key="extensions" name="Extensions"/>
+<page key="fhir-modelinfo" name="FHIR ModelInfo"/>
 <page key="index" name="Home"/>
 <page key="operations" name="Operations"/>
 <page key="patterns" name="Patterns"/>
