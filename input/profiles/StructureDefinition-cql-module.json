@@ -335,6 +335,22 @@
           }
         ],
         "mustSupport": false
+      },
+      {
+        "id": "Library.dataRequirement.extension:relatedDataRequirement",
+        "path": "Library.dataRequirement.extension",
+        "sliceName": "relatedDataRequirement",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/cqf-relatedRequirement"
+            ]
+          }
+        ],
+        "mustSupport": false
       }
     ]
   }
