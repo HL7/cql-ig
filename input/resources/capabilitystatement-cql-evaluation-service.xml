@@ -4,7 +4,7 @@
   <url value="http://hl7.org/fhir/uv/cql/CapabilityStatement/cql-evaluation-service"/>
   <name value="CQLEvaluationService"/>
   <title value="CQL Evaluation Service"/>
-  <status value="draft"/>
+  <status value="active"/>
   <experimental value="false"/>
   <publisher value="HL7, Inc"/>
   <contact>

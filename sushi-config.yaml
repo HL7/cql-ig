@@ -42,6 +42,10 @@ publisher:
 extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
     valueCode: cds
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+    valueCode: trial-use
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
+    valueInteger: 4
 
 # Those who need more control or want to add additional details to the contact values can use
 # contact directly and follow the format outlined in the ImplementationGuide resource and
@@ -172,5 +176,5 @@ resources:
     exampleBoolean: true
   Observation/negation-example:
     name: Example Negation Observation
-    description: Example Observation resource illustrating negation and the use of the `notDoneValueSet` extension.
+    description: Example Observation resource illustrating negation and the use of the `codeOptions` extension.
     exampleBoolean: true

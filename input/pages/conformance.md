@@ -678,7 +678,7 @@ The "primary library" for an artifact is determined as follows:
 1. If the resource type has a `library` element (e.g. PlanDefinition.library), and there is one and only one library specified, that is the primary library
 2. If the resource has one and only one `cqf-library` extension, that is the primary library
 
-If there is more than one library specified in the resource, then expression identifiers must be qualified with the name of the library (see [Conformance Requirement 2.3 (Nested Libraries)](using-cql.html#conformance-requirement-2-3)), or with the library alias as specified by the [cqf-libraryAlias]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-libraryAlias.html) extension.
+If there is more than one library specified in the resource, then expression identifiers must be qualified with the name of the library (see [Conformance Requirement 2.3 (Nested Libraries)](using-cql.html#conformance-requirement-2-3)), or with the library alias as specified by the `cqf-libraryAlias` extension.
 
 When CQL expressions are identified (i.e. using an Expression element with a language type of `text/cql-identifier`), if the expression element has a `reference`, the identifier **SHALL** be to an expression in the referenced library.
 

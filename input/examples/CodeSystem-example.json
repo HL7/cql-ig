@@ -11,25 +11,32 @@
   "content": "complete",
   "concept": [ {
     "code": "example-code",
-    "display": "Example Code"
+    "display": "Example Code",
+    "definition": "Example Code"
   }, {
     "code": "ANC.A",
-    "display": "Registration"
+    "display": "Registration",
+    "definition": "Registration"
   }, {
     "code": "ANC.A4",
-    "display": "Gather client details"
+    "display": "Gather client details",
+    "definition": "Gather client details"
   }, {
     "code": "ANC.A7",
-    "display": "Create client record?OR?ANC.A8. Validate client details"
+    "display": "Create client record?OR?ANC.A8. Validate client details",
+    "definition": "Create client record?OR?ANC.A8. Validate client details"
   }, {
     "code": "ANC.B5",
-    "display": "Quick check"
+    "display": "Quick check",
+    "definition": "Quick check"
   }, {
     "code": "ANC.B4",
-    "display": "Confirm pregnancy"
+    "display": "Confirm pregnancy",
+    "definition": "Confirm pregnancy"
   }, {
     "code": "ANC.End",
-    "display": "End"
+    "display": "End",
+    "definition": "End"
   }, {
     "code": "ANC.A.DE1",
     "display": "Unique identification",

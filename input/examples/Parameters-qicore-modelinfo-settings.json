@@ -54,8 +54,12 @@
             "name": "dependency",
             "part": [
                 {
-                    "name": "modelName",
+                    "name": "modelNamespace",
                     "valueString": "hl7.fhir.us.core"
+                },
+                {
+                    "name": "modelName",
+                    "valueString": "USCore"
                 },
                 {
                     "name": "modelVersion",

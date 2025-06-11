@@ -94,6 +94,30 @@
         ]
       },
       {
+        "id": "Parameters.parameter:modelVersion",
+        "path": "Parameters.parameter",
+        "sliceName": "modelVersion",
+        "short": "What version",
+        "definition": "This parameter determines the version of the model as it will be referenced in CQL. By convention, this SHOULD correspond to the version of the specification being represented, though this is not required.",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:modelVersion.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "modelVersion"
+      },
+      {
+        "id": "Parameters.parameter:modelVersion.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
         "id": "Parameters.parameter:modelNamespace",
         "path": "Parameters.parameter",
         "sliceName": "modelNamespace",
@@ -262,6 +286,30 @@
         ]
       },
       {
+        "id": "Parameters.parameter:includeMetadata",
+        "path": "Parameters.parameter",
+        "sliceName": "includeMetadata",
+        "short": "Include definitions, comments, bindings and other metadata?",
+        "definition": "Indicates whether or not elements should include metadata information such as definitions, comments, bindings, and constraints.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:includeMetadata.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "includeMetadata"
+      },
+      {
+        "id": "Parameters.parameter:includeMetadata.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
         "id": "Parameters.parameter:createSliceElements",
         "path": "Parameters.parameter",
         "sliceName": "createSliceElements",
@@ -339,7 +387,7 @@
           "rules": "open"
         },
         "min": 4,
-        "max": 4
+        "max": "4"
       },
       {
         "id": "Parameters.parameter:dependency.part:modelNamespace",
@@ -465,7 +513,7 @@
           "rules": "open"
         },
         "min": 1,
-        "max": 5
+        "max": "5"
       },
       {
         "id": "Parameters.parameter:profile.part:url",
@@ -487,7 +535,7 @@
         "min": 1,
         "type": [
           {
-            "code": "string"
+            "code": "uri"
           }
         ]
       },

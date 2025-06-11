@@ -213,6 +213,21 @@ define _28_TestActive:
       where C.id = 'example'
   ).active()
 
+//* _28A_ define fluent function isVerified(condition FHIR.Condition):
+define _28A_TestIsVerified:
+  exists (
+    [Condition] C
+      where C.id = 'example'
+        and C.isVerified()
+  )
+
+//* _28B_ define fluent function verified(conditions List<FHIR.Condition>):
+define _28B_TestVerified:
+  exists (
+    [Condition] C
+      where C.id = 'example'
+  ).verified()
+
 //* _29_ define fluent function isUnconfirmed(condition FHIR.Condition):
 define _29_TestIsUnconfirmed:
   not exists (
@@ -364,6 +379,21 @@ define _44_TestResolved:
     [AllergyIntolerance] A
       where A.id = 'example'
   ).resolved()
+
+//* _44A_ define fluent function isVerified(allergyIntolerance FHIR.AllergyIntolerance):
+define _44A_TestIsVerified:
+  exists (
+    [AllergyIntolerance] A
+      where A.id = 'example'
+        and A.isVerified()
+  )
+
+//* _44B_ define fluent function verified(allergyIntolerances List<FHIR.AllergyIntolerance>):
+define _44B_TestVerified:
+  exists (
+    [AllergyIntolerance] C
+      where C.id = 'example'
+  ).verified()
 
 //* _45_ define fluent function isConfirmed(allergyIntolerance FHIR.AllergyIntolerance):
 define _45_TestIsConfirmed:
@@ -580,6 +610,10 @@ define _72_TestMostRecent:
 //* _73_ define fluent function mostRecent(observations List<FHIR.Observation>):
 define _73_TestMostRecent:
   ([Observation]).mostRecent().id = 'some-day-smoker'
+
+//* _73A_ define fluent function mostRecent(procedures List<FHIR.Procedure>):
+define _73A_TestMostRecent:
+  ([Procedure]).mostRecent().id = 'defib-implant'
 
 //* _74_ define fluent function mostRecent(medicationRequests List<"MedicationRequest">):
 define _74_TestMostRecent:

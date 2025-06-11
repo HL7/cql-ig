@@ -1531,31 +1531,6 @@
             "part": [
                 {
                     "name": "url",
-                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Sequence"
-                },
-                {
-                    "name": "isIncluded",
-                    "valueBoolean": true
-                },
-                {
-                    "name": "isRetrievable",
-                    "valueBoolean": true
-                },
-                {
-                    "name": "label",
-                    "valueString": "Sequence"
-                },
-                {
-                    "name": "primaryCodePath",
-                    "valueString": "type"
-                }
-            ]
-        },
-        {
-            "name": "profile",
-            "part": [
-                {
-                    "name": "url",
                     "valueUri": "http://hl7.org/fhir/StructureDefinition/ServiceRequest"
                 },
                 {

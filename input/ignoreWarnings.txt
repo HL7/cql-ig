@@ -1,58 +1,218 @@
 == Suppressed Messages ==
 
-# This is an example CodeSystem and labeled according to TSMG guidance, so does not require an exemption
+# 01: This is an example CodeSystem and labeled according to TSMG guidance, so does not require an exemption
 INFORMATION: CodeSystem/example: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
-# Accepted references to draft published content
+# 02: Accepted references to draft published content
 INFORMATION: Library/module-example: Library.dataRequirement[1].extension[2].extension[1].value.ofType(code): Reference to draft CodeSystem http://hl7.org/fhir/search-comparator|4.0.1
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[40].resource/*Observation/blood-glucose*/.referenceRange[0].appliesTo[0]: Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/referencerange-meaning|1.0.0
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[41].resource/*Observation/blood-glucose*/.referenceRange[0].appliesTo[0]: Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/referencerange-meaning|1.0.0
 
-# Accepted references to experimental content, these are examples, so intentionally marked experimental
-INFORMATION: Library/ANCCohort: Library.dataRequirement[0].codeFilter[0].code[0]: Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[2].value.ofType(Coding): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[4].value.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
-INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.useContext[0].value.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
-INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.snapshot.element[14].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
-INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.differential.element[1].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
-INFORMATION: StructureDefinition/cql-specifichealthconcerns-profile-example: StructureDefinition.snapshot.element[14].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
-INFORMATION: StructureDefinition/cql-specifichealthconcerns-profile-example: StructureDefinition.differential.element[1].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0-ballot
+# 03: Accepted references to experimental content, these are examples, so intentionally marked experimental
+INFORMATION: Library/ANCCohort: Library.dataRequirement[0].codeFilter[0].code[0]: Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[2].value.ofType(Coding): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[4].value.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0
+INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.useContext[0].value.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0
+INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.snapshot.element[14].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0
+INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.differential.element[1].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0
+INFORMATION: StructureDefinition/cql-specifichealthconcerns-profile-example: StructureDefinition.snapshot.element[14].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0
+INFORMATION: StructureDefinition/cql-specifichealthconcerns-profile-example: StructureDefinition.differential.element[1].pattern.ofType(CodeableConcept): Reference to experimental CodeSystem http://hl7.org/fhir/uv/cql/CodeSystem/example|2.0.0
 
-# This structure definition is not a conformance artifact in this ig, it is an example
+# 04: This structure definition is not a conformance artifact in this ig, it is an example
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/cql/StructureDefinition/cql-dangersigns-profile-example'): The Implementation Guide contains no examples for this profile
 
-# This structure definition is not a conformance artifact in this ig, it is an example
+# 05: This structure definition is not a conformance artifact in this ig, it is an example
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/cql/StructureDefinition/cql-specifichealthconcerns-profile-example'): The Implementation Guide contains no examples for this profile
 
-# This is inherited from the base definition
+# 06: This is inherited from the base definition
 WARNING: StructureDefinition/cql-capabilitystatement: StructureDefinition.snapshot.element[0].constraint[6].xpath: value should not start or finish with whitespace ' not(f:kind/@value='instance') or (not(exists(f:implementation)) and exists(f:software))'
 
-# This example is illustrating how to return a result, so narrative is not relevant to this example
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[0].resource/*Patient/example*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+# 07: This example is illustrating how to return a result, so narrative is not relevant to this example
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[47].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[48].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 
-# These examples are illustrating how to return resources generally, so the performer element is not relevant to this example
+# 08: These examples are illustrating how to return resources generally, so the performer element is not relevant to this example
+WARNING: Observation/negation-example: Observation.code.extension[0].value.ofType(canonical): A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/2.16.840.1.113762.1.4.1045.131'
 WARNING: Observation/negation-example: Observation: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[42].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[42].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[43].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[43].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[44].resource/*Observation/blood-pressure*/: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[45].resource/*Observation/bmi*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[0].resource/*Patient/example*/.identifier[0].system: No definition could be found for URL value 'urn:oid:1.2.36.146.595.217.0.1'
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[47].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[48].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[49].resource/*Observation/blood-pressure*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[50].resource/*Observation/bmi*/: Best Practice Recommendation: In general, all observations should have a performer
 
-# This IG is establishing how to return values of these types, the publisher will be updated with this guidance
-WARNING: TypeMappingExample.cql: Parameter type System.Vocabulary of parameter ExampleVocabulary is not supported; reported as FHIR.Any
-WARNING: TypeMappingExample.cql: Result type System.CodeSystem of definition CQLCodeSystemExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type System.Long of definition CQLLongExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type System.ValueSet of definition CQLValueSetExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type System.Vocabulary of definition CQLVocabularyExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type Interval of System.Time of definition CQLTimeIntervalExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type Interval of System.Integer of definition CQLIntegerIntervalExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type tuple of X: System.Integer, Y: System.Integer of definition CQLTupleExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type List of choice<System.Integer,System.Decimal> of definition CQLChoiceListExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type List of tuple of X: System.Integer, Y: System.Integer of definition CQLTupleListExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type tuple of id: System.Integer, name: System.String, address: List of tuple of street: System.String, city: System.String, state: System.String of definition CQLComplexTupleExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type List of tuple of id: System.Integer, name: System.String, address: List of tuple of street: System.String, city: System.String, state: System.String of definition CQLComplexTupleListExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type List of tuple of id: System.Integer, name: System.String, address: List of tuple of street: System.String, city: System.String, state: System.String of definition CQLEmptyListExample is not supported; implementations may not be able to use the result of this expression
-WARNING: TypeMappingExample.cql: Result type List of List of System.Integer of definition CQLListListExample is not supported; implementations may not be able to use the result of this expression
+# 09: This is coming from the snapshot, outside of the control of this example
+INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
 
+# 10: These are intentional, we are illustrating an example of a USCore interaction, but do not want to take a dependency on USCore just for the examples
+ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[1].part[0].value.ofType(uri): No definition could be found for URL value 'ombCategory'
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[1].part[1].value.ofType(Coding): The definition for the Code System with URI 'urn:oid:2.16.840.1.113883.6.238' doesn't provide any codes so the code cannot be validated
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[2].part[0].value.ofType(uri): No definition could be found for URL value 'detailed'
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[2].part[1].value.ofType(Coding): The definition for the Code System with URI 'urn:oid:2.16.840.1.113883.6.238' doesn't provide any codes so the code cannot be validated
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[3].part[0].value.ofType(uri): No definition could be found for URL value 'detailed'
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[3].part[1].value.ofType(Coding): The definition for the Code System with URI 'urn:oid:2.16.840.1.113883.6.238' doesn't provide any codes so the code cannot be validated
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[4].part[0].value.ofType(uri): No definition could be found for URL value 'text'
+
+# 11: This is intentional, because we want the link to the fhir-modelinfo page in the published IG, this will resolve once published, but I can't use jekyll parameterization to get the correct url
+ERROR: Library-FHIR-ModelInfo.html#/html/body/div/div/div/div/div/p/p/a at Line 251, column 137: The link 'http://hl7.org/fhir/uv/cql/fhir-modelinfo.html' for "FHIR ModelInfo" cannot be resolved
+ERROR: Library-FHIR-ModelInfo.html#/html/body/div/div/div/div/div/div/div/table/tr/td/div/p/a at Line 370, column 185: The link 'http://hl7.org/fhir/uv/cql/fhir-modelinfo.html' for "FHIR ModelInfo" cannot be resolved
+ERROR: artifacts.html#/html/body/div/div/div/div/div/div/table/tbody/tr/td/p/a at Line 298, column 137: The link 'http://hl7.org/fhir/uv/cql/fhir-modelinfo.html' for "FHIR ModelInfo" cannot be resolved
+ERROR: Library.text.div: Hyperlink 'http://hl7.org/fhir/uv/cql/fhir-modelinfo.html' at 'div/div/table/tr/td/div/p/a' for 'FHIR ModelInfo' does not resolve
+
+# 12: Accepted warnings from CQL about identifier hiding
+WARNING: %ANCCohort.cql: An operand identifier [domainResource] is hiding another identifier of the same name.
+WARNING: %ANCCohort.cql: An operand identifier [id] is hiding another identifier of the same name.
+WARNING: %Example: An alias identifier [race] is hiding another identifier of the same name.
+WARNING: %Example.cql: An operand identifier [element] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An operand identifier [references] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An operand identifier [element] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An operand identifier [url] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An expression identifier [active] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An expression identifier [unconfirmed] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An expression identifier [provisional] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An expression identifier [differential] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An expression identifier [confirmed] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An expression identifier [refuted] is hiding another identifier of the same name.
+WARNING: %FHIRCommon: A let identifier [abatement] is hiding another identifier of the same name.
+WARNING: %FHIRCommon: A let identifier [resolutionAge] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An expression identifier [inactive] is hiding another identifier of the same name.
+WARNING: %FHIRCommon.cql: An expression identifier [resolved] is hiding another identifier of the same name.
+WARNING: %FHIRHelpers.cql: An operand identifier [reference] is hiding another identifier of the same name.
+
+# 13: These are valid value set URLs that are referenced by this example
+WARNING: Library/module-example: Library.relatedArtifact[3].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
+WARNING: Library/module-example: Library.relatedArtifact[4].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.299'
+WARNING: Library/module-example: Library.relatedArtifact[5].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.126'
+WARNING: Library/module-example: Library.relatedArtifact[6].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1'
+WARNING: Library/module-example: Library.relatedArtifact[7].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836'
+WARNING: Library/module-example: Library.relatedArtifact[8].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837'
+WARNING: Library/module-example: Library.relatedArtifact[9].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591'
+
+# 14: These are intentional, we are providing an example of QICore ModelInfo Settings but do not want to take a dependency on QICore
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[13].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-adverseevent'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[14].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-allergyintolerance'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[15].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-bodystructure'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[16].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-careplan'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[17].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-careteam'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[18].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-claim'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[19].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-claimresponse'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[20].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communication'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[21].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationnotdone'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[22].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationdone'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[23].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationrequest'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[24].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition-encounter-diagnosis'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[25].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition-problems-health-concerns'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[26].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[27].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-device'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[28].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-deviceprohibited'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[29].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-devicerequest'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[30].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-devicerequested'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[31].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-deviceusestatement'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[32].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-lab'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[33].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-note'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[34].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[35].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-familymemberhistory'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[36].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-flag'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[37].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-goal'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[38].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-imagingstudy'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[39].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunization'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[40].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationdone'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[41].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationnotdone'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[42].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationevaluation'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[43].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationrecommendation'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[44].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation-lab'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[45].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-location'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[46].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medication'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[47].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationprohibited'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[48].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[49].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministrationdone'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[50].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministrationnotdone'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[51].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationdispense'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[52].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationdispensedeclined'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[53].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationdispensedone'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[54].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[55].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequested'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[56].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationstatement'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[57].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-nonpatient-observation'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[58].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-nutritionorder'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[59].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation-clinical-result'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[60].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation-screening-assessment'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[61].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-organization'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[62].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[63].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-practitioner'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[64].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-practitionerrole'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[65].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[66].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-proceduredone'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[67].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedurenotdone'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[68].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-questionnaireresponse'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[69].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-relatedperson'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[70].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-serviceprohibited'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[71].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[72].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequested'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[73].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-simple-observation'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[74].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-substance'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[75].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[76].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-taskdone'
+ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[77].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-taskrejected'
+
+# 15: These are intentional, we are providing an example of USCore ModelInfo Settings, but do not want to take a dependency on USCore
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[13].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[14].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-average-blood-pressure'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[15].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-bmi'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[16].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-blood-pressure'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[17].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-height'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[18].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-temperature'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[19].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-weight'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[20].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-care-experience-preference'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[21].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[22].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[23].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[24].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[25].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-coverage'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[26].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[27].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[28].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[29].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[30].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-goal'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[31].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-head-circumference'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[32].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-heart-rate'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[33].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[34].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-implantable-device'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[35].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[36].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-location'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[37].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[38].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationdispense'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[39].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[40].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-clinical-result'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[41].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-occupation'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[42].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-pregnancyintent'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[43].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-pregnancystatus'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[44].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[45].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-sexual-orientation'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[46].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[47].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[48].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/pediatric-bmi-for-age'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[49].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/head-occipital-frontal-circumference-percentile'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[50].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/pediatric-weight-for-height'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[51].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[52].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[53].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[54].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-provenance'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[55].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-pulse-oximetry'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[56].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-questionnaireresponse'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[57].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[58].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-respiratory-rate'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[59].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-servicerequest'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[60].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[61].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[62].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[63].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-treatment-intervention-preference'
+ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[64].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs'
+
+# 16: These should not be required for example content?
+ERROR: ImplementationGuide/example: ImplementationGuide: HL7 Implementation Guides must state their status explicitly using the extension http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+ERROR: ImplementationGuide/example: ImplementationGuide: HL7 Implementation Guides must state their owning workgroup explicitly using the extension http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
+WARNING: ImplementationGuide/example: ImplementationGuide: HL7 Implementation Guides should state their maturity explicitly using the extension http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
+
+# 17: Following this recommendation would result in the need to update the extension reference everytime the extensions pack publishes?
+WARNING: StructureDefinition/cql-evaluationresult: StructureDefinition.snapshot.element[14].type[0].profile[0]: There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/data-absent-reason'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '5.2.0', found versions: 4.0.1, 5.2.0. Suggested fix: change the canonical reference from 'http://hl7.org/fhir/StructureDefinition/data-absent-reason' to 'http://hl7.org/fhir/StructureDefinition/data-absent-reason|5.2.0'
+WARNING: StructureDefinition/cql-evaluationresult: StructureDefinition.differential.element[5].type[0].profile[0]: There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/data-absent-reason'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '5.2.0', found versions: 4.0.1, 5.2.0. Suggested fix: change the canonical reference from 'http://hl7.org/fhir/StructureDefinition/data-absent-reason' to 'http://hl7.org/fhir/StructureDefinition/data-absent-reason|5.2.0'
 

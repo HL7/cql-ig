@@ -99,7 +99,7 @@ The set of all CQL libraries used as part of a knowledge artifact must adhere to
 
 1. CQL libraries **SHOULD** be structured such that all CQL expressions referenced from a single FHIR resource are
 contained within a single library.
-    * If an artifact makes use of multiple libraries, expression references in that artifact **SHALL** be qualified with the `name` of the library (i.e. `library-name.expression-identifier`), or with the `alias` of the library as specified using the [cqf-libraryAlias]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-libraryAlias.html) extension.
+    * If an artifact makes use of multiple libraries, expression references in that artifact **SHALL** be qualified with the `name` of the library (i.e. `library-name.expression-identifier`), or with the `alias` of the library as specified using the `cqf-libraryAlias` extension.
 2. CQL libraries **SHALL** use a `called` clause for all included libraries
 3. The `called`-alias for an included library **SHOULD** be consistent for usages across libraries
 

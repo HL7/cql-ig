@@ -11,7 +11,7 @@
     }],
     "code" : {
       "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/cqf-notDoneValueSet",
+        "url" : "http://hl7.org/fhir/StructureDefinition/codeOptions",
         "valueCanonical" : "http://cts.nlm.nih.gov/fhir/2.16.840.1.113762.1.4.1045.131"
       }],
       "text" : "Not Done Value Set: Hemoglobin lab test"

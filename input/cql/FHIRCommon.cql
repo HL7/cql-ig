@@ -422,6 +422,29 @@ define fluent function active(conditions List<FHIR.Condition>):
       or C.clinicalStatus ~ "relapse"
 
 /*
+@description: Returns true if the given condition either has no verification status or has a verification status of confirmed, unconfirmed, provisional, or differential
+*/
+define fluent function isVerified(condition FHIR.Condition):
+  condition.verificationStatus is not null implies
+    (condition.verificationStatus ~ "confirmed"
+      or condition.verificationStatus ~ "unconfirmed"
+      or condition.verificationStatus ~ "provisional"
+      or condition.verificationStatus ~ "differential"
+    )
+
+/*
+@description: Returns conditions in the given list that either have no verification status or have a verification status of confirmed, unconfirmed, provisional, or differential
+*/
+define fluent function verified(conditions List<FHIR.Condition>):
+  conditions C
+    where C.verificationStatus is not null implies
+      (C.verificationStatus ~ "confirmed"
+        or C.verificationStatus ~ "unconfirmed"
+        or C.verificationStatus ~ "provisional"
+        or C.verificationStatus ~ "differential"
+      )
+
+/*
 @description: Returns true if the given condition has a verification status of unconfirmed
 */
 define fluent function isUnconfirmed(condition FHIR.Condition):
@@ -594,6 +617,25 @@ define fluent function isResolved(allergyIntolerance FHIR.AllergyIntolerance):
 define fluent function resolved(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
     where A.clinicalStatus ~ "allergy-resolved"
+
+/*
+@description: Returns true if the given condition either has no verification status or has a verification status of confirmed, unconfirmed, provisional, or differential
+*/
+define fluent function isVerified(allergyIntolerance FHIR.AllergyIntolerance):
+  allergyIntolerance.verificationStatus is not null implies
+    (allergyIntolerance.verificationStatus ~ "allergy-confirmed"
+      or allergyIntolerance.verificationStatus ~ "allergy-unconfirmed"
+    )
+
+/*
+@description: Returns conditions in the given list that either have no verification status or have a verification status of confirmed, unconfirmed, provisional, or differential
+*/
+define fluent function verified(allergyIntolerances List<FHIR.AllergyIntolerance>):
+  allergyIntolerances A
+    where A.verificationStatus is not null implies
+      (A.verificationStatus ~ "allergy-confirmed"
+        or A.verificationStatus ~ "allergy-unconfirmed"
+      )
 
 /*
 @description: Returns true if the given condition has a verification status of confirmed
@@ -810,6 +852,15 @@ define fluent function mostRecent(observations List<FHIR.Observation>):
   Last(
     observations O
       sort by issued.value
+  )
+
+/*
+@description: Returns the most recent Procedure by the start of performed.toInterval()
+*/
+define fluent function mostRecent(procedures List<FHIR.Procedure>):
+  Last(
+    procedures P
+      sort by start of performed.toInterval()
   )
 
 /*
