@@ -26,30 +26,32 @@ WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/cql/StructureDe
 WARNING: StructureDefinition/cql-capabilitystatement: StructureDefinition.snapshot.element[0].constraint[6].xpath: value should not start or finish with whitespace ' not(f:kind/@value='instance') or (not(exists(f:implementation)) and exists(f:software))'
 
 # 07: This example is illustrating how to return a result, so narrative is not relevant to this example
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[47].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[48].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[0].resource/*Patient/example*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[45].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[46].resource/*Observation/blood-glucose*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 
 # 08: These examples are illustrating how to return resources generally, so the performer element is not relevant to this example
 WARNING: Observation/negation-example: Observation.code.extension[0].value.ofType(canonical): A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/2.16.840.1.113762.1.4.1045.131'
 WARNING: Observation/negation-example: Observation: Best Practice Recommendation: In general, all observations should have a performer
 WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[0].resource/*Patient/example*/.identifier[0].system: No definition could be found for URL value 'urn:oid:1.2.36.146.595.217.0.1'
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[47].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[48].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[49].resource/*Observation/blood-pressure*/: Best Practice Recommendation: In general, all observations should have a performer
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[50].resource/*Observation/bmi*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[45].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[46].resource/*Observation/blood-glucose*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[47].resource/*Observation/blood-pressure*/: Best Practice Recommendation: In general, all observations should have a performer
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[48].resource/*Observation/bmi*/: Best Practice Recommendation: In general, all observations should have a performer
 
 # 09: This is coming from the snapshot, outside of the control of this example
 INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
 
 # 10: These are intentional, we are illustrating an example of a USCore interaction, but do not want to take a dependency on USCore just for the examples
-ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[1].part[0].value.ofType(uri): No definition could be found for URL value 'ombCategory'
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[1].part[1].value.ofType(Coding): The definition for the Code System with URI 'urn:oid:2.16.840.1.113883.6.238' doesn't provide any codes so the code cannot be validated
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[2].part[0].value.ofType(uri): No definition could be found for URL value 'detailed'
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[2].part[1].value.ofType(Coding): The definition for the Code System with URI 'urn:oid:2.16.840.1.113883.6.238' doesn't provide any codes so the code cannot be validated
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[3].part[0].value.ofType(uri): No definition could be found for URL value 'detailed'
-INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[3].part[1].value.ofType(Coding): The definition for the Code System with URI 'urn:oid:2.16.840.1.113883.6.238' doesn't provide any codes so the code cannot be validated
-WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[54].part[4].part[0].value.ofType(uri): No definition could be found for URL value 'text'
+ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[1].part[0].value.ofType(uri): No definition could be found for URL value 'ombCategory'
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[1].part[1].value.ofType(Coding): The definition for the Code System with URI 'urn:oid:2.16.840.1.113883.6.238' doesn't provide any codes so the code cannot be validated
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[2].part[0].value.ofType(uri): No definition could be found for URL value 'detailed'
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[2].part[1].value.ofType(Coding): The definition for the Code System with URI 'urn:oid:2.16.840.1.113883.6.238' doesn't provide any codes so the code cannot be validated
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[3].part[0].value.ofType(uri): No definition could be found for URL value 'detailed'
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[3].part[1].value.ofType(Coding): The definition for the Code System with URI 'urn:oid:2.16.840.1.113883.6.238' doesn't provide any codes so the code cannot be validated
+WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[4].part[0].value.ofType(uri): No definition could be found for URL value 'text'
+INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[9].value.ofType(decimal).extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult|2.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 
 # 11: This is intentional, because we want the link to the fhir-modelinfo page in the published IG, this will resolve once published, but I can't use jekyll parameterization to get the correct url
 ERROR: Library-FHIR-ModelInfo.html#/html/body/div/div/div/div/div/p/p/a at Line 251, column 137: The link 'http://hl7.org/fhir/uv/cql/fhir-modelinfo.html' for "FHIR ModelInfo" cannot be resolved
@@ -215,4 +217,6 @@ WARNING: ImplementationGuide/example: ImplementationGuide: HL7 Implementation Gu
 # 17: Following this recommendation would result in the need to update the extension reference everytime the extensions pack publishes?
 WARNING: StructureDefinition/cql-evaluationresult: StructureDefinition.snapshot.element[14].type[0].profile[0]: There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/data-absent-reason'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '5.2.0', found versions: 4.0.1, 5.2.0. Suggested fix: change the canonical reference from 'http://hl7.org/fhir/StructureDefinition/data-absent-reason' to 'http://hl7.org/fhir/StructureDefinition/data-absent-reason|5.2.0'
 WARNING: StructureDefinition/cql-evaluationresult: StructureDefinition.differential.element[5].type[0].profile[0]: There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/data-absent-reason'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '5.2.0', found versions: 4.0.1, 5.2.0. Suggested fix: change the canonical reference from 'http://hl7.org/fhir/StructureDefinition/data-absent-reason' to 'http://hl7.org/fhir/StructureDefinition/data-absent-reason|5.2.0'
+
+
 
