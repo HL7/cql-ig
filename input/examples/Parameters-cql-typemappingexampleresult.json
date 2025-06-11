@@ -201,15 +201,6 @@
     "name": "CQLPartialDateTimeExample",
     "valueDateTime": "2024-01-01"
   }, {
-    "name": "CQLPartialDateTimeMinutesExample",
-    "valueDateTime": "2024-01-01T10:30:00Z",
-    "_valueDateTime": {
-      "extension": [{
-        "url": "http://hl7.org/fhir/StructureDefinition/time-precision",
-        "valueCode": "min"
-      }]
-    }
-  }, {
     "name": "CQLDecimalExample",
     "valueDecimal": 10.0
   }, {
@@ -258,15 +249,6 @@
   }, {
     "name": "CQLTimeExample",
     "valueTime": "10:30:00"
-  }, {
-    "name": "CQLPartialTimeExample",
-    "valueTime": "10:30:00",
-    "_valueTime": {
-      "extension": [{
-        "url": "http://hl7.org/fhir/StructureDefinition/time-precision",
-        "valueCode": "min"
-      }]
-    }
   }, {
     "name": "CQLValueSetExample",
     "valueCanonical": "http://hl7.org/fhir/uv/cql/ValueSet/shareable-example"
