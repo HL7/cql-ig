@@ -1,11 +1,11 @@
 {
   "package-id" : "hl7.fhir.uv.cql",
-  "version" : "2.0.0-ballot",
-  "path" : "http://hl7.org/fhir/uv/cql/2025Jan",
-  "mode": "working",
-  "status" : "ballot",
+  "version" : "2.0.0",
+  "path" : "http://hl7.org/fhir/uv/cql/STU2",
+  "mode": "milestone",
+  "status" : "trial-use",
   "sequence" : "STU2",
-  "desc" : "STU2 Ballot (v2.0.0)",
-  "descmd" : "STU2 Ballot applying implementer feedback, improving patterns for activity extent and negation representation, and incorporating FHIRHelpers and FHIRCommon libraries.",
+  "desc" : "STU 2 Release (v2.0.0)",
+  "descmd" : "STU 2 Release applying implementer feedback, improving patterns for activity extent and negation representation, and incorporating FHIRHelpers and FHIRCommon libraries.",
   "first" : false
 }
