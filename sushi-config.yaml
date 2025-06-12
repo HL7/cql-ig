@@ -72,6 +72,7 @@ dependencies:
 parameters:
   apply-contact: true
   apply-publisher: true
+  apply-version: false
   default-version: true
   apply-jurisdiction: true
   apply-license: true
