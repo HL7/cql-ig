@@ -60,24 +60,24 @@ ERROR: artifacts.html#/html/body/div/div/div/div/div/div/table/tbody/tr/td/p/a a
 ERROR: Library.text.div: Hyperlink 'http://hl7.org/fhir/uv/cql/fhir-modelinfo.html' at 'div/div/table/tr/td/div/p/a' for 'FHIR ModelInfo' does not resolve
 
 # 12: Accepted warnings from CQL about identifier hiding
-WARNING: %ANCCohort.cql: An operand identifier [domainResource] is hiding another identifier of the same name.
-WARNING: %ANCCohort.cql: An operand identifier [id] is hiding another identifier of the same name.
-WARNING: %Example: An alias identifier [race] is hiding another identifier of the same name.
-WARNING: %Example.cql: An operand identifier [element] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An operand identifier [references] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An operand identifier [element] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An operand identifier [url] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An expression identifier [active] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An expression identifier [unconfirmed] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An expression identifier [provisional] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An expression identifier [differential] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An expression identifier [confirmed] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An expression identifier [refuted] is hiding another identifier of the same name.
-WARNING: %FHIRCommon: A let identifier [abatement] is hiding another identifier of the same name.
-WARNING: %FHIRCommon: A let identifier [resolutionAge] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An expression identifier [inactive] is hiding another identifier of the same name.
-WARNING: %FHIRCommon.cql: An expression identifier [resolved] is hiding another identifier of the same name.
-WARNING: %FHIRHelpers.cql: An operand identifier [reference] is hiding another identifier of the same name.
+%ANCCohort.cql: An operand identifier [domainResource] is hiding another identifier of the same name.
+%ANCCohort.cql: An operand identifier [id] is hiding another identifier of the same name.
+%Example: An alias identifier [race] is hiding another identifier of the same name.
+%Example.cql: An operand identifier [element] is hiding another identifier of the same name.
+%FHIRCommon.cql: An operand identifier [references] is hiding another identifier of the same name.
+%FHIRCommon.cql: An operand identifier [element] is hiding another identifier of the same name.
+%FHIRCommon.cql: An operand identifier [url] is hiding another identifier of the same name.
+%FHIRCommon.cql: An expression identifier [active] is hiding another identifier of the same name.
+%FHIRCommon.cql: An expression identifier [unconfirmed] is hiding another identifier of the same name.
+%FHIRCommon.cql: An expression identifier [provisional] is hiding another identifier of the same name.
+%FHIRCommon.cql: An expression identifier [differential] is hiding another identifier of the same name.
+%FHIRCommon.cql: An expression identifier [confirmed] is hiding another identifier of the same name.
+%FHIRCommon.cql: An expression identifier [refuted] is hiding another identifier of the same name.
+%FHIRCommon: A let identifier [abatement] is hiding another identifier of the same name.
+%FHIRCommon: A let identifier [resolutionAge] is hiding another identifier of the same name.
+%FHIRCommon.cql: An expression identifier [inactive] is hiding another identifier of the same name.
+%FHIRCommon.cql: An expression identifier [resolved] is hiding another identifier of the same name.
+%FHIRHelpers.cql: An operand identifier [reference] is hiding another identifier of the same name.
 
 # 13: These are valid value set URLs that are referenced by this example
 WARNING: Library/module-example: Library.relatedArtifact[3].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
