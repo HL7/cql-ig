@@ -42,7 +42,7 @@ WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[48].resou
 # 09: This is coming from the snapshot, outside of the control of this example
 INFORMATION: StructureDefinition/cql-dangersigns-profile-example: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
 
-# 10: These are intentional, we are illustrating an example of a USCore interaction, but do not want to take a dependency on USCore just for the examples
+# 10: These are intentional, we are illustrating an example of a USCore interaction, but do not want to take a dependency on USCore just for the examples. See https://chat.fhir.org/#narrow/channel/179239-tooling/topic/Dev.20Dependencies
 ERROR: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
 WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[1].part[0].value.ofType(uri): No definition could be found for URL value 'ombCategory'
 INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[1].part[1].value.ofType(Coding): The definition for the Code System with URI 'urn:oid:2.16.840.1.113883.6.238' doesn't provide any codes so the code cannot be validated
@@ -53,7 +53,7 @@ INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].p
 WARNING: Parameters/cql-typemappingexampleresult: Parameters.parameter[52].part[4].part[0].value.ofType(uri): No definition could be found for URL value 'text'
 INFORMATION: Parameters/cql-typemappingexampleresult: Parameters.parameter[9].value.ofType(decimal).extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult|2.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 
-# 11: This is intentional, because we want the link to the fhir-modelinfo page in the published IG, this will resolve once published, but I can't use jekyll parameterization to get the correct url
+# 11: This is intentional, because we want the link to the fhir-modelinfo page in the published IG, this will resolve once published, but I can't use jekyll parameterization to get the correct url. See https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Links.20in.20resources.20in.20the.20IG
 ERROR: Library-FHIR-ModelInfo.html#/html/body/div/div/div/div/div/p/p/a at Line 251, column 137: The link 'http://hl7.org/fhir/uv/cql/fhir-modelinfo.html' for "FHIR ModelInfo" cannot be resolved
 ERROR: Library-FHIR-ModelInfo.html#/html/body/div/div/div/div/div/div/div/table/tr/td/div/p/a at Line 370, column 185: The link 'http://hl7.org/fhir/uv/cql/fhir-modelinfo.html' for "FHIR ModelInfo" cannot be resolved
 ERROR: artifacts.html#/html/body/div/div/div/div/div/div/table/tbody/tr/td/p/a at Line 298, column 137: The link 'http://hl7.org/fhir/uv/cql/fhir-modelinfo.html' for "FHIR ModelInfo" cannot be resolved
@@ -88,7 +88,7 @@ WARNING: Library/module-example: Library.relatedArtifact[7].resource: A definiti
 WARNING: Library/module-example: Library.relatedArtifact[8].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837'
 WARNING: Library/module-example: Library.relatedArtifact[9].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591'
 
-# 14: These are intentional, we are providing an example of QICore ModelInfo Settings but do not want to take a dependency on QICore
+# 14: These are intentional, we are providing an example of QICore ModelInfo Settings but do not want to take a dependency on QICore. See https://chat.fhir.org/#narrow/channel/179239-tooling/topic/Dev.20Dependencies
 ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[13].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-adverseevent'
 ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[14].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-allergyintolerance'
 ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[15].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-bodystructure'
@@ -155,7 +155,7 @@ ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[75].part[0].va
 ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[76].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-taskdone'
 ERROR: Parameters/qicore-modelinfo-settings: Parameters.parameter[77].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-taskrejected'
 
-# 15: These are intentional, we are providing an example of USCore ModelInfo Settings, but do not want to take a dependency on USCore
+# 15: These are intentional, we are providing an example of USCore ModelInfo Settings, but do not want to take a dependency on USCore. See https://chat.fhir.org/#narrow/channel/179239-tooling/topic/Dev.20Dependencies
 ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[13].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance'
 ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[14].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-average-blood-pressure'
 ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[15].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-bmi'
@@ -209,7 +209,7 @@ ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[62].part[0].va
 ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[63].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-treatment-intervention-preference'
 ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[64].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs'
 
-# 16: These should not be required for example content?
+# 16: These should not be required for example content? Raised in Zulip here: https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Errors.20about.20implementation.20guide.20standards.20status
 ERROR: ImplementationGuide/example: ImplementationGuide: HL7 Implementation Guides must state their status explicitly using the extension http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
 ERROR: ImplementationGuide/example: ImplementationGuide: HL7 Implementation Guides must state their owning workgroup explicitly using the extension http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
 WARNING: ImplementationGuide/example: ImplementationGuide: HL7 Implementation Guides should state their maturity explicitly using the extension http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
