@@ -26,6 +26,7 @@ The intent of this implementation guide is to support the use of CQL with FHIR i
 * Evaluation support profiles to facilitate the representation of structured information about a logic library, as well as the result of evaluating a logic library
 * CQL Evaluation Service capability statement
 * Model Information (ModelInfo)-related profiles to facilitate configuration of ModelInfo for FHIR implementation guides
+* Universally applicable CQL Artifacts for use with FHIR, including FHIR-ModelInfo, FHIRHelpers, and FHIRCommon
 
 ### How to read this Guide
 {: #how-to-read-this-guide}
@@ -43,14 +44,15 @@ page in the menu bar:
 -  **Authoring**:
     -  **[Using CQL](using-cql.html)**: Conformance requirements for using Clinical Quality Language as part of authoring FHIR Knowledge Artifacts.
     -  **[Patterns](patterns.html)**: Patterns and guidance for using Clinical Quality Language as part of authoring FHIR Knowledge Artifacts.
-    -  **[FHIR ModelInfo](fhir-modelinfo.html)**: Description of the contents of the base FHIR ModelInfo
-    -  **[FHIRHelpers](Library-FHIRHelpers.html)**: Conversion functions used to simplify access to FHIR data types
-    -  **[FHIRCommon](Library-FHIRCommon.html)**: Library of common functions and declarations for use in FHIR artifacts
 -  **Integrating**:
     -  **[Conformance](conformance.html)**: Conformance requirements for integrating Clinical Quality Language as part of systems that support authoring, publishing, distribution, and implementing FHIR Knowledge Artifacts.
     -  **[Using ELM](using-elm.html)**: Conformance requirements for the use of Expression Logical Model (ELM) artifacts.
     -  **[Using ModelInfo](using-modelinfo.html)**: Conformance requirements for the use of Model Info.
--  **Artifacts**: 
+-  **CQL Artifacts**:
+    -  **[FHIR ModelInfo](fhir-modelinfo.html)**: Description of the contents of the base FHIR ModelInfo
+    -  **[FHIRHelpers](Library-FHIRHelpers.html)**: Conversion functions used to simplify access to FHIR data types
+    -  **[FHIRCommon](Library-FHIRCommon.html)**: Library of common functions and declarations for use in FHIR artifacts
+-  **FHIR Artifacts**: 
     -  **[Profiles](profiles.html)**: List of profiles defined for use by knowledge artifacts.
     -  **[Extensions](extensions.html)**: List of extensions defined and used by knowledge artifacts.
     -  **[Operations](operations.html)**: List of operations and operation pattern profiles.
@@ -91,7 +93,7 @@ Health Level Seven. Clinical Quality Language. [Online]. Available from: [http:/
 
 Health Level Seven. FHIR Clinical Guidelines. [Online]. Available from: [http://hl7.org/fhir/uv/cpg](http://hl7.org/fhir/uv/cpg) [Accessed October 2023].
 
-Health Level Seven. Canonical Resource Management Infrastructure (Ballot). [Online]. Available from: [http://hl7.org/fhir/uv/crmi/2023Sep](http://hl7.org/fhir/uv/crmi/2023Sep) [Accessed October 2023].
+Health Level Seven. Canonical Resource Management Infrastructure. [Online]. Available from: [http://hl7.org/fhir/uv/crmi](http://hl7.org/fhir/uv/crmi) [Accessed May 2024].
 
 Health Level Seven. Quality Measure Implementation Guide. [Online]. Available from: [http://hl7.org/fhir/us/cqfmeasures](http://hl7.org/fhir/us/cqfmeasures) [Accessed October 2023].
 

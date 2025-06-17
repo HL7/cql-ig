@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CapabilityStatement xmlns="http://hl7.org/fhir">
   <id value="cql-evaluation-service"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="4"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="cds"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
   <url value="http://hl7.org/fhir/uv/cql/CapabilityStatement/cql-evaluation-service"/>
   <name value="CQLEvaluationService"/>
   <title value="CQL Evaluation Service"/>

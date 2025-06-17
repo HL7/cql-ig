@@ -5,9 +5,6 @@
     <ul class="dropdown-menu">
       <li><a href="using-cql.html" class="item">Using CQL</a></li>
       <li><a href="patterns.html" class="item">Patterns</a></li>
-      <li><a href="fhir-modelinfo.html" class="item">FHIR ModelInfo</a></li>
-      <li><a href="Library-FHIRHelpers.html" class="item">FHIRHelpers</a></li>
-      <li><a href="Library-FHIRCommon.html" class="item">FHIRCommon</a></li>
     </ul>
   </li>
   <li class="dropdown">
@@ -16,6 +13,14 @@
       <li><a href="conformance.html" class="item">Conformance</a></li>
       <li><a href="using-elm.html" class="item">Using ELM</a></li>
       <li><a href="using-modelinfo.html" class="item">Using Model Info</a></li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">CQL Artifacts<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="fhir-modelinfo.html" class="item">FHIR ModelInfo</a></li>
+      <li><a href="Library-FHIRHelpers.html" class="item">FHIRHelpers</a></li>
+      <li><a href="Library-FHIRCommon.html" class="item">FHIRCommon</a></li>
     </ul>
   </li>
   <li class="dropdown">
