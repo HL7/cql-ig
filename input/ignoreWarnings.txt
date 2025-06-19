@@ -79,7 +79,7 @@ ERROR: Library.text.div: Hyperlink 'http://hl7.org/fhir/uv/cql/fhir-modelinfo.ht
 %FHIRCommon.cql: An expression identifier [resolved] is hiding another identifier of the same name.
 %FHIRHelpers.cql: An operand identifier [reference] is hiding another identifier of the same name.
 
-# 13: These are valid value set URLs that are referenced by this example
+# 13: These are valid external value set URLs that are referenced by this example
 WARNING: Library/module-example: Library.relatedArtifact[3].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 WARNING: Library/module-example: Library.relatedArtifact[4].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.299'
 WARNING: Library/module-example: Library.relatedArtifact[5].resource: A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.126'
@@ -209,12 +209,12 @@ ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[62].part[0].va
 ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[63].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-treatment-intervention-preference'
 ERROR: Parameters/uscore-modelinfo-settings: Parameters.parameter[64].part[0].value.ofType(uri): No definition could be found for URL value 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs'
 
-# 16: These should not be required for example content? Raised in Zulip here: https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Errors.20about.20implementation.20guide.20standards.20status
+# 16: These should not be required for example content. Raised in Zulip here: https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Errors.20about.20implementation.20guide.20standards.20status
 ERROR: ImplementationGuide/example: ImplementationGuide: HL7 Implementation Guides must state their status explicitly using the extension http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
 ERROR: ImplementationGuide/example: ImplementationGuide: HL7 Implementation Guides must state their owning workgroup explicitly using the extension http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
 WARNING: ImplementationGuide/example: ImplementationGuide: HL7 Implementation Guides should state their maturity explicitly using the extension http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
 
-# 17: Following this recommendation would result in the need to update the extension reference everytime the extensions pack publishes?
+# 17: Following this recommendation would result in the need to update the extension reference everytime the extensions pack publishes.
 WARNING: StructureDefinition/cql-evaluationresult: StructureDefinition.snapshot.element[14].type[0].profile[0]: There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/data-absent-reason'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '5.2.0', found versions: 4.0.1, 5.2.0. Suggested fix: change the canonical reference from 'http://hl7.org/fhir/StructureDefinition/data-absent-reason' to 'http://hl7.org/fhir/StructureDefinition/data-absent-reason|5.2.0'
 WARNING: StructureDefinition/cql-evaluationresult: StructureDefinition.differential.element[5].type[0].profile[0]: There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/data-absent-reason'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '5.2.0', found versions: 4.0.1, 5.2.0. Suggested fix: change the canonical reference from 'http://hl7.org/fhir/StructureDefinition/data-absent-reason' to 'http://hl7.org/fhir/StructureDefinition/data-absent-reason|5.2.0'
 

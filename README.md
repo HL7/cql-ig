@@ -1,7 +1,6 @@
-# Using CQL With FHIR
+# Using CQL
 
-This repository contains the source for the HL7 Using CQL With FHIR Implementation Guide
-
+This repository contains the source for the HL7 FHIR Implementation Guide: Using CQL, published at http://hl7.org/fhir/uv/cql
 
 Continuous Integration Build: http://build.fhir.org/ig/HL7/cql-ig 
 
