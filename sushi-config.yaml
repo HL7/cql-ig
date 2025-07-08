@@ -8,7 +8,7 @@
 id: hl7.fhir.uv.cql
 canonical: http://hl7.org/fhir/uv/cql
 name: CQL
-title: Using CQL
+title: Using CQL With FHIR
 description: >-
   This implementation guide defines profiles, operations and guidance for the
   use of CQL with FHIR, both as a mechanism for querying, as well as inline
