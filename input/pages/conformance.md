@@ -671,7 +671,6 @@ And the resulting data requirements:
   ]
 ```
 
-<!-- NOTE: FHIR-44779 PR on the extensions pack needs to be merged before this can be committed -->
 
 #### RelatedArtifacts
 {: #relatedartifacts}
