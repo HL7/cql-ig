@@ -36,6 +36,7 @@ In addition to the use of CQL directly in [expression-valued elements](#using-ex
 
 3. CQL library source files **SHOULD** be named `<CQLLibraryName>-<version>.cql`.
 4. To avoid issues with characters between web ids and names, library names **SHALL NOT** have underscores.
+5. Library.subject **SHALL** correspond to the context declaration in the CQL library
 
 The prohibition against underscores in CQL library names is required to ensure compliance with the canonical URL pattern (because URLs by convention should not use underscores). In addition, many publishing environments will use the canonical tail (i.e. the name of the library) as the logical id of the Library resource, which does not allow underscores per the FHIR specification.
 
