@@ -105,16 +105,16 @@ Health Level Seven. US Core. [Online]. Available from: [http://hl7.org/fhir/us/c
 
 ### Dependencies
 
-{% include dependency-table-short.xhtml %}
+{% lang-fragment dependency-table-short.xhtml %}
 
 ### Cross Version Analysis
 
-{% include cross-version-analysis.xhtml %}
+{% lang-fragment cross-version-analysis.xhtml %}
 
 ### Global Profiles
 
-{% include globals-table.xhtml %}
+{% lang-fragment globals-table.xhtml %}
 
 ### Intellectual Property Statements
 
-{% include ip-statements.xhtml %}
+{% lang-fragment ip-statements.xhtml %}

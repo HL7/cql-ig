@@ -5,12 +5,12 @@
 
 <table class="grid">
   <tr><th>CodeSystem</th><th>Description</th></tr>
-{% include table-codesystems.xhtml %}
+{% lang-fragment table-codesystems.xhtml %}
 </table>
 
 ### ValueSets
 
 <table class="grid">
   <tr><th>ValueSet</th><th>Description</th></tr>
-{% include table-valuesets.xhtml %}
+{% lang-fragment table-valuesets.xhtml %}
 </table>

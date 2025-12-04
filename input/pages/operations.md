@@ -6,7 +6,7 @@
 
 <table class="grid">
   <tr><th>CodeSystem</th><th>Description</th></tr>
-{% include table-operationdefinitions.xhtml %}
+{% lang-fragment table-operationdefinitions.xhtml %}
 </table>
 
 ### Examples
