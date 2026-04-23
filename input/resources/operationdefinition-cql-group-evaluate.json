@@ -1,0 +1,87 @@
+{
+    "resourceType" : "OperationDefinition",
+    "id" : "cql-group-evaluate",
+    "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+        "valueCode" : "cds"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+        "valueCode" : "trial-use"
+      }],
+    "url" : "http://hl7.org/fhir/uv/cql/OperationDefinition/cql-group-evaluate",
+    "name" : "CQLGroupEvaluate",
+    "title" : "CQL Group Evaluate",
+    "status" : "active",
+    "kind" : "operation",
+    "experimental" : false,
+    "date" : "2023-11-27T16:26:11+00:00",
+    "publisher" : "HL7 International / Clinical Decision Support",
+    "contact" : [{
+      "name" : "HL7 International / Clinical Decision Support",
+      "telecom" : [{
+        "system" : "url",
+        "value" : "http://www.hl7.org/Special/committees/dss"
+      }]
+    }],
+    "description" : "Evaluates the membership criteria of a group definition returns the results as an actual Group resource. The Group is expected to use the characteristicsExpression extension to define membership criteria.",
+    "jurisdiction" : [{
+      "coding" : [{
+        "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+        "code" : "001",
+        "display" : "World"
+      }]
+    }],
+    "purpose" : "This operation is defined to support evaluating the membership criteria of a group definition directly via an operation",
+    "affectsState" : false,
+    "code" : "evaluate",
+    "resource" : ["Group"],
+    "system" : false,
+    "type" : true,
+    "instance" : true,
+    "parameter" : [{
+      "name" : "url",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "documentation" : "The canonical url (with optional version) of the group to be evaluated. This parameter is only used when the operation is invoked at the type level, and is exclusive with the group parameter.",
+      "type" : "canonical"
+    },
+    {
+      "name" : "group",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "documentation" : "The group to be evaluated, provided as an input. This parameter is only used when the operation is invoked at the type level, and is exclusive with the url parameter.",
+      "type" : "Group"
+    },
+    {
+      "name" : "subject",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "documentation" : "Subject for which the group will be evaluated. This corresponds to the context in which the group will be evaluated and is represented as a relative FHIR id (e.g. Patient/123), which establishes both the context and context value for the evaluation",
+      "type" : "string",
+      "searchType" : "reference"
+    },
+    {
+      "name" : "parameters",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "documentation" : "Any input parameters to the evaluation. Parameters defined in this input will be bound by name to the evaluation context. If the membership criteria is a CQL expression, these parameters will be available to the expression. If the membership criteria is a CQL identifier, these parameters will be bound by name to the parameters defined in the CQL library (or included libraries, recursively). Parameter types are mapped to CQL as specified in the Using CQL section of this implementation guide. If a parameter appears more than once in the input Parameters resource, it is represented with a List in the input CQL. If a parameter has parts, it is represented as a Tuple in the input CQL. If parameter names are qualified, the parameter will be bound only to parameters in the library with the qualifier name, and the qualifier name must be the name of a library included by the library being evaluated (or an included library, recursively).",
+      "type" : "Parameters"
+    },
+    {
+      "name" : "return",
+      "use" : "out",
+      "min" : 1,
+      "max" : "1",
+      "documentation" : "The results of the group evaluation, returned as an actual Group resource with members as determined by the evaluation of the membership criteria against the data present in the server.",
+      "type" : "Group"
+    }]
+  }
