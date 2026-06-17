@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="selectivity-coverage"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablecodesystem"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="shareable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="computable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="publishable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeRepresentationLevel">
+    <valueCode value="structured"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="cds"/>
+  </extension>
+  <url value="http://hl7.org/fhir/uv/cql/CodeSystem/selectivity-coverage"/>
+  <version value="5.0.0"/>
+  <name value="SelectivityCoverage"/>
+  <title value="Selectivity Coverage Code System"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2026-04-24"/>
+  <publisher value="HL7 International / Clinical Decision Support"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/dss"/>
+    </telecom>
+  </contact>
+  <description value="Codes representing the coverage level of the description of the selectivity of an expression, total, partial, or non."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+      <display value="World"/>
+    </coding>
+  </jurisdiction>
+  <caseSensitive value="true"/>
+  <valueSet value="http://hl7.org/fhir/uv/cql/ValueSet/selectivity-coverage"/>
+  <content value="complete"/>
+  <concept>
+    <code value="total"/>
+    <display value="Total"/>
+    <definition value="Indicates the query selectivity completely covers the criteria in the query (i.e. the query is in CNF/DNF, and all terms are sargeable)."/>
+  </concept>
+  <concept>
+    <code value="partial"/>
+    <display value="Partial"/>
+    <definition value="Indicates the query selectivity partially covers the criteria in the query (i.e. the query is in CNF/DNF, but not all terms are sargeable)."/>
+  </concept>
+  <concept>
+    <code value="non"/>
+    <display value="Non"/>
+    <definition value="Indicates the query selectivity cannot be determined for the query (i.e. the query is not in CNF/DNF)."/>
+  </concept>
+</CodeSystem>

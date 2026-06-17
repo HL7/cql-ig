@@ -1,5 +1,9 @@
 {
    "options":[
+      "EnableAnnotations",
+      "EnableLocators",
+      "DisableListDemotion",
+      "DisableListPromotion"
    ],
    "formats":[
      "JSON"

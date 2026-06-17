@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="selectivity-form"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablecodesystem"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="shareable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="computable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="publishable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeRepresentationLevel">
+    <valueCode value="structured"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="cds"/>
+  </extension>
+  <url value="http://hl7.org/fhir/uv/cql/CodeSystem/selectivity-form"/>
+  <version value="5.0.0"/>
+  <name value="SelectivityForm"/>
+  <title value="Selectivity Form Code System"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2026-04-24"/>
+  <publisher value="HL7 International / Clinical Decision Support"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/dss"/>
+    </telecom>
+  </contact>
+  <description value="Codes representing the form of the description of the selectivity of an expression, either conjunctive or disjunctive."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+      <display value="World"/>
+    </coding>
+  </jurisdiction>
+  <caseSensitive value="true"/>
+  <valueSet value="http://hl7.org/fhir/uv/cql/ValueSet/selectivity-form"/>
+  <content value="complete"/>
+  <concept>
+    <code value="total"/>
+    <display value="Total"/>
+    <definition value="Indicates the query selectivity completely covers the criteria in the query (i.e. the query is in CNF/DNF, and all terms are sargeable)."/>
+  </concept>
+  <concept>
+    <code value="conjunctive"/>
+    <display value="Conjunctive"/>
+    <definition value="Indicates the query selectivity represents criteria in Conjunctive Normal Form (CNF) (i.e. a conjunction of disjunctions)."/>
+  </concept>
+  <concept>
+    <code value="disjunctive"/>
+    <display value="Disjunctive"/>
+    <definition value="Indicates the query selectivity represents criteria in Disjunctive Normal Form (DNF) (i.e. a disjunction of conjunctions)."/>
+  </concept>
+</CodeSystem>

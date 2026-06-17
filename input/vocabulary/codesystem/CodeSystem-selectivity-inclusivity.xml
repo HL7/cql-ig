@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="selectivity-inclusivity"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablecodesystem"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="shareable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="computable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="publishable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeRepresentationLevel">
+    <valueCode value="structured"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="cds"/>
+  </extension>
+  <url value="http://hl7.org/fhir/uv/cql/CodeSystem/selectivity-inclusivity"/>
+  <version value="5.0.0"/>
+  <name value="SelectivityInclusivity"/>
+  <title value="Selectivity Inclusivity Code System"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2026-04-24"/>
+  <publisher value="HL7 International / Clinical Decision Support"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/dss"/>
+    </telecom>
+  </contact>
+  <description value="Codes representing the inclusivity of the selectivity of an expression, inclusion, exclusion, or indeterminate."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+      <display value="World"/>
+    </coding>
+  </jurisdiction>
+  <caseSensitive value="true"/>
+  <valueSet value="http://hl7.org/fhir/uv/cql/ValueSet/selectivity-inclusivity"/>
+  <content value="complete"/>
+  <concept>
+    <code value="inclusion"/>
+    <display value="Inclusion"/>
+    <definition value="Indicates the query selectivity represents an inclusion criteria with respect to the context of the query."/>
+  </concept>
+  <concept>
+    <code value="exclusion"/>
+    <display value="Exclusion"/>
+    <definition value=" Indicates the query selectivity represents an exclusion criteria with respect to the context of the query."/>
+  </concept>
+  <concept>
+    <code value="indeterminate"/>
+    <display value="Indeterminate"/>
+    <definition value="Indicates that whether the query selectivity represents inclusion or exclusion criteria cannot be determined."/>
+  </concept>
+</CodeSystem>

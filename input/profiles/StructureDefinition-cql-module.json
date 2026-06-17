@@ -103,7 +103,8 @@
         "id": "Library.extension:inputParameters",
         "path": "Library.extension",
         "sliceName": "inputParameters",
-        "short": "The cqf-inputParameters extension is used to provide the actual parameters given to an operation (i.e. when the module is the result of a $data-requirements operation, what were the parameters to the operation). As opposed to the Library.parameter element, which provides the definition of parameters for the module.",
+        "short": "What parameters were input",
+        "definition": "The cqf-inputParameters extension is used to provide the actual parameters given to an operation (i.e. when the module is the result of a $data-requirements operation, what were the parameters to the operation). As opposed to the Library.parameter element, which provides the definition of parameters for the module.",
         "min": 0,
         "max": "1",
         "type": [
@@ -111,6 +112,22 @@
             "code": "Extension",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Library.extension:selectivity",
+        "path": "Library.extension",
+        "sliceName": "selectivity",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-selectivity"
             ]
           }
         ],

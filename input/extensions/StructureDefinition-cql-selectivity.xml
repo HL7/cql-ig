@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="cqf-selectivity"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="cds"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <url value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-selectivity"/>
+  <version value="5.0.0"/>
+  <name value="Selectivity"/>
+  <title value="Selectivity"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2015-05-30"/>
+  <publisher value="HL7 International / Clinical Decision Support"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/dss"/>
+    </telecom>
+  </contact>
+  <description value="Describes the selectivity of a set of data requirements with respect to a particular expression."/>
+  <fhirVersion value="5.0.0"/>
+  <mapping>
+    <identity value="rim"/>
+    <uri value="http://hl7.org/v3"/>
+    <name value="RIM Mapping"/>
+  </mapping>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <context>
+    <type value="element"/>
+    <expression value="Library"/>
+  </context>
+  <type value="Extension"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+  <derivation value="constraint"/>
+  <differential>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="Expression selectivity"/>
+      <definition value="Describes the selectivity of a set of data requirements with respect to a particular expression. The form indicates whether the expression being described is in Conjunctive or Disjunctive Normal Form. The coverage indicates whether the selectivity is total (i.e. the selectivity completely describes the expression) or partial. The inclusivity indicates whether the expression is a positive or negative existence test."/>
+      <min value="0"/>
+      <max value="*"/>
+    </element>
+    <element id="Extension.extension:expressionIdentifier">
+      <path value="Extension.extension"/>
+      <sliceName value="expressionIdentifier"/>
+      <short value="What expression"/>
+      <definition value="The expression the selectivity is describing."/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+      </type>
+    </element>
+    <element id="Extension.extension:expressionIdentifier.extension">
+      <path value="Extension.extension.extension"/>
+      <max value="0"/>
+    </element>
+    <element id="Extension.extension:expressionIdentifier.url">
+      <path value="Extension.extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="expressionIdentifier"/>
+    </element>
+    <element id="Extension.extension:expressionIdentifier.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <min value="1"/>
+      <type>
+        <code value="string"/>
+      </type>
+    </element>
+    <element id="Extension.extension:coverage">
+      <path value="Extension.extension"/>
+      <sliceName value="coverage"/>
+      <short value="How selective"/>
+      <definition value="The coverage level of the selectivity with respect to the expression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+      </type>
+    </element>
+    <element id="Extension.extension:coverage.extension">
+      <path value="Extension.extension.extension"/>
+      <max value="0"/>
+    </element>
+    <element id="Extension.extension:coverage.url">
+      <path value="Extension.extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="coverage"/>
+    </element>
+    <element id="Extension.extension:coverage.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <min value="1"/>
+      <type>
+        <code value="code"/>
+      </type>
+      <binding>
+        <strength value="required"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/selectivity-coverage"/>
+      </binding>
+    </element>
+    <element id="Extension.extension:inclusivity">
+      <path value="Extension.extension"/>
+      <sliceName value="inclusivity"/>
+      <short value="Inclusion/exclusion"/>
+      <definition value="The inclusivity of the selectivity (i.e. inclusion or exclusion)"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+      </type>
+    </element>
+    <element id="Extension.extension:inclusivity.extension">
+      <path value="Extension.extension.extension"/>
+      <max value="0"/>
+    </element>
+    <element id="Extension.extension:inclusivity.url">
+      <path value="Extension.extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="inclusivity"/>
+    </element>
+    <element id="Extension.extension:inclusivity.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <min value="1"/>
+      <type>
+        <code value="code"/>
+      </type>
+      <binding>
+        <strength value="required"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/selectivity-inclusivity"/>
+      </binding>
+    </element>
+    <element id="Extension.extension:form">
+      <path value="Extension.extension"/>
+      <sliceName value="form"/>
+      <short value="Conjunctive/disjunctive"/>
+      <definition value="The form of the selectivity, conjunctive or disjunctive."/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+      </type>
+    </element>
+    <element id="Extension.extension:form.extension">
+      <path value="Extension.extension.extension"/>
+      <max value="0"/>
+    </element>
+    <element id="Extension.extension:form.url">
+      <path value="Extension.extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="form"/>
+    </element>
+    <element id="Extension.extension:form.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <min value="1"/>
+      <type>
+        <code value="code"/>
+      </type>
+      <binding>
+        <strength value="required"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/selectivity-form"/>
+      </binding>
+    </element>
+    <element id="Extension.extension:clause">
+      <path value="Extension.extension"/>
+      <sliceName value="clause"/>
+      <short value="A selectivity clause"/>
+      <definition value="A clause in the selectivity (e.g. A and B). In a conjunctive selectivity, clauses are joined with _and_, whereas in a disjunctive selectivity, clauses are joined with _or_."/>
+      <min value="1"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+      </type>
+    </element>
+    <element id="Extension.extension:clause.extension:term">
+      <path value="Extension.extension.extension"/>
+      <sliceName value="term"/>
+      <short value="A selectivity term"/>
+      <definition value="A term in a clause of the selectivity (e.g. A.status = 'active'). Terms in a clause are joined with the opposite connective, by definition of Conjunctive and Disjunctive Normal Form (i.e. terms in a conjunctive selectivity are joined with _or_, whereas terms in a disjunctive selectivity are joined with _and_)"/>
+      <min value="1"/>
+      <max value="*"/>
+    </element>
+    <element id="Extension.extension:clause.extension:term.extension">
+      <path value="Extension.extension.extension.extension"/>
+      <max value="0"/>
+    </element>
+    <element id="Extension.extension:clause.extension:term.url">
+      <path value="Extension.extension.extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="term"/>
+    </element>
+    <element id="Extension.extension:clause.extension:term.value[x]">
+      <path value="Extension.extension.extension.value[x]"/>
+      <min value="1"/>
+      <type>
+        <code value="DataRequirement"/>
+      </type>
+    </element>
+    <element id="Extension.extension:clause.url">
+      <path value="Extension.extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="clause"/>
+    </element>
+    <element id="Extension.extension:clause.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <min value="0"/>
+      <max value="0"/>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <fixedUri value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-selectivity"/>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <min value="0"/>
+      <max value="0"/>
+    </element>
+  </differential>
+</StructureDefinition>
