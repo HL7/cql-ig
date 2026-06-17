@@ -152,6 +152,22 @@ using FHIR version '4.0.1'
 
 Snippet 2-3: Data Model line from [Example.cql](Library-Example.html#cql-content)
 
+#### Context Declarations
+{: #context-declarations}
+
+CQL supports a `context` declaration that allows expressions to be evaluated with respect to a particular context, as defined by the data model being used. For FHIR-based models, the most common context is the `Patient` context, which is roughly analogous to the `Patient` compartment, but the FHIR ModelInfo defines a context for each `ComparmentDefinition` in the base specification.
+
+**Conformance Requirement 2.5.1 (Context Declarations):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-5-1)
+{: #conformance-requirement-2-5-1}
+
+1. Libraries that use FHIR-based models **SHALL** specify at most one context declaration
+2. If present, the context declaration **SHALL** be the first statement declaration in the library (i.e. the first declaration after the library declaration and any usings, includes, code systems, value sets, codes, concepts, and parameters).
+3. If not specified, the context is determined by
+    * The default context, as specified by the first using declaration
+    * The `unfiltered` context, indicating that expressions in the library are not expressed from the perspective of a particular context
+
+For more information, see the [Retrieve Context](https://cql.hl7.org/02-authorsguide.html#retrieve-context) discussion in the CQL specification.
+
 ### Code Systems
 {: #code-systems}
 
