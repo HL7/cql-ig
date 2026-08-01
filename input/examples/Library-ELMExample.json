@@ -82,7 +82,7 @@
   }, {
     "type": "depends-on",
     "display": "Library FHIRHelpers",
-    "resource": "http://hl7.org/fhir/uv/cql/Library/FHIRHelpers|2.0.0"
+    "resource": "http://hl7.org/fhir/uv/cql/Library/FHIRHelpers|3.0.0-ballot"
   }, {
     "type": "depends-on",
     "display": "Code system LOINC",

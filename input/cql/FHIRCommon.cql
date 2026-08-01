@@ -1,7 +1,7 @@
 /*
 @description: Common terminologies and functions used in FHIR-based CQL artifacts
 */
-library FHIRCommon version '2.0.0'
+library FHIRCommon version '3.0.0-ballot'
 
 using FHIR version '4.0.1'
 
