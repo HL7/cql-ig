@@ -1,9 +1,9 @@
 {
   "resourceType": "StructureDefinition",
-  "id": "cql-evaluationresult",
+  "id": "cql-parameters",
   "extension" : [{
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
-    "valueInteger" : 1
+    "valueInteger" : 4
   },
   {
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
@@ -13,9 +13,9 @@
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
     "valueCode" : "trial-use"
   }],
-  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult",
-  "name": "CQLEvaluationResult",
-  "title": "CQL Evaluation Result",
+  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-parameters",
+  "name": "CQLParameters",
+  "title": "CQL Parameters",
   "status": "active",
   "experimental": false,
   "publisher": "Clinical Decision Support WG",
@@ -29,7 +29,7 @@
       ]
     }
   ],
-  "description": "The CQL Evaluation Result profile supports using the dataAbsentReason extension to indicate null evaluation results from operations.",
+  "description": "The CQL Parameters profile supports exchanging CQL parameters and evaluation results for FHIR operations, including $cql and the various $evaluate operations defined throughout FHIR Clinical Reasoning. The profile supports unambiguously identifying the type of CQL values that have been mapped to FHIR, as well as communicating empty lists, empty tuples, and null parameters or results using the data-absent-reason extension.",
   "jurisdiction": [
     {
       "coding": [
@@ -107,9 +107,9 @@
         "mustSupport": true
       },
       {
-        "id": "Parameters.parameter.value[x].extension:dataAbsentReason",
+        "id": "Parameters.parameter.value[x].extension:null",
         "path": "Parameters.parameter.value[x].extension",
-        "sliceName": "dataAbsentReason",
+        "sliceName": "null",
         "min": 0,
         "max": "1",
         "type": [
@@ -123,7 +123,7 @@
         "mustSupport": true
       },
       {
-        "id": "Parameters.parameter.value[x].extension:dataAbsentReason.valueCode",
+        "id": "Parameters.parameter.value[x].extension:null.valueCode",
         "path": "Parameters.parameter.value[x].extension.valueCode",
         "min": 1,
         "max": "1",
@@ -161,6 +161,38 @@
             "code": "Extension",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/cqf-isEmptyTuple"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Parameters.parameter.value[x].extension:quantity-precision",
+        "path": "Parameters.parameter.value[x].extension",
+        "sliceName": "quantity-precision",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7.org/fhir/extensions/StructureDefinition-quantity-precision.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Parameters.parameter.value[x].extension:time-precision",
+        "path": "Parameters.parameter.value[x].extension",
+        "sliceName": "time-precision",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7.org/fhir/extensions/StructureDefinition-time-precision.html"
             ]
           }
         ],

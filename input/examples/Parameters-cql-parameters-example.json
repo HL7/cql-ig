@@ -1,8 +1,8 @@
 {
     "resourceType": "Parameters",
-    "id": "cql-evaluationresult-example",
+    "id": "cql-parameters-example",
     "meta": {
-      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult" ]
+      "profile": [ "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-parameters" ]
     },
     "parameter": [ {
       "extension": [{
