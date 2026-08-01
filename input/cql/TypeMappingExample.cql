@@ -23,6 +23,8 @@ context Patient
 // CQL Values
 // Boolean
 define CQLBooleanExample: true
+// Boolean Null
+define CQLBooleanNullExample: null as Boolean
 // Code
 define CQLCodeExample: ExampleCode
 // CodeSystem

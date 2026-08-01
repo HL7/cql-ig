@@ -175,6 +175,14 @@
     "name": "CQLBooleanExample",
     "valueBoolean": true
   }, {
+    "name": "CQLBooleanNullExample",
+    "_valueBoolean": {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "unknown"
+      }]
+    }
+  }, {
     "name": "CQLCodeExample",
     "valueCoding": {
       "code": "example-code",

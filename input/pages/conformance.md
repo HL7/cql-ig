@@ -67,11 +67,105 @@ The prohibition against underscores in CQL library names is required to ensure c
 |`Interval<System.Quantity>`|`FHIR.Range`|
 {: .grid }
 
-2. List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
+2\. `null` results **SHALL** use a [data-absent-reason]({{site.data.fhir.ver.ext}}/StructureDefinition-data-absent-reason.html) extension with a `code` of `unknown` on the `value` element
 
-3. Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
+3\. List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
+    1. In the case of an empty list, the [cqf-isEmptyList]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-isEmptyList.html) extension **SHALL** be used to indicate the list is empty
+    2. In the case of nested list-valued elements, where there is no parameter name, the parameter name `element` **SHALL** be used.
 
-For example, the following CQL expression results in a `List<FHIR.Observation>`:
+4\. Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
+    1. In the case of an empty tuple, the [cqf-isEmptyTuple]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-isEmptyTuple.html) extension **SHALL** be used to indicate the tuple is empty (i.e. has no elements)
+
+For a complete example illustrating all possible type mappings, refer to the [Type Mapping Example](Library-TypeMappingExample.html) and [Type Mapping Evaluation Result Example](Parameters-cql-typemappingexampleresult.html)
+
+The following sections illustrate some important examples of CQL expressions and results. 
+
+##### Example: Simple Boolean
+
+The following CQL expression results in a CQL Boolean value:
+
+```cql
+define CQLBooleanExample: true
+```
+
+In the Library resource, this is represented as a `parameter` with a FHIR type of `boolean` and a cqlType extension:
+
+```json
+{
+  "extension": [{
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+    "valueString": "System.Boolean"
+  }],
+  "name": "CQLBooleanExample",
+  "use": "out",
+  "min": 0,
+  "max": "1",
+  "type": "boolean"
+}
+```
+
+Note the parameter is single-cardinality to indicate this is a single value. When invoked through an operation, this result is represented as a single entry in the resulting Parameters resource:
+
+```json
+{
+  "extension": [{
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+    "valueString": "System.Boolean"
+  }],
+  "name": "CQLBooleanExample",
+  "valueBoolean": true
+}
+```
+
+Here the CQL value is represented as a parameter element with the FHIR-mapped value, a boolean `true`
+
+##### Example: Null Boolean
+
+The following CQL expression results in a `null`, typed as a CQL Boolean:
+
+```cql
+define CQLBooleanExample: null as System.Boolean
+```
+
+In the Library resource, this is represented as a `parameter` with a FHIR type of `boolean` and a cqlType extension:
+
+```json
+{
+  "extension": [{
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+    "valueString": "System.Boolean"
+  }],
+  "name": "CQLBooleanExample",
+  "use": "out",
+  "min": 0,
+  "max": "1",
+  "type": "boolean"
+}
+```
+
+Note the parameter is single-cardinality to indicate this is a single value. When invoked through an operation, this result is represented as a single entry in the resulting Parameters resource:
+
+```json
+{
+  "extension": [{
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+    "valueString": "System.Boolean"
+  }],
+  "name": "CQLBooleanExample",
+  "_valueBoolean": {
+    "extension": [{
+      "url": "hl7.org/fhir/StructureDefinition/data-absent-reason",
+      "valueCode": "unknown"
+    }]
+  }
+}
+```
+
+In this case, the CQL `null` is still represented as a parameter element, but with a `data-absent-reason` extension indicating the result is `unknown`.
+
+##### Example: List of FHIR Observation Resources
+
+The following CQL expression results in a `List<FHIR.Observation>`:
 
 ```cql
 define "FHIRObservationListExample":
@@ -82,23 +176,23 @@ In the Library resource, this is represented as a `parameter`:
 
 ```json
 {
-    "extension": [{
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
-      "valueString": "List<FHIR.Observation>"
-    }],
-    "name": "FHIRObservationListExample",
-    "use": "out",
-    "min": 0,
-    "max": "*",
-    "type": "Observation"
-  }
-  ```
+  "extension": [{
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+    "valueString": "List<FHIR.Observation>"
+  }],
+  "name": "FHIRObservationListExample",
+  "use": "out",
+  "min": 0,
+  "max": "*",
+  "type": "Observation"
+}
+```
 
-  Note the parameter is multi-cardinality to indicate this is a list-valued expression. Also note the use of the `cqf-cqlType` extension to relay the CQL type.
+Note the parameter is multi-cardinality to indicate this is a list-valued expression. Also note the use of the `cqf-cqlType` extension to relay the CQL type.
 
-  When invoked through an operation (such as `$cql` or `Library/$evaluate`), this would be represented as multiple entries in the resulting Parameters resource:
+When invoked through an operation (such as `$cql` or `Library/$evaluate`), this would be represented as multiple entries in the resulting Parameters resource:
 
-  ```json
+```json
 {
   "name": "FHIRObservationListExample",
   "resource": {
@@ -126,6 +220,8 @@ In the Library resource, this is represented as a `parameter`:
 }
 ```
 
+##### Example: Empty List
+
 Note that for an empty list, the `cqf-isEmptyList` extension is used:
 
 ```json
@@ -145,6 +241,8 @@ Note that for an empty list, the `cqf-isEmptyList` extension is used:
 ```
 
 Note that the extension is provided on the `value` element, and an arbitrary choice of `boolean` is selected; there is no value to provide, the result is an empty list, so this is just a way to provide the cqf-isEmptyList extension (because parameters in a FHIR Parameters resource must have a value element).
+
+##### Example: Nested Lists
 
 For the special case of nested lists, where a parameter name is not available, the name `element` **SHALL** be used. For example:
 
@@ -191,6 +289,8 @@ The result of this expression is represented in the resulting Parameters resourc
   }
 ```
 
+##### Example: Empty Tuples
+
 For an empty tuple, the `cqf-isEmptyTuple` extension is used:
 
 ```json
@@ -210,6 +310,8 @@ For an empty tuple, the `cqf-isEmptyTuple` extension is used:
 ```
 
 As with empty lists, the extension is provided on the `value` element, and an arbitrary choice of `boolean` is selected; there is no value to provide, the result is an empty tuple, so this is just a way to provide the cqf-isEmptyTuple extension (because parameters in a FHIR Parameters resource must have a value element).
+
+##### Example: BackboneElement-valued Results
 
 For expressions that result in a BackboneElement, the value is represented in the same way that a Tuple is represented:
 
@@ -245,6 +347,8 @@ For expressions that result in a BackboneElement, the value is represented in th
     ]
   }
   ```
+
+##### Example: Extension-valued Results
 
 For expressions that result in Extension values, the elements of the extension are mapped using parts, `url` and `value` for simple extensions:
 
@@ -296,8 +400,6 @@ Parts `url` and `extension` for complex extensions:
   }]
 }
 ```
-
-For a complete example illustrating all possible type mappings, refer to the [Type Mapping Example](Library-TypeMappingExample.html) and [Type Mapping Evaluation Result Example](Parameters-cql-typemappingexampleresult.html)
 
 #### Parameters and Data Requirements
 {: #parameters-and-data-requirements}
