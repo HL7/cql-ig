@@ -67,13 +67,15 @@ The prohibition against underscores in CQL library names is required to ensure c
 |`Interval<System.Quantity>`|`FHIR.Range`|
 {: .grid }
 
-2\. `null` results **SHALL** use a [data-absent-reason]({{site.data.fhir.ver.ext}}/StructureDefinition-data-absent-reason.html) extension with a `code` of `unknown` on the `value` element
+2\. All CQL-valued parameters and results **SHALL** include a [cqf-cqlType]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-cqlType.html) extension to unambiguously specify the type of the parameter or result. In other words, in the absence of a cqlType extension, the value being represented is assumed to be of the type specified in the FHIR parameters element (i.e. the type of the value or resource element).
 
-3\. List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
+3\. `null` parameters and results **SHALL** use a [data-absent-reason]({{site.data.fhir.ver.ext}}/StructureDefinition-data-absent-reason.html) extension with a `code` of `unknown` on the `value` element
+
+4\. List types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
     1. In the case of an empty list, the [cqf-isEmptyList]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-isEmptyList.html) extension **SHALL** be used to indicate the list is empty
     2. In the case of nested list-valued elements, where there is no parameter name, the parameter name `element` **SHALL** be used.
 
-4\. Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
+5\. Tuple types **SHALL** have elements of types that can be mapped to FHIR according to this mapping.
     1. In the case of an empty tuple, the [cqf-isEmptyTuple]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-isEmptyTuple.html) extension **SHALL** be used to indicate the tuple is empty (i.e. has no elements)
 
 For a complete example illustrating all possible type mappings, refer to the [Type Mapping Example](Library-TypeMappingExample.html) and [Type Mapping Evaluation Result Example](Parameters-cql-typemappingexampleresult.html)
@@ -194,6 +196,10 @@ When invoked through an operation (such as `$cql` or `Library/$evaluate`), this 
 
 ```json
 {
+  "extension": [{
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+    "valueString": "List<FHIR.Observation>"
+  }],
   "name": "FHIRObservationListExample",
   "resource": {
     "resourceType": "Observation",
