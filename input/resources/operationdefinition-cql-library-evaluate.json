@@ -89,7 +89,7 @@
       "use" : "in",
       "min" : 0,
       "max" : "1",
-      "documentation" : "Any input parameters for the library. Parameters defined in this input will be bound by name to parameters defined in the CQL library (or included libraries, recursively). Parameter types are mapped to CQL as specified in the Using CQL section of this implementation guide. If a parameter appears more than once in the input Parameters resource, it is represented with a List in the input CQL. If a parameter has parts, it is represented as a Tuple in the input CQL. If parameter names are qualified, the parameter will be bound only to parameters in the library with the qualifier name, and the qualifier name must be the name of a library included by the library being evaluated (or an included library, recursively).",
+      "documentation" : "Any input parameters for the library. Parameters defined in this input will be bound by name to parameters defined in the CQL library (or included libraries, recursively). Parameter types are mapped to CQL as specified in the Using CQL section of this implementation guide. If a parameter appears more than once in the input Parameters resource, it is represented with a List in the input CQL. If a parameter has parts, it is represented as a Tuple in the input CQL. Note that parameters may be arbitrarily nested, for example, a list of tuples, or tuples that have list or interval valued elements. If parameter names are qualified, the parameter will be bound only to parameters in the library with the qualifier name, and the qualifier name must be the name of a library included by the library being evaluated (or an included library, recursively).",
       "type" : "Parameters"
     },
     {
