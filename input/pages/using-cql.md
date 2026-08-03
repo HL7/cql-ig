@@ -473,6 +473,9 @@ Conformance Requirement 2.13 captures these best-practices for Library-level ide
     3. **SHOULD** Use quoted identifiers if necessary
     4. **SHOULD** Use Initial Case
     5. **MAY** Include spaces
+    6. To enable the use of identifiers as codes in code systems:
+        1. **SHOULD** have no leading or trailing whitespace
+        2. **SHOULD** have no whitespace other than single spaces
 
 > NOTE: **Initial Case** is defined as the first letter of every word is capitalized (e.g. "Blood Pressure Observations Within 30 Days") (as opposed to Title Case, which traditionally does not capitalize conjunctions and prepositions, e.g. "Blood Pressure Observations within 30 Days")
 
