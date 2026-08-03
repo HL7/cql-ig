@@ -67,8 +67,16 @@
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlOptions",
       "valueReference": {
         "reference": "#options"
-    }
-  } ],
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-namespace",
+      "valueString": "hl7.fhir.uv.cql"
+    },
+    {
+      "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-namespaceUri",
+      "valueString": "http://hl7.org/fhir/uv/cql"
+    } ],
   "url": "http://hl7.org/fhir/uv/cql/Library/FHIRCommon",
   "name": "FHIRCommon",
   "title": "FHIR Common",

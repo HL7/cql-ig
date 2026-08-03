@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="cqf-selectivity"/>
+  <id value="cql-selectivity"/>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
     <valueCode value="cds"/>
   </extension>
@@ -12,12 +12,10 @@
     <valueCode value="trial-use"/>
   </extension>
   <url value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-selectivity"/>
-  <version value="5.0.0"/>
-  <name value="Selectivity"/>
-  <title value="Selectivity"/>
-  <status value="draft"/>
+  <name value="CQLSelectivity"/>
+  <title value="CQL Selectivity"/>
+  <status value="active"/>
   <experimental value="false"/>
-  <date value="2015-05-30"/>
   <publisher value="HL7 International / Clinical Decision Support"/>
   <contact>
     <telecom>
@@ -26,7 +24,7 @@
     </telecom>
   </contact>
   <description value="Describes the selectivity of a set of data requirements with respect to a particular expression."/>
-  <fhirVersion value="5.0.0"/>
+  <fhirVersion value="4.0.1"/>
   <mapping>
     <identity value="rim"/>
     <uri value="http://hl7.org/v3"/>

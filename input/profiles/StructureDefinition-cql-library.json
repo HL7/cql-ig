@@ -119,6 +119,38 @@
         ]
       },
       {
+        "id": "Library.extension:namespace",
+        "path": "Library.extension",
+        "sliceName": "namespace",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-namespace"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Library.extension:namespaceUri",
+        "path": "Library.extension",
+        "sliceName": "namespaceUri",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-namespaceUri"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
         "id": "Library.name",
         "path": "Library.name",
         "min": 1,
