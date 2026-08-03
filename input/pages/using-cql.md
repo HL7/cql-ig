@@ -128,7 +128,7 @@ the addressability, but the uniqueness, ensuring that library name collisions ca
 {: #conformance-requirement-2-4}
 
 1. CQL libraries **SHOULD** use namespaces.
-2. When a namespace is not used, the library **SHALL** be considered part of a "public" global namespace for the purposes of resolution within a given environment.
+2. When a namespace is not declared, the library **SHALL** be considered to be part of a namespace as determined by the authoring environment. In FHIR-based artifacts this is typically the namespace implied by the implementation guide. See [Library Name and URL](conformance.html#conformance-requirement-4-2).
 3. The root of the CQL namespace **SHALL** match the root of the url of the Library resource housing the CQL library.
 
 In addition, because the namespace of a library functions as part of the globally unique identifier for the library, changing the namespace of the library results in a different artifact.
