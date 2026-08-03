@@ -1,0 +1,62 @@
+{
+    "resourceType" : "OperationDefinition",
+    "id" : "cql-resolve-namespace",
+    "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+        "valueCode" : "cds"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+        "valueCode" : "trial-use"
+      }],
+    "url" : "http://hl7.org/fhir/uv/cql/OperationDefinition/cql-resolve-namespace",
+    "name" : "CQLResolveNamespace",
+    "title" : "CQL Resolve Namespace",
+    "status" : "active",
+    "kind" : "operation",
+    "experimental" : false,
+    "date" : "2023-11-27T16:26:11+00:00",
+    "publisher" : "HL7 International / Clinical Decision Support",
+    "contact" : [{
+      "name" : "HL7 International / Clinical Decision Support",
+      "telecom" : [{
+        "system" : "url",
+        "value" : "http://www.hl7.org/Special/committees/dss"
+      }]
+    }],
+    "description" : "Resolves the given namespace name to a namespace uri. For libraries published in FHIR NPM packages, the namespace name corresponds to the FHIR NPM packageId (and the `packageId` element of the ImplementationGuide resource), and the uri corresponds to the base canonical for the FHIR NPM package. For example, the namespace name for the Using CQL With FHIR implementation guide (this IG) is `hl7.fhir.uv.cql`, and the namespace uri is `http://hl7.org/fhir/uv/cql`.",
+    "jurisdiction" : [{
+      "coding" : [{
+        "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+        "code" : "001",
+        "display" : "World"
+      }]
+    }],
+    "purpose" : "This operation is defined to support resolving namespaces used in CQL libraries.",
+    "affectsState" : false,
+    "code" : "evaluate",
+    "resource" : ["Group"],
+    "system" : false,
+    "type" : true,
+    "instance" : true,
+    "parameter" : [{
+      "name" : "name",
+      "use" : "in",
+      "min" : 1,
+      "max" : "1",
+      "documentation" : "The name of the namespace as used in CQL declarations (e.g. hl7.fhir.uv.cql). For libraries published in FHIR NPM packages, this corresponds to the FHIR NPM packageId (and the `packageId` element of the ImplementationGuide resource).",
+      "type" : "canonical"
+    },
+    {
+      "name" : "return",
+      "use" : "out",
+      "min" : 1,
+      "max" : "1",
+      "documentation" : "The uri of the namespace with the given name (e.g. http://hl7.org/fhir/uv/cql). For libraries published in FHIR NPM packages, this corresponds to the baseCanonical of the FHIR NPM package.",
+      "type" : "uri"
+    }]
+  }
