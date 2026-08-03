@@ -65,6 +65,8 @@ define CQLDateTimeIntervalExample: Interval[@2024-01-01T10:30:00Z, @2024-01-31T1
 define CQLTimeIntervalExample: Interval[@T10:30:00, @T11:30:00]
 // Interval<Integer>
 define CQLIntegerIntervalExample: Interval[5, 10]
+// Interval<Decimal>
+define CQLDecimalIntervalExample: Interval[5.5, 10.5]
 // Interval<Quantity>
 define CQLQuantityIntervalExample: Interval[5 'mg', 10 'mg']
 // List

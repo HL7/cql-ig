@@ -172,9 +172,17 @@
         ]
       }
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Boolean"
+    }],
     "name": "CQLBooleanExample",
     "valueBoolean": true
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Boolean"
+    }],
     "name": "CQLBooleanNullExample",
     "_valueBoolean": {
       "extension": [{
@@ -183,15 +191,27 @@
       }]
     }
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Code"
+    }],
     "name": "CQLCodeExample",
     "valueCoding": {
       "code": "example-code",
       "system": "http://hl7.org/fhir/uv/cql/CodeSystem/example"
     }
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.CodeSystem"
+    }],
     "name": "CQLCodeSystemExample",
     "valueCanonical": "http://hl7.org/fhir/uv/cql/CodeSystem/example"
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Concept"
+    }],
     "name": "CQLConceptExample",
     "valueCodeableConcept": {
       "coding": [{
@@ -200,18 +220,38 @@
       }]
     }
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Date"
+    }],
     "name": "CQLDateExample",
     "valueDate": "2024-01-01"
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.DateTime"
+    }],
     "name": "CQLDateTimeExample",
     "valueDateTime": "2024-01-01T10:30:00Z"
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.DateTime"
+    }],
     "name": "CQLPartialDateTimeExample",
     "valueDateTime": "2024-01-01"
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Decimal"
+    }],
     "name": "CQLDecimalExample",
     "valueDecimal": 10.0
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Decimal"
+    }],
     "name": "CQLDecimalPrecisionExample",
     "valueDecimal": 10.0,
     "_valueDecimal": {
@@ -228,9 +268,17 @@
     "name": "CQLLongExample",
     "valueString": "10"
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Integer"
+    }],
     "name": "CQLIntegerExample",
     "valueInteger": 10
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Quantity"
+    }],
     "name": "CQLQuantityExample",
     "valueQuantity": {
       "value": 10,
@@ -238,6 +286,10 @@
       "system": "http://unitsofmeasure.org"
     }
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Ratio"
+    }],
     "name": "CQLRatioExample",
     "valueRatio": {
       "numerator": {
@@ -252,12 +304,24 @@
       }
     }
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.String"
+    }],
     "name": "CQLStringExample",
     "valueString": "John"
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.Time"
+    }],
     "name": "CQLTimeExample",
     "valueTime": "10:30:00"
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "System.ValueSet"
+    }],
     "name": "CQLValueSetExample",
     "valueCanonical": "http://hl7.org/fhir/uv/cql/ValueSet/shareable-example"
   }, {
@@ -284,6 +348,10 @@
       "end": "2024-01-31"
     }
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "Interval<System.DateTime>"
+    }],
     "name": "CQLDateTimeIntervalExample",
     "valuePeriod": {
       "start": "2024-01-01T10:30:00Z",
@@ -317,6 +385,10 @@
       }
     }
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "Interval<System.Quantity>"
+    }],
     "name": "CQLQuantityIntervalExample",
     "valueRange": {
       "low": {
@@ -331,6 +403,10 @@
       }
     }
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<System.Integer>"
+    }],
     "name": "CQLListExample",
     "valueInteger": 1
   }, {
@@ -346,6 +422,10 @@
     "name": "CQLListExample",
     "valueInteger": 5
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "Tuple{X:System.Integer,Y:System.Integer}"
+    }],
     "name": "CQLTupleExample",
     "part": [{
       "name": "X",
@@ -365,6 +445,10 @@
     "name": "CQLChoiceListExample",
     "valueDecimal": 1.0
   }, {
+    "extension": [{
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+      "valueString": "List<Tuple{X:System.Integer,Y:System.Integer}>"
+    }],
     "name": "CQLTupleListExample",
     "part": [{
       "name": "X",

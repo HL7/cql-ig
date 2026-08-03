@@ -63,12 +63,15 @@ The prohibition against underscores in CQL library names is required to ensure c
 |`System.Any`|`FHIR.Any`|
 |`System.Code`|`FHIR.Coding`|
 |`System.Concept`|`FHIR.CodeableConcept`|
+|`Interval<Integer>`|`FHIR.Range`|
+|`Interval<Decimal>`|`FHIR.Range`|
 |`Interval<System.Date>`|`FHIR.Period`|
 |`Interval<System.DateTime>`|`FHIR.Period`|
+|`Interval<Statyem.Time>`|`FHIR.Period`|
 |`Interval<System.Quantity>`|`FHIR.Range`|
 {: .grid }
 
-2\. All CQL-valued parameters and results **SHALL** include a [cqf-cqlType]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-cqlType.html) extension to unambiguously specify the type of the parameter or result. In other words, in the absence of a cqlType extension, the value being represented is assumed to be of the type specified in the FHIR parameters element (i.e. the type of the value or resource element).
+2\. All CQL-valued parameters and results **SHALL** include a [cqf-cqlType]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-cqlType.html) extension to unambiguously specify the type of the parameter or result. In other words, in the absence of a cqlType extension, the value being represented is assumed to be of the type specified in the FHIR parameters element (i.e. the type of the FHIR value or resource element).
 
 3\. `null` parameters and results **SHALL** use a [data-absent-reason]({{site.data.fhir.ver.ext}}/StructureDefinition-data-absent-reason.html) extension with a `code` of `unknown` on the `value` element
 
