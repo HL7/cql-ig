@@ -28,7 +28,7 @@
         "value" : "http://www.hl7.org/Special/committees/dss"
       }]
     }],
-    "description" : "Resolves the given namespace name to a namespace uri. For libraries published in FHIR NPM packages, the namespace name corresponds to the FHIR NPM packageId (and the `packageId` element of the ImplementationGuide resource), and the uri corresponds to the base canonical for the FHIR NPM package. For example, the namespace name for the Using CQL With FHIR implementation guide (this IG) is `hl7.fhir.uv.cql`, and the namespace uri is `http://hl7.org/fhir/uv/cql`.",
+    "description" : "Resolves the given namespace name to a namespace uri. For libraries published in FHIR NPM packages, the namespace name corresponds to the FHIR NPM packageId (and the `packageId` element of the ImplementationGuide resource), and the uri corresponds to the base canonical for the FHIR NPM package. For example, the namespace name for the Using CQL With FHIR implementation guide (this IG) is `hl7.fhir.uv.cql`, and the namespace uri is `http://hl7.org/fhir/uv/cql`.\n\nA package feed is one way to populate this mapping of namespace names to namespace URIs, but it is not the only way. A repository could potentially provide other ways to create this mapping.",
     "jurisdiction" : [{
       "coding" : [{
         "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
