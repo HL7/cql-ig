@@ -622,3 +622,15 @@ define "Antithrombotic Therapy Rejected":
 This example retrieves "Antithrombotic Therapy Requested" resources that have a fulfillment Task focused on the request, a status of `rejected`, and a statusReason in the `Medical Reason` value set.
 
 As with negation of events, the extent of the activity can be accounted for by searching for request instances that make use of the `codeOptions` extension.
+
+Note that because a rejected task may appear on any request, whenever logic is searching for a positive request, it must ensure that there is not an associated rejection:
+
+```cql
+define "Antithrombotic Therapy Requested":
+  [MedicationRequest: "Antithrombotic Therapy"] MR
+    without [Task: Fulfill] T such that T.focus.references(MR) and T.status = 'rejected'
+    where MR.status = 'active'
+      and MR.doNotPerform is not true
+```
+
+> NOTE: We seek comment on whether this pattern should be adopted generally. Specifically, ARE implementers using Tasks to reject orders in this way, and is the overhead of having to check that every request is not rejected worth it? Is there an alternative approach?
