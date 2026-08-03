@@ -150,7 +150,7 @@
       "use" : "in",
       "min" : 0,
       "max" : "1",
-      "documentation" : "An endpoint to use to access content (i.e. libraries) referenced by the library. If no content endpoint is supplied, the evaluation will attempt to retrieve content from the server on which the operation is being performed.",
+      "documentation" : "**DEPRECATED: Use the artifactEndpointConfiguration parameter instead.** An endpoint to use to access content (i.e. libraries) referenced by the library. If no content endpoint is supplied, the evaluation will attempt to retrieve content from the server on which the operation is being performed.",
       "type" : "Endpoint"
     },
     {
@@ -158,8 +158,36 @@
       "use" : "in",
       "min" : 0,
       "max" : "1",
-      "documentation" : "An endpoint to use to access terminology (i.e. valuesets, codesystems, and membership testing) referenced by the library. If no terminology endpoint is supplied, the evaluation will attempt to use the server on which the operation is being performed as the terminology server.",
+      "documentation" : "**DEPRECATED: Use the artifactEndpointConfiguration parameter instead.** An endpoint to use to access terminology (i.e. valuesets, codesystems, and membership testing) referenced by the library. If no terminology endpoint is supplied, the evaluation will attempt to use the server on which the operation is being performed as the terminology server.",
       "type" : "Endpoint"
+    },
+    {
+      "name" : "artifactEndpointConfiguration",
+      "use" : "in",
+      "min" : 0,
+      "max" : "*",
+      "documentation" : "Configuration information to resolve canonical artifacts\n* `artifactRoute`: An optional route used to determine whether this endpoint is expected to be able to resolve artifacts that match the route (i.e. start with the route, up to and including the entire url)\n* `endpointUri`: The URI of the endpoint, exclusive with the `endpoint` parameter\n* `endpoint`: An Endpoint resource describing the endpoint, exclusive with the `endpointUri` parameter\n\n**Processing semantics**:\n\nCreate a canonical-like reference (e.g.\n`{canonical.url}|{canonical.version}` or similar extensions for non-canonical artifacts).\n\n* Given a single `artifactEndpointConfiguration`\n  * When `artifactRoute` is present\n    * And canonical or artifact reference *starts with* `artifactRoute`\n    * Then attempt to resolve with `endpointUri` or `endpoint`\n  * When `artifactRoute` is not present\n    * Then attempt to resolve with `endpointUri` or `endpoint`\n* Given multiple `artifactEndpointConfiguration`s\n  * Then rank order each configuration (see below)\n  * And attempt to resolve with `endpointUri` or `endpoint` in order until resolved\n\nRank each `artifactEndpointConfiguration` such that:\n* if `artifactRoute` is present *and* canonical or artifact reference *starts with* `artifactRoute`: rank based on number of matching characters \n* if `artifactRoute` is *not* present: include but rank lower\n\nNOTE: For evenly ranked `artifactEndpointConfiguration`s, order as defined in the\nOperationDefinition.",
+      "part" : [{
+        "name" : "artifactRoute",
+        "use" : "in",
+        "min" : 0,
+        "max" : "1",
+        "type" : "uri"
+      },
+      {
+        "name" : "endpointUri",
+        "use" : "in",
+        "min" : 0,
+        "max" : "1",
+        "type" : "uri"
+      },
+      {
+        "name" : "endpoint",
+        "use" : "in",
+        "min" : 0,
+        "max" : "1",
+        "type" : "Endpoint"
+      }]
     },
     {
       "name" : "return",
