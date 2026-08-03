@@ -131,7 +131,11 @@
       {
         "id": "Library.subject[x]",
         "path": "Library.subject[x]",
-        "mustSupport": true
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/uv/cql/ValueSet/context-type"
+        }
       },
       {
         "id": "Library.content",

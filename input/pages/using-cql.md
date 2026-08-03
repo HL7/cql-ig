@@ -575,3 +575,17 @@ define fluent function stayTimeInMinutes(encounter "Encounter"):
     duration in minutes of encounter.period
 ```
 
+### Context Declarations
+{: #context-declarations}
+
+Context declarations are used in CQL to specify the [Retrieve Context](https://cql.hl7.org/02-authorsguide.html#retrieve-context) for the expression and function declarations that follow in the library. However, to simplify implementation usage, libraries for use in CQL with FHIR only use one context decalaration:
+
+**Conformance Requirement 2.17 (Context Declarations):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-2-17)
+{: #conformance-requirement-2-17}
+
+1. CQL libraries used with FHIR **SHALL** have at most one context declaration
+2. Context declarations for use in FHIR **SHALL** reference a FHIR resource type, or be `Unfiltered`
+3. Context declarations in CQL libraries used with FHIR **SHALL** appear before any expression or function declarations in the library
+
+See [Conformance Requirement 4.1 (Library Resources)](conformance.html#conformance-requirement-4-1)
+

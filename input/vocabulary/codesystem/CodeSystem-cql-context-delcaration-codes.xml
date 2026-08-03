@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="cql-context-declaration-codes"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablecodesystem"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="shareable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="computable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="publishable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeRepresentationLevel">
+    <valueCode value="structured"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="cds"/>
+  </extension>
+  <url value="http://cql.hl7.org/CodeSystem/context-declaration-codes"/>
+  <version value="2.0.0"/>
+  <name value="CQLContextDeclarationCodes"/>
+  <title value="CQL Context Declaration Codes"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-08-03"/>
+  <publisher value="HL7 International / Clinical Decision Support"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/dss"/>
+    </telecom>
+  </contact>
+  <description value="Codes for specification-defined CQL context declarations. Models define what contexts are available beyond the ones defined here. See the [Context](https://cql.hl7.org/02-authorsguide.html#context) discussion in the CQL specification for complete details."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+      <display value="World"/>
+    </coding>
+  </jurisdiction>
+  <caseSensitive value="true"/>
+  <valueSet value="http://cql.hl7.org/ValueSet/cql-context-declaration"/>
+  <content value="complete"/>
+  <concept>
+    <code value="Unfiltered"/>
+    <display value="Unfiltered"/>
+    <definition value="Indicates that the expressions and function definitions that follow in the library are not restricted to a particular context, as opposed to, for example, a model-defined Patient context, indicating that statements will be filtered to the particular patient in context."/>
+  </concept>
+  <concept>
+    <code value="Population"/>
+    <display value="Population"/>
+    <definition value="Indicates that the expressions and function definitions that follow in the library are not restricted to a particular context, as opposed to, for example, a model-defined Patient context, indicating that statements will be filtered to the particular patient in context."/>
+    <property>
+      <code value="http://hl7.org/fhir/concept-properties#status"/>
+      <valueCode value="deprecated"/>
+    </property>
+  </concept>
+</CodeSystem>
