@@ -331,7 +331,7 @@ This results in run-time error because a UCUM annum is defined as 365.25 days an
 
 This results in `2017-12-31T23:00:00`.
 
-Note carefully that when implicitly converting FHIR `Duration` values to CQL, a UCUM `annum` is converted to a calendar year, and a UCUM `mo` is converted to a calendar month. This is because when years and months appear in FHIR durations, it almost universally the intent that they represent calendar durations, rather than definite-time durations:
+Note carefully that when implicitly converting FHIR `Duration` values to CQL, a UCUM `annum` is converted to a calendar year, and a UCUM `mo` is converted to a calendar month. This is because when years and months appear in FHIR durations, it is almost universally the intent that they represent calendar durations, rather than definite-time durations:
 
 ```cql
 Patient.birthDate + (Condition.onset as Age)
@@ -339,7 +339,7 @@ Patient.birthDate + (Condition.onset as Age)
 
 If the duration in value in FHIR truly represents a definite-time duration, conversion to seconds is required in order to perform the date/time calculation.
 
-See the definition of the [Quantity](https://cql.hl7.org/2020May/02-authorsguide.html#quantities) type in the CQL Author's Guide, as well as the [Date/Time Arithmetic](https://cql.hl7.org/02-authorsguide.html#datetime-arithmetic) discussion for more information.
+See the definition of the [Quantity](https://cql.hl7.org/2020May/02-authorsguide.html#quantities) type in the CQL Author's Guide, as well as the [Date/Time Arithmetic](https://cql.hl7.org/02-authorsguide.html#datetime-arithmetic) discussion for more information. This behavior is inherited from FHIRPath and described in the [Use of FHIR Quantity](https://hl7.org/fhir/fhirpath.html#quantity) topic in the FHIRPath topic in the base FHIR specification.
 
 ### Missing Information
 
