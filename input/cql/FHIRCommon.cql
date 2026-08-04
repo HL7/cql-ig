@@ -216,11 +216,8 @@ If the input is a Period, the result is a DateTime Interval.
 If the input is a Timing, an error is raised indicating a single interval cannot be computed from a Timing.
 If the input is an instant, the result is a DateTime Interval beginning and ending on that instant.
 If the input is a string, an error is raised indicating a single interval cannot be computed from a string.
-If the input is an Age, the result is a DateTime Interval beginning when the patient was the given Age,
-and ending immediately prior to when the patient was the given Age plus one year.
-If the input is a Range, the result is a DateTime Interval beginning when the patient was the Age given
-by the low end of the Range, and ending immediately prior to when the patient was the Age given by the
-high end of the Range plus one year.
+If the input is an Age, the result is the interval during which the patient was that age.
+If the input is a Range, the result is the interval during which the patient was the low age to the high age in the range.
 
 NOTE: Due to the
 complexity of determining a single interval from a Timing or String type, this function will throw a run-time exception if it is used
@@ -456,14 +453,19 @@ define fluent function isEncounterDiagnosis(condition FHIR.Condition):
   )
 
 /*
+@description: Returns the assertedDate for a given condition, i.e. the date on which the existence of the condition was first asserted or acknowledged 
+*/
+define fluent function assertedDate(condition FHIR.Condition):
+  condition.ext('http://hl7.org/fhir/StructureDefinition/condition-assertedDate').value as FHIR.dateTime
+
+/*
 @description: Returns an interval representing the normalized Abatement of a given Condition resource.
 @comment: @comment: If the abatement element of the Condition is represented as a DateTime, the result
 is an interval beginning and ending on that DateTime.
 If the abatement is represented as a Quantity, the quantity is expected to be a calendar-duration and is interpreted as the age of the patient. The
-result is an interval from the date the patient turned that age to immediately before one year later.
+result is the interval during which the patient was that age.
 If the abatement is represented as a Quantity Interval, the quantities are expected to be calendar-durations and are interpreted as an age range during
-which the abatement occurred. The result is an interval from the date the patient turned the starting age of the quantity interval, and ending immediately
-before one year later than the date the patient turned the ending age of the quantity interval.
+which the abatement occurred. The result is the interval during which the patient was the ages in the range.
 
 NOTE: Due to the complexity of determining an interval from a String, this function will throw
 a run-time exception if used with a Condition instance that has a String as the abatement value.
@@ -622,15 +624,20 @@ define fluent function resolutionAge(allergyIntolerance AllergyIntolerance):
     as Age
 
 /*
+@description: Returns the assertedDate for a given allergy/intolerance, i.e. the date on which the existence of the allergy/intolerance was first asserted or acknowledged 
+*/
+define fluent function assertedDate(allergyIntolerance FHIR.AllergyIntolerance):
+  allergyIntolerance.ext('http://hl7.org/fhir/StructureDefinition/condition-assertedDate').value as FHIR.dateTime
+
+/*
 @description: Returns an interval representing the normalized abatement of a given AllergyIntolerance resource.
 @comment: This function uses the abatement extension, if present, otherwise the resolutionAge.
 If the abatement of the AllergyIntolerance is a DateTime, the result is an interval beginning and ending on that DateTime.
 If the abatement is a Period, the result is the Period converted to an Interval of DateTime.
-If the abatement is an Age, the result is an interval from the date the patient turned that age to immediately before one year later.
+If the abatement is an Age, the result is the interval during which the patient was the abatement age.
 If the abatement is a Range, the quantities are expected to be calendar-durations and are interpreted as an age range during
-which the abatement occurred. The result is an interval from the date the patient turned the starting age of the quantity interval, and ending immediately
-before one year later than the date the patient turned the ending age of the quantity interval.
-If the resolutionAge is present, the result is an interval from the date the patient turned that age to immediately before one year later.
+which the abatement occurred. The result is the interval during which the patient was the ages in the abatement range.
+If the resolutionAge is present, the result is the interval during which the patient was the resolution age.
 
 NOTE: Due to the complexity of determining an interval from a String, this function will throw
 a run-time exception if used with a Condition instance that has a String as the abatement value.
@@ -654,8 +661,7 @@ define fluent function abatementInterval(allergyIntolerance AllergyIntolerance):
       else if abatement is FHIR.boolean then
         Interval[end of A.onset.toInterval(), A.recordedDate)
       else if resolutionAge is not null then
-        Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(resolutionAge),
-          FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(resolutionAge) + 1 year)
+        Patient.whenAged(FHIRHelpers.ToQuantity(resolutionAge))
       else 
         null
 
@@ -689,7 +695,7 @@ define fluent function active(allergyIntolerances List<FHIR.AllergyIntolerance>)
     where A.clinicalStatus ~ "allergy-active"
 
 /*
-@description: Returns true if the given condition has a clinical status of inactive
+@description: Returns true if the given allergy/intolerance has a clinical status of inactive
 */
 define fluent function isInactive(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.clinicalStatus ~ "allergy-inactive"
@@ -702,7 +708,7 @@ define fluent function inactive(allergyIntolerances List<FHIR.AllergyIntolerance
     where A.clinicalStatus ~ "allergy-inactive"
 
 /*
-@description: Returns true if the given condition has a clinical status of resolved
+@description: Returns true if the given allergy/intolerance has a clinical status of resolved
 */
 define fluent function isResolved(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.clinicalStatus ~ "allergy-resolved"
@@ -715,7 +721,7 @@ define fluent function resolved(allergyIntolerances List<FHIR.AllergyIntolerance
     where A.clinicalStatus ~ "allergy-resolved"
 
 /*
-@description: Returns true if the given condition either has no verification status or has a verification status of confirmed, unconfirmed, provisional, or differential
+@description: Returns true if the given allergy/intolerance either has no verification status or has a verification status of confirmed or unconfirmed
 */
 define fluent function isVerified(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.verificationStatus is not null implies
@@ -724,7 +730,7 @@ define fluent function isVerified(allergyIntolerance FHIR.AllergyIntolerance):
     )
 
 /*
-@description: Returns conditions in the given list that either have no verification status or have a verification status of confirmed, unconfirmed, provisional, or differential
+@description: Returns allergies/intolerances in the given list that either have no verification status or have a verification status of confirmed or unconfirmed
 */
 define fluent function verified(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
@@ -734,39 +740,39 @@ define fluent function verified(allergyIntolerances List<FHIR.AllergyIntolerance
       )
 
 /*
-@description: Returns true if the given condition has a verification status of confirmed
+@description: Returns true if the given allergy/intolerance has a verification status of confirmed
 */
 define fluent function isConfirmed(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.verificationStatus ~ "allergy-confirmed"
 
 /*
-@description: Returns allergies in the given list that have a verification status of confirmed
+@description: Returns allergies/intolerances in the given list that have a verification status of confirmed
 */
 define fluent function confirmed(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
     where A.verificationStatus ~ "allergy-confirmed"
 
 /*
-@description: Returns true if the given condition has a verification status of unconfirmed
+@description: Returns true if the given allergy/intolerance has a verification status of unconfirmed
 */
 define fluent function isUnconfirmed(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.verificationStatus ~ "allergy-unconfirmed"
 
 /*
-@description: Returns allergies in the given list that have a verification status of unconfirmed
+@description: Returns allergies/intolerances in the given list that have a verification status of unconfirmed
 */
 define fluent function unconfirmed(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
     where A.verificationStatus ~ "allergy-unconfirmed"
 
 /*
-@description: Returns true if the given condition has a verification status of refuted
+@description: Returns true if the given allergy/intolerance has a verification status of refuted
 */
 define fluent function isRefuted(allergyIntolerance FHIR.AllergyIntolerance):
   allergyIntolerance.verificationStatus ~ "allergy-refuted"
 
 /*
-@description: Returns allergies in the given list that have a verification status of refuted
+@description: Returns allergies/intolerances in the given list that have a verification status of refuted
 */
 define fluent function refuted(allergyIntolerances List<FHIR.AllergyIntolerance>):
   allergyIntolerances A
