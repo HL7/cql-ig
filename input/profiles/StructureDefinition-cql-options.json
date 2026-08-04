@@ -70,6 +70,31 @@
         }
       },
       {
+        "id": "Parameters.parameter:translator",
+        "path": "Parameters.parameter",
+        "sliceName": "translator",
+        "short": "What translator",
+        "definition": "This parameter indicates what translator should be or was used to translate from CQL to ELM",
+        "comment": "This parameter can be used to capture what translator was used to perform the translation from CQL to ELM, and can also serve as a hint to target environments for which translator to use.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Parameters.parameter:translator.name",
+        "path": "Parameters.parameter.name",
+        "fixedString": "translator"
+      },
+      {
+        "id": "Parameters.parameter:translator.value[x]",
+        "path": "Parameters.parameter.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },    
+      {
         "id": "Parameters.parameter:enableAnnotations",
         "path": "Parameters.parameter",
         "sliceName": "enableAnnotations",
