@@ -160,6 +160,9 @@
       "extension": [ {
         "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
         "valueString": "Patient?_id={{context.patientId}}"
+      }, {
+        "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-fhirQueryPatternCoverage",
+        "valueCode": "partial"
       } ],
       "type": "Patient",
       "profile": [ "http://example.org/fhir/us/qicore/StructureDefinition/qicore-patient" ],
@@ -176,6 +179,9 @@
       "extension": [ {
         "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
         "valueString": "Encounter?status=finished&subject=Patient/{{context.patientId}}&type:in=http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+    }, {
+        "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-fhirQueryPatternCoverage",
+        "valueCode": "partial"
     }, {
         "url": "http://hl7.org/fhir/StructureDefinition/cqf-isSelective",
         "valueBoolean": true
@@ -212,6 +218,15 @@
       "extension": [ {
         "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
         "valueString": "Coverage?policy-holder=Patient/{{context.patientId}}&type:in=http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+        "valueString": "Coverage?subscriber=Patient/{{context.patientId}}&type:in=http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+        "valueString": "Coverage?beneficiary=Patient/{{context.patientId}}&type:in=http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
+      }, {
+        "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-fhirQueryPatternCoverage",
+        "valueCode": "partial"
       } ],
      "type": "Coverage",
       "profile": [ "http://example.org/fhir/us/qicore/StructureDefinition/qicore-coverage" ],

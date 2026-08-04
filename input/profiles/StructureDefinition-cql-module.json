@@ -354,6 +354,24 @@
         "mustSupport": false
       },
       {
+        "id": "Library.dataRequirement.extension:fhirQueryPatternCoverage",
+        "path": "Library.dataRequirement.extension",
+        "sliceName": "fhirQueryPatternCoverage",
+        "short": "How completely the query patterns cover the data requirement",
+        "definition": "Describes the extent to which the FHIR query patterns given for the data requirement cover the criteria of that data requirement. If this extension is not present, consumers assume a coverage of partial.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-fhirQueryPatternCoverage"
+            ]
+          }
+        ],
+        "mustSupport": false
+      },
+      {
         "id": "Library.dataRequirement.extension:relatedDataRequirement",
         "path": "Library.dataRequirement.extension",
         "sliceName": "relatedDataRequirement",

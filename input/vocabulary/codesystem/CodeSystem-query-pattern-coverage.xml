@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="query-pattern-coverage"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablecodesystem"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="shareable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="computable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeCapability">
+    <valueCode value="publishable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-knowledgeRepresentationLevel">
+    <valueCode value="structured"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="cds"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/uv/cql/CodeSystem/query-pattern-coverage"/>
+  <name value="QueryPatternCoverage"/>
+  <title value="Query Pattern Coverage Code System"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-08-04"/>
+  <publisher value="HL7 International / Clinical Decision Support"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/dss"/>
+    </telecom>
+  </contact>
+  <description value="Codes representing the extent to which the FHIR query patterns given for a data requirement cover the criteria of that data requirement, total, partial, or non. Note that in all cases, the union of the results of the query patterns is expected to be sound, meaning that it includes all the data described by the data requirement; the coverage indicates only whether additional data may also be returned (i.e. whether the consumer must still apply the criteria of the data requirement to the results)."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+      <display value="World"/>
+    </coding>
+  </jurisdiction>
+  <caseSensitive value="true"/>
+  <valueSet value="http://hl7.org/fhir/uv/cql/ValueSet/query-pattern-coverage"/>
+  <content value="complete"/>
+  <concept>
+    <code value="total"/>
+    <display value="Total"/>
+    <definition value="Indicates that the union of the results of the query patterns is exactly the data described by the data requirement (i.e. every criteria of the data requirement is expressed in the query patterns, and is expressed with the same semantics). No further filtering of the results is required."/>
+  </concept>
+  <concept>
+    <code value="partial"/>
+    <display value="Partial"/>
+    <definition value="Indicates that the union of the results of the query patterns is a superset of the data described by the data requirement (i.e. at least one criteria of the data requirement could not be expressed in the query patterns, or could only be expressed with broader semantics). The consumer must apply the criteria of the data requirement to the results."/>
+  </concept>
+  <concept>
+    <code value="non"/>
+    <display value="Non"/>
+    <definition value="Indicates that no criteria of the data requirement other than the resource type and the context could be expressed in the query patterns. The consumer must apply the criteria of the data requirement to the results."/>
+  </concept>
+</CodeSystem>

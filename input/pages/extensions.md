@@ -35,3 +35,17 @@ These extensions provide capabilities related to the use of CQL with Fast Health
  <tr><td><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-cqf-valueFilter.html">Value Filter</a> </td><td><p>Allows additional value-based filters to be specified as part of a data requirement.</p></td><td> <a class="fmm" href="http://hl7.org/fhir/versions.html#maturity" title="Maturity Level">3</a></td></tr>
 </table>
 
+### Extensions Defined in This Guide
+
+These extensions are defined by this implementation guide.
+{: #extensions-defined-in-this-guide}
+<table class="grid">
+  <tr><th>Extension</th><th>Description</th><th>FMM</th></tr>
+ <tr><td><a href="StructureDefinition-cql-evaluatedResource.html">CQL Evaluated Resource</a> </td><td><p>A resource referenced during the evaluation of the logic used to determine membership of the entity.</p></td><td> <a class="fmm" href="http://hl7.org/fhir/versions.html#maturity" title="Maturity Level">1</a></td></tr>
+ <tr><td><a href="StructureDefinition-cql-fhirQueryPatternCoverage.html">CQL FHIR Query Pattern Coverage</a> </td><td><p>Describes the extent to which the FHIR query patterns given for a data requirement cover the criteria of that data requirement. See <a href="conformance.html#fhir-query-patterns">FHIR Query Patterns</a> for guidance on constructing query patterns and determining coverage.</p></td><td> <a class="fmm" href="http://hl7.org/fhir/versions.html#maturity" title="Maturity Level">1</a></td></tr>
+ <tr><td><a href="StructureDefinition-cql-namespace.html">CQL Namespace</a> </td><td><p>The CQL namespace of the CQL library. For Library resources packaged in FHIR NPM Packages, this SHALL be the packageId of the package.</p></td><td> <a class="fmm" href="http://hl7.org/fhir/versions.html#maturity" title="Maturity Level">1</a></td></tr>
+ <tr><td><a href="StructureDefinition-cql-namespaceUri.html">CQL Namespace URI</a> </td><td><p>The CQL namespace URI of the CQL library. For Library resources packaged in FHIR NPM Packages, this SHALL be the base canonical of the package.</p></td><td> <a class="fmm" href="http://hl7.org/fhir/versions.html#maturity" title="Maturity Level">1</a></td></tr>
+ <tr><td><a href="StructureDefinition-cql-selectivity.html">CQL Selectivity</a> </td><td><p>Describes the selectivity of a set of data requirements with respect to a particular expression.</p></td><td> <a class="fmm" href="http://hl7.org/fhir/versions.html#maturity" title="Maturity Level">1</a></td></tr>
+ <tr><td><a href="StructureDefinition-time-hasOffset.html">Time HasOffset</a> </td><td><p>Indicates whether the datetime value being represented included a timezone offset. False indicates that the value being exchanged does not have a timezone offset, but the FHIR representation requires it.</p></td><td> <a class="fmm" href="http://hl7.org/fhir/versions.html#maturity" title="Maturity Level">1</a></td></tr>
+</table>
+

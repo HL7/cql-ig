@@ -489,6 +489,13 @@ Representation of an empty list:
 |dateRange|dateFilter.path or dateFilter.searchParam|
 {: .grid }
 
+6. FHIR query patterns, if provided (using the [`cqf-fhirQueryPattern`]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-fhirQueryPattern.html) extension), **SHALL** be relative queries (i.e. with no base URL), and **SHALL** only use context tokens that are defined for the subject type of the artifact, as described in [FHIR Query Patterns](#fhir-query-patterns).
+7. FHIR query patterns **SHALL** be _sound_ with respect to the data requirement, meaning that the union of the results of all the query patterns given for a data requirement **SHALL** include all the data described by that data requirement. Criteria that cannot be expressed as search parameters **SHALL** be omitted from the query patterns, rather than approximated with criteria that could exclude required data.
+8. When more than one FHIR query pattern is present on a data requirement, consuming systems **SHALL** perform all of the queries and use the union of the results, de-duplicated by resource identity.
+9. Producing systems **SHOULD** use the [cql-fhirQueryPatternCoverage](StructureDefinition-cql-fhirQueryPatternCoverage.html) extension to indicate the extent to which the query patterns cover the data requirement, and consuming systems **SHALL** apply the criteria of the data requirement to the results of the query patterns unless the coverage is `total`.
+10. FHIR query patterns **SHOULD** only use search parameters, modifiers, and result parameters that are supported by the server that will be queried, as declared in the `CapabilityStatement` for that server.
+{: start="6"}
+
 For example, given the following CQL:
 
 ```cql
@@ -542,6 +549,7 @@ Although this extension may be used by artifact authors as a way to indicate exp
 
 The [`cqf-fhirQueryPattern`]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-fhirQueryPattern.html) extension **MAY** be used to recommend a FHIR RESTful query that can be used to satisfy the data requirement:
 
+{% raw %}
 ```json
 {
   "extension": [ {
@@ -556,6 +564,9 @@ The [`cqf-fhirQueryPattern`]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-
   } ]
 }
 ```
+{% endraw %}
+
+Constructing a query pattern from a data requirement, determining how completely the resulting query pattern covers that data requirement, and determining when more than one query pattern is required are discussed in detail in [FHIR Query Patterns](#fhir-query-patterns).
 
 Systems that can infer more selective requirements from additional restrictions applied in the CQL after the retrieve **MAY** include those requirements to provide more selective data requirements. For example:
 
@@ -785,6 +796,7 @@ define "Initial Population":
 <!--NOTE: Added extension tracker to enable this use case: https://jira.hl7.org/browse/FHIR-50991 -->
 
 ##### Related Data Requirements
+{: #related-data-requirements}
 
 To establish relationships between data requirements, the [cqf-relatedRequirement]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-relatedRequirement.html) extension can be used. For example, consider the following expression that retrieves both MedicationRequest and Medication resources:
 
@@ -825,6 +837,277 @@ And the resulting data requirements:
   ]
 ```
 
+##### FHIR Query Patterns
+{: #fhir-query-patterns}
+
+The [`cqf-fhirQueryPattern`]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-fhirQueryPattern.html) extension communicates a FHIR RESTful query that can be used to retrieve the data described by a data requirement. This allows consumers of a module definition Library, such as the one returned by the [$data-requirements](https://hl7.org/fhir/uv/crmi/OperationDefinition-crmi-data-requirements.html) operation, to gather the data an artifact needs without having to interpret the structure of each data requirement themselves.
+
+Query patterns are _patterns_, not resolvable URLs:
+
+* They are relative queries with no base URL, so that they can be applied to any server
+* They contain _context tokens_, delimited with double-braces, that the consumer replaces with the identity of the subject for which the artifact is being evaluated
+
+The context tokens available depend solely on the subject type of the artifact:
+
+{% raw %}
+
+|Subject Type|Context Token|
+|---|---|
+|`Patient`|`{{context.patientId}}`|
+|`Practitioner`|`{{context.practitionerId}}`|
+|`Organization`|`{{context.organizationId}}`|
+|`Location`|`{{context.locationId}}`|
+|`Device`|`{{context.deviceId}}`|
+{: .grid }{% endraw %}
+
+The remainder of this section describes how to construct query patterns from a data requirement, how to determine and communicate how completely the resulting queries cover that data requirement, and when more than one query pattern is required.
+
+###### Constructing a Query Pattern
+{: #constructing-a-query-pattern}
+
+Construction of a query pattern is informed by three inputs:
+
+1. The data requirement
+2. The subject (context) type of the artifact
+3. The capabilities of the server that will be queried, as declared in its `CapabilityStatement`, together with the `SearchParameter` definitions that server supports
+
+The third input matters because search parameters, modifiers, chained parameters, `_include`, and compartment searches are all optional capabilities. Where the server that will be queried is not known at the time the query pattern is produced, producing systems **SHOULD** restrict the query pattern to search parameters defined in the base specification for the resource type, and **SHOULD NOT** use modifiers, chained parameters, or result parameters.
+
+Elements of the data requirement map to components of the query as follows:
+
+{% raw %}
+
+|Data Requirement Element|Query Pattern Component|
+|---|---|
+|`type`|The resource type of the query (e.g. `Encounter?`)|
+|(subject in context)|A search parameter relating the resource to the subject in context (e.g. `subject=Patient/{{context.patientId}}`), or a compartment search (e.g. `Patient/{{context.patientId}}/Encounter?`)|
+|`profile`|`_profile`, subject to the considerations described below|
+|`codeFilter.searchParam`|Used directly as the name of the search parameter|
+|`codeFilter.path`|Mapped to a `token` search parameter whose expression resolves to the path|
+|`codeFilter.code`|The value of the search parameter, expressed as one or more system and code pairs|
+|`codeFilter.valueSet`|The `:in` modifier with the canonical of the value set, or the codes of an expansion of the value set|
+|`dateFilter.searchParam`|Used directly as the name of the search parameter|
+|`dateFilter.path`|Mapped to a `date` search parameter whose expression resolves to the path|
+|`dateFilter.value`|The value of the search parameter, using prefixes for interval-valued criteria|
+|`sort`|`_sort`, with the sort paths mapped to search parameters|
+|`limit`|`_count`, subject to the considerations described below|
+|`mustSupport`|`_elements`, subject to the considerations described below|
+|`cqf-valueFilter` extension|A search parameter with a prefix or modifier corresponding to the comparator|
+|`cqf-relatedRequirement` extension|`_include` or `_revinclude`, or a separate query pattern for the related data requirement|
+{: .grid }{% endraw %}
+
+**Resource type and context:** The `type` element of the data requirement determines the resource type of the query. The search parameter that relates that resource type to the subject in context is determined by the context relationships declared in the [model info](using-modelinfo.html) for the type (i.e. `contextRelationship`), which correspond to the `CompartmentDefinition` for the context type in FHIR. Where the type declares more than one relationship for the context type (for example, `Coverage` relates to `Patient` through `policyHolder`, `subscriber`, `beneficiary`, and `payor`), a single search parameter does not establish membership in the compartment, and more than one query pattern is required (see [Multiple Query Patterns](#multiple-query-patterns)). Where the server supports the compartment for the context type, as declared by `CapabilityStatement.rest.compartment`, a compartment search **SHOULD** be preferred, because a compartment search covers every relationship that establishes membership in the compartment with a single query.
+
+**Mapping paths to search parameters:** For each filter that specifies a `path` rather than a `searchParam`, the producing system determines the search parameter to use by locating a `SearchParameter` that is supported by the server, whose `base` includes the resource type of the data requirement, whose `type` is appropriate to the filter (`token` for code filters, `date` for date filters), and whose `expression` resolves to the path given in the filter. Note that the expression of a search parameter may cover only part of a polymorphic element (e.g. `(MedicationRequest.medication as CodeableConcept)`), or may include additional restrictions (e.g. `where(resolve() is Patient)`), in which case the search parameter only partially covers the path. Where no such search parameter can be determined, the filter **SHALL** be omitted from the query pattern; producing systems **SHALL NOT** use a search parameter that does not resolve to the path of the filter.
+
+**Terminology filters:** A code filter that references a value set can be expressed in two ways:
+
+1. By reference, using the `:in` modifier with the canonical URL of the value set. This form is preferred where it is available, because it avoids inlining a potentially large expansion, and because it defers expansion to the server being queried. It requires that the server support the `:in` modifier and that the server be able to resolve and expand the value set.
+2. By value, by expanding the value set and listing the codes of the expansion as the value of the search parameter. Multiple values for a single search parameter are ORed, so the expansion is expressed as a comma-delimited list of system and code pairs.
+
+{% raw %}
+```
+Encounter?subject=Patient/{{context.patientId}}&type:in=http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292
+Encounter?subject=Patient/{{context.patientId}}&type=http://snomed.info/sct|183452005,http://snomed.info/sct|32485007
+```
+{% endraw %}
+
+A code filter that specifies codes directly (i.e. `codeFilter.code`, resulting from direct-reference codes in the CQL) uses the same system and code form.
+
+When a value set is expanded and inlined, the query pattern reflects that expansion at the time the pattern was produced. The expansion **SHOULD** be performed using the expansion parameters declared for the artifact (i.e. the [`cqf-expansionParameters`]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-expansionParameters.html) extension) so that the codes used in the query are the same codes the evaluating engine will use. Because inlined expansions become stale when the value set or its code systems change, query patterns that use inlined expansions **SHOULD** be produced as part of packaging an artifact for a particular environment, where the expansion can be pinned with a manifest, rather than published as part of the artifact itself.
+
+**Date filters:** The value of a date filter may be a `dateTime`, a `Period`, or a `Duration`:
+
+{% raw %}
+```
+Observation?subject=Patient/{{context.patientId}}&date=2026-01-01T00:00:00.000-07:00
+Encounter?subject=Patient/{{context.patientId}}&date=ge2026-01-01T00:00:00.000-07:00&date=le2026-12-31T23:59:59.999-07:00
+```
+{% endraw %}
+
+Repeating a search parameter ANDs the criteria, so an interval is expressed with a `ge` prefix on the low boundary and an `le` prefix on the high boundary. A `Duration` value is relative to the evaluation time; if the evaluation time is not known when the query pattern is produced, the filter is omitted. Date values in query patterns **SHOULD** include a timezone offset, because a value without an offset is interpreted using the timezone of the server being queried, which may differ from the timezone used by the evaluating engine.
+
+Note that FHIR search on a date parameter whose expression resolves to a period-valued or range-valued element uses _overlap_ semantics, whereas the CQL criteria a date filter is typically derived from (e.g. `during`) uses containment semantics. The query therefore returns a superset of the data described by the data requirement.
+
+**Value filters:** The `comparator` element of the `cqf-valueFilter` extension is drawn from the FHIR search comparators (`eq`, `gt`, `lt`, `ge`, `le`, `sa`, and `eb`), and maps directly onto the search prefix for `number`, `date`, and `quantity` search parameters. For `token` search parameters, only `eq` can be expressed, and it is expressed as the value with no prefix. For `string` search parameters, the default search semantics is a case- and accent-insensitive starts-with match, so `eq` is expressed with the `:exact` modifier:
+
+{% raw %}
+```
+Encounter?subject=Patient/{{context.patientId}}&status=finished
+Observation?subject=Patient/{{context.patientId}}&value-quantity=gt40
+```
+{% endraw %}
+
+**Profiles:** The `_profile` search parameter matches against the `meta.profile` element, which is a claim made by a resource instance, not a guarantee of conformance. Many servers do not index `_profile`, and many data sources hold resources that conform to a profile without declaring it. Including `_profile` in a query pattern against such a data source will exclude data the artifact requires, making the query pattern unsound. For this reason, `_profile` **SHOULD** only be used when the data source is known to tag resources with the profiles they conform to, and **SHOULD** otherwise be omitted from the query pattern, leaving conformance to be validated by the consumer.
+
+**Sort, limit, and elements:** Where the data requirement specifies `sort`, the sort paths are mapped to search parameters in the same way as filter paths, and the query uses `_sort` (with a `-` prefix for descending order), which requires that the server support sorting on those parameters. Where the data requirement specifies `limit`, the query can use `_count`, but note that `_count` specifies a page size rather than a limit on the total number of results, so the consumer must stop after the first page for the query to be equivalent. Using `_elements` to reflect `mustSupport` is **NOT** recommended: `_elements` is a hint, to which servers may respond with more or fewer elements than were asked for, and any element the artifact requires that is not returned causes the artifact to produce incorrect results rather than an error.
+
+**Encoding:** Values in a query pattern are URL-encoded, with the exception of the context tokens, which are substituted by the consumer before the query is performed. Within search parameter values, the characters `,`, `|`, `$`, and `\` have special meaning, and are escaped with a backslash where they appear literally in a value.
+
+###### Determining Coverage
+{: #determining-coverage}
+
+Two distinct properties of a set of query patterns are of interest:
+
+* **Soundness** &mdash; whether the union of the results of the query patterns includes _all_ the data described by the data requirement. Query patterns **SHALL** be sound (see [Conformance Requirement 4.4](#conformance-requirement-4-4)); an unsound query pattern causes the artifact to produce incorrect results, with no indication that anything is wrong.
+* **Coverage** &mdash; how much of the data requirement is expressed in the query patterns, and therefore how much filtering the consumer must still perform on the results.
+
+Soundness is preserved by only ever _omitting_ a criterion from the query, or expressing it with _broader_ semantics than the data requirement states. It is never preserved by narrowing a criterion, or by substituting an approximation of one, which is why criteria that cannot be mapped to a search parameter are dropped rather than approximated.
+
+Coverage is determined by examining each element of the data requirement in turn, beginning with an assumed coverage of `total`:
+
+1. If the criterion is not expressed in any of the query patterns, coverage is at most `partial`
+2. If the criterion is expressed, but with broader semantics than the data requirement states, coverage is at most `partial`
+3. If no criterion other than the resource type and the subject in context is expressed, coverage is `non`
+
+The following situations commonly result in coverage that is less than `total`:
+
+|Situation|Effect on Coverage|
+|---|---|
+|A filter path has no corresponding search parameter on the server|The filter is omitted, so the query returns resources that do not meet the criteria|
+|A search parameter covers only some choices of a polymorphic element|Resources using the other choices are only returned if a query pattern is provided for each choice|
+|A value set filter where the server does not support `:in` and the value set could not be expanded|The filter is omitted entirely|
+|A value set filter expressed with `:in`|The expansion the server uses may differ from the expansion the evaluating engine uses|
+|A date filter on a period-valued or range-valued element|Search uses overlap semantics, whereas the criteria the filter was derived from typically uses containment|
+|A value filter on a string element expressed without `:exact`|The default string search is a starts-with match, and is case- and accent-insensitive|
+|A profile is specified but `_profile` was not used|Conformance to the profile must be validated by the consumer|
+|The subject in context is expressed with a single search parameter, but the type declares more than one context relationship|Resources related to the subject through the other relationships are only returned if a query pattern is provided for each relationship, or if a compartment search is used|
+{: .grid }
+
+###### Indicating Coverage
+{: #indicating-coverage}
+
+Because the query patterns for a data requirement are considered as a set, coverage is a characteristic of the data requirement as a whole, rather than of any individual query pattern. The [cql-fhirQueryPatternCoverage](StructureDefinition-cql-fhirQueryPatternCoverage.html) extension is used to communicate it:
+
+{% raw %}
+```json
+{
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+    "valueString": "Encounter?subject=Patient/{{context.patientId}}&type:in=http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292&status=finished&date=ge2026-01-01T00:00:00.000-07:00&date=le2026-12-31T23:59:59.999-07:00"
+  }, {
+    "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-fhirQueryPatternCoverage",
+    "valueCode": "partial"
+  }, {
+    "extension": [ {
+      "url": "path",
+      "valueString": "status"
+    }, {
+      "url": "comparator",
+      "valueCode": "eq"
+    }, {
+      "url": "value",
+      "valueString": "finished"
+    } ],
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-valueFilter"
+  } ],
+  "type": "Encounter",
+  "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+  "mustSupport": [ "type", "status", "period" ],
+  "codeFilter": [ {
+    "path": "type",
+    "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+  } ],
+  "dateFilter": [ {
+    "path": "period",
+    "valuePeriod": {
+      "start": "2026-01-01T00:00:00.000-07:00",
+      "end": "2026-12-31T23:59:59.999-07:00"
+    }
+  } ]
+}
+```
+{% endraw %}
+
+The coverage here is `partial`, rather than `total`, for two reasons: the profile is not expressed in the query, and the date filter on `period` is expressed with a date search parameter that uses overlap semantics. A consumer of this data requirement performs the query, and then applies the profile and date criteria to the results.
+
+Where the coverage extension is not present, consumers **SHALL** assume a coverage of `partial` and apply the criteria of the data requirement to the results.
+
+###### Multiple Query Patterns
+{: #multiple-query-patterns}
+
+More than one query pattern may be required to cover a single data requirement. Where multiple query patterns are present, they are ORed: each contributes to the data described by the data requirement, and the union of their results, de-duplicated by resource identity, represents the complete data for the requirement. A consumer that performs only some of the query patterns for a data requirement will be missing data the artifact requires.
+
+**Inlined expansions:** Where a value set must be inlined rather than referenced with `:in`, the resulting list of codes may produce a URL longer than the servers and intermediaries involved will accept. In that case, the codes of the expansion are partitioned, and one query pattern is produced for each partition:
+
+{% raw %}
+```json
+"extension": [ {
+  "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+  "valueString": "Encounter?subject=Patient/{{context.patientId}}&type=http://snomed.info/sct|183452005,http://snomed.info/sct|32485007,http://snomed.info/sct|8715000"
+}, {
+  "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+  "valueString": "Encounter?subject=Patient/{{context.patientId}}&type=http://snomed.info/sct|4525004,http://snomed.info/sct|50849002,http://snomed.info/sct|305686008"
+}, {
+  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-fhirQueryPatternCoverage",
+  "valueCode": "total"
+} ]
+```
+{% endraw %}
+
+Because the partitions differ only in the codes they filter on, and code filters are ORed within a single search parameter, the union of the results is exactly the result of the unpartitioned query, so coverage is unaffected by the partitioning. Consumers **MAY** instead perform the equivalent search using `POST [base]/[type]/_search` with the parameters in the body, which avoids the URL length limit; the query pattern is partitioned because the extension communicates a URL, not because the queries must be performed as separate requests.
+
+**Polymorphic elements:** Where the path of a filter resolves to a choice-typed element, a single search parameter may cover only some of the choices. For example, `MedicationRequest.medication[x]` may be a `CodeableConcept` or a reference to a `Medication`, and the `code` search parameter only covers the `CodeableConcept` choice. Covering the data requirement requires a second query pattern that accounts for the reference:
+
+{% raw %}
+```json
+"extension": [ {
+  "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+  "valueString": "MedicationRequest?subject=Patient/{{context.patientId}}&code:in=http://example.org/ValueSet/Aspirin"
+}, {
+  "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+  "valueString": "MedicationRequest?subject=Patient/{{context.patientId}}&_include=MedicationRequest:medication"
+}, {
+  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-fhirQueryPatternCoverage",
+  "valueCode": "partial"
+} ]
+```
+{% endraw %}
+
+The first pattern covers medications specified as a `CodeableConcept`. The second covers medications specified as a reference, and uses `_include` to return the referenced `Medication` resources, which the artifact requires in order to evaluate the criteria. Because the code filter cannot be applied to the referenced `Medication` in the second pattern, it returns all of the subject's medication requests, and the coverage of the data requirement is `partial`. Where the server supports chained parameters, the second pattern can be made more selective by chaining through the reference (e.g. `medication.code:in=http://example.org/ValueSet/Aspirin`), which is a server capability rather than something that can be assumed.
+
+The relationship between the `MedicationRequest` and the included `Medication` is the same relationship described by the `cqf-relatedRequirement` extension (see [Related Data Requirements](#related-data-requirements)); a related requirement can be satisfied either with `_include` on the query pattern for the requirement that references it, or with its own query pattern.
+
+**Context relationships:** Where the type of a data requirement relates to the context type through more than one element, one query pattern is required for each relationship:
+
+{% raw %}
+```json
+"extension": [ {
+  "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+  "valueString": "Coverage?policy-holder=Patient/{{context.patientId}}"
+}, {
+  "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+  "valueString": "Coverage?subscriber=Patient/{{context.patientId}}"
+}, {
+  "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+  "valueString": "Coverage?beneficiary=Patient/{{context.patientId}}"
+} ]
+```
+{% endraw %}
+
+Where the server supports the compartment, the same data is covered by a single compartment search:
+
+{% raw %}
+```json
+"extension": [ {
+  "url": "http://hl7.org/fhir/StructureDefinition/cqf-fhirQueryPattern",
+  "valueString": "Patient/{{context.patientId}}/Coverage"
+} ]
+```
+{% endraw %}
+
+###### Consuming Query Patterns
+{: #consuming-query-patterns}
+
+To use the query patterns of a data requirement, a consuming system:
+
+1. Replaces the context tokens in each query pattern with the identity of the subject the artifact is being evaluated for
+2. Resolves each query pattern against the base URL of the server to be queried
+3. Performs every query pattern given for the data requirement, following paging links until all results have been retrieved
+4. Takes the union of the results of all the query patterns, de-duplicating by resource type and logical id
+5. Unless the coverage of the data requirement is `total`, applies the criteria of the data requirement to the results
+
+Although query patterns are primarily used to satisfy a data requirement for a single subject, the same patterns can be used to gather data at the population level by removing the context criteria (i.e. the search parameter that relates the resource to the subject in context, or the compartment prefix), leaving the remaining criteria intact.
 
 #### RelatedArtifacts
 {: #relatedartifacts}

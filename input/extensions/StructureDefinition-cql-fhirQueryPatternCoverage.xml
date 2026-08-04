@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- NOTE: This extension is a companion to the cqf-fhirQueryPattern extension defined in the
+     FHIR Extensions Pack. It is defined here to enable the use case described in the FHIR Query
+     Patterns section of the conformance page, and should be considered for inclusion in the
+     Extensions Pack alongside cqf-fhirQueryPattern. -->
+
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="cql-fhirQueryPatternCoverage"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="cds"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <url value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-fhirQueryPatternCoverage"/>
+  <name value="CQLFHIRQueryPatternCoverage"/>
+  <title value="CQL FHIR Query Pattern Coverage"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-08-04"/>
+  <publisher value="HL7 International / Clinical Decision Support"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/dss"/>
+    </telecom>
+  </contact>
+  <description value="Describes the extent to which the FHIR query patterns given for a data requirement (i.e. the cqf-fhirQueryPattern extensions present on the data requirement) cover the criteria of that data requirement. Because the query patterns for a data requirement are considered as a set (i.e. the union of the results of the query patterns represents the data for the data requirement), coverage is a characteristic of the data requirement as a whole, rather than of any individual query pattern. A coverage of `total` indicates that no further filtering of the results is required; any other value indicates that the consumer must apply the criteria of the data requirement to the results of the query patterns."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+      <display value="World"/>
+    </coding>
+  </jurisdiction>
+  <fhirVersion value="4.0.1"/>
+  <mapping>
+    <identity value="rim"/>
+    <uri value="http://hl7.org/v3"/>
+    <name value="RIM Mapping"/>
+  </mapping>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <context>
+    <type value="element"/>
+    <expression value="DataRequirement"/>
+  </context>
+  <type value="Extension"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+  <derivation value="constraint"/>
+  <differential>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="How completely do the query patterns cover the data requirement?"/>
+      <definition value="Describes the extent to which the FHIR query patterns given for a data requirement (i.e. the cqf-fhirQueryPattern extensions present on the data requirement) cover the criteria of that data requirement. Because the query patterns for a data requirement are considered as a set (i.e. the union of the results of the query patterns represents the data for the data requirement), coverage is a characteristic of the data requirement as a whole, rather than of any individual query pattern."/>
+      <comment value="This extension does not change the expectation that the query patterns for a data requirement are sound, meaning that the union of their results includes all the data described by the data requirement. Criteria that cannot be expressed as search parameters are omitted from the query patterns, rather than approximated with criteria that could exclude required data, and the resulting loss of precision is communicated with this extension. Consuming systems apply the criteria of the data requirement to the results of the query patterns unless the coverage is `total`."/>
+      <min value="0"/>
+      <max value="1"/>
+    </element>
+    <element id="Extension.extension">
+      <path value="Extension.extension"/>
+      <max value="0"/>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="http://hl7.org/fhir/uv/cql/StructureDefinition/cql-fhirQueryPatternCoverage"/>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <min value="1"/>
+      <type>
+        <code value="code"/>
+      </type>
+      <binding>
+        <strength value="required"/>
+        <valueSet value="http://hl7.org/fhir/uv/cql/ValueSet/query-pattern-coverage"/>
+      </binding>
+    </element>
+  </differential>
+</StructureDefinition>
