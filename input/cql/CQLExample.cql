@@ -2,7 +2,7 @@ library CQLExample
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '4.0.1'
+include FHIRHelpers version '4.0.2-ballot'
 
 codesystem LOINC: 'http://loinc.org'
 code "Blood Glucose": '2339-0' from LOINC display 'Glucose Bld-mCnc'

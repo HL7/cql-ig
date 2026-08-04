@@ -6,7 +6,7 @@
  https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers
 @allowFluent: true
 */
-library FHIRHelpers version '4.0.1'
+library FHIRHelpers version '4.0.2-ballot'
 
 using FHIR version '4.0.1'
 
@@ -745,3 +745,16 @@ define function ToString(value string): value.value
 define function ToTime(value time): value.value
 define function ToString(value uri): value.value
 define function ToString(value xhtml): value.value
+
+// New getValue() functions to support FHIRPath-style value access
+define function getValue(primitive boolean) returns Boolean: primitive.value
+define function getValue(primitive base64Binary) returns String: primitive.value
+define function getValue(primitive date) returns Date: primitive.value
+define function getValue(primitive dateTime) returns DateTime: primitive.value
+define function getValue(primitive decimal) returns Decimal: primitive.value
+define function getValue(primitive instant) returns DateTime: primitive.value
+define function getValue(primitive integer) returns Integer: primitive.value
+define function getValue(primitive string) returns String: primitive.value
+define function getValue(primitive time) returns Time: primitive.value
+define function getValue(primitive uri) returns String: primitive.value
+define function getValue(primitive xhtml) returns String: primitive.value

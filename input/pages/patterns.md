@@ -31,10 +31,18 @@ define "Patient is Female":
 Note that these conversions are performed automatically by the [CQL-to-ELM translator](https://github.com/cqframework/clinical_quality_language/blob/master/Src/java/cql-to-elm/OVERVIEW.md) when they are used by CQL, resulting in a conversion error if the FHIRHelpers library is not included using an [include declaration](https://cql.hl7.org/02-authorsguide.html#libraries):
   
 ```cql
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1'
+include hl7.fhir.uv.cql.FHIRHelpers version '4.0.2-ballot'
 ```
 
-The version of the library is not required by CQL, but for the FHIRHelpers reference, because it is so closely tied to the FHIR ModelInfo, best-practice is to include the version of FHIRHelpers.
+> NOTE: This STU 3 edition of the implementation guide introduces a new version of FHIRHelpers (4.0.2-ballot) that adds `getValue()` functions for all the primitive types in FHIR. This is a backwards-compatible change, but is being added to improve type inference for FHIRPath expressions that use the `getValue()` approach defined in the [FHIRPath topic of the FHIR specification](http://hl7.org/fhir/R4/fhirpath.html#functions) to access the value of FHIR primitives.
+
+##### FHIRPath Representation of Primitive Values
+
+As an aside, the FHIRPath specification establishes a mental model wherein the `value` of primitive elements is _not_ a node in the graph. By contrast, most representations of FHIR resources in object-oriented languages, CQL included, represent FHIR "primitives" as classes with a `value` element. This difference in mental models has implications for some fundamental FHIRPath operations, including:
+
+1. Because FHIRPath models do not have an actual `value` element, the `getValue()` _must_ be used to access the actual primitive value (i.e. `Patient.gender.value` is not, strictly speaking, valid FHIRPath, though some FHIRPath implementations do allow this).
+2. For the same reason, FHIR primitive values cannot be constructed with a general-purpose selector (i.e. `FHIR.string { value: 'Abel' }` is valid CQL, but in a pure FHIRPath environment, a FHIR string constructor would need to be provided, and some FHIRPath implementations handle this implicitly).
+3. The result of graph operations such as `.children()` and `.descendants()` _should not_ include `value` elements, even if the underlying object representations use `value` elements directly. CQL implementations should take care to ensure they provide the correct handling for these operations.
 
 #### Choices
 

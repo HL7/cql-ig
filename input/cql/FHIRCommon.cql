@@ -5,7 +5,7 @@ library FHIRCommon version '3.0.0-ballot'
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '4.0.1'
+include FHIRHelpers version '4.0.2-ballot'
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
