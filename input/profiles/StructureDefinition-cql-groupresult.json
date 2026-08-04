@@ -2,7 +2,7 @@
   "resourceType": "StructureDefinition",
   "extension" : [{
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
-    "valueInteger" : 2
+    "valueInteger" : 1
   },
   {
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
@@ -12,10 +12,10 @@
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
     "valueCode" : "trial-use"
   }],
-  "id": "cql-groupdefinition",
-  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-groupdefinition",
-  "name": "CQLGroupDefiition",
-  "title": "CQL Group Definition",
+  "id": "cql-groupresult",
+  "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-groupresult",
+  "name": "CQLGroupResult",
+  "title": "CQL Group Result",
   "status": "active",
   "experimental": false,
   "publisher": "Clinical Decision Support WG",
@@ -29,7 +29,7 @@
       ]
     }
   ],
-  "description": "The CQL Group Definition profile defines conformance expectations for the use of a FHIR Group resource as a cohort definition using Clinical Quality Language (CQL) to define membership criteria. This profile is intended to be consistent with and able to be used as a cohort definition in other similar efforts including clinical trial eligibility in the Evidence-based Medicine on FHIR space, as well as the Bulk Cohort API cohort definition profile.",
+  "description": "The CQL Group Result profile defines conformance expectations for the result of evaluating a FHIR Group Definition. This profile is intended to be consistent with and able to be used as an actual group definition in other contexts such as the various evaluate operations defined in clinical reasoning.",
   "fhirVersion": "4.0.1",
   "mapping": [
     {
@@ -66,23 +66,64 @@
         "mustSupport": false
       },
       {
-        "id": "Group.extension:cqlOptions",
+        "id": "Group.extension:generatedFrom",
         "path": "Group.extension",
-        "sliceName": "cqlOptions",
+        "sliceName": "generatedFrom",
         "min": 0,
         "max": "1",
         "type": [
           {
             "code": "Extension",
             "profile": [
-              "http://hl7.org/fhir/StructureDefinition/cqf-cqlOptions"
+              "http://hl7.org/fhir/StructureDefinition/workflow-generatedFrom"
             ]
           }
         ],
         "mustSupport": true
       },
       {
-        "id": "Group.extension:cqlOptions.value[x]",
+        "id": "Group.extension:generatedFrom.value[x]",
+        "path": "Group.extension.value[x]",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "canonical"
+          }
+        ]
+      },
+      {
+        "id": "Group.extension:generatedFrom.value[x].extension:artifact",
+        "path": "Group.extension.value[x].extension",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/artifact-uriReference"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Group.extension:inputParameters",
+        "path": "Group.extension",
+        "sliceName": "inputParameters",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Group.extension:inputParameters.value[x]",
         "path": "Group.extension.value[x]",
         "min": 1,
         "max": "1",
@@ -90,86 +131,60 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-options"
+              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-parameters"
             ]
           }
         ]
       },
       {
-        "id": "Group.extension:cqlLibrary",
+        "id": "Group.extension:messages",
         "path": "Group.extension",
-        "sliceName": "cqlLibrary",
+        "sliceName": "messages",
         "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "Extension",
-            "profile": [
-              "http://hl7.org/fhir/StructureDefinition/cqf-cqlLibrary"
-            ]
-          }
-        ],
-        "mustSupport": true
-      },
-      {
-        "id": "Group.extension:cqlLibrary.value[x]",
-        "path": "Group.extension.value[x]",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "canonical",
-            "targetProfile": [
-              "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "Group.extension:characteristicExpression",
-        "path": "Group.extension",
-        "sliceName": "characteristicExpression",
-        "min": 1,
         "max": "1",
         "type": [
           {
             "code": "Extension",
             "profile": [
-              "http://hl7.org/fhir/StructureDefinition/characteristicExpression"
+              "http://hl7.org/fhir/StructureDefinition/cqf-messages"
             ]
           }
         ],
         "mustSupport": true
-      },
-      {
-        "id": "Group.extension:characteristicExpression.value[x]",
-        "path": "Group.extension.value[x]",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "Expression"
-          }
-        ]
       },
       {
         "id": "Group.actual",
         "path": "Group.actual",
-        "fixedBoolean": false
+        "fixedBoolean": true
       },
       {
         "id": "Group.characteristic",
         "path": "Group.characteristic",
         "short": "Not allowed",
-        "definition": "In a CQL Group Definition, membership criteria are specified with the characteristicExpression extension, rather than using structured representation of characteristics",
+        "definition": "In a CQL Group Result, membership is explicit",
         "max": "0"
       },
       {
         "id": "Group.member",
         "path": "Group.member",
-        "short": "Not allowed",
-        "definition": "In a definitional group, members are not allowed to be enumerated, as they are defined dynamically by membership criteria.",
-        "max": "0"
+        "mustSupport": true
+      },
+      {
+        "id": "Group.member.entity",
+        "path": "Group.member.entity",
+        "mustSupport": true
+      },
+      {
+        "id": "Group.member.entity.extension:evaluatedResource",
+        "path": "Group.member.entity.extension",
+        "max": "*",
+        "mustSupport": true,
+        "type": [{
+          "code": "Extension",
+          "profile": [
+            "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluatedResource"
+          ]
+        }]
       }
     ]
   }
