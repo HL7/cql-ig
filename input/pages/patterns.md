@@ -363,6 +363,24 @@ For more information on `Date`, `DateTime`, and `Time` comparison, see [Comparin
 
 > Note that a new feature of CQL R2, [_default comparison precision_](https://cql.hl7.org/2025Sep/03-developersguide.html#defaultcomparisonprecision) may be useful in supporting this best practice.
 
+### Timezone and Timezone Offset Handling
+
+In CQL generally, logic is always evaluated with an _evaluation request timestamp_ that is used to ensure consistent and deterministic behavior of expressions that involve time. In particular, the result of the `Now`, `Today`, and `TimeOfDay` functions are based on the evaluation request timestamp, so that they always return the same value within a given evaluation request, and that value is relative to the request, not to the server evaluating the logic.
+
+In addition, all operations on `DateTime` values are defined to take timezone offset information into account. When `DateTime` values are constructed without a timezone offset, the timezone offset of the evaluation request timestamp is used. Whenever two `DateTime` values are compared to at least hour precision, they are normalized to (i.e. converted to the same timezone offset as) the timezone offset of the evaluation request timestamp.
+
+This behavior is critical for clinical logic for two reasons:
+
+1. Like any application involving datetime data that may be collected in different locations (and therefore in different timezone offsets), accurate comparison requires that datetimes be converted to a consistent timezone offset
+2. Clinical logic often cares when _midnight_ happens, so that calculations such as "on hospital day 2" can be performed correctly. Logic that is looking for when a "day" boundary has elapsed often has to be performed based on the originating location of the data, because "midnight" in a hospital in Kansas, is not the same "midnight" as the data center in Virginia that is hosting the application.
+
+For these reasons it is critical that the client timezone offset be communicated correctly between the client and the server, and this implementation guide provides the following facilities to support this:
+
+1. The CQL evaluation operations define the [requestTimestamp]() parameter to allow the client to set the timestamp explicitly.
+2. It is strongly recommended that all communication between clients and servers making use of CQL logic use headers to communicate timezone information as recommended in the [Client Timezone](https://hl7.org/fhir/http.html#timezones) topic in the FHIR specification.
+
+See also: [Constructing Date and Time Values](https://cql.hl7.org/02-authorsguide.html#constructing-datetime-values) in the CQL specification
+
 ### Time-Valued Quantities
 {: #time-valued-quantities}
 

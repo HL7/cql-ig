@@ -192,6 +192,14 @@
       }]
     },
     {
+      "name" : "timestamp",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "documentation" : "The timestamp of the evaluation request.",
+      "type" : "dateTime"
+    },
+    {
       "name" : "return",
       "use" : "out",
       "min" : 1,

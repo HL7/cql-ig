@@ -54,7 +54,7 @@ The prohibition against underscores in CQL library names is required to ensure c
 |`System.Integer`|`FHIR.integer`|
 |`System.Decimal`|`FHIR.decimal`, with the use of the `quantity-precision` extension to communicate precision of the value|
 |`System.Date`|`FHIR.date`|
-|`System.DateTime`|`FHIR.dateTime`, with the exception that if hours are provided, minutes and seconds must be provided; use the `time-precision` extension to indicate precision of partial time values|
+|`System.DateTime`|`FHIR.dateTime`, with the exception that if hours are provided, minutes and seconds must be provided; use the `time-precision` extension to indicate precision of partial time values; use the `time-hasOffset` extension to indicate whether the underlying datetime value has a timezone offset|
 |`System.Long`|`FHIR.string` in R4 (string only, no `L`, as that is part of the literal in CQL), `FHIR.integer64` in R5 and above|
 |`System.Time`|`FHIR.time`, with the exception that minutes and seconds must be provided; use the `time-precision` extension to indicate precision of partial time values|
 |`System.String`|`FHIR.string`|

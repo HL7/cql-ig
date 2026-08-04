@@ -176,7 +176,7 @@
           {
             "code": "Extension",
             "profile": [
-              "https://hl7.org/fhir/extensions/StructureDefinition-quantity-precision.html"
+              "http://hl7.org/fhir/StructureDefinition/quantity-precision"
             ]
           }
         ],
@@ -192,7 +192,23 @@
           {
             "code": "Extension",
             "profile": [
-              "https://hl7.org/fhir/extensions/StructureDefinition-time-precision.html"
+              "http://hl7.org/fhir/StructureDefinition/time-precision"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Parameters.parameter.value[x].extension:time-hasOffset",
+        "path": "Parameters.parameter.value[x].extension",
+        "sliceName": "time-hasOffset",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/uv/cql/StructureDefinition/time-hasOffset"
             ]
           }
         ],
