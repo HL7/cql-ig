@@ -566,6 +566,7 @@ Conformance Requirement 2.16.
     2. **SHOULD** Use PascalCase for alias names
     3. **SHOULD** Use camelCase for argument names
     4. **SHOULD** Use descriptive names (rather than abbreviations)
+    5. **SHOULD NOT** be named the same as other identifiers in the scope of the artifact
 
 For example:
 
