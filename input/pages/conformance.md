@@ -73,6 +73,7 @@ The prohibition against underscores in CQL library names is required to ensure c
 {: .grid }
 
 2\. All CQL-valued parameters and results **SHALL** include a [cqf-cqlType]({{site.data.fhir.ver.ext}}/StructureDefinition-cqf-cqlType.html) extension to unambiguously specify the type of the parameter or result. In other words, in the absence of a cqlType extension, the value being represented is assumed to be of the type specified in the FHIR parameters element (i.e. the type of the FHIR value or resource element).
+    1. The value of the cqlType extension **SHALL** be the fully qualified name of the type to avoid potential ambiguity (e.g. `System.Quantity` vs `FHIR.Quantity`)
 
 3\. `null` parameters and results **SHALL** use a [data-absent-reason]({{site.data.fhir.ver.ext}}/StructureDefinition-data-absent-reason.html) extension with a `code` of `unknown` on the `value` element
 
