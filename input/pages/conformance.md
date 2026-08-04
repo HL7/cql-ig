@@ -63,11 +63,11 @@ The prohibition against underscores in CQL library names is required to ensure c
 |`System.Any`|`FHIR.Any`|
 |`System.Code`|`FHIR.Coding`|
 |`System.Concept`|`FHIR.CodeableConcept`|
-|`Interval<Integer>`|`FHIR.Range`|
-|`Interval<Decimal>`|`FHIR.Range`|
+|`Interval<System.Integer>`|`FHIR.Range`|
+|`Interval<System.Decimal>`|`FHIR.Range`|
 |`Interval<System.Date>`|`FHIR.Period`|
 |`Interval<System.DateTime>`|`FHIR.Period`|
-|`Interval<Statyem.Time>`|`FHIR.Period`|
+|`Interval<System.Time>`|`FHIR.Period` with the Time values serialized as FHIR dateTime values with a date component of the minimum date (`@0001-01-01`)|
 |`Interval<System.Quantity>`|`FHIR.Range`|
 {: .grid }
 

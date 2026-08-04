@@ -365,10 +365,10 @@
     "name": "CQLTimeIntervalExample",
     "part": [{
       "name": "low",
-      "valueTime": "10:30:00"
+      "valueTime": "0001-01-01T10:30:00Z"
     }, {
       "name": "high",
-      "valueTime": "11:30:00"
+      "valueTime": "00001-01-01T11:30:00Z"
     }]
   }, {
     "extension": [{
