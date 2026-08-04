@@ -1,0 +1,27 @@
+{
+    "resourceType": "Group",
+    "id": "ANCCohortDefinition",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-groupdefinition"
+        ]
+    },
+    "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/artifact-url",
+        "valueUri": "http://hl7.org/fhir/uv/cql/Group/ANCCohortDefinition"
+    }, { 
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "http://hl7.org/fhir/uv/cql/Library/ANCCohort"
+    }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/characteristicExpression",
+        "valueExpression": {
+            "language": "text/cql-identifier",
+            "expression": "Is Pregnancy Confirmed"
+        }
+    }],
+    "active": true,
+    "type": "person",
+    "actual": false,
+    "code": { "coding": [{ "code": "Patient", "system": "http://hl7.org/fhir/resource-types", "display": "Patient" }] },
+    "name": "ANCCohortDefinition"
+}

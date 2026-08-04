@@ -66,6 +66,38 @@
         "mustSupport": false
       },
       {
+        "id": "Group.extension:url",
+        "path": "Group.extension",
+        "sliceName": "url",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/artifact-url"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Group.extension:version",
+        "path": "Group.extension",
+        "sliceName": "version",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/artifact-version"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
         "id": "Group.extension:cqlOptions",
         "path": "Group.extension",
         "sliceName": "cqlOptions",
@@ -150,12 +182,25 @@
           {
             "code": "Expression"
           }
-        ]
+        ],
+        "mustSupport": true
       },
       {
         "id": "Group.actual",
         "path": "Group.actual",
         "fixedBoolean": false
+      },
+      {
+        "id": "Group.code",
+        "path": "Group.code",
+        "short": "Type of individual the cohort is made up of",
+        "definition": "Identifies the types of individuals that can be members of the cohort (e.g. Patient, Practitioner, Location, etc.). If no type is specified, the cohort is assumed to be Patients.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/ValueSet/subject-type"
+          
+        }
       },
       {
         "id": "Group.characteristic",

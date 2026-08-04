@@ -200,10 +200,6 @@ resources:
     name: FHIR ModelInfo Settings
     description: Settings used to construct the FHIR ModelInfo version 4.0.1
     exampleBoolean: false
-  Parameters/uscore-modelinfo-settings:
-    name: Example ModelInfo Settings Parameters for the USCore Implementation Guide
-    description: Example Parameters resource demonstrating the use of ModelInfo configuration parameters. This resource would typically be a contained resource in an implementation guide or artifact collection.
-    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfosettings
   Parameters/cql-parameters-example:
     name: Example Evaluation Result Parameters
     description: Example Parameters resource demonstrating the use of data-absent-reason extension to indicate a null evaluation result.
@@ -220,7 +216,20 @@ resources:
     name: Example Patient
     description: Example Patient resource used as part of the observation negation example.
     exampleBoolean: true
+  Group/ANCCohort:
+    name: Example ANC Cohort
+    description: Example illustrating the result of evaluating the ANC Cohort Definition Group
+    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-groupresult
+  Group/ANCCohortDefinition:
+    name: Example ANC Cohort Definition
+    description: Example ANC Cohort Definition Group
+    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-groupdefinition
   Observation/negation-example:
     name: Example Negation Observation
     description: Example Observation resource illustrating negation and the use of the `codeOptions` extension.
     exampleBoolean: true
+  Observation/anc-b4-de1-example:
+    name: Example Pregnancy Observation
+    description: Example Observation resource used as a pregnancy confirmation observation for the cohort examples.
+    exampleBoolean: true
+  

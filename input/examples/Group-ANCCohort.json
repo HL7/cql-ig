@@ -1,0 +1,34 @@
+{
+    "resourceType": "Group",
+    "id": "ANCCohort",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-groupresult"
+        ]
+    },
+    "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/workflow-generatedFrom",
+        "_valueCanonical": {
+            "extension": [{
+                "url": "http://hl7.org/fhir/StructureDefinition/artifact-uriReference",
+                "valueUri": "http://hl7.org/fhir/uv/cql/Group/ANCCohortDefinition"
+            }]
+        } 
+    }],
+    "active": true,
+    "type": "person",
+    "actual": true,
+    "code": { "coding": [{ "code": "Patient", "system": "http://hl7.org/fhir/resource-types", "display": "Patient" }] },
+    "name": "ANCCohort",
+    "member": [{
+        "entity": {
+            "extension": [{
+                "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluatedResource",
+                "valueReference": {
+                    "reference": "Observation/anc-b4-de1-example"
+                }
+            }],
+            "reference": "Patient/example"
+        }
+    }]
+}

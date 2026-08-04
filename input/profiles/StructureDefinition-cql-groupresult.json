@@ -158,6 +158,18 @@
         "fixedBoolean": true
       },
       {
+        "id": "Group.code",
+        "path": "Group.code",
+        "short": "Type of individual the cohort is made up of",
+        "definition": "Identifies the types of individuals that can be members of the cohort (e.g. Patient, Practitioner, Location, etc.). If no type is specified, the cohort is assumed to be Patients.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/ValueSet/subject-type"
+          
+        }
+      },
+      {
         "id": "Group.characteristic",
         "path": "Group.characteristic",
         "short": "Not allowed",

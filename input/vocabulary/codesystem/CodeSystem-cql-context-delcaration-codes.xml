@@ -51,6 +51,12 @@
   <caseSensitive value="true"/>
   <valueSet value="http://cql.hl7.org/ValueSet/cql-context-declaration"/>
   <content value="complete"/>
+  <property>
+    <code value="status"/>
+    <uri value="http://hl7.org/fhir/concept-properties#status"/>
+    <description value="A property that indicates the status of the concept. If the property is identified by this URL, then it SHALL use at least these status values (where appropriate):\n\n* active - the concept is for normal use\n* experimental - provided for trial, but may be removed in the future\n* deprecated - planned to be removed from use\n* retired - still present for historical reasons, but no longer allowed to be used\n\nThe HL7 defined code systems (whether defined by the FHIR project, the V3 framework, or the V2 standard) all use this property to define their status. HL7 uses `active` (and considers this the default status), and deprecated and retired (= inactive)."/>
+    <type value="code"/>
+  </property>
   <concept>
     <code value="Unfiltered"/>
     <display value="Unfiltered"/>
