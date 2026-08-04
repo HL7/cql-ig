@@ -64,7 +64,8 @@ The prohibition against underscores in CQL library names is required to ensure c
 |`System.Code`|`FHIR.Coding`|
 |`System.Concept`|`FHIR.CodeableConcept`|
 |`Interval<System.Integer>`|`FHIR.Range`|
-|`Interval<System.Decimal>`|`FHIR.Range`|
+|`Interval<System.Long>`|`FHIR.Range`|
+|`Interval<System.Decimal>`|`FHIR.Range`; use the `quantity-precision` extension to prevent the switch from an open to a closed interval from forcing a choice on precision (e.g. `Interval[1.0, 1.4)` is represented as `Period { 1.0, 1.3 }` with a `quantity precision` of `1`)|
 |`Interval<System.Date>`|`FHIR.Period`|
 |`Interval<System.DateTime>`|`FHIR.Period`|
 |`Interval<System.Time>`|`FHIR.Period` with the Time values serialized as FHIR dateTime values with a date component of the minimum date (`@0001-01-01`)|
