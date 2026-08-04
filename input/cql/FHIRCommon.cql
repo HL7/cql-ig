@@ -100,6 +100,105 @@ code "Fulfill": 'fulfill' from "TaskCodeSystem" display 'Fulfill'
 context Patient
 
 /*
+@description: Returns the age in days of the patient as of the given date, using birth time if known
+@comment: This function returns the number of whole days between the patient birth date 
+and the asOf date. If the patient has a birthTime, the calculation is performed using the 
+birthDateTime, and the time component of the asOf parameter is considered. Note that when 
+the birth time is known, timezone offset normalization will be used.
+*/
+define fluent function ageInDaysAt(patient FHIR.Patient, asOf System.DateTime):
+  if patient.birthTime() is not null then
+    CalculateAgeInDaysAt(patient.birthDateTime(), asOf)
+  else
+    CalculateAgeInDaysAt(patient.birthDate, date from asOf)
+
+/*
+@description: Returns the current age in days of the patient, using birth time if known
+@comment: This function returns the number of whole days between the patient birth date 
+and the current date. If the patient has a birthTime, the calculation is performed using the 
+birthDateTime and Now(), otherwise the calculation is performed using Today(). Note that when 
+the birth time is known, timezone offset normalization will be used.
+*/
+define fluent function ageInDays(patient FHIR.Patient):
+  if patient.birthTime() is not null then
+    CalculateAgeInDaysAt(patient.birthDateTime(), Now())
+  else
+    CalculateAgeInDaysAt(patient.birthDate, Today())
+
+/*
+@description: Returns the age in months of the patient as of the given date, using birth time if known
+@comment: This function returns the number of whole calendar months between the patient birth date 
+and the asOf date. If the patient has a birthTime, the calculation is performed using the 
+birthDateTime, and the time component of the asOf parameter is considered. Note that when 
+the birth time is known, timezone offset normalization will be used.
+*/
+define fluent function ageInMonthsAt(patient FHIR.Patient, asOf System.DateTime):
+  if patient.birthTime() is not null then
+    CalculateAgeInMonthsAt(patient.birthDateTime(), asOf)
+  else
+    CalculateAgeInMonthsAt(patient.birthDate, date from asOf)
+
+/*
+@description: Returns the current age in months of the patient, using birth time if known
+@comment: This function returns the number of whole calendar months between the patient birth date 
+and the current date. If the patient has a birthTime, the calculation is performed using the 
+birthDateTime and Now(), otherwise the calculation is performed using Today(). Note that when 
+the birth time is known, timezone offset normalization will be used.
+*/
+define fluent function ageInMonths(patient FHIR.Patient):
+  if patient.birthTime() is not null then
+    CalculateAgeInMonthsAt(patient.birthDateTime(), Now())
+  else
+    CalculateAgeInMonthsAt(patient.birthDate, Today())
+
+/*
+@description: Returns the age in years of the patient, as of the given date
+@comment: This function returns the number of whole calendar years between the patient birth 
+date and the given date. Regardless of whether the patient has a birthTime, the calculation is
+performed using only the birth date. If the given date has a time component, it is ignored, on 
+the grounds that birth time is almost universally not considered when determining age in years.
+*/
+define fluent function ageInYearsAt(patient FHIR.Patient, asOf System.DateTime):
+  CalculateAgeInYearsAt(patient.birthDate, date from asOf)
+
+/*
+@description: Returns the current age in years of the patient
+@comment: This function returns the number of whole calendar years between the patient birth 
+date and the current date. Regardless of whether the patient has a birthTime, the calculation is
+performed using only the birth date and Today(), on the grounds that birth time is almost universally 
+not considered when determining age in years.
+*/
+define fluent function ageInYears(patient FHIR.Patient):
+  CalculateAgeInYearsAt(patient.birthDate, Today())
+
+/*
+@description: Returns the date when the given patient turned the given age
+*/
+define fluent function whenTurned(patient FHIR.Patient, age System.Quantity):
+  case
+    when age.unit in { 'year', 'years' } then ToDateTime(patient.birthDate) + age
+    else patient.birthDateTime() + age
+  end
+
+/*
+@description: Returns the interval of time during which the patient was the given age
+*/
+define fluent function whenAged(patient FHIR.Patient, age System.Quantity):
+  case
+    when age.unit in { 'year', 'years' } then Interval[ToDateTime(patient.birthDate) + age, ToDateTime(patient.birthDate) + age + 1 year)
+    when age.unit in { 'month', 'months' } then Interval[patient.birthDateTime() + age, patient.birthDateTime() + age + 1 month)
+    when age.unit in { 'week', 'weeks' } then Interval[patient.birthDateTime() + age, patient.birthDateTime() + age + 1 week)
+    when age.unit in { 'day', 'days' } then Interval[patient.birthDateTime() + age, patient.birthDateTime() + age + 1 day)
+    else null
+  end
+
+/*
+@description: Returns the interval of time during which the patient was aged in the given range
+*/
+define fluent function whenAged(patient FHIR.Patient, ageRange Interval<System.Quantity>):
+  Interval[patient.whenAged(ageRange.low).low, patient.whenAged(ageRange.high).high)
+
+/*
 @description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
 @comment: Normalizes a choice type of FHIR.date, FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instance, FHIR.string, FHIR.Age, or FHIR.Range types
 to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible
@@ -138,11 +237,9 @@ define fluent function toInterval(choice Choice<FHIR.date, FHIR.dateTime, FHIR.P
     when choice is FHIR.instant then
       Interval[FHIRHelpers.ToDateTime(choice as FHIR.instant), FHIRHelpers.ToDateTime(choice as FHIR.instant)]
     when choice is FHIR.Age then
-      Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(choice as FHIR.Age),
-        FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(choice as FHIR.Age) + 1 year)
+      Patient.whenAged(FHIRHelpers.ToQuantity(choice as FHIR.Age))
     when choice is FHIR.Range then
-      Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((choice as FHIR.Range).low),
-        FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((choice as FHIR.Range).high) + 1 year)
+      Patient.whenAged(FHIRHelpers.ToInterval(choice as FHIR.Range))
     when choice is FHIR.Timing then
       Message(null as Interval<DateTime>, true, 'NOT_IMPLEMENTED', 'Error', 'Calculation of an interval from a Timing value is not supported')
     when choice is FHIR.string then
@@ -379,11 +476,9 @@ define fluent function abatementInterval(condition Condition):
   else if condition.abatement is FHIR.string then
     Message(null as Interval<DateTime>, true, 'NOT_IMPLEMENTED', 'Error', 'Calculation of an interval from a String value is not supported')
   else if condition.abatement is FHIR.Age then
-    Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(condition.abatement as FHIR.Age),
-      FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(condition.abatement as FHIR.Age) + 1 year)
+    Patient.whenAged(FHIRHelpers.ToQuantity(condition.abatement as FHIR.Age))
   else if condition.abatement is FHIR.Range then
-    Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((condition.abatement as FHIR.Range).low),
-      FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((condition.abatement as FHIR.Range).high) + 1 year)
+    Patient.whenAged(FHIRHelpers.ToInterval(condition.abatement as FHIR.Range))
   else if condition.abatement is FHIR.boolean then
     Interval[end of condition.onset.toInterval(), condition.recordedDate)
   else 
@@ -553,11 +648,9 @@ define fluent function abatementInterval(allergyIntolerance AllergyIntolerance):
       else if abatement is FHIR.string then
         Message(null as Interval<DateTime>, true, 'NOT_IMPLEMENTED', 'Error', 'Calculation of an interval from a String value is not supported')
       else if abatement is FHIR.Age then
-        Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(abatement as FHIR.Age),
-          FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(abatement as FHIR.Age) + 1 year)
+        Patient.whenAged(FHIRHelpers.ToQuantity(abatement as FHIR.Age))
       else if abatement is FHIR.Range then
-        Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((abatement as FHIR.Range).low),
-          FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((abatement as FHIR.Range).high) + 1 year)
+        Patient.whenAged(FHIRHelpers.ToInterval(abatement as FHIR.Range))
       else if abatement is FHIR.boolean then
         Interval[end of A.onset.toInterval(), A.recordedDate)
       else if resolutionAge is not null then
