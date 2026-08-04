@@ -429,6 +429,30 @@ define fluent function birthDateTime(patient Patient):
   Coalesce(patient.birthTime().value, patient.birthDate.toDateTime())
 
 /*
+@description: Returns all [sexParameterForClinicalUse](https://hl7.org/fhir/extensions/StructureDefinition-patient-sexParameterForClinicalUse.html) elements for the patient
+*/
+define fluent function sexParameterForClinicalUse(patient FHIR.Patient):
+  (patient.exts('http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse')) E
+    return {
+      value: E.ext('value').value as FHIR.CodeableConcept,
+      period: E.ext('period').value as FHIR.Period,
+      comment: E.ext('comment').value as FHIR.string,
+      supportingInfo: (E.exts('supportingInfo')) SI return SI.value as Choice<FHIR.CodeableConcept, FHIR.Reference>,
+      intendedClinicalUse: (E.exts('intendedClinicalUse')) CU return CU.value as Choice<FHIR.CodeableConcept, FHIR.Reference>
+    }
+
+/*
+@description: Returns all [sexParameterForClinicalUse](https://hl7.org/fhir/extensions/StructureDefinition-patient-sexParameterForClinicalUse.html) 
+elements for the patient applicable as of the given date and time
+@comment: Returns sexParameterForClinicalUse elements defined for the patient that either have no period specified, or have a period that includes 
+the specified asOf. Elements are returned in descending chronological order by the start of the period element (so the most recent element is first).
+*/
+define fluent function sexParameterForClinicalUse(patient FHIR.Patient, asOf System.DateTime):
+  (patient.sexParameterForClinicalUse()) SPCU
+    where asOf is null or SPCU.period is null or asOf during SPCU.period
+    sort by start of period desc
+
+/*
 @description: Returns true if the given condition has the given category
 */
 define fluent function hasCategory(condition FHIR.Condition, category Code):
