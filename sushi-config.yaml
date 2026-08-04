@@ -203,10 +203,6 @@ resources:
     name: Example ModelInfo Settings Parameters for the USCore Implementation Guide
     description: Example Parameters resource demonstrating the use of ModelInfo configuration parameters. This resource would typically be a contained resource in an implementation guide or artifact collection.
     exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfosettings
-  Parameters/qicore-modelinfo-settings:
-    name: Example ModelInfo Settings Parameters for the QICore Implementation Guide
-    description: Example Parameters resource demonstrating the use of ModelInfo configuration parameters. This resource would typically be a contained resource in an implementation guide or artifact collection.
-    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfosettings
   Parameters/cql-parameters-example:
     name: Example Evaluation Result Parameters
     description: Example Parameters resource demonstrating the use of data-absent-reason extension to indicate a null evaluation result.
