@@ -56,7 +56,7 @@
 <artifact id="Parameters/cql-parameters-example" key="Parameters-cql-evaluationresult-example" name="Example Evaluation Result Parameters"/>
 <artifact id="Library/module-example" key="Library-module-example" name="Example Logic Library - Module Definition"/>
 <artifact deprecated="true" id="Parameters/qicore-modelinfosettings" key="Parameters-qicore-modelinfosettings" name="Example ModelInfo Settings Parameters"/>
-<artifact id="Parameters/qicore-modelinfo-settings" key="Parameters-qicore-modelinfo-settings" name="Example ModelInfo Settings Parameters for the QICore Implementation Guide"/>
+<artifact deprecated="true" id="Parameters/qicore-modelinfo-settings" key="Parameters-qicore-modelinfo-settings" name="Example ModelInfo Settings Parameters for the QICore Implementation Guide"/>
 <artifact id="Parameters/uscore-modelinfo-settings" key="Parameters-uscore-modelinfo-settings" name="Example ModelInfo Settings Parameters for the USCore Implementation Guide"/>
 <artifact id="Observation/negation-example" key="Observation-negation-example" name="Example Negation Observation"/>
 <artifact id="Patient/example" key="Patient-example" name="Example Patient"/>

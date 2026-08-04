@@ -15,7 +15,7 @@ description: >-
   and integrated usage as part of knowledge artifacts.
 status: active
 license: CC0-1.0
-date: 2025-07-11
+date: 2026-08-04
 version: 3.0.0-ballot
 
 # Although fhirVersions is 0..* in the ImplementationGuide resource
@@ -30,7 +30,7 @@ fhirVersion: 4.0.1
 # will recognize them as well. In either case, they'll be copied
 # to the IG JSON using the formal names.
 copyrightYear: 2023+
-releaseLabel: STU 3
+releaseLabel: STU 3 Ballot
 
 # The publisher can be a single item or a list, each with a name and
 # optional url and/or email. The first publisher's name will be used
@@ -89,7 +89,8 @@ parameters:
   path-liquid-ig: templates/liquid
   auto-oid-root: 2.16.840.1.113883.4.642.40.37
   special-url:
-    - http://cql.hl7.org/CodeSystem/context-declaration-codes
+    - http://cql.hl7.org/CodeSystem/cql-context-declaration-codes
+    - http://cql.hl7.org/ValueSet/cql-context-declaration
 
 pages:
   index.md:
