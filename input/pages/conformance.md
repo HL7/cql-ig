@@ -411,6 +411,46 @@ Parts `url` and `extension` for complex extensions:
 }
 ```
 
+##### Example: Representing CQL Values in Extensions
+
+In addition to representation in Parameters, the FHIR Type Mapping allows CQL values to be represented using Extensions in much the same way, and using the same `data-absent-reason`, `cqf-cqlType`, `cqf-isEmptyList`, and `cqf-isEmptyTuple` extensions. For example, the following snippets illustrate the use of these extensions on the `value` component of a complex extension that is used to represent the result of evaluating a CQL expression:
+
+Representation of a null:
+
+```json
+  {
+    "extension" : [
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode" : "unknown"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+        "valueString" : "System.Any"
+      }
+    ],
+    "url" : "value"
+  }
+```
+
+Representation of an empty list:
+
+```json
+  {
+    "extension" : [
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/cqf-isEmptyList",
+        "valueBoolean" : true
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/cqf-cqlType",
+        "valueString" : "List<System.Any>"
+      }
+    ],
+    "url" : "value"
+  }
+```
+
 #### Parameters and Data Requirements
 {: #parameters-and-data-requirements}
 
