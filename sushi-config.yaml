@@ -201,10 +201,10 @@ resources:
     name: Example ModelInfo Settings Parameters for the QICore Implementation Guide
     description: Example Parameters resource demonstrating the use of ModelInfo configuration parameters. This resource would typically be a contained resource in an implementation guide or artifact collection.
     exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-modelinfosettings
-  Parameters/cql-evaluationresult-example:
+  Parameters/cql-parameters-example:
     name: Example Evaluation Result Parameters
     description: Example Parameters resource demonstrating the use of data-absent-reason extension to indicate a null evaluation result.
-    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult
+    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-parameters
   Parameters/cql-options-example:
     name: Example CQL Operations Parameters
     description: Example Parameters resource demonstrating the use of the CQLOptions profile to specify CQL translator options. This resource would typically be a contained resource in an implementation guide, artifact collection, or library.
@@ -212,7 +212,7 @@ resources:
   Parameters/cql-typemappingexampleresult:
     name: Example Type Mapping Evaluation Result Parameters
     description: Example Parameters resource showing the result of evaluating the TypeMappingExample library, demonstrating all possible CQL-to-FHIR type mappings.
-    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-evaluationresult
+    exampleCanonical: http://hl7.org/fhir/uv/cql/StructureDefinition/cql-parameters
   Patient/example:
     name: Example Patient
     description: Example Patient resource used as part of the observation negation example.
