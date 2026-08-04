@@ -75,7 +75,7 @@
     },
     {
       "url": "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-namespaceUri",
-      "valueString": "http://hl7.org/fhir/uv/cql"
+      "valueUri": "http://hl7.org/fhir/uv/cql"
     } ],
   "url": "http://hl7.org/fhir/uv/cql/Library/FHIRCommon",
   "name": "FHIRCommon",

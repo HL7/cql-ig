@@ -50,7 +50,7 @@
   </jurisdiction>
   <compose>
     <include>
-      <system value="http://cql.hl7.org/CodeSystem/cql-context-declaration"/>
+      <system value="http://cql.hl7.org/CodeSystem/cql-context-declaration-codes"/>
     </include>
   </compose>
 </ValueSet>

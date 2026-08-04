@@ -64,7 +64,7 @@ jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 # use cases, the value can be an object with keys for `uri` and `version`.
 # For R5 ImplementationGuides, the object can also have a key for `reason`.
 dependencies:
-  hl7.terminology: 7.3.0
+  hl7.terminology.r4: 7.3.0
   hl7.fhir.uv.extensions.r4: 
     id: ext
     version: 5.3.0
@@ -80,10 +80,16 @@ parameters:
   apply-wg: true
   excludettl: true
   jira-code: uv-cql
+  path-resource:
+    - input/resources
+    - input/vocabulary/valueset
+    - input/vocabulary/codesystem
   path-binary: input/cql
   path-history: http://hl7.org/fhir/uv/cql/history.html
   path-liquid-ig: templates/liquid
   auto-oid-root: 2.16.840.1.113883.4.642.40.37
+  special-url:
+    - http://cql.hl7.org/CodeSystem/context-declaration-codes
 
 pages:
   index.md:

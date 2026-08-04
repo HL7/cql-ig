@@ -73,8 +73,8 @@
       "use" : "in",
       "min" : 0,
       "max" : "1",
-      "documentation" : "A Group of subjects for which the group definition will be evaluated, provided directly as a Group resource. This parameter cannot be used with the subject parameter. If no subject or subjectGroup is provided, the group definition is evaluated for all potential subjects."
-
+      "documentation" : "A Group of subjects for which the group definition will be evaluated, provided directly as a Group resource. This parameter cannot be used with the subject parameter. If no subject or subjectGroup is provided, the group definition is evaluated for all potential subjects.",
+      "type" : "Group"
     },
     {
       "name" : "parameters",

@@ -106,7 +106,7 @@
       </type>
       <binding>
         <strength value="required"/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/selectivity-coverage"/>
+        <valueSet value="http://hl7.org/fhir/uv/cql/ValueSet/selectivity-coverage"/>
       </binding>
     </element>
     <element id="Extension.extension:inclusivity">
@@ -139,7 +139,7 @@
       </type>
       <binding>
         <strength value="required"/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/selectivity-inclusivity"/>
+        <valueSet value="http://hl7.org/fhir/uv/cql/ValueSet/selectivity-inclusivity"/>
       </binding>
     </element>
     <element id="Extension.extension:form">
@@ -172,7 +172,7 @@
       </type>
       <binding>
         <strength value="required"/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/selectivity-form"/>
+        <valueSet value="http://hl7.org/fhir/uv/cql/ValueSet/selectivity-form"/>
       </binding>
     </element>
     <element id="Extension.extension:clause">

@@ -112,7 +112,8 @@ define FHIRObservationListExample: FHIRObservations
 // EmptyList<Observation>
 define FHIREmptyObservationListExample: FHIRObservations O where false
 // BackboneElement
-define FHIRBackboneElementExample: Patient.contact.first()
+// TODO: Should not need to cast this, but without it the ELM gets an error on the type code Patient.Contact
+define FHIRBackboneElementExample: Patient.contact.first() as FHIR.BackboneElement
 // Extension (simple)
 define FHIRSimpleExtensionExample: Patient.birthDate.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/patient-birthTime').first()
 // Extension (complex)

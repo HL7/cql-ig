@@ -139,7 +139,7 @@ The following changes were made as a result of comments received in the 1.0.0-ba
 * [FHIR-43740](https://jira.hl7.org/browse/FHIR-43740): CQL Module: Clarify inputParameters extension vs Library.parameter element ([Applied here](StructureDefinition-cql-module-definitions.html))
 * [FHIR-43739](https://jira.hl7.org/browse/FHIR-43739): Tightened CQLModelInfo profile ([Applied here](StructureDefinition-cql-modelinfo.html))
 * [FHIR-43738](https://jira.hl7.org/browse/FHIR-43738): Tightened CQLLibrary profile ([Applied here](StructureDefinition-cql-library.html))
-* [FHIR-43737](https://jira.hl7.org/browse/FHIR-43737): Clarify use of data absent reason codes in CQL Evaluation Result Applied ([here](StructureDefinition-cql-evaluationresult.html))
+* [FHIR-43737](https://jira.hl7.org/browse/FHIR-43737): Clarify use of data absent reason codes in CQL Evaluation Result Applied ([here](StructureDefinition-cql-parameters.html))
 * [FHIR-43734](https://jira.hl7.org/browse/FHIR-43734): Mismatch between CQL Capability Statement profile and example Applied ([here](StructureDefinition-cql-capabilitystatement.html))
 * [FHIR-43733](https://jira.hl7.org/browse/FHIR-43733): Typo: A library profiles Applied ([here](profiles.html#profiles))
 * [FHIR-43732](https://jira.hl7.org/browse/FHIR-43732): Incorrect reference to CRMI IG Applied ([here](conformance.html#conformance-requirement-4-7))

@@ -26,8 +26,8 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
     <valueCode value="cds"/>
   </extension>
-  <url value="http://cql.hl7.org/CodeSystem/context-declaration-codes"/>
-  <version value="2.0.0"/>
+  <url value="http://cql.hl7.org/CodeSystem/cql-context-declaration-codes"/>
+  <version value="3.0.0"/>
   <name value="CQLContextDeclarationCodes"/>
   <title value="CQL Context Declaration Codes"/>
   <status value="active"/>
@@ -61,7 +61,7 @@
     <display value="Population"/>
     <definition value="Indicates that the expressions and function definitions that follow in the library are not restricted to a particular context, as opposed to, for example, a model-defined Patient context, indicating that statements will be filtered to the particular patient in context."/>
     <property>
-      <code value="http://hl7.org/fhir/concept-properties#status"/>
+      <code value="status"/>
       <valueCode value="deprecated"/>
     </property>
   </concept>

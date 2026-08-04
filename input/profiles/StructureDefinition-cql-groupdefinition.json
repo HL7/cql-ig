@@ -105,7 +105,7 @@
           {
             "code": "Extension",
             "profile": [
-              "http://hl7.org/fhir/StructureDefinition/cqf-cqlLibrary"
+              "http://hl7.org/fhir/StructureDefinition/cqf-library"
             ]
           }
         ],

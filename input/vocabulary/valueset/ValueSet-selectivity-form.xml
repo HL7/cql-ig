@@ -27,10 +27,9 @@
     <valueInteger value="1"/>
   </extension>
   <url value="http://hl7.org/fhir/uv/cql/ValueSet/selectivity-form"/>
-  <version value="5.0.0"/>
   <name value="SelectivityForm"/>
   <title value="Selectivity Form Value Set"/>
-  <status value="draft"/>
+  <status value="active"/>
   <experimental value="false"/>
   <date value="2026-04-24"/>
   <publisher value="HL7 International / Clinical Decision Support"/>
