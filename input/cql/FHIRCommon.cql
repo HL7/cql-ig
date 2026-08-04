@@ -101,17 +101,18 @@ context Patient
 
 /*
 @description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
-@comment: Normalizes a choice type of FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instance, FHIR.string, FHIR.Age, or FHIR.Range types
+@comment: Normalizes a choice type of FHIR.date, FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instance, FHIR.string, FHIR.Age, or FHIR.Range types
 to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible
 representations for timing-valued elements in FHIR, allowing this function to be used across any resource.
 
-The input can be provided as a dateTime, Period, Timing, instant, string, Age, or Range.
+The input can be provided as a date, dateTime, Period, Timing, instant, string, Age, or Range.
 The intent of this function is to provide a clear and concise mechanism to treat single
 elements that have multiple possible representations as intervals so that logic doesn't have to account
 for the variability. More complex calculations (such as medication request period or dispense period
 calculation) need specific guidance and consideration. That guidance may make use of this function, but
 the focus of this function is on single element calculations where the semantics are unambiguous.
-If the input is a dateTime, the result a DateTime Interval beginning and ending on that dateTime.
+If the input is a date, the result is a DateTime Interval beinning and ending on that date, converted to a DateTime.
+If the input is a dateTime, the result is a DateTime Interval beginning and ending on that dateTime.
 If the input is a Period, the result is a DateTime Interval.
 If the input is a Timing, an error is raised indicating a single interval cannot be computed from a Timing.
 If the input is an instant, the result is a DateTime Interval beginning and ending on that instant.
@@ -126,8 +127,10 @@ NOTE: Due to the
 complexity of determining a single interval from a Timing or String type, this function will throw a run-time exception if it is used
 with a Timing or String.
 */
-define fluent function toInterval(choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instant, FHIR.string, FHIR.Age, FHIR.Range>):
+define fluent function toInterval(choice Choice<FHIR.date, FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instant, FHIR.string, FHIR.Age, FHIR.Range>):
   case
+    when choice is FHIR.date then
+      Interval[ToDateTime(FHIRHelpers.ToDate(choice as FHIR.date)), ToDateTime(FHIRHelpers.ToDate(choice as FHIR.date))]
     when choice is FHIR.dateTime then
       Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]
     when choice is FHIR.Period then
