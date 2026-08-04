@@ -204,15 +204,7 @@
       "use" : "out",
       "min" : 1,
       "max" : "1",
-      "documentation" : "The results of the library evaluation, returned as a Parameters resource with a parameter for each named expression requested by the expression input parameter (or all public (or all, if includePrivate is true) top-level expressions defined in the library if no expression input parameter was specified). Note that explicit request for evaluation of an expression does not respect the access modifier (i.e. even private expressions can be evaluated by directly requesting evaluation of the expression by name). In addition, the resulting Parameters resource **SHALL** conform to the [CQLParameters](StructureDefinition-cql-parameters.html) profile.",
+      "documentation" : "The results of the library evaluation, returned as a Parameters resource with a parameter for each named expression requested by the expression input parameter (or all public (or all, if includePrivate is true) top-level expressions defined in the library if no expression input parameter was specified). Note that explicit request for evaluation of an expression does not respect the access modifier (i.e. even private expressions can be evaluated by directly requesting evaluation of the expression by name). In addition, the resulting Parameters resource **SHALL** conform to the [CQLParameters](StructureDefinition-cql-parameters.html) profile. As well, the result may include a `_messages` parameter this is an OperationOutcome resource containing any information, warning, and/or error messages that were generated while evaluating the CQL Library.\n\nOperation processing often generates information, warning, or error messages that don't necessarily stop processing (and so don't result in an OperationOutcome as the overall result of the operation) but still need to be communicated as part of the result. This parameter allows for these messages to be included as a reference to an OperationOutcome resource. Note that if the library already has an expression with the name `_messages`, this parameter will not overwrite that result (i.e. there is no way to retrieve the OperationOutcome messsages for the evaluation in that case).",
       "type" : "Parameters"
-    },
-    {
-      "name" : "_messages",
-      "use" : "out",
-      "min" : 0,
-      "max" : "1",
-      "documentation" : "An OperationOutcome that contains any information, warning, and/or error messages that were generated while evaluating the CQL Library.\n\nOperation processing often generates information, warning, or error messages that don't necessarily stop processing (and so don't result in an OperationOutcome as the overall result of the operation) but still need to be communicated as part of the result. This parameter allows for these messages to be included as a reference to an OperationOutcome resource. Note that if the library already has an expression with the name `_messages`, this parameter will not overwrite that result (i.e. there is no way to retrieve the OperationOutcome messsages for the evaluation in that case).",
-      "type" : "OperationOutcome"
     }]
   }

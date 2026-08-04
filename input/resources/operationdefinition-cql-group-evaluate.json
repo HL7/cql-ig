@@ -64,9 +64,17 @@
       "use" : "in",
       "min" : 0,
       "max" : "1",
-      "documentation" : "Subject for which the group will be evaluated. This corresponds to the context in which the group will be evaluated and is represented as a relative FHIR id (e.g. Patient/123), which establishes both the context and context value for the evaluation",
+      "documentation" : "Subject(s) for which the group definition will be evaluated. This corresponds to the context in which the group will be evaluated and is represented as a relative FHIR id (e.g. Patient/123), which establishes both the context and context value for the evaluation. This MAY be a reference to a Group, in which case the membership criteria is evaluated for every member of the subject group. This parameter cannot be used with the subjectGroup parameter. If no subject or subjectGroup is provided, the group definition is evaluated for all potential subjects.",
       "type" : "string",
       "searchType" : "reference"
+    },
+    {
+      "name" : "subjectGroup",
+      "use" : "in",
+      "min" : 0,
+      "max" : "1",
+      "documentation" : "A Group of subjects for which the group definition will be evaluated, provided directly as a Group resource. This parameter cannot be used with the subject parameter. If no subject or subjectGroup is provided, the group definition is evaluated for all potential subjects."
+
     },
     {
       "name" : "parameters",

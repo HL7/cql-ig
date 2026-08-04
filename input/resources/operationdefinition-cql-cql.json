@@ -47,7 +47,7 @@
       "use" : "in",
       "min" : 0,
       "max" : "1",
-      "documentation" : "Subject for which the expression will be evaluated. This corresponds to the context in which the expression will be evaluated and is represented as a relative FHIR id (e.g. Patient/123), which establishes both the context and context value for the evaluation",
+      "documentation" : "Subject for which the expression will be evaluated. This corresponds to the context in which the expression will be evaluated and is represented as a relative FHIR id (e.g. Patient/123), which establishes both the context and context value for the evaluation.",
       "type" : "string",
       "searchType" : "reference"
     },
