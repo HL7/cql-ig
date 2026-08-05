@@ -4,6 +4,52 @@
 
 This page details changes made in each version of the Using CQL with FHIR Implementation Guide.
 
+### STU3 Ballot (version 3.0.0-ballot)
+
+#### Compatible, Substantive Changes
+
+* [FHIR-44779](https://jira.hl7.org/browse/FHIR-44779): Added support for relatedRequirements in data requirements
+* [FHIR-48655](https://jira.hl7.org/browse/FHIR-48655): Adopted CRMI artifactEndpointConfigurable patterns for operations throughout
+* [FHIR-50831](https://jira.hl7.org/browse/FHIR-50831): Required single context libraries
+* [FHIR-51076](https://jira.hl7.org/browse/FHIR-51076): Specified how messages are returned on successful execution
+* [FHIR-51084](https://jira.hl7.org/browse/FHIR-51084): Added support for Integer Intervals
+* [FHIR-51454](https://jira.hl7.org/browse/FHIR-51454): Identifiers should be usable as "code" values
+* [FHIR-51539](https://jira.hl7.org/browse/FHIR-51539): Add a resolve namespace capability
+* [FHIR-52834](https://jira.hl7.org/browse/FHIR-52834): Require Library resources to match IG base canonical
+* [FHIR-53031](https://jira.hl7.org/browse/FHIR-53031): Surface namespace in the library resource
+* [FHIR-53435](https://jira.hl7.org/browse/FHIR-53435): Allow for date values in toInterval
+* [FHIR-53463](https://jira.hl7.org/browse/FHIR-53463): Consider defining age fluent functions
+* [FHIR-53580](https://jira.hl7.org/browse/FHIR-53580): Add translator parameter
+* [FHIR-55977](https://jira.hl7.org/browse/FHIR-55977): Support Time Intervals
+* [FHIR-56046](https://jira.hl7.org/browse/FHIR-56046): Provide timezone evaluation guidance
+* [FHIR-56226](https://jira.hl7.org/browse/FHIR-56226): Add mapping for Intervals of Integer, Decimal, and Long
+* [FHIR-56396](https://jira.hl7.org/browse/FHIR-56396): Define CQLGroupDefinition and $evaluate operation
+* [FHIR-56426](https://jira.hl7.org/browse/FHIR-56426): Support describing the selectivity of an expression
+* [FHIR-57261](https://jira.hl7.org/browse/FHIR-57261): Add evaluatedResource references to Group result
+* [FHIR-57264](https://jira.hl7.org/browse/FHIR-57264): Document that type specifiers must be fully qualified
+* [FHIR-57487](https://jira.hl7.org/browse/FHIR-57487): Add assertedDate for Condition and AllergyIntolerance
+* [FHIR-57488](https://jira.hl7.org/browse/FHIR-57488): Document use of .getValue() vs .value
+* [FHIR-57875](https://jira.hl7.org/browse/FHIR-57875): Add fluent function for patient SPCU extension
+* [FHIR-58069](https://jira.hl7.org/browse/FHIR-58069): Add support for subjectGroup
+
+#### Non-Substantive Changes
+
+* [FHIR-45518](https://jira.hl7.org/browse/FHIR-45518): Add example dependencies on IPS and QICore
+* [FHIR-51191](https://jira.hl7.org/browse/FHIR-51191): Document the need to check for no rejected tasks on a positive request
+* [FHIR-52862](https://jira.hl7.org/browse/FHIR-52862): Clarify parameters in $cql operation
+* [FHIR-52863](https://jira.hl7.org/browse/FHIR-52863): Add data-absent-reason documentation
+* [FHIR-53026](https://jira.hl7.org/browse/FHIR-53026): Provide guidance on behavior of FHIR Quantity with respect to calendar units
+* [FHIR-53146](https://jira.hl7.org/browse/FHIR-53146): Add best-practice discussion on use of date and time values
+* [FHIR-53147](https://jira.hl7.org/browse/FHIR-53147): Add general language about writing CQL against FHIR
+* [FHIR-53198](https://jira.hl7.org/browse/FHIR-53198): Clarify namespace is implied by the containing IG
+* [FHIR-53575](https://jira.hl7.org/browse/FHIR-53575): Document best practices for date/time values
+* [FHIR-56174](https://jira.hl7.org/browse/FHIR-56174): Allow isEmptyList, isEmptyTuple, and cqlType in Extension
+* [FHIR-56227](https://jira.hl7.org/browse/FHIR-56227): Correct mapping of Long to String as only the string (not an L)
+* [FHIR-56266](https://jira.hl7.org/browse/FHIR-56266): Clarify that cqf-cqlType extension must be provided on list and tuple types
+* [FHIR-56804](https://jira.hl7.org/browse/FHIR-56804): Provide guidance on how to interpret a data requirement in terms of a FHIR API request
+* [FHIR-57260](https://jira.hl7.org/browse/FHIR-57260): Reference precision extensions in the evaluation result profile
+* [FHIR-57614](https://jira.hl7.org/browse/FHIR-57614): Alias Naming
+
 ### STU2 Publication (version 2.0.0)
 
 #### Non-Compatible Changes
