@@ -117,4 +117,4 @@ define FHIRBackboneElementExample: Patient.contact.first() as FHIR.BackboneEleme
 // Extension (simple)
 define FHIRSimpleExtensionExample: Patient.birthDate.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/patient-birthTime').first()
 // Extension (complex)
-define FHIRComplexExtensionExample: Patient.extension.where(url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity').first()
+define FHIRComplexExtensionExample: Patient.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/patient-citizenship').first()

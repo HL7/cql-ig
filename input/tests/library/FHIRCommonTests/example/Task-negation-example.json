@@ -1,0 +1,26 @@
+{
+  "resourceType": "Task",
+  "id": "negation-example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task"
+    ]
+  },
+  "modifierExtension": [{
+    "url": "http://hl7.org/fhir/StructureDefinition/request-doNotPerform",
+    "valueBoolean": true
+  }],
+  "status": "draft",
+  "intent": "proposal",
+  "priority": "routine",
+  "code": {
+    "text": "Medication Reconciliation"
+  },
+  "for": {
+    "reference": "Patient/example"
+  },
+  "executionPeriod": {
+    "start": "2018-06-11",
+    "end": "2018-06-11"
+  }
+}

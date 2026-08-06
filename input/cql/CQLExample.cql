@@ -15,11 +15,11 @@ define "Blood Glucose Observations":
   [Observation: "Blood Glucose"] BG
     where BG.value > GlucoseThreshold
 
-define fluent function birthsex(patient Patient):
+define fluent function interpreterRequired(patient Patient):
   (singleton from (
-    patient.extension E where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-  )).value as FHIR.code
+    patient.extension E where E.url = 'http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired'
+  )).value as FHIR.boolean
 
-define "Patient Birth Sex Is Male (refined)":
+define "Patient Interpreter Required (refined)":
   Patient P
-    where P.birthsex() = 'M'
+    where P.interpreterRequired() is true

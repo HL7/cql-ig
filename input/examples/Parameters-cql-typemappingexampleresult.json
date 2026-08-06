@@ -1024,54 +1024,29 @@
     "name": "FHIRComplexExtensionExample",
     "part": [{
       "name": "url",
-      "valueUri": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+      "valueUri": "http://hl7.org/fhir/StructureDefinition/patient-citizenship"
     }, {
       "name": "extension",
       "part": [{
         "name": "url",
-        "valueUri": "ombCategory"
+        "valueUri": "code"
       }, {
         "name": "value",
         "valueCoding": {
-          "system" : "urn:oid:2.16.840.1.113883.6.238",
-          "code" : "2135-2",
-          "display" : "Hispanic or Latino"
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CH"
         }
       }]
     }, {
       "name": "extension",
       "part": [{
         "name": "url",
-        "valueUri": "detailed"
+        "valueUri": "period"
       }, {
         "name": "value",
-        "valueCoding": {
-            "system" : "urn:oid:2.16.840.1.113883.6.238",
-            "code" : "2184-0",
-            "display" : "Dominican"
+        "valuePeriod": {
+          "start": "2016-01-01"
         }
-      }]
-    }, {
-      "name": "extension",
-      "part": [{
-        "name": "url",
-        "valueUri": "detailed"
-      }, {
-        "name": "value",
-        "valueCoding": {
-            "system" : "urn:oid:2.16.840.1.113883.6.238",
-            "code" : "2148-5",
-            "display" : "Mexican"
-        }
-      }]
-    }, {
-      "name": "extension",
-      "part": [{
-        "name": "url",
-        "valueUri": "text"
-      }, {
-        "name": "value",
-        "valueString": "Hispanic or Latino"
       }]
     }]
   }]

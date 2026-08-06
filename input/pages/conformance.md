@@ -385,30 +385,29 @@ Parts `url` and `extension` for complex extensions:
   "name": "FHIRComplexExtensionExample",
   "part": [{
     "name": "url",
-    "valueUri": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    "valueUri": "http://hl7.org/fhir/StructureDefinition/patient-citizenship"
   }, {
     "name": "extension",
     "part": [{
       "name": "url",
-      "valueUri": "ombCategory"
+      "valueUri": "code"
     }, {
       "name": "value",
       "valueCoding": {
-        "system" : "urn:oid:2.16.840.1.113883.6.238",
-        "code" : "2135-2",
-        "display" : "Hispanic or Latino"
+        "system" : "urn:iso:std:iso:3166",
+        "code" : "CH"
       }
     }]
-  },
-  ...
-  {
+  }, {
     "name": "extension",
     "part": [{
       "name": "url",
-      "valueUri": "text"
+      "valueUri": "period"
     }, {
       "name": "value",
-      "valueString": "Hispanic or Latino"
+      "valuePeriod": {
+        "start": "2016-01-01"
+      }
     }]
   }]
 }
@@ -641,21 +640,21 @@ When using profile-informed authoring, the retrieve will have a `templateId` cor
 When referencing extensions that are surfaced as elements in profile-informed authoring, the `mustSupport` uses the `.extension()` function in FHIRPath, and the [`rendered-value`]({{site.data.fhir.ver.ext}}/StructureDefinition-rendered-value.html) extension is used to provide a human-readable rendering, corresponding to the `sliceName` of the extension:
 
 ```cql
-using QICore
+using IPS
 ...
-define SDEEthnicity: Patient.ethnicity
+define SDEGenderIdentity: Patient.genderIdentity
 ```
 
 ```json
 {
   "type": "Patient",
-  "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ],
-  "mustSupport": [ "extension('http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity')" ],
+  "profile": [ "http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips" ],
+  "mustSupport": [ "extension('http://hl7.org/fhir/StructureDefinition/individual-genderIdentity')" ],
   "_mustSupport": [
     {
       "extension": [{
         "url": "http://hl7.org/fhir/StructureDefinition/rendered-value",
-        "valueString": "ethnicity"
+        "valueString": "genderIdentity"
       }]
     }
   ]
@@ -1145,7 +1144,7 @@ For example, the following media types indicate version 1.5 of the CQL specifica
 ### Using Expressions
 {: #using-expressions}
 
-CQL can be used in [expression-valued elements](http://hl7.org/fhir/R4/metadatatypes.html#Expression) in the following ways:
+CQL can be used in [expression-valued elements]({{site.data.fhir.ver}}/metadatatypes.html#Expression) in the following ways:
 
 1. To specify an unqualified expression name in the "primary" library for an artifact
 2. To specify a qualified expression name in a library referenced by an artifact
@@ -1177,9 +1176,9 @@ exists (Example."Flexible Sigmoidoscopy Performed")
 
 Certain elements in the profiles defined in this implementation guide are marked as Must Support. This flag is used to indicate that the element plays a critical role in defining, sharing, and implementing artifacts, and implementations **SHALL** understand and process the element.
 
-In addition, because artifact specifications typically make use of data implementation guides (e.g. International Patient Summary (IPS), US Core, QI-Core), the implications of the Must Support flag for profiles used from those implementation guides must be considered.
+In addition, because artifact specifications typically make use of data implementation guides (e.g. International Patient Summary (IPS), US Core, AU igCore), the implications of the Must Support flag for profiles used from those implementation guides must be considered.
 
-For more information, see the definition of [Must Support](https://hl7.org/fhir/R4/profiling.html#mustsupport) in the base FHIR specification.
+For more information, see the definition of [Must Support]({{site.data.fhir.ver}}/profiling.html#mustsupport) in the base FHIR specification.
 
 **Conformance Requirement 4.7 (Must Support Elements):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-4-7)
 {: #conformance-requirement-4-7}

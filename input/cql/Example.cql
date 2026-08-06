@@ -5,9 +5,9 @@ using FHIR version '4.0.1'
 include FHIRHelpers version '4.0.2-ballot'
 
 codesystem LOINC: 'http://loinc.org'
-codesystem "CDC Race and Ethnicity Codes": 'urn:oid:2.16.840.1.113883.6.238'
 codesystem "SNOMED CT": 'http://snomed.info/sct'
 codesystem "SNOMED CT:2017-09": 'http://snomed.info/sct' version 'http://snomed.info/sct/731000124108/version/20250301'
+codesystem "Country Codes": 'urn:iso:std:iso:3166'
 
 valueset "Antithrombotic Therapy": 'http://example.org/fhir/ValueSet/antithrombotic-therapy-example'
 valueset "Medical Reason": 'http://example.org/fhir/ValueSet/medical-reason-example'
@@ -18,8 +18,7 @@ valueset "Flexible Sigmoidoscopy": 'http://example.org/fhir/ValueSet/flexible-si
 code "Blood Pressure": '85354-9' from LOINC
 code "Diastolic blood pressure": '8462-4' from "LOINC" display 'Diastolic blood pressure'
 code "Systolic blood pressure": '8480-6' from "LOINC" display 'Systolic blood pressure'
-code "American Indian or Alaska Native": '1002-5' from "CDC Race and Ethnicity Codes"
-code "Alaska Native": '1735-0' from "CDC Race and Ethnicity Codes"
+code "Switzerland (CH)": 'CH' from "Country Codes" display 'Switzerland'
 
 codesystem "Antenatal Care Concepts": 'http://example.org/fhir/CodeSystem/anc-codes-example'
 codesystem "ICD-11": 'http://id.who.int/icd/release/11/mms'
@@ -75,43 +74,45 @@ define "Blood Pressure With Slices (refined)":
     where BP.systolic().value < 140 'mm[Hg]'
       and BP.diastolic().value < 90 'mm[Hg]'
 
-define "Patient Birth Sex Is Male":
+define "Patient Interpreter Required":
   Patient P
-    let birthsex: singleton from (
-        P.extension E where E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-    ).value as FHIR.code
-    where birthsex = 'M'
+    let interpreterRequired: singleton from (
+        P.extension E where E.url.value = 'http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired'
+    ).value as FHIR.boolean
+    where interpreterRequired is true
 
-define fluent function birthsex(patient Patient):
-  (singleton from (patient.extension E where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex')).value as FHIR.code
+define fluent function interpreterRequired(patient Patient):
+  (singleton from (
+    patient.extension E where E.url = 'http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired'
+  )).value as FHIR.boolean
 
-define "Patient Birth Sex Is Male (refined)":
+define "Patient Interpreter Required (refined)":
   Patient P
-    where P.birthsex() = 'M'
+    where P.interpreterRequired() is true
 
-define "Patient With Race Category":
+define "Patient With Citizenship In Switzerland":
   Patient P
-    let
-      race: singleton from (
-        P.extension E where E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
-      ),
-      ombCategory: race.extension E where E.url.value = 'ombCategory',
-      detailed: race.extension E where E.url.value = 'detailed'
-    where (ombCategory O return O.value as FHIR.Coding) contains "American Indian or Alaska Native"
-      and (detailed O return O.value as FHIR.Coding) contains "Alaska Native"
-    
-define fluent function race(patient Patient):
-  (singleton from (patient.extension E where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race')) race
     let 
-      ombCategory: race.extension E where E.url = 'ombCategory' return E.value as Coding,
-      detailed: race.extension E where E.url = 'detailed' return E.value as Coding,
-      text: singleton from (race.extension E where E.url = 'text' return E.value as string)
-    return { ombCategory: ombCategory, detailed: detailed, text: text }
+      citizenship: singleton from (
+        P.extension E where E.url.value = 'http://hl7.org/fhir/StructureDefinition/patient-citizenship'
+      ),
+      "code": singleton from (citizenship.extension E where E.url = 'code' return E.value as CodeableConcept),
+      period: singleton from (citizenship.extension E where E.url = 'period' return E.value as Period)
+    where "code" ~ "Switzerland (CH)"
+      and period includes Today()
 
-define "Patient With Race Category (refined)":
+
+define fluent function citizenship(patient Patient):
+  (patient.extension E where E.url = 'http://hl7.org/fhir/StructureDefinition/patient-citizenship') C
+    return {
+      "code": singleton from (C.extension E where E.url = 'code' return E.value as CodeableConcept),
+      period: singleton from (C.extension E where E.url = 'period' return E.value as Period)
+    }
+
+define "Patient With Citizenship In Switzerland (refined)":
   Patient P
-    where P.race().ombCategory contains "American Indian or Alaska Native"
-      and P.race().detailed contains "Alaska Native"
+    return P.citizenship().single()."code" ~ "Switzerland (CH)"
+      and P.citizenship().single().period includes Today()
 
 define "Antithrombotic Not Administered":
   [MedicationAdministration: "Antithrombotic Therapy"] NotAdministered

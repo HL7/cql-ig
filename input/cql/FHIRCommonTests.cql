@@ -114,11 +114,11 @@ define _13_TestGetCanonicalVersionFromVersioned: (FHIR.canonical { value: 'http:
 
 //* _14_ define fluent function exts(domainResource DomainResource, url String):
 define _14_TestExts:
-  exists (Patient.exts('http://hl7.org/fhir/us/core/StructureDefinition/uscore-ethnicity'))
+  exists (Patient.exts('http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired'))
 
 //* _15_ define fluent function ext(domainResource DomainResource, url String):
 define _15_TestExt:
-  Patient.ext('http://hl7.org/fhir/us/core/StructureDefinition/uscore-ethnicity') is not null
+  Patient.ext('http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired') is not null
 
 //* _16_ define fluent function exts(element Element, url String):
 define _16_TestExts:
@@ -131,17 +131,17 @@ define _17_TestExt:
 //* _18_ define fluent function modifierExts(domainResource DomainResource, url String):
 define _18_TestModifierExts:
   exists (
-    [Communication] C
+    [Task] C
         where C.id = 'negation-example'
-        and exists (C.modifierExts('http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDone'))
+        and exists (C.modifierExts('http://hl7.org/fhir/StructureDefinition/request-doNotPerform'))
   )    
 
 //* _19_ define fluent function modifierExt(domainResource DomainResource, url String):
 define _19_TestModifierExt:
   exists (
-    [Communication] C
+    [Task] C
         where C.id = 'negation-example'
-        and C.modifierExt('http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDone') is not null
+        and C.modifierExt('http://hl7.org/fhir/StructureDefinition/request-doNotPerform') is not null
   )    
 
 // TODO: Need modifier extension on backbond element examples
