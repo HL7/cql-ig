@@ -10,7 +10,7 @@ This topic provides general guidance and best-practices for authors building FHI
 
 As an exchange specification, FHIR has a rich syntax for expressing the values of elements defined in FHIR
 resources. In particular, FHIR data types for representing basic values such as integers, strings, and dates and
-times allow for [extensions]({{site.data.fhir.ver}}/extensibility.html#extension). This means that a FHIR
+times allow for [extensions](https://hl7.org/fhir/R4/extensibility.html#extension). This means that a FHIR
 `string` is not just a string value, but has elements (specifically, `id`, `extension`, and
 `value`, where the `value` element contains the actual string value). This means that to access
 the actual value of a FHIR `string` element in CQL, authors would need to reference the `value` element:
@@ -34,7 +34,7 @@ Note that these conversions are performed automatically by the [CQL-to-ELM trans
 include hl7.fhir.uv.cql.FHIRHelpers version '4.0.2-ballot'
 ```
 
-> NOTE: This STU 3 edition of the implementation guide introduces a new version of FHIRHelpers (4.0.2-ballot) that adds `getValue()` functions for all the primitive types in FHIR. This is a backwards-compatible change, but is being added to improve type inference for FHIRPath expressions that use the `getValue()` approach defined in the [FHIRPath topic of the FHIR specification]({{site.data.fhir.ver}}/fhirpath.html#functions) to access the value of FHIR primitives.
+> NOTE: This STU 3 edition of the implementation guide introduces a new version of FHIRHelpers (4.0.2-ballot) that adds `getValue()` functions for all the primitive types in FHIR. This is a backwards-compatible change, but is being added to improve type inference for FHIRPath expressions that use the `getValue()` approach defined in the [FHIRPath topic of the FHIR specification](https://hl7.org/fhir/R4/fhirpath.html#functions) to access the value of FHIR primitives.
 
 ##### FHIRPath Representation of Primitive Values
 
@@ -46,7 +46,7 @@ As an aside, the FHIRPath specification establishes a mental model wherein the `
 
 #### Choices
 
-FHIR includes the notion of [_choice_]({{site.data.fhir.ver}}/formats.html#choice) types, or elements that can be represented as any of a number of types. For example,
+FHIR includes the notion of [_choice_](https://hl7.org/fhir/R4/formats.html#choice) types, or elements that can be represented as any of a number of types. For example,
 the `Patient.deceased` element can be specified as a `boolean` or as a `dateTime`. CQL also supports [choice](https://cql.hl7.org/03-developersguide.html#choice-types) types, so these elements are represented directly as Choice Types within the ModelInfo.
 
 When authoring CQL using FHIR, logic must take into account the possible choice types of the elements involved. For example, the `Observation.effective` element may be represented as a `dateTime` or a `Period` (among other types):
@@ -85,7 +85,7 @@ define "Blood Pressure Observations Within 30 Days (refined)":
 
 #### Slices
 
-Another common pattern in FHIR is the use of [_slices_]({{site.data.fhir.ver}}/profiling.html#slicing) to constrain list-valued elements into sub-lists and elements. Consider the [Blood Pressure]({{site.data.fhir.ver}}/bp.html) that defines "Systolic" and "Diastolic" elements:
+Another common pattern in FHIR is the use of [_slices_](https://hl7.org/fhir/R4/profiling.html#slicing) to constrain list-valued elements into sub-lists and elements. Consider the [Blood Pressure](https://hl7.org/fhir/R4/bp.html) that defines "Systolic" and "Diastolic" elements:
 
 ```cql
 define "Blood Pressure With Slices":
@@ -115,7 +115,7 @@ define "Blood Pressure With Slices (refined)":
 
 #### Extensions
 
-FHIR also supports defining [_extensions_]({{site.data.fhir.ver}}/extensibility.html) to allow additional information beyond what is available in the base FHIR resources to be specified. Profiles then make use of these extensions to establish how this additional information is exchanged in specific use cases. As a simple example, consider the [interpreterRequired]({{site.data.fhir.ver.ext}}/StructureDefinition-patient-interpreterRequired.html) extension for Patients:
+FHIR also supports defining [_extensions_](https://hl7.org/fhir/R4/extensibility.html) to allow additional information beyond what is available in the base FHIR resources to be specified. Profiles then make use of these extensions to establish how this additional information is exchanged in specific use cases. As a simple example, consider the [interpreterRequired]({{site.data.fhir.ver.ext}}/StructureDefinition-patient-interpreterRequired.html) extension for Patients:
 
 ```cql
 define "Patient Interpreter Required":
@@ -220,11 +220,11 @@ And finally, elements in FHIR resources and profiles may be marked as _modifier_
 
 ##### Modifier Extensions
 
-In addition to modifier elements, extensions in FHIR may be modifier extensions, and any FHIR resource that has modifier extensions that are not understood cannot be processed. Applications may consider performing this check as part of the overall environment, or the CQL logic may be used to ensure that either no modifier extensions are specified, or that only expected modifier extensions are present using the [`checkModifiers()`]({{site.data.fhir.ver}}/fhirpath.html#functions) function.
+In addition to modifier elements, extensions in FHIR may be modifier extensions, and any FHIR resource that has modifier extensions that are not understood cannot be processed. Applications may consider performing this check as part of the overall environment, or the CQL logic may be used to ensure that either no modifier extensions are specified, or that only expected modifier extensions are present using the [`checkModifiers()`](https://hl7.org/fhir/R4/fhirpath.html#functions) function.
 
 ### ImplicitRules
 
-A key modifier element that must be considered for any FHIR resource is [`implicitRules`]({{site.data.fhir.ver}}/resource-definitions.html#Resource.implicitRules). If this element is specified, it must be respected and understood. Applications may consider performing this check as part of the overall environment, or the CQL logic may be used to ensure that either no implicit rules are specified, or that the implicitRules are expected:
+A key modifier element that must be considered for any FHIR resource is [`implicitRules`](https://hl7.org/fhir/R4/resource-definitions.html#Resource.implicitRules). If this element is specified, it must be respected and understood. Applications may consider performing this check as part of the overall environment, or the CQL logic may be used to ensure that either no implicit rules are specified, or that the implicitRules are expected:
 
 ```cql
 define fluent function checkImplicitRules(resource Resource, knownImplicitRules String):
@@ -306,9 +306,9 @@ For detailed information on how ModelInfo is produced for an implementation guid
 
 FHIR supports various types of terminology values, including:
 
-* [code]({{site.data.fhir.ver}}/datatypes.html#code)
-* [Coding]({{site.data.fhir.ver}}/datatypes.html#Coding)
-* [CodeableConcept]({{site.data.fhir.ver}}/datatypes.html#CodeableConcept)
+* [code](https://hl7.org/fhir/R4/datatypes.html#code)
+* [Coding](https://hl7.org/fhir/R4/datatypes.html#Coding)
+* [CodeableConcept](https://hl7.org/fhir/R4/datatypes.html#CodeableConcept)
 
 These types map to the following CQL primitive types, respectively:
 
@@ -316,7 +316,7 @@ These types map to the following CQL primitive types, respectively:
 * [Code](https://cql.hl7.org/09-b-cqlreference.html#code-1)
 * [Concept](https://cql.hl7.org/09-b-cqlreference.html#concept-1)
 
-These types are used extensively throughout FHIR to define terminology-valued elements. In addition to the type of element, FHIR provides the ability to fix the value of these elements to specific codes, in the form of a direct-reference code (fixed constraint to a specific code in a [CodeSystem]({{site.data.fhir.ver}}/codesystem.html)), or to bind these elements to a [ValueSet]({{site.data.fhir.ver}}/valueset.html) (i.e. establish the set of possible values for the element). These bindings can be different [binding strengths]({{site.data.fhir.ver}}/codesystem-binding-strength.html)
+These types are used extensively throughout FHIR to define terminology-valued elements. In addition to the type of element, FHIR provides the ability to fix the value of these elements to specific codes, in the form of a direct-reference code (fixed constraint to a specific code in a [CodeSystem](https://hl7.org/fhir/R4/codesystem.html)), or to bind these elements to a [ValueSet](https://hl7.org/fhir/R4/valueset.html) (i.e. establish the set of possible values for the element). These bindings can be different [binding strengths](https://hl7.org/fhir/R4/codesystem-binding-strength.html)
 
 Within CQL, references to terminology code systems, value sets, codes, and concepts are directly supported, and all such usages are declared within CQL libraries, as described in the  [Terminology](https://cql.hl7.org/02-authorsguide.html#terminology) section of the CQL Author's Guide.
 
@@ -400,7 +400,7 @@ This behavior is critical for clinical logic for two reasons:
 For these reasons it is critical that the client timezone offset be communicated correctly between the client and the server, and this implementation guide provides the following facilities to support this:
 
 1. The CQL evaluation operations define the [requestTimestamp]() parameter to allow the client to set the timestamp explicitly.
-2. It is strongly recommended that all communication between clients and servers making use of CQL logic use headers to communicate timezone information as recommended in the [Client Timezone]({{site.data.fhir.ver}}/http.html#timezones) topic in the FHIR specification.
+2. It is strongly recommended that all communication between clients and servers making use of CQL logic use headers to communicate timezone information as recommended in the [Client Timezone](https://hl7.org/fhir/R4/http.html#timezones) topic in the FHIR specification.
 
 See also: [Constructing Date and Time Values](https://cql.hl7.org/02-authorsguide.html#constructing-datetime-values) in the CQL specification
 
@@ -439,7 +439,7 @@ Patient.birthDate + (Condition.onset as Age)
 
 If the duration in value in FHIR truly represents a definite-time duration, conversion to seconds is required in order to perform the date/time calculation.
 
-See the definition of the [Quantity](https://cql.hl7.org/2020May/02-authorsguide.html#quantities) type in the CQL Author's Guide, as well as the [Date/Time Arithmetic](https://cql.hl7.org/02-authorsguide.html#datetime-arithmetic) discussion for more information. This behavior is inherited from FHIRPath and described in the [Use of FHIR Quantity]({{site.data.fhir.ver}}/fhirpath.html#quantity) topic in the FHIRPath topic in the base FHIR specification.
+See the definition of the [Quantity](https://cql.hl7.org/02-authorsguide.html#quantities) type in the CQL Author's Guide, as well as the [Date/Time Arithmetic](https://cql.hl7.org/02-authorsguide.html#datetime-arithmetic) discussion for more information. This behavior is inherited from FHIRPath and described in the [Use of FHIR Quantity](https://hl7.org/fhir/R4/fhirpath.html#quantity) topic in the FHIRPath topic in the base FHIR specification.
 
 ### Missing Information
 

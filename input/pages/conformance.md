@@ -1144,7 +1144,7 @@ For example, the following media types indicate version 1.5 of the CQL specifica
 ### Using Expressions
 {: #using-expressions}
 
-CQL can be used in [expression-valued elements]({{site.data.fhir.ver}}/metadatatypes.html#Expression) in the following ways:
+CQL can be used in [expression-valued elements](https://hl7.org/fhir/R4/metadatatypes.html#Expression) in the following ways:
 
 1. To specify an unqualified expression name in the "primary" library for an artifact
 2. To specify a qualified expression name in a library referenced by an artifact
@@ -1178,7 +1178,7 @@ Certain elements in the profiles defined in this implementation guide are marked
 
 In addition, because artifact specifications typically make use of data implementation guides (e.g. International Patient Summary (IPS), US Core, AU igCore), the implications of the Must Support flag for profiles used from those implementation guides must be considered.
 
-For more information, see the definition of [Must Support]({{site.data.fhir.ver}}/profiling.html#mustsupport) in the base FHIR specification.
+For more information, see the definition of [Must Support](https://hl7.org/fhir/R4/profiling.html#mustsupport) in the base FHIR specification.
 
 **Conformance Requirement 4.7 (Must Support Elements):** [<img src="conformance.png" width="20" class="self-link" height="20"/>](#conformance-requirement-4-7)
 {: #conformance-requirement-4-7}
